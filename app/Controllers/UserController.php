@@ -7,7 +7,15 @@ use Exception;
 
 class UserController extends BaseController{
 
-  public function createUser(){
+  public function index() {
+    $userModel = new UserModel();
+    $data['users'] = $userModel->findAll();
+    return view('user_form', $data);
+  }
+
+
+
+  public function saveUser($id = null){
     $userModel = new UserModel();
 
     $validation = \Config\Services::validation();
@@ -25,8 +33,10 @@ class UserController extends BaseController{
     try {
 
       if (!$validation->withRequest($this->request)->run()) {
+
         $data['validation'] = $validation;
         return view('user_form', $data);
+
       }else{
 
         $userData = [
@@ -34,15 +44,24 @@ class UserController extends BaseController{
           'name' => $this->request->getPost('name'),
           'lastname' => $this->request->getPost('lastname'),
           'email' => $this->request->getPost('email'),
-          'password' => $this->request->getPost('password'),
           'phone' => $this->request->getPost('phone'),
           'country' => $this->request->getPost('country')
         ];
+        
+        $password = $this->request->getPost('password');
+        $userData['password'] = password_hash($password, PASSWORD_DEFAULT);
 
-        $userModel->save($userData);
 
-        // NO CLIENT
-        // return redirect()->to('//////')->with('success', 'User created successfully');
+        if ($id) {
+          $userModel->update($id, $userData);
+          $message = 'User successfully updated';
+
+        } else {
+          $userModel->save($userData);
+          $message = 'User created successfully';
+        }
+        
+        return redirect()->to(uri: '/users')->with('success', $message);
       }
 
       
@@ -52,5 +71,6 @@ class UserController extends BaseController{
     }
   }
 
+  
 
 }

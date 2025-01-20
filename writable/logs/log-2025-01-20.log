@@ -556,3 +556,143 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
 13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
 14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 17:41:03 --> ErrorException: Undefined variable $user
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 11.
+ 1 APPPATH\Views\user_form.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 17:41:05 --> ErrorException: Undefined variable $user
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 11.
+ 1 APPPATH\Views\user_form.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 17:41:12 --> ErrorException: Array to string conversion
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 11.
+ 1 APPPATH\Views\user_form.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:03:12 --> ErrorException: Undefined variable $id
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 11.
+ 1 APPPATH\Views\user_form.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:03:14 --> ErrorException: Undefined variable $id
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 11.
+ 1 APPPATH\Views\user_form.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:20:26 --> ErrorException: Undefined variable $user
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 16.
+ 1 APPPATH\Views\user_form.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 16)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:20:28 --> ErrorException: Undefined variable $user
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 16.
+ 1 APPPATH\Views\user_form.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 16)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:26:48 --> ErrorException: Undefined variable $selectedUser
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 19.
+ 1 APPPATH\Views\user_form.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selectedUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 19)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:26:57 --> ErrorException: Undefined variable $selectedUser
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 19.
+ 1 APPPATH\Views\user_form.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selectedUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 19)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-20 18:27:41 --> ErrorException: Undefined variable $selectedUser
+[Method: GET, Route: users]
+in APPPATH\Views\user_form.php on line 16.
+ 1 APPPATH\Views\user_form.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selectedUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php', 16)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\user_form.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_form', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('user_form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
