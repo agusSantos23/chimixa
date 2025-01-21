@@ -6,9 +6,14 @@
     <title>Formulario de Usuario</title>
 </head>
 <body>
+    <?php 
+        if (session()->getFlashdata('success')) {
+            echo session()->getFlashdata('success');
+        } 
+    ?>
 
     <?php if (isset($validation)): ?>
-        <div class="alert alert-danger">
+        <div>
             <?= \Config\Services::validation()->listErrors(); ?>
         </div>
     <?php endif; ?>
