@@ -7,9 +7,7 @@
 </head>
 <body>
     <?php 
-        if (session()->getFlashdata('success')) {
-            echo session()->getFlashdata('success');
-        } 
+        if (session()->getFlashdata('success')) echo session()->getFlashdata('success');
     ?>
 
     <?php if (isset($validation)): ?>

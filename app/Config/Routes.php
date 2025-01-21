@@ -14,3 +14,7 @@ $routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
 
 // plates
 $routes->get('plates', 'PlateController::index');
+$routes->post('plates/save', 'PlateController::savePlate');
+$routes->post('plates/save/(:any)', 'PlateController::savePlate/$1');
+$routes->get('plates/delete/(:any)', 'PlateController::deletePlate/$1');
+
