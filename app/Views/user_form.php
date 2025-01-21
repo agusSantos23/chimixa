@@ -64,6 +64,7 @@
             <th>Email</th>
             <th>Teléfono</th>
             <th>País</th>
+            <th>Action</th>
         </tr>
         <?php foreach ($users as $user): ?>
             <tr>
@@ -74,6 +75,7 @@
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['phone'] ?></td>
                 <td><?= $user['country'] ?></td>
+                <td><a href='<?=base_url('users/delete/') .$user['id'] ?>'>Eliminar</a></td>
             </tr>
         <?php endforeach; ?>
     </table>

@@ -71,6 +71,17 @@ class UserController extends BaseController{
     }
   }
 
-  
+  public function deleteUser($id){
+    $userModel = new UserModel();
+
+    try {
+      $userModel->delete($id);
+      return redirect()->to('/users')->with('success', 'User successfully deleted');
+
+    }  catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+
+  }
 
 }
