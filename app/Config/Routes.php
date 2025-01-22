@@ -23,3 +23,9 @@ $routes->get('ingredients', 'IngredientController::index');
 $routes->post('ingredients/save', 'IngredientController::saveIngredient');
 $routes->post('ingredients/save/(:any)', 'IngredientController::saveIngredient/$1');
 $routes->get('ingredients/delete/(:any)', 'IngredientController::deleteIngredient/$1');
+
+// menus
+$routes->get('menus', 'MenuController::index');
+$routes->post('menus/save', 'MenuController::saveMenu');
+$routes->post('menus/save/(:any)', 'MenuController::saveMenu/$1');
+$routes->get('menus/delete/(:any)', 'MenuController::deleteMenu/$1');
