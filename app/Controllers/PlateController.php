@@ -28,7 +28,7 @@ class PlateController extends BaseController{
     $validation->setRules([
       'name' => 'required|min_length[3]|max_length[255]',
       'description' => 'min_length[10]|max_length[500]',
-      'price' => 'required|numeric|greater_than[0]',
+      'price' => 'required|decimal|greater_than_equal_to[0]',
       'category' => 'required|in_list[Entrante,Plato Principal,Postre,Ensalada,Sopa,Guarnición,Desayuno,Almuerzo]',
       'preparation_time' => 'required|integer|greater_than[0]'
     ]);
