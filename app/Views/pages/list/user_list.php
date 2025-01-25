@@ -561,7 +561,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<!--begin::Rol=-->
 														<td>
-															<?= "rol"?>
+															<?= $user['role_name']?>
 														</td>
 														<!--end::Rol=-->
 
