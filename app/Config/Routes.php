@@ -6,11 +6,22 @@ use CodeIgniter\Router\RouteCollection;
   * @var RouteCollection $routes
 */
 
+// dashboard
+$routes->get('/', to: 'Home::index');
+$routes->get('about', 'Home::about');
+$routes->get('profile', 'Home::profile');
+
+
 // users
-$routes->get('users', 'UserController::index');
+$routes->get('users', to: 'UserController::index');
 $routes->post('users/save', 'UserController::saveUser');
 $routes->post('users/save/(:any)', 'UserController::saveUser/$1');
 $routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
+
+// roles
+
+
+
 
 // plates
 $routes->get('plates', 'PlateController::index');

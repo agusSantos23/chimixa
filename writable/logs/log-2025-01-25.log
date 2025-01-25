@@ -1,0 +1,114 @@
+CRITICAL - 2025-01-25 14:50:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_list.php', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('user_list.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 14:50:36 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_list', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('user_list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 14:50:49 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user_list', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('user_list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 14:51:17 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "list/user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('list/user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('list/user_list', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('list/user_list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 14:53:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "list/user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('list/user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('list/user_list', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('list/user_list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 14:53:21 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "list/user_list.php"
+[Method: GET, Route: users]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('list/user_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('list/user_list', [], true)
+ 3 APPPATH\Controllers\UserController.php(13): view('list/user_list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 18:03:43 --> ErrorException: Undefined array key "role"
+[Method: GET, Route: users]
+in APPPATH\Views\pages\list\user_list.php on line 564.
+ 1 APPPATH\Views\pages\list\user_list.php(564): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "role"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php', 564)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/user_list', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('pages/list/user_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 18:03:45 --> ErrorException: Undefined array key "role"
+[Method: GET, Route: users]
+in APPPATH\Views\pages\list\user_list.php on line 564.
+ 1 APPPATH\Views\pages\list\user_list.php(564): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "role"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php', 564)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/user_list', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('pages/list/user_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-25 18:03:48 --> ErrorException: Undefined array key "role"
+[Method: GET, Route: users]
+in APPPATH\Views\pages\list\user_list.php on line 564.
+ 1 APPPATH\Views\pages\list\user_list.php(564): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "role"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php', 564)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\user_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/user_list', [], true)
+ 5 APPPATH\Controllers\UserController.php(13): view('pages/list/user_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

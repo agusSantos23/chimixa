@@ -10,7 +10,7 @@ class UserController extends BaseController{
   public function index() {
     $userModel = new UserModel();
     $data['users'] = $userModel->findAll();
-    return view('user_form', $data);
+    return view('pages/list/user_list', $data);
   }
 
 
