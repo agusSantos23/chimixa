@@ -15,12 +15,14 @@ class IngredientController extends BaseController{
     try {
       
       $data['ingredients'] = $ingredientModel->findAll();
-      return view('ingredient_form', $data);
+      return view('pages/list/ingredient_list', $data);
 
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
+
+
 
   public function saveIngredient($id = null){
     $ingredientModel = new IngredientModel();

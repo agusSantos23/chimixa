@@ -342,7 +342,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Page title-->
 						<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 							<!--begin::Title-->
-							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Menus</h1>
+							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Ingredientes</h1>
 							<!--end::Title-->
 							<!--begin::Separator-->
 							<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -360,7 +360,7 @@ License: For each use you must have a valid license purchased only from above li
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
-								<li class="breadcrumb-item text-dark">Lista de menus</li>
+								<li class="breadcrumb-item text-dark">Lista de Ingredientes</li>
 								<!--end::Item-->
 							</ul>
 							<!--end::Breadcrumb-->
@@ -401,7 +401,8 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::Search-->
 									</div>
-									<!--begin::Card title-->
+									<!--end::Card title-->
+
 									<!--begin::Card toolbar-->
 									<div class="card-toolbar">
 										<!--begin::Toolbar-->
@@ -532,13 +533,15 @@ License: For each use you must have a valid license purchased only from above li
 														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 													</div>
 												</th>
-												<th class="min-w-50px">Menu ID</th>
-												<th class="min-w-150px">Menu Nombre</th>
-												<th class="min-w-150px">Descripcion</th>
-												<th class="min-w-150px">Menu Precio</th>
-												<th class="min-w-150px">Plato Nombre</th>
-												<th class="min-w-150px">Plato Precio & Cantidad</th>
-												<th class="min-w-100px">Acciones</th>
+
+												<th class="min-w-50px">ID</th>
+												<th class="min-w-150px">Nombre</th>
+												<th class="min-w-150px">Cantidad Disponible</th>
+												<th class="min-w-150px">Fecha de Caducidad</th>
+												<th class="min-w-150px">Precio</th>
+												<th class="min-w-150px">Alergenos</th>
+												<th class="min-w-150px">Acciones</th>
+
 
 											</tr>
 											<!--end::Table row-->
@@ -546,83 +549,58 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Table head-->
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
-											<?php foreach ($menus as $menu): ?>
-												<?php
-												// Accede a los platos del menú actual
-												$plates = $menu['plates'];
-												foreach ($plates as $plate):
+											<?php foreach ($ingredients as $ingredient): ?>
 
-													switch ($plate['plate_category']) {
-														case 'Entrante':
-															$borderColor = '#b7f7b0'; 
-															break;
-														case 'Plato Principal':
-															$borderColor = 'green'; 
-															break;
-														case 'Postre':
-															$borderColor = '#ff4d94'; 
-															break;
-														case 'Desayuno':
-															$borderColor = '#ffeb3b';
-															break;
-														case 'Cena':
-															$borderColor = '#0d47a1';
-															break;
-														default:
-															$borderColor = 'white'; 
-													}
-												?>
+												<tr>
+													
+													<td>
+														<div class="form-check form-check-sm form-check-custom form-check-solid">
+															<input class="form-check-input" type="checkbox" value="1" />
+														</div>
+													</td>
 
-													<tr >
-														<td>
-															<div class="form-check form-check-sm form-check-custom form-check-solid" style="border-left: 5px solid <?= $borderColor ?>;border-radius: 10px;">
-																<input class="form-check-input"  type="checkbox" value="1" />
+													<td>
+														<?= $ingredient['id'] ?>
+													</td>
+
+													<td>
+														<?= $ingredient['name'] ?>
+													</td>
+
+													<td>
+														<?= $ingredient['quantity_available'] ?> <?= $ingredient['unit'] ?> 
+													</td>
+
+													<td>
+														<?= $ingredient['expiration_date'] ?>
+													</td>
+
+													<td>
+														<?= $ingredient['price'] ?>$
+													</td>
+
+													<td>
+														<?= $ingredient['allergens'] ?>
+													</td>
+
+													<td class="text-end">
+														<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+															<span class="svg-icon svg-icon-5 m-0">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																</svg>
+															</span>
+														</a>
+														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+															<div class="menu-item px-3">
+																<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
 															</div>
-														</td>
-
-														<td>
-															<?= $menu['menu_id'] ?>
-														</td>
-
-														<td>
-															<?= $menu['menu_name'] ?>
-														</td>
-
-														<td>
-															<?= $menu['menu_description'] ?>
-														</td>
-
-														<td>
-															<?= $menu['menu_price'] ?> $
-														</td>
-
-														<td>
-															<?= $plate['plate_name'] ?>
-														</td>
-
-														<td>
-															<?= $plate['plate_price'] . '$ x ' . $plate['plate_amount'] ?>
-														</td>
-
-														<td class="text-end">
-															<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-																<span class="svg-icon svg-icon-5 m-0">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																		<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																	</svg>
-																</span>
-															</a>
-															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																<div class="menu-item px-3">
-																	<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
-																</div>
-																<div class="menu-item px-3">
-																	<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-																</div>
+															<div class="menu-item px-3">
+																<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
 															</div>
-														</td>
-													</tr>
-												<?php endforeach; ?>
+														</div>
+													</td>
+												</tr>
 											<?php endforeach; ?>
 										</tbody>
 
