@@ -12,11 +12,23 @@ $routes->get('about', 'Home::about');
 $routes->get('profile', 'Home::profile');
 
 
+// authentication
+$routes->get('auth/login','AuthController::loginForm');
+$routes->get('auth/register','AuthController::registerForm');
+$routes->post('auth/login','AuthController::login');
+$routes->post('auth/register','AuthController::register');
+
+
+
+
+
 // users
 $routes->get('users', to: 'UserController::index');
 $routes->post('users/save', 'UserController::saveUser');
 $routes->post('users/save/(:any)', 'UserController::saveUser/$1');
 $routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
+
+
 
 // roles
 
