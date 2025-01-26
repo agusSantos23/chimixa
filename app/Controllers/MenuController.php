@@ -10,12 +10,37 @@ use Exception;
 class MenuController extends BaseController{
 
   public function index() {
-    $ingredientModel = new MenuModel();
+    $menuModel = new MenuModel();
 
     try {
       
-      $data['menus'] = $ingredientModel->findAll();
-      return view('menu_form', $data);
+      $menus = $menuModel->getAllMenusWithPlates();
+      
+      $groupedMenus = [];
+
+      foreach ($menus as $menu) {
+
+        if (!isset($groupedMenus[$menu->menu_id])) {
+          $groupedMenus[$menu->menu_id] = [
+            'menu_id' => $menu->menu_id,
+            'menu_name' => $menu->menu_name,
+            'menu_description' => $menu->menu_description,
+            'menu_price' => $menu->menu_price,
+            'plates' => [] 
+          ];
+        }
+
+        $groupedMenus[$menu->menu_id]['plates'][] = [
+          'plate_id' => $menu->plate_id,
+          'plate_name' => $menu->plate_name,
+          'plate_price' => $menu->plate_price,
+          'plate_category' => $menu->plate_category,
+          'plate_amount' => $menu->plate_amount
+        ];
+      }
+
+      $data['menus'] = $groupedMenus;
+      return view('pages/list/menu_list', $data);
 
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
