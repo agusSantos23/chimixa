@@ -31,7 +31,7 @@ $routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
 
 
 // roles
-
+$routes->get('roles', 'RolController::index');
 
 
 
