@@ -9,6 +9,6 @@ class PlateModel extends Model{
 
   protected $primaryKey = 'id';
 
-  protected $allowedFields = [ 'name', 'description', 'price', 'category', 'preparation_time' ];
+  protected $allowedFields = [ 'name', 'description', 'price', 'category', 'preparation_time', 'disabled' ];
 
 }

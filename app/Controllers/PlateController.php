@@ -14,7 +14,7 @@ class PlateController extends BaseController{
     try {
 
       $data['plates'] = $plateModel->findAll();
-      return view('plate_form', $data);
+      return view('pages/list/plate_list', $data);
 
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
