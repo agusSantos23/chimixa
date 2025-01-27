@@ -3,51 +3,28 @@
 namespace App\Controllers;
 
 use App\Models\MenuModel;
+use App\Models\MenuPlateModel;
+
 use Exception;
 
 
 
 class MenuController extends BaseController{
 
-  public function index() {
+  public function index(){
     $menuModel = new MenuModel();
 
     try {
-      
-      $menus = $menuModel->getAllMenusWithPlates();
-      
-      $groupedMenus = [];
 
-      foreach ($menus as $menu) {
 
-        if (!isset($groupedMenus[$menu->menu_id])) {
-          $groupedMenus[$menu->menu_id] = [
-            'menu_id' => $menu->menu_id,
-            'menu_name' => $menu->menu_name,
-            'menu_description' => $menu->menu_description,
-            'menu_price' => $menu->menu_price,
-            'plates' => [] 
-          ];
-        }
-
-        $groupedMenus[$menu->menu_id]['plates'][] = [
-          'plate_id' => $menu->plate_id,
-          'plate_name' => $menu->plate_name,
-          'plate_price' => $menu->plate_price,
-          'plate_category' => $menu->plate_category,
-          'plate_amount' => $menu->plate_amount
-        ];
-      }
-
-      $data['menus'] = $groupedMenus;
+      $data['menus'] = $menuModel->findAll();
       return view('pages/list/menu_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
 
-  
+
   public function saveMenu($id = null){
     $menuModel = new MenuModel();
 
@@ -64,29 +41,25 @@ class MenuController extends BaseController{
 
         $data['validation'] = $validation;
         return view('menu_form', $data);
-
-      }else{
+      } else {
 
         $menuData = [
           'name' => $this->request->getPost('name'),
           'description' => $this->request->getPost('description'),
           'price' => $this->request->getPost('price'),
         ];
-        
+
 
         if ($id) {
           $menuModel->update($id, $menuData);
           $message = 'Menu successfully updated';
-
         } else {
           $menuModel->save($menuData);
           $message = 'Menu created successfully';
         }
-        
+
         return redirect()->to(uri: '/menus')->with('success', $message);
       }
-
-      
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
@@ -100,12 +73,24 @@ class MenuController extends BaseController{
     try {
       $menuModel->delete($id);
       return redirect()->to('/menus')->with('success', 'Menu successfully deleted');
-
-    }  catch (Exception $e) {
+    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
-
   }
 
 
+  public function platesOfMenu($menu_id){
+    $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
+    
+    $menu = $menuModel->find($menu_id);
+    $platesOfMenu = $menuPlateModel->getMenuWithPlates($menu_id);
+
+    $data['menuName'] = $menu['name'];
+    $data['plates'] = !empty($platesOfMenu) ? $platesOfMenu : [];
+
+
+    return view('pages/list/menu_plates_list',$data );
+
+  }
 }

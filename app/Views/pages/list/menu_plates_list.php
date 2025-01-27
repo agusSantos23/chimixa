@@ -13,16 +13,16 @@ License: For each use you must have a valid license purchased only from above li
 	<meta name="keywords" content="Chimixa, Metronic, php, codeigniter, gestion de restaurantes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="./assets/media/logos/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="../assets/media/logos/favicon.ico" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
 	<!--begin::Page Vendor Stylesheets(used by this page)-->
-	<link href="./assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Page Vendor Stylesheets-->
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
-	<link href="./assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-	<link href="./assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -46,7 +46,7 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="<?= base_url('') ?>">
-						<img alt="Logo" src="assets/media/logos/logo-letras.png" class="h-40px logo" />
+						<img alt="Logo" src="../assets/media/logos/logo-letras.png" class="h-40px logo" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
@@ -305,7 +305,7 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 
 							<a href="/perfil" class="d-flex justify-content-center align-items-center gap-5 p-3 text-decoration-none">
-								<img src="assets/media/avatars/150-12.jpg" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px me-3">
+								<img src="../assets/media/avatars/150-12.jpg" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px me-3">
 
 								<div class="d-flex flex-column justify-content-center">
 									<span class="d-block w-bold">Nombre del Usuario</span>
@@ -342,7 +342,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Page title-->
 						<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 							<!--begin::Title-->
-							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Menus</h1>
+							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Menu</h1>
 							<!--end::Title-->
 							<!--begin::Separator-->
 							<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -360,7 +360,7 @@ License: For each use you must have a valid license purchased only from above li
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
-								<li class="breadcrumb-item text-dark">Lista de menus</li>
+								<li class="breadcrumb-item text-dark">Lista de menu</li>
 								<!--end::Item-->
 							</ul>
 							<!--end::Breadcrumb-->
@@ -387,21 +387,9 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-header border-0 pt-6">
 									<!--begin::Card title-->
 									<div class="card-title">
-										<!--begin::Search-->
-										<div class="d-flex align-items-center position-relative my-1">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-											<span class="svg-icon svg-icon-1 position-absolute ms-6">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-													<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-											<input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Customers" />
-										</div>
-										<!--end::Search-->
+										<h2>Nombre del Menu: <?= $menuName ?></h2>
 									</div>
-									<!--begin::Card title-->
+									<!--end::Card title-->
 									<!--begin::Card toolbar-->
 									<div class="card-toolbar">
 										<!--begin::Toolbar-->
@@ -536,6 +524,8 @@ License: For each use you must have a valid license purchased only from above li
 												<th class="min-w-150px">Nombre</th>
 												<th class="min-w-150px">Descripcion</th>
 												<th class="min-w-150px">Precio</th>
+												<th class="min-w-150px">Categoria</th>
+												<th class="min-w-150px">Tiempo de Preparacion</th>
 												<th class="w-125px">Acciones</th>
 
 											</tr>
@@ -544,52 +534,83 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Table head-->
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
-											<?php foreach ($menus as $menu): ?>
-
-
+											<?php if (empty($plates)): ?>
 												<tr>
-													<td>
-														<div class="form-check form-check-sm form-check-custom form-check-solid">
-															<input class="form-check-input" type="checkbox" value="1" />
-														</div>
-													</td>
-
-													<td>
-														<a href="<?= base_url("menuplates/" . $menu['id']) ?>" class="text-gray-800 text-hover-primary">
-															<?= $menu['name'] ?>
-														</a>
-
-													</td>
-
-													<td>
-														<?= $menu['description'] ?>
-													</td>
-
-													<td>
-														<?= $menu['price'] ?> $
-													</td>
-
-
-													<td class="text-end">
-														<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-															<span class="svg-icon svg-icon-5 m-0">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																</svg>
-															</span>
-														</a>
-														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-															<div class="menu-item px-3">
-																<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
-															</div>
-															<div class="menu-item px-3">
-																<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-															</div>
-														</div>
+													<td colspan="6" class="text-center">
+														<p>No se han encontrado platos en este menu</p>
 													</td>
 												</tr>
+											<?php else: ?>
+												<?php foreach ($plates as $plate):
 
-											<?php endforeach; ?>
+													switch ($plate['category']) {
+														case 'Entrante':
+															$borderColor = '#b7f7b0';
+															break;
+														case 'Plato Principal':
+															$borderColor = 'green';
+															break;
+														case 'Postre':
+															$borderColor = '#ff4d94';
+															break;
+														case 'Desayuno':
+															$borderColor = '#ffeb3b';
+															break;
+														case 'Cena':
+															$borderColor = '#0d47a1';
+															break;
+														default:
+															$borderColor = 'white';
+													}
+
+												?>
+													<tr>
+														<td>
+															<div class="form-check form-check-sm form-check-custom form-check-solid" style="border-left: 5px solid <?= $borderColor ?>;border-radius: 10px;">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+														</td>
+
+														<td>
+															<?= $plate['name'] ?>
+														</td>
+
+														<td>
+															<?= $plate['description'] ?>
+														</td>
+
+														<td>
+															<?= $plate['price'] ?> $
+														</td>
+														<td>
+															<?= $plate['category'] ?> 
+														</td>
+
+														<td>
+															<?= $plate['preparation_time'] ?> min
+														</td>
+
+														<td class="text-end">
+															<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+																<span class="svg-icon svg-icon-5 m-0">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																	</svg>
+																</span>
+															</a>
+															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																<div class="menu-item px-3">
+																	<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
+																</div>
+																<div class="menu-item px-3">
+																	<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+																</div>
+															</div>
+														</td>
+													</tr>
+												<?php endforeach; ?>
+											<?php endif; ?>
+
 										</tbody>
 
 										<!--end::Table body-->
@@ -1248,7 +1269,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-											<img src="assets/media/avatars/150-11.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-11.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1271,12 +1292,12 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2">
 											<!--begin::User-->
 											<div class="symbol symbol-circle symbol-25px">
-												<img src="assets/media/avatars/150-3.jpg" alt="img" />
+												<img src="../assets/media/avatars/150-3.jpg" alt="img" />
 											</div>
 											<!--end::User-->
 											<!--begin::User-->
 											<div class="symbol symbol-circle symbol-25px">
-												<img src="assets/media/avatars/150-11.jpg" alt="img" />
+												<img src="../assets/media/avatars/150-11.jpg" alt="img" />
 											</div>
 											<!--end::User-->
 											<!--begin::User-->
@@ -1310,7 +1331,7 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px">
 											<!--begin::User-->
 											<div class="symbol symbol-circle symbol-25px">
-												<img src="assets/media/avatars/150-5.jpg" alt="img" />
+												<img src="../assets/media/avatars/150-5.jpg" alt="img" />
 											</div>
 											<!--end::User-->
 											<!--begin::User-->
@@ -1369,7 +1390,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Alan Nilson">
-											<img src="assets/media/avatars/150-2.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-2.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1413,7 +1434,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Jan Hummer">
-											<img src="assets/media/avatars/150-6.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-6.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1426,7 +1447,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="" class="w-30px me-3" src="assets/media/svg/files/pdf.svg" />
+											<img alt="" class="w-30px me-3" src="../assets/media/svg/files/pdf.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-bold">
@@ -1443,7 +1464,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+											<img alt="" class="w-30px me-3" src="../assets/media/svg/files/doc.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-bold">
@@ -1460,7 +1481,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center">
 											<!--begin::Icon-->
-											<img alt="" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+											<img alt="" class="w-30px me-3" src="../assets/media/svg/files/css.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-bold">
@@ -1517,7 +1538,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-											<img src="assets/media/avatars/150-11.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-11.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1561,7 +1582,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Marcus Dotson">
-											<img src="assets/media/avatars/150-3.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-3.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1575,7 +1596,7 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="overlay me-10">
 											<!--begin::Image-->
 											<div class="overlay-wrapper">
-												<img alt="img" class="rounded w-200px" src="assets/media/demos/demo1.png" />
+												<img alt="img" class="rounded w-200px" src="../assets/media/demos/demo1.png" />
 											</div>
 											<!--end::Image-->
 											<!--begin::Link-->
@@ -1589,7 +1610,7 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="overlay me-10">
 											<!--begin::Image-->
 											<div class="overlay-wrapper">
-												<img alt="img" class="rounded w-200px" src="assets/media/demos/demo2.png" />
+												<img alt="img" class="rounded w-200px" src="../assets/media/demos/demo2.png" />
 											</div>
 											<!--end::Image-->
 											<!--begin::Link-->
@@ -1603,7 +1624,7 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="overlay">
 											<!--begin::Image-->
 											<div class="overlay-wrapper">
-												<img alt="img" class="rounded w-200px" src="assets/media/demos/demo3.png" />
+												<img alt="img" class="rounded w-200px" src="../assets/media/demos/demo3.png" />
 											</div>
 											<!--end::Image-->
 											<!--begin::Link-->
@@ -1701,7 +1722,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Info-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Robert Rich">
-											<img src="assets/media/avatars/150-14.jpg" alt="img" />
+											<img src="../assets/media/avatars/150-14.jpg" alt="img" />
 										</div>
 										<!--end::User-->
 									</div>
@@ -1852,7 +1873,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--end::Heading-->
 					<!--begin::Google Contacts Invite-->
 					<div class="btn btn-light-primary fw-bolder w-100 mb-8">
-						<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Invite Gmail Contacts
+						<img alt="Logo" src="../assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Invite Gmail Contacts
 					</div>
 					<!--end::Google Contacts Invite-->
 					<!--begin::Separator-->
@@ -1876,7 +1897,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-1.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-1.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -1932,7 +1953,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-26.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-26.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -1960,7 +1981,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-4.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-4.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -1988,7 +2009,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-15.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-15.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2044,7 +2065,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-8.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-8.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2128,7 +2149,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-6.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-6.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2184,7 +2205,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-7.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-7.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2240,7 +2261,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-17.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-17.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2296,7 +2317,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-10.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-10.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2324,7 +2345,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-35px symbol-circle">
-										<img alt="Pic" src="assets/media/avatars/150-7.jpg" />
+										<img alt="Pic" src="../assets/media/avatars/150-7.jpg" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Details-->
@@ -2896,9 +2917,9 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Input-->
 												<!--begin::Card logos-->
 												<div class="position-absolute translate-middle-y top-50 end-0 me-5">
-													<img src="assets/media/svg/card-logos/visa.svg" alt="" class="h-25px" />
-													<img src="assets/media/svg/card-logos/mastercard.svg" alt="" class="h-25px" />
-													<img src="assets/media/svg/card-logos/american-express.svg" alt="" class="h-25px" />
+													<img src="../assets/media/svg/card-logos/visa.svg" alt="" class="h-25px" />
+													<img src="../assets/media/svg/card-logos/mastercard.svg" alt="" class="h-25px" />
+													<img src="../assets/media/svg/card-logos/american-express.svg" alt="" class="h-25px" />
 												</div>
 												<!--end::Card logos-->
 											</div>
@@ -3016,7 +3037,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Description-->
 										<!--begin::Illustration-->
 										<div class="text-center px-4 py-15">
-											<img src="assets/media/illustrations/sketchy-1/9.png" alt="" class="w-100 mh-300px" />
+											<img src="../assets/media/illustrations/sketchy-1/9.png" alt="" class="w-100 mh-300px" />
 										</div>
 										<!--end::Illustration-->
 									</div>
@@ -3602,20 +3623,20 @@ License: For each use you must have a valid license purchased only from above li
 	</script>
 	<!--begin::Javascript-->
 	<!--begin::Global Javascript Bundle(used by all pages)-->
-	<script src="./assets/plugins/global/plugins.bundle.js"></script>
-	<script src="./assets/js/scripts.bundle.js"></script>
+	<script src="../assets/plugins/global/plugins.bundle.js"></script>
+	<script src="../assets/js/scripts.bundle.js"></script>
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Page Vendors Javascript(used by this page)-->
-	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
+	<script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
-	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
-	<script src="./assets/js/custom/apps/customers/add.js"></script>
-	<script src="./assets/js/custom/widgets.js"></script>
-	<script src="./assets/js/custom/apps/chat/chat.js"></script>
-	<script src="./assets/js/custom/modals/create-app.js"></script>
-	<script src="./assets/js/custom/modals/upgrade-plan.js"></script>
+	<script src="../assets/js/custom/apps/customers/list/export.js"></script>
+	<script src="../assets/js/custom/apps/customers/list/list.js"></script>
+	<script src="../assets/js/custom/apps/customers/add.js"></script>
+	<script src="../assets/js/custom/widgets.js"></script>
+	<script src="../assets/js/custom/apps/chat/chat.js"></script>
+	<script src="../assets/js/custom/modals/create-app.js"></script>
+	<script src="../assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

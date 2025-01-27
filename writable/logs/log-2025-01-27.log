@@ -1,0 +1,687 @@
+CRITICAL - 2025-01-27 15:34:52 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate', [], true)
+ 3 APPPATH\Controllers\MenuController.php(99): view('pages/list/menu_plate', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:34:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate', [], true)
+ 3 APPPATH\Controllers\MenuController.php(99): view('pages/list/menu_plate', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:35:10 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate', [], true)
+ 3 APPPATH\Controllers\MenuController.php(99): view('pages/list/menu_plate', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:36:28 --> ErrorException: Undefined array key 1
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 97.
+ 1 APPPATH\Controllers\MenuController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:36:32 --> ErrorException: Undefined array key 1
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 97.
+ 1 APPPATH\Controllers\MenuController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:42:29 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:42:30 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:42:31 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:42:32 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:42:33 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:45:21 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:45:35 --> ErrorException: Undefined array key 0
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 95.
+ 1 APPPATH\Controllers\MenuController.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:46:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate', [], true)
+ 3 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:48:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate', [], true)
+ 3 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:01 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:18 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:28 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:29 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:30 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:49:32 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 549.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(549): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 549)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:50:58 --> ErrorException: Undefined variable $plates
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plate_list.php on line 550.
+ 1 APPPATH\Views\pages\list\menu_plate_list.php(550): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $plates', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php', 550)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plate_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 15:57:47 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/menu_plate_list.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/menu_plate_list.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plate_list', [], true)
+ 3 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plate_list')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:00:54 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:00:56 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:03:33 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:03:58 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:04:14 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:04:51 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:05:48 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:06:57 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:08:06 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 559.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(559): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 559)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:08:40 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 559.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(559): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 559)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:11:27 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 558.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 558)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(104): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:17:50 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 558.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 4 APPPATH\Controllers\MenuController.php(105): view('pages/list/menu_plates_list', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:25:45 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/cara.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/cara.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/cara', [], true)
+ 3 APPPATH\Controllers\MenuController.php(105): view('pages/list/cara')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:25:51 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/', [], true)
+ 3 APPPATH\Controllers\MenuController.php(105): view('pages/list/')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:25:59 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(105): view('pages/list/menu_list')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:26:24 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(105): view('pages/list/menu_list', [])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:28:33 --> ErrorException: Undefined variable $users
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\hola.php on line 545.
+ 1 APPPATH\Views\pages\list\hola.php(545): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $users', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\hola.php', 545)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\hola.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/hola', [], true)
+ 5 APPPATH\Controllers\MenuController.php(105): view('pages/list/hola', [])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:30:44 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/list/hola.php"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/list/hola.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/hola', [], true)
+ 3 APPPATH\Controllers\MenuController.php(105): view('pages/list/hola', [])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:31:06 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(105): view('pages/list/menu_plates_list', [])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:31:08 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(105): view('pages/list/menu_plates_list', [])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:31:33 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:31:50 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:33:05 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:33:58 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:35:20 --> ErrorException: Undefined variable $menus
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 547.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menus', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 547)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:38:07 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 558.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 4 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:40:07 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 558.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 4 APPPATH\Controllers\MenuController.php(103): view('pages/list/menu_plates_list', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 16:47:14 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 558.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 558)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(98): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 17:14:21 --> ErrorException: Undefined variable $data
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 390.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(390): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 390)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(98): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 17:36:47 --> ErrorException: Undefined array key "menu_name"
+[Method: GET, Route: menuplates/1433a138-d97b-11ef-b13d-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 89.
+ 1 APPPATH\Controllers\MenuController.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "menu_name"', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('1433a138-d97b-11ef-b13d-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 17:50:07 --> ErrorException: Undefined array key "plates"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 90.
+ 1 APPPATH\Controllers\MenuController.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "plates"', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-27 17:53:16 --> ErrorException: Undefined array key "plates"
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Controllers\MenuController.php on line 90.
+ 1 APPPATH\Controllers\MenuController.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "plates"', 'C:\\wamp64\\www\\chimixa\\app\\Controllers\\MenuController.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

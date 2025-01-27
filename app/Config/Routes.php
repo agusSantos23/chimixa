@@ -53,8 +53,5 @@ $routes->post('menus/save', 'MenuController::saveMenu');
 $routes->post('menus/save/(:any)', 'MenuController::saveMenu/$1');
 $routes->get('menus/delete/(:any)', 'MenuController::deleteMenu/$1');
 
-// menus_plates
-$routes->get('menusplates', 'MenuPlateController::index');
-$routes->post('menusplates/save', 'MenuPlateController::saveMenu');
-$routes->post('menusplates/save/(:any)', 'MenuPlateController::saveMenu/$1');
-$routes->get('menusplates/delete/(:any)', 'MenuPlateController::deleteMenu/$1');
+$routes->get('menuplates/(:any)', 'MenuController::platesOfMenu/$1');
+
