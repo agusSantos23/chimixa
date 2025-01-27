@@ -18,6 +18,10 @@ class MenuController extends BaseController{
 
 
       $data['menus'] = $menuModel->findAll();
+      $data['aside'] = view('templates/aside');
+      $data['footer'] = view('templates/footer');
+
+
       return view('pages/list/menu_list', $data);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
@@ -88,6 +92,10 @@ class MenuController extends BaseController{
 
     $data['menuName'] = $menu['name'];
     $data['plates'] = !empty($platesOfMenu) ? $platesOfMenu : [];
+    $data['aside'] = view('templates/aside');
+    $data['footer'] = view('templates/footer');
+
+
 
 
     return view('pages/list/menu_plates_list',$data );

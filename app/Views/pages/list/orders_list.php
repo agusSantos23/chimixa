@@ -529,7 +529,6 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
-													<th class="min-w-125px">ID</th>
 													<th class="min-w-125px">Rol</th>
 													<th class="min-w-125px">Nombre</th>
 													<th class="min-w-125px">Email</th>
@@ -553,11 +552,6 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 														<!--end::Checkbox-->
 
-														<!--begin::ID=-->
-														<td>
-															<a href="<?= base_url('/')?>" class="text-gray-800 text-hover-primary mb-1"><?= $user['id']?></a>
-														</td>
-														<!--end::ID=-->
 
 														<!--begin::Rol=-->
 														<td>

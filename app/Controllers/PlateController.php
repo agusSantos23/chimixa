@@ -14,6 +14,10 @@ class PlateController extends BaseController{
     try {
 
       $data['plates'] = $plateModel->findAll();
+      $data['aside'] = view('templates/aside');
+      $data['footer'] = view('templates/footer');
+
+
       return view('pages/list/plate_list', $data);
 
     } catch (Exception $e) {

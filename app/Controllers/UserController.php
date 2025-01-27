@@ -9,7 +9,12 @@ class UserController extends BaseController{
 
   public function index() {
     $userModel = new UserModel();
+
     $data['users'] = $userModel->getAllUsersWithRoles();
+    $data['aside'] = view('templates/aside');
+    $data['footer'] = view('templates/footer');
+
+
     return view('pages/list/user_list', $data);
   }
 

@@ -15,6 +15,11 @@ class IngredientController extends BaseController{
     try {
       
       $data['ingredients'] = $ingredientModel->findAll();
+      $data['aside'] = view('templates/aside');
+      $data['footer'] = view('templates/footer');
+
+
+
       return view('pages/list/ingredient_list', $data);
 
     } catch (Exception $e) {

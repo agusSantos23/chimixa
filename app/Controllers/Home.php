@@ -9,7 +9,12 @@ use Exception;
 class Home extends BaseController{
 
   public function index(): string{
-    return view('dashboard');
+
+    $data['aside'] = view('templates/aside');
+    $data['footer'] = view('templates/footer');
+
+
+    return view('dashboard', $data);
   }
 
   public function about(): string{
