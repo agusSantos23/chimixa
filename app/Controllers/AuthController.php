@@ -7,13 +7,16 @@ use App\Models\RolModel;
 
 use Exception;
 
-class AuthController extends BaseController{
+class AuthController extends BaseController
+{
 
-  public function loginForm() {
-    return view('pages/authentication/signIn');
+  public function loginForm(){
+    $data['validation'] = session('validation');
+
+    return view('pages/authentication/signIn', $data);
   }
 
-  
+
   public function login(){
     $userModel = new UserModel();
 
@@ -27,54 +30,54 @@ class AuthController extends BaseController{
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        $data['validation'] = $validation;
-        return view('pages/authentication/signIn', $data);
+        return redirect()->to(uri: base_url(relativePath: 'auth/login'))->with('validation', $validation->getErrors());
 
-      }else{
-      
+      } else {
+
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
 
-        $user = $userModel->where('email', $email)->first();
+        $user = $userModel->getUserWithRoleByEmail($email);
 
+        print_r($user);
         if ($user) {
 
-          if (password_verify($password, $user['password'])) {
+          if (password_verify($password, $user->password)) {
+
 
             session()->set([
-              'user_id' => $user['id'],
-              'user_name' => $user['name'],
-              'user_lastname' => $user['lastname'],
-              'user_email' => $user['email'],
-              'user_phone' => $user['phone'],
-              'user_country' => $user['country'],
+              'user_id' => $user->id,
+              'user_name' => $user->name,
+              'user_lastname' => $user->lastname,
+              'user_email' => $user->email,
+              'user_role' => $user->role_name,
+              'user_phone' => $user->phone,
+              'user_country' => $user->country,
               'is_logged_in' => true,
             ]);
+          
 
 
-            return redirect()->to('/'); 
+            return redirect()->to('/');
           }
-            
-        }
+        
 
-        return redirect()->back()->with('error', 'Credenciales incorrectos');
+        }
+        return redirect()->to(base_url('auth/login'))->with('validation', ['Credenciales incorrectos']);
 
       }
-
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
     }
-
-    
   }
 
 
-  public function registerForm() {
+  public function registerForm(){
     $rolModel = new RolModel();
     $data['roles'] = $rolModel->findAll();
-    $data['validation'] = session('validation'); 
+    $data['validation'] = session('validation');
     return view('pages/authentication/signUp', $data);
   }
 
@@ -93,22 +96,23 @@ class AuthController extends BaseController{
       'prefix' => 'required',
       'phone' => 'required|numeric|min_length[7]|max_length[11]',
       'country' => 'required',
-      
     ]);
+
+
 
     try {
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        return redirect()->to( base_url('auth/register'))->with('validation', $validation);
-
-      }else{
+        return redirect()->to(uri: base_url('auth/register'))->with('validation', $validation->getErrors());
       
+      } else {
+
         $userData = [
           'name' => $this->request->getPost('name'),
           'lastname' => $this->request->getPost('lastName'),
           'email' => $this->request->getPost('email'),
-          'role' => $this->request->getPost('role'),
+          'role_id' => $this->request->getPost('role'),
           'prefix' => $this->request->getPost('prefix'),
           'phone' => $this->request->getPost('phone'),
           'country' => $this->request->getPost('country'),
@@ -117,18 +121,27 @@ class AuthController extends BaseController{
         $password = $this->request->getPost('password');
         $userData['password'] = password_hash($password, PASSWORD_DEFAULT);
 
+
         $userModel->save($userData);
 
+        $user = $userModel->getUserWithRoleByEmail($userData['email']);
+
+        session()->set([
+          'user_id' => $user['id'],
+          'user_name' => $user['name'],
+          'user_lastname' => $user['lastname'],
+          'user_email' => $user['email'],
+          'user_role' => $user['role_name'],
+          'user_phone' => $user['phone'],
+          'user_country' => $user['country'],
+          'is_logged_in' => true,
+        ]);
+
         return redirect()->to(uri: '/')->with('success', 'Usuario creado con éxito');
-
       }
-
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
     }
-
-    
   }
-
 }

@@ -85,12 +85,13 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<!--end::Heading-->
 
-
 								<?php if (isset($validation)): ?>
-									<div>
-										<?= \Config\Services::validation()->listErrors(); ?>
+									<div class="alert alert-danger">
+										<?php foreach ($validation as $error): ?>
+											<p><?= esc($error) ?></p>
+										<?php endforeach ?>
 									</div>
-								<?php endif; ?>
+								<?php endif ?>
 
 
 								<!--begin::Input group-->

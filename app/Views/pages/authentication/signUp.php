@@ -92,7 +92,7 @@ License: For each use you must have a valid license purchased only from above li
 
 							<?php if (isset($validation)): ?>
 									<div class="alert alert-danger">
-											<?php foreach ($validation->getErrors() as $error): ?>
+											<?php foreach ($validation as $error): ?>
 													<p><?= esc($error) ?></p>
 											<?php endforeach ?>
 									</div>

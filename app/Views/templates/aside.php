@@ -267,8 +267,8 @@
 								<img src="<?= base_url('assets/media/avatars/150-12.jpg')?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px me-3">
 
 								<div class="d-flex flex-column justify-content-center">
-									<span class="d-block w-bold">Nombre del Usuario</span>
-									<span class="d-block text-muted">Rol del Usuario</span>
+									<span class="d-block w-bold"><?= session()->get('user_name')?></span>
+									<span class="d-block text-muted"><?= session()->get('user_role')?></span>
 								</div>
 							</a>
 

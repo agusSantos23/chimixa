@@ -11,3 +11,211 @@ in APPPATH\Views\pages\authentication\signUp.php on line 95.
  8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-28 08:04:54 --> mysqli_sql_exception: Unknown column 'roles.disabled' in 'where clause' in C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `users`....', 0)
+#1 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 C:\wamp64\www\chimixa\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 C:\wamp64\www\chimixa\app\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\chimixa\app\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+#6 C:\wamp64\www\chimixa\system\CodeIgniter.php(933): App\Controllers\UserController->index()
+#7 C:\wamp64\www\chimixa\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\wamp64\www\chimixa\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\chimixa\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\chimixa\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\wamp64\www\chimixa\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-01-28 08:04:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'roles.disabled' in 'where clause'
+[Method: GET, Route: users]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 2 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 08:04:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'roles.disabled' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 4 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 08:04:54 --> [Caused by] mysqli_sql_exception: Unknown column 'roles.disabled' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 5 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-28 08:04:56 --> mysqli_sql_exception: Unknown column 'roles.disabled' in 'where clause' in C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `users`....', 0)
+#1 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 C:\wamp64\www\chimixa\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 C:\wamp64\www\chimixa\app\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\chimixa\app\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+#6 C:\wamp64\www\chimixa\system\CodeIgniter.php(933): App\Controllers\UserController->index()
+#7 C:\wamp64\www\chimixa\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\wamp64\www\chimixa\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\chimixa\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\chimixa\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\wamp64\www\chimixa\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-01-28 08:04:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'roles.disabled' in 'where clause'
+[Method: GET, Route: users]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 2 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 08:04:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'roles.disabled' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 4 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 08:04:56 --> [Caused by] mysqli_sql_exception: Unknown column 'roles.disabled' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`name`, `users`.`lastname`, `users`.`email`, `users`.`password`, `users`.`phone`, `users`.`country`, `users`.`created_at`, `users`.`updated_at`, `users`.`role_id`, `users`.`prefix`, `roles`.`name` as `role_name`
+FROM `users`
+JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+WHERE `users`.`disabled` IS NULL
+AND `roles`.`disabled` IS NULL', [], false)
+ 5 APPPATH\Models\UserModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(13): App\Models\UserModel->getAllUsersWithRoles()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 13:02:49 --> Error: Cannot use object of type stdClass as array
+[Method: POST, Route: auth/login]
+in APPPATH\Controllers\AuthController.php on line 45.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 13:03:32 --> Error: Cannot use object of type stdClass as array
+[Method: POST, Route: auth/login]
+in APPPATH\Controllers\AuthController.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 13:03:49 --> Error: Cannot use object of type stdClass as array
+[Method: POST, Route: auth/login]
+in APPPATH\Controllers\AuthController.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 13:07:42 --> Error: Cannot use object of type stdClass as array
+[Method: POST, Route: auth/login]
+in APPPATH\Controllers\AuthController.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
