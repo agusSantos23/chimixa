@@ -36,13 +36,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-				<?= $footer ?>
-
-				
-
-
-
-
+				<?= $aside ?>
 
 
 				<!--begin::Wrapper-->
@@ -877,6 +871,8 @@ License: For each use you must have a valid license purchased only from above li
 						<!--end::Post-->
 					</div>
 					<!--end::Content-->
+
+					<?= $footer ?>
 
 					
 				</div>

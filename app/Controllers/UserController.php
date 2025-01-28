@@ -51,6 +51,8 @@ class UserController extends BaseController{
           'email' => $this->request->getPost('email'),
           'phone' => $this->request->getPost('phone'),
           'country' => $this->request->getPost('country')
+          
+
         ];
         
         $password = $this->request->getPost('password');
