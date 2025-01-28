@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PlateModel;
+use App\Models\StoreModel;
 use Exception;
 
 
@@ -86,6 +87,24 @@ class PlateController extends BaseController{
       echo "Error: " . $e->getMessage();
     }
 
+  }
+
+
+  public function ingredientsOfPlate($plateId){
+
+    $plateModel = new PlateModel();
+    $storeModel = new StoreModel();
+
+
+    $data['plate'] = $plateModel->select('id, name')->find($plateId);
+    $ingredientsOfPlate = $storeModel->getIngredientsByPlate($plateId);
+
+    $data['ingredients'] = $ingredientsOfPlate;
+    $data['aside'] = view('templates/aside');
+    $data['footer'] = view('templates/footer');
+
+
+    return view('pages/list/store_list',$data );
   }
 
 }

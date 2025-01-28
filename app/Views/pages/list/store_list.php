@@ -37,7 +37,13 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
+
+
+
 			<?= $aside ?>
+
+
+
 
 
 
@@ -52,7 +58,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Page title-->
 						<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 							<!--begin::Title-->
-							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Menu</h1>
+							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Plato</h1>
 							<!--end::Title-->
 							<!--begin::Separator-->
 							<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -97,7 +103,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-header border-0 pt-6">
 									<!--begin::Card title-->
 									<div class="card-title">
-										<h2>Nombre del Menu: <?= $menu['name'] ?></h2>
+										<h2>Nombre del Plato: <?= $plate['name'] ?></h2>
 									</div>
 									<!--end::Card title-->
 									<!--begin::Card toolbar-->
@@ -232,10 +238,9 @@ License: For each use you must have a valid license purchased only from above li
 												</th>
 
 												<th class="min-w-150px">Nombre</th>
-												<th class="min-w-150px">Descripcion</th>
-												<th class="min-w-150px">Precio</th>
-												<th class="min-w-150px">Categoria</th>
-												<th class="min-w-150px">Tiempo de Preparacion</th>
+												<th class="min-w-150px">allergenos</th>
+												<th class="min-w-150px">Cantidad</th>
+												
 												<th class="w-125px">Acciones</th>
 
 											</tr>
@@ -244,61 +249,35 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Table head-->
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
-											<?php if (empty($plates)): ?>
+											<?php if (empty($ingredients)): ?>
 												<tr>
 													<td colspan="6" class="text-center">
-														<p>No se han encontrado platos en este menu</p>
+														<p>No se han encontrado ingredientes en este plato</p>
 													</td>
 												</tr>
 											<?php else: ?>
-												<?php foreach ($plates as $plate):
+												
+												<?php foreach ($ingredients as $ingredient): ?>
 
-													switch ($plate['category']) {
-														case 'Entrante':
-															$borderColor = '#b7f7b0';
-															break;
-														case 'Plato Principal':
-															$borderColor = 'green';
-															break;
-														case 'Postre':
-															$borderColor = '#ff4d94';
-															break;
-														case 'Desayuno':
-															$borderColor = '#ffeb3b';
-															break;
-														case 'Cena':
-															$borderColor = '#0d47a1';
-															break;
-														default:
-															$borderColor = 'white';
-													}
-
-												?>
 													<tr>
 														<td>
-															<div class="form-check form-check-sm form-check-custom form-check-solid" style="border-left: 5px solid <?= $borderColor ?>;border-radius: 10px;">
+															<div class="form-check form-check-sm form-check-custom form-check-solid" >
 																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
 														</td>
 
 														<td>
-															<?= $plate['name'] ?>
+															<?= $ingredient['name'] ?>
 														</td>
 
 														<td>
-															<?= $plate['description'] ?>
+															<?= $ingredient['allergens'] ?>
 														</td>
 
 														<td>
-															<?= $plate['price'] ?> $
-														</td>
-														<td>
-															<?= $plate['category'] ?> 
+															<?= $ingredient['store_amount'] ?>
 														</td>
 
-														<td>
-															<?= $plate['preparation_time'] ?> min
-														</td>
 
 														<td class="text-end">
 															<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions

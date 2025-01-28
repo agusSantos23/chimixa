@@ -219,3 +219,73 @@ in APPPATH\Controllers\AuthController.php on line 50.
  4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 18:12:21 --> ErrorException: Undefined variable $menuName
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\store_list.php on line 106.
+ 1 APPPATH\Views\pages\list\store_list.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menuName', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php', 106)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/store_list', [], true)
+ 5 APPPATH\Controllers\PlateController.php(106): view('pages/list/store_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 18:29:59 --> ErrorException: Undefined array key "category"
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\store_list.php on line 262.
+ 1 APPPATH\Views\pages\list\store_list.php(262): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "category"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php', 262)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/store_list', [], true)
+ 5 APPPATH\Controllers\PlateController.php(106): view('pages/list/store_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 18:44:33 --> ErrorException: Undefined array key "store_ammount"
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\store_list.php on line 279.
+ 1 APPPATH\Views\pages\list\store_list.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "store_ammount"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php', 279)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/store_list', [], true)
+ 5 APPPATH\Controllers\PlateController.php(108): view('pages/list/store_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 18:45:47 --> ErrorException: Undefined array key "preparation_time"
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\store_list.php on line 283.
+ 1 APPPATH\Views\pages\list\store_list.php(283): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "preparation_time"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php', 283)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/store_list', [], true)
+ 5 APPPATH\Controllers\PlateController.php(108): view('pages/list/store_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-28 18:45:49 --> ErrorException: Undefined array key "preparation_time"
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\store_list.php on line 283.
+ 1 APPPATH\Views\pages\list\store_list.php(283): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "preparation_time"', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php', 283)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\store_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/store_list', [], true)
+ 5 APPPATH\Controllers\PlateController.php(108): view('pages/list/store_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

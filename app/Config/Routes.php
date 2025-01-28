@@ -41,6 +41,9 @@ $routes->post('plates/save', 'PlateController::savePlate');
 $routes->post('plates/save/(:any)', 'PlateController::savePlate/$1');
 $routes->get('plates/delete/(:any)', 'PlateController::deletePlate/$1');
 
+$routes->get('plateingredients/(:any)', 'PlateController::ingredientsOfPlate/$1');
+
+
 // ingredients
 $routes->get('ingredients', 'IngredientController::index');
 $routes->post('ingredients/save', 'IngredientController::saveIngredient');

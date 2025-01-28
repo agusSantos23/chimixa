@@ -263,7 +263,7 @@
 								</div>
 							</div>
 
-							<a href="/perfil" class="d-flex justify-content-center align-items-center gap-5 p-3 text-decoration-none">
+							<a href="<?= base_url('/profile')?>" class="d-flex justify-content-center align-items-center gap-5 p-3 text-decoration-none">
 								<img src="<?= base_url('assets/media/avatars/150-12.jpg')?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px me-3">
 
 								<div class="d-flex flex-column justify-content-center">

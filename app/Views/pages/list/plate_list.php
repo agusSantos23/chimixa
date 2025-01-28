@@ -292,7 +292,9 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 
 														<td>
-															<?= $plate['name'] ?>
+															<a href="<?= base_url("plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
+																<?= $plate['name'] ?>
+															</a>
 														</td>
 
 														<td>

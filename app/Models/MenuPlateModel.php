@@ -13,7 +13,7 @@ class MenuPlateModel extends Model
 
   protected $allowedFields = ['id_menu', 'id_plate', 'amount', 'disabled'];
 
-  public function getMenuWithPlates($menu_id): array{
+  public function getPlatesByMenu($menu_id): array{
     $builder = $this->db->table('plates');
     $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time');
     $builder->join('menus_plates', 'menus_plates.id_plate = plates.id');

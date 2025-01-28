@@ -83,14 +83,13 @@ class MenuController extends BaseController{
   }
 
 
-  public function platesOfMenu($menu_id){
+  public function platesOfMenu($menuId){
     $menuModel = new MenuModel();
     $menuPlateModel = new MenuPlateModel();
     
-    $menu = $menuModel->find($menu_id);
-    $platesOfMenu = $menuPlateModel->getMenuWithPlates($menu_id);
+    $data['menu'] = $menuModel->select('id, name')->find($menuId);
+    $platesOfMenu = $menuPlateModel->getPlatesByMenu($menuId);
 
-    $data['menuName'] = $menu['name'];
     $data['plates'] = !empty($platesOfMenu) ? $platesOfMenu : [];
     $data['aside'] = view('templates/aside');
     $data['footer'] = view('templates/footer');
