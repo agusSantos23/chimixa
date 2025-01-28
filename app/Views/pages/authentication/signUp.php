@@ -78,6 +78,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="w-lg-600px p-10 p-lg-15 mx-auto">
 						<!--begin::Form-->
 						<form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" action="<?= base_url('auth/register') ?>" method="post">
+							
 							<!--begin::Heading-->
 							<div class="mb-10 text-center">
 								<h1 class="text-dark mb-3">Crear una Cuenta</h1>
@@ -90,10 +91,13 @@ License: For each use you must have a valid license purchased only from above li
 
 
 							<?php if (isset($validation)): ?>
-								<div>
-									<?= \Config\Services::validation()->listErrors(); ?>
-								</div>
-							<?php endif; ?>
+									<div class="alert alert-danger">
+											<?php foreach ($validation->getErrors() as $error): ?>
+													<p><?= esc($error) ?></p>
+											<?php endforeach ?>
+									</div>
+							<?php endif ?>
+
 
 							<!--begin::Input group-->
 							<div class="row fv-row mb-7">
@@ -460,6 +464,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--end::Wrapper-->
 				</div>
 				<!--end::Content-->
+
 				<!--begin::Footer-->
 				<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
 					<!--begin::Links-->
@@ -488,16 +493,13 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-	<script>
-		var hostUrl = "assets/";
-	</script>
+
 	<!--begin::Javascript-->
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="../assets/plugins/global/plugins.bundle.js"></script>
 	<script src="../assets/js/scripts.bundle.js"></script>
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="../assets/js/custom/authentication/sign-up/general.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

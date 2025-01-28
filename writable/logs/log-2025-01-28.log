@@ -1,0 +1,13 @@
+CRITICAL - 2025-01-28 07:22:29 --> Error: Call to a member function getErrors() on array
+[Method: GET, Route: auth/register]
+in APPPATH\Views\pages\authentication\signUp.php on line 95.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/authentication/signUp', [], true)
+ 4 APPPATH\Controllers\AuthController.php(78): view('pages/authentication/signUp', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->registerForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

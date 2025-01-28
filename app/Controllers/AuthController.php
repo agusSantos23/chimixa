@@ -74,6 +74,7 @@ class AuthController extends BaseController{
   public function registerForm() {
     $rolModel = new RolModel();
     $data['roles'] = $rolModel->findAll();
+    $data['validation'] = session('validation'); 
     return view('pages/authentication/signUp', $data);
   }
 
@@ -99,8 +100,7 @@ class AuthController extends BaseController{
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        $data['validation'] = $validation;
-        return view('pages/authentication/signUp', $data);
+        return redirect()->to( base_url('auth/register'))->with('validation', $validation);
 
       }else{
       
