@@ -6,10 +6,11 @@ use CodeIgniter\Router\RouteCollection;
   * @var RouteCollection $routes
 */
 
-// dashboard
+// Basic
 $routes->get('/', to: 'Home::index');
 $routes->get('about', 'Home::about');
 $routes->get('profile', 'Home::profile');
+$routes->get('calendar', 'Home::calendar');
 
 
 // authentication

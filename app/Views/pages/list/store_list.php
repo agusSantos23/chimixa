@@ -76,7 +76,7 @@ License: For each use you must have a valid license purchased only from above li
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
-								<li class="breadcrumb-item text-dark">Lista de menu</li>
+								<li class="breadcrumb-item text-dark">Lista de plato</li>
 								<!--end::Item-->
 							</ul>
 							<!--end::Breadcrumb-->

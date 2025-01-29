@@ -98,3 +98,263 @@ in APPPATH\Models\OrderModel.php on line 30.
  5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 12:28:00 --> ErrorException: Undefined variable $user_role
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 76.
+ 1 APPPATH\Views\templates\aside.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user_role', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 76)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(13): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:06:23 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(30): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:06:59 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(30): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:12:19 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:12:23 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:12:23 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:13:28 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 355.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 3 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:13:31 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 355.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 3 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:13:47 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 355.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 3 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:15:17 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 76.
+ 1 APPPATH\Views\templates\aside.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 76)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(32): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:21:34 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: users]
+in APPPATH\Views\templates\aside.php on line 76.
+ 1 APPPATH\Views\templates\aside.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 76)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\UserController.php(14): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:22:20 --> ErrorException: Undefined variable $aside
+[Method: GET, Route: /]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aside', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(31): view('templates/aside', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:40:50 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: users]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\UserController.php(14): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:41:05 --> ErrorException: Undefined variable $aside
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 40.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aside', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 40)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(138): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:41:15 --> ErrorException: Undefined variable $aside
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 40.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aside', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 40)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(138): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:41:26 --> ErrorException: Undefined variable $aside
+[Method: GET, Route: menuplates/910e1c7f-d8cf-11ef-820e-683421824c3a]
+in APPPATH\Views\pages\list\menu_plates_list.php on line 40.
+ 1 APPPATH\Views\pages\list\menu_plates_list.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aside', 'C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php', 40)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\pages\\list\\menu_plates_list.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/list/menu_plates_list', [], true)
+ 5 APPPATH\Controllers\MenuController.php(138): view('pages/list/menu_plates_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MenuController->platesOfMenu('910e1c7f-d8cf-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MenuController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 16:52:25 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: plateingredients/aa9ed22b-d7ef-11ef-820e-683421824c3a]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\PlateController.php(120): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PlateController->ingredientsOfPlate('aa9ed22b-d7ef-11ef-820e-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PlateController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 17:07:46 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: users]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\UserController.php(14): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 17:20:51 --> ErrorException: Undefined variable $dataUser
+[Method: GET, Route: calendar]
+in APPPATH\Views\templates\aside.php on line 75.
+ 1 APPPATH\Views\templates\aside.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataUser', 'C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php', 75)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\chimixa\\app\\Views\\templates\\aside.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/aside', [], true)
+ 5 APPPATH\Controllers\Home.php(51): view('templates/aside')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->calendar()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

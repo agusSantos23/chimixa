@@ -14,9 +14,26 @@ class PlateController extends BaseController{
 
     try {
 
-      $data['plates'] = $plateModel->findAll();
-      $data['aside'] = view('templates/aside');
+      $userRole = session()->get('userRole');
+        
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+      
+
+      $data['dataUser'] = [
+        'userId' => session()->get('userId'),
+        'userName' => session()->get('userName'),
+        'userLastname' => session()->get('userLastname'),
+        'userEmail' => session()->get('userEmail'),
+        'userPhone' => session()->get('userPhone'),
+        'userCountry' => session()->get('userCountry'),
+        'userRole' => $userRole
+      ];
+
+      $data['aside'] = view('templates/aside', $data);
       $data['footer'] = view('templates/footer');
+
+      $data['plates'] = $plateModel->findAll();
+
 
 
       return view('pages/list/plate_list', $data);
@@ -95,16 +112,34 @@ class PlateController extends BaseController{
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
 
+    try {
+      $userRole = session()->get('userRole');
+        
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+      
 
-    $data['plate'] = $plateModel->select('id, name')->find($plateId);
-    $ingredientsOfPlate = $storeModel->getIngredientsByPlate($plateId);
+      $data['dataUser'] = [
+        'userId' => session()->get('userId'),
+        'userName' => session()->get('userName'),
+        'userLastname' => session()->get('userLastname'),
+        'userEmail' => session()->get('userEmail'),
+        'userPhone' => session()->get('userPhone'),
+        'userCountry' => session()->get('userCountry'),
+        'userRole' => $userRole
+      ];
 
-    $data['ingredients'] = $ingredientsOfPlate;
-    $data['aside'] = view('templates/aside');
-    $data['footer'] = view('templates/footer');
+      $data['aside'] = view('templates/aside', $data);
+      $data['footer'] = view('templates/footer');
 
+      $data['plate'] = $plateModel->select('id, name')->find($plateId);
+      $data['ingredients'] = $storeModel->getIngredientsByPlate($plateId);
 
-    return view('pages/list/store_list',$data );
+      return view('pages/list/store_list',$data );
+      
+
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
   }
 
 }

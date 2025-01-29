@@ -10,12 +10,41 @@ class UserController extends BaseController{
   public function index() {
     $userModel = new UserModel();
 
-    $data['users'] = $userModel->getAllUsersWithRoles();
-    $data['aside'] = view('templates/aside');
-    $data['footer'] = view('templates/footer');
+    try {
+
+      $userRole = session()->get('userRole');
+        
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+      
+
+      $data['dataUser'] = [
+        'userId' => session()->get('userId'),
+        'userName' => session()->get('userName'),
+        'userLastname' => session()->get('userLastname'),
+        'userEmail' => session()->get('userEmail'),
+        'userPhone' => session()->get('userPhone'),
+        'userCountry' => session()->get('userCountry'),
+        'userRole' => $userRole
+      ];
 
 
-    return view('pages/list/user_list', $data);
+
+      $data['aside'] = view('templates/aside', $data);
+      $data['footer'] = view('templates/footer');
+      
+      $data['users'] = $userModel->getAllUsersWithRoles();
+
+
+      return view('pages/list/user_list', $data);
+
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+
+    
+
+
+
   }
 
 

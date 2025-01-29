@@ -13,10 +13,27 @@ class RolController extends BaseController{
 
     try {
 
-      $data['roles'] = $rolModel->getCountByRoles();
+      $userRole = session()->get('userRole');
+        
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
-      $data['aside'] = view('templates/aside');
+
+      $data['dataUser'] = [
+        'userId' => session()->get('userId'),
+        'userName' => session()->get('userName'),
+        'userLastname' => session()->get('userLastname'),
+        'userEmail' => session()->get('userEmail'),
+        'userPhone' => session()->get('userPhone'),
+        'userCountry' => session()->get('userCountry'),
+        'userRole' => $userRole
+      ];
+
+      
+      $data['aside'] = view('templates/aside', $data);
       $data['footer'] = view('templates/footer');
+
+      $data['roles'] = $rolModel->getCountByRoles();
+
 
 
       return view('pages/list/rol_list', $data);
