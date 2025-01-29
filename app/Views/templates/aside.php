@@ -263,15 +263,14 @@
 								</div>
 							</div>
 
-							<a href="<?= base_url('/profile')?>" class="d-flex justify-content-center align-items-center gap-5 p-3 text-decoration-none">
-								<img src="<?= base_url('assets/media/avatars/150-12.jpg')?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px me-3">
+							<a href="<?= base_url('/profile')?>" class="d-flex justify-content-start align-items-center gap-2 p-3 text-decoration-none">
+								<img src="<?= base_url('assets/media/avatars/150-12.jpg')?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px ms-3">
 
 								<div class="d-flex flex-column justify-content-center">
-									<span class="d-block w-bold"><?= session()->get('user_name')?></span>
-									<span class="d-block text-muted"><?= session()->get('user_role')?></span>
+									<span class="d-block w-bold fs-3" style="white-space: nowrap; text-overflow: ellipsis;"><?= session()->get('userName')?></span>
+									<span class="d-block text-muted fs-6"><?= session()->get('userRole')?></span>
 								</div>
 							</a>
-
 
 						</div>
 

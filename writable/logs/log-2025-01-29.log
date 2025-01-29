@@ -1,0 +1,100 @@
+ERROR - 2025-01-29 09:27:25 --> mysqli_sql_exception: Unknown column 'order_date' in 'field list' in C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\wamp64\www\chimixa\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `name`, ...', 0)
+#1 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `name`, ...')
+#2 C:\wamp64\www\chimixa\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `name`, ...')
+#3 C:\wamp64\www\chimixa\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `name`, ...', Array, false)
+#4 C:\wamp64\www\chimixa\app\Models\OrderModel.php(29): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\chimixa\app\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-1...')
+#6 C:\wamp64\www\chimixa\system\CodeIgniter.php(933): App\Controllers\OrderController->index()
+#7 C:\wamp64\www\chimixa\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#8 C:\wamp64\www\chimixa\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\chimixa\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\chimixa\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\wamp64\www\chimixa\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-01-29 09:27:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'order_date' in 'field list'
+[Method: GET, Route: orders]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Models\OrderModel.php(29): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 09:27:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'order_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = \'910e1c7f-d8cf-11ef-820e-683421824c3a\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = \'910e1c7f-d8cf-11ef-820e-683421824c3a\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Models\OrderModel.php(29): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 09:27:25 --> [Caused by] mysqli_sql_exception: Unknown column 'order_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = \'910e1c7f-d8cf-11ef-820e-683421824c3a\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = \'910e1c7f-d8cf-11ef-820e-683421824c3a\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = \'910e1c7f-d8cf-11ef-820e-683421824c3a\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `name`, `price`, `order_date`
+FROM `plates`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Models\OrderModel.php(29): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 09:29:44 --> Error: Attempt to assign property "order_date" on null
+[Method: GET, Route: orders]
+in APPPATH\Models\OrderModel.php on line 30.
+ 1 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 09:29:46 --> Error: Attempt to assign property "order_date" on null
+[Method: GET, Route: orders]
+in APPPATH\Models\OrderModel.php on line 30.
+ 1 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 09:32:59 --> Error: Attempt to assign property "order_date" on null
+[Method: GET, Route: orders]
+in APPPATH\Models\OrderModel.php on line 30.
+ 1 APPPATH\Controllers\OrderController.php(20): App\Models\OrderModel->getUserOrderDetails('964a1a03-dd59-11ef-948c-683421824c3a')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OrderController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

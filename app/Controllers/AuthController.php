@@ -47,13 +47,13 @@ class AuthController extends BaseController
 
 
             session()->set([
-              'user_id' => $user->id,
-              'user_name' => $user->name,
-              'user_lastname' => $user->lastname,
-              'user_email' => $user->email,
-              'user_role' => $user->role_name,
-              'user_phone' => $user->phone,
-              'user_country' => $user->country,
+              'userId' => $user->id,
+              'userName' => $user->name,
+              'userLastname' => $user->lastname,
+              'userEmail' => $user->email,
+              'userRole' => $user->role_name,
+              'userPhone' => $user->phone,
+              'userCountry' => $user->country,
               'is_logged_in' => true,
             ]);
           
@@ -127,13 +127,13 @@ class AuthController extends BaseController
         $user = $userModel->getUserWithRoleByEmail($userData['email']);
 
         session()->set([
-          'user_id' => $user['id'],
-          'user_name' => $user['name'],
-          'user_lastname' => $user['lastname'],
-          'user_email' => $user['email'],
-          'user_role' => $user['role_name'],
-          'user_phone' => $user['phone'],
-          'user_country' => $user['country'],
+          'userId' => $user->id,
+          'userName' => $user->name,
+          'userLastname' => $user->lastname,
+          'userEmail' => $user->email,
+          'userRole' => $user->role_name,
+          'userPhone' => $user->phone,
+          'userCountry' => $user->country,
           'is_logged_in' => true,
         ]);
 

@@ -14,6 +14,7 @@ class RolController extends BaseController{
     try {
 
       $data['roles'] = $rolModel->getCountByRoles();
+      
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 

@@ -29,9 +29,14 @@ $routes->post('users/save/(:any)', 'UserController::saveUser/$1');
 $routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
 
 
+// orders
+$routes->get('orders', 'OrderController::index');
+
+
 
 // roles
 $routes->get('roles', 'RolController::index');
+
 
 
 

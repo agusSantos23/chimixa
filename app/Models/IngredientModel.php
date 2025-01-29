@@ -10,6 +10,6 @@ class IngredientModel extends Model{
 
   protected $primaryKey = 'id';
 
-  protected $allowedFields = [ 'name', 'quantity_available', 'unit', 'expiration_date', 'price', 'allergens', 'disable'];
+  protected $allowedFields = [ 'name', 'quantity_available', 'unit', 'expiration_date', 'price', 'allergens', 'disabled'];
 
 }

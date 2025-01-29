@@ -11,7 +11,7 @@ class RolModel extends Model{
 
   protected $primaryKey = 'id';
 
-  protected $allowedFields = [ 'name' ];
+  protected $allowedFields = [ 'name', 'disabled' ];
 
 
   public function getCountByRoles() {
