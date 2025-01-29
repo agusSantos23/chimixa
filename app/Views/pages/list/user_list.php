@@ -322,13 +322,21 @@ License: For each use you must have a valid license purchased only from above li
 													
 												<?php endforeach; ?>
 											</tbody>
+											
 											<!--end::Table body-->
+
+											<div> 
+												<?= $pager->links() ?> 
+											</div>
 										</table>
 										<!--end::Table-->
 									</div>
 									<!--end::Card body-->
 								</div>
 								<!--end::Card-->
+
+
+
 								<!--begin::Modals-->
 								<!--begin::Modal - Customers - Add-->
 								<div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
