@@ -38,7 +38,7 @@ class UserModel extends Model
 }
 
 
-  public function getAllUsersWithRoles()
+  public function getAllUsersWithRoles($perPage = 10)
   {
     $builder = $this->builder();
     $builder->select('users.id, users.name, users.lastname, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
@@ -46,7 +46,7 @@ class UserModel extends Model
     $builder->where('users.disabled', null);
     $builder->where('roles.disabled', null);
     return [
-      'users' => $this->paginate(2),  
+      'users' => $this->paginate($perPage),  
       'pager' => $this->pager,               
   ];
   }

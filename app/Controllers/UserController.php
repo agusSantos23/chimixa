@@ -32,8 +32,10 @@ class UserController extends BaseController{
       $data['aside'] = view('templates/aside', $data);
       $data['footer'] = view('templates/footer');
       
+      $perPage = $this->request->getGet('perPage') ?? 10;
+      $data['perPage'] = $perPage;
 
-      $data = array_merge($data, $userModel->getAllUsersWithRoles());
+      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage));
 
 
 
