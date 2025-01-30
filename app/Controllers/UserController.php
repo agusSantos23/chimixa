@@ -35,7 +35,10 @@ class UserController extends BaseController{
       $perPage = $this->request->getGet('perPage') ?? 10;
       $data['perPage'] = $perPage;
 
-      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage));
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
+
+      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams));
 
 
 
