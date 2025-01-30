@@ -278,7 +278,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 
 														<td>
-															<?= $order['orderDate'] ?>
+															<?= date("d/m/Y H:i", strtotime($order['orderDate'])) ?>
 														</td>
 
 														<!--begin::Action=-->

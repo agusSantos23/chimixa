@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\OrderModel;
 use Exception;
 
 
@@ -9,6 +10,8 @@ use Exception;
 class Home extends BaseController{
 
   public function index() {
+    $orderModel = new OrderModel();
+
 
     try {
 
@@ -26,6 +29,10 @@ class Home extends BaseController{
         'userCountry' => session()->get('userCountry'),
         'userRole' => $userRole
       ];
+
+      $data['orders'] = $orderModel->getUserOrderDetails($data['dataUser']['userId']);
+
+
       
       $data['aside'] = view('templates/aside', $data);
       $data['footer'] = view('templates/footer');

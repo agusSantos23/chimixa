@@ -7,10 +7,14 @@ use CodeIgniter\Model;
 class OrderModel extends Model{
 
   protected $table = 'orders';
-
   protected $primaryKey = 'id';
 
-  protected $allowedFields = [ 'id_user', 'id_element', 'type_element', 'order_date', 'disabled'];
+  protected $allowedFields = ['id_user', 'id_element', 'type_element', 'disabled'];
+
+  protected $useTimestamps = true;
+  protected $createdField = 'created_at';
+  protected $updatedField = 'updated_at';
+
 
   public function getUserOrderDetails($userId): array {
     $db = \Config\Database::connect();
@@ -26,12 +30,12 @@ class OrderModel extends Model{
       $elementTable = ($type === 'menu') ? 'menus' : 'plates';
 
       $elementBuilder = $db->table($elementTable);
-      $elementBuilder->select('name, price');
+      $elementBuilder->select('name, price, description');
       $elementBuilder->where('id', $order->id_element);
       $element = $elementBuilder->get()->getRow();
 
       if ($element) {
-        $element->orderDate = $order->order_date;
+        $element->orderDate = $order->created_at;
         $element->type = $type;
         $orderDetails[] = (array) $element;
       }
@@ -39,6 +43,7 @@ class OrderModel extends Model{
 
     return $orderDetails;
   }
+
 
 
 }
