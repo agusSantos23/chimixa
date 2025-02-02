@@ -72,7 +72,8 @@
 
 				</div>
 				<!--end::Section nav-->
-				<?php if ($dataUser['userRole'] === 'Administrador'): ?>
+				<?php $userRole = session()->get('userRole') ?>
+				<?php if ($userRole === 'Administrador'): ?>
 
 					<!--begin::Section nav-->
 					<div>
@@ -247,7 +248,7 @@
 					<!--end::Section nav-->
 
 
-				<?php  elseif ($dataUser['userRole'] === 'Cliente'): ?>
+				<?php  elseif ($userRole === 'Cliente'): ?>
 					<!--begin::Section nav-->
 					<div>
 						<!--begin::Section nav title-->
@@ -301,7 +302,7 @@
 
 					</div>
 					<!--end::Section nav-->
-				<?php elseif ($dataUser['userRole'] === 'Cocinero'): ?>
+				<?php elseif ($userRole === 'Cocinero'): ?>
 
 					<!--begin::Section nav-->
 					<div>
@@ -369,8 +370,8 @@
 					<img src="<?= base_url('assets/media/avatars/150-12.jpg') ?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px ms-3">
 
 					<div class="d-flex flex-column justify-content-center">
-						<span class="d-block w-bold fs-3" style="white-space: nowrap; text-overflow: ellipsis;"><?= $dataUser['userName'] ?></span>
-						<span class="d-block text-muted fs-6"><?= $dataUser['userRole'] ?></span>
+						<span class="d-block w-bold fs-3" style="white-space: nowrap; text-overflow: ellipsis;"><?= session()->get('userName') ?></span>
+						<span class="d-block text-muted fs-6"><?= $userRole ?></span>
 					</div>
 				</a>
 

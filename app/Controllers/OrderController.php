@@ -20,21 +20,10 @@ class OrderController extends BaseController{
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
 
-      $data['dataUser'] = [
-        'userId' => session()->get('userId'),
-        'userName' => session()->get('userName'),
-        'userLastname' => session()->get('userLastname'),
-        'userEmail' => session()->get('userEmail'),
-        'userPhone' => session()->get('userPhone'),
-        'userCountry' => session()->get('userCountry'),
-        'userRole' => $userRole
-      ];
       
-      $data['orders'] = $orderModel->getUserOrderDetails($data['dataUser']['userId']);
+      $data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
 
-
-
-      $data['aside'] = view('templates/aside', $data);
+      $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 
     
