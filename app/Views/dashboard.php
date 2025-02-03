@@ -422,16 +422,23 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Body-->
 									<div class="card-body p-0 d-flex justify-content-between flex-column overflow-hidden">
 										<!--begin::Hidden-->
-										<div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 pb-3">
+										<div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 ">
 											<div class="me-2">
-												<span class="fw-bolder text-gray-800 d-block fs-3">Sales</span>
-												<span class="text-gray-400 fw-bold">Oct 8 - Oct 26 21</span>
+												<span class="fw-bolder text-gray-800 d-block fs-3">Compras</span>
+												<?php
+													$dateNow = new DateTime();
+													$dateEightMonth = new DateTime();
+													$dateEightMonth->modify('-8 months');
+													
+												?>
+												<span class="text-gray-400 fw-bold">Ultimos 8 meses <?= $dateEightMonth->format('M y'), ' - ', $dateNow->format('M y') ?></span>
 											</div>
+
 											<div class="fw-bolder fs-3 text-primary">$15,300</div>
 										</div>
 										<!--end::Hidden-->
 										<!--begin::Chart-->
-										<div class="mixed-widget-10-chart" data-kt-color="primary" style="height: 175px"></div>
+										<div id="chartDuoColumns" class="px-10"></div>
 										<!--end::Chart-->
 									</div>
 								</div>
@@ -5142,6 +5149,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="assets/js/custom/widgets.js"></script>
 	<script src="assets/js/custom/apps/chat/chat.js"></script>
+	<script src="assets/js/custom/apps/chat/chatConfig.js"></script>
 	<script src="assets/js/custom/modals/create-app.js"></script>
 	<script src="assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
