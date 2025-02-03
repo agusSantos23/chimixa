@@ -4,30 +4,29 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-
-class RolModel extends Model{
-
+class RolModel extends Model
+{
   protected $table = 'roles';
-
   protected $primaryKey = 'id';
+  protected $allowedFields = ['name', 'disabled'];
 
-  protected $allowedFields = [ 'name', 'disabled' ];
-
-
-  public function getCountByRoles() {
+  public function getCountByRoles($perPage = 1, $searchParams = []){
     $userModel = new \App\Models\UserModel();
-    $roles = $this->findAll();
-    $result = [];
 
-    foreach ($roles as $role) {
-      $roleId = $role['id'];
-      $roleName = $role['name'];
-      $count = $userModel->where('role_id', $roleId)->countAllResults();
-      $result[] = ['name' => $roleName, 'count' => $count];
+    $builder = $this->builder();
+
+    if (!empty($searchParams['name'])) $builder->like('name', $searchParams['name']);
+
+    $roles = $this->paginate($perPage);
+    $pager = $this->pager;
+
+    foreach ($roles as &$role) {
+      $role['count'] = $userModel->where('role_id', $role['id'])->countAllResults();
     }
 
-    return $result;
+    return [
+      'roles' => $roles,
+      'pager' => $pager
+    ];
   }
-
-
 }

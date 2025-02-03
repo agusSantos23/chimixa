@@ -109,6 +109,8 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Svg Icon-->
 												Filtros
 											</button>
+											<!--end::Filter-->
+
 
 
 											<!--begin::Menu 1-->
@@ -138,7 +140,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Buscar por nombre" value="<?= esc($searchParams['name'] ?? '') ?>" />
+														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Nombre" value="<?= esc($searchParams['name'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -153,7 +155,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[email]" id="searchEmail" class="form-control form-control-solid w-250px ps-15" placeholder="Buscar por email" value="<?= esc($searchParams['email'] ?? '') ?>" />
+														<input type="text" name="searchParams[email]" id="searchEmail" class="form-control form-control-solid w-250px ps-15" placeholder="Email" value="<?= esc($searchParams['email'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -168,7 +170,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[phone]" id="searchPhone" class="form-control form-control-solid w-250px ps-15" placeholder="Buscar por teléfono" value="<?= esc($searchParams['phone'] ?? '') ?>" />
+														<input type="text" name="searchParams[phone]" id="searchPhone" class="form-control form-control-solid w-250px ps-15" placeholder="Teléfono" value="<?= esc($searchParams['phone'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -183,7 +185,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[country]" id="searchCountry" class="form-control form-control-solid w-250px ps-15" placeholder="Buscar por país" value="<?= esc($searchParams['country'] ?? '') ?>" />
+														<input type="text" name="searchParams[country]" id="searchCountry" class="form-control form-control-solid w-250px ps-15" placeholder="País" value="<?= esc($searchParams['country'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -198,7 +200,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[role]" id="searchRole" class="form-control form-control-solid w-250px ps-15" placeholder="Buscar por rol" value="<?= esc($searchParams['role'] ?? '') ?>" />
+														<input type="text" name="searchParams[role]" id="searchRole" class="form-control form-control-solid w-250px ps-15" placeholder="Rol" value="<?= esc($searchParams['role'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -206,16 +208,16 @@ License: For each use you must have a valid license purchased only from above li
 
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
-														<button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
+														<button type="button" onclick="window.location='<?= base_url('users') ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
 														<button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
 													</div>
 													<!--end::Actions-->
+
 												</form>
 												<!--end::Content-->
 											</div>
 											<!--end::Menu 1-->
 
-											<!--end::Filter-->
 
 
 
@@ -241,6 +243,8 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
+
+										
 										<!--begin::Group actions-->
 										<div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
 											<div class="fw-bolder me-5">
@@ -258,7 +262,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-body pt-0">
 
 									<!--begin::Card body-->
-									<div >
+									<div>
 										<!--begin::Table-->
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
 											<!--begin::Table head-->

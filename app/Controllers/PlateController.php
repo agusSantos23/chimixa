@@ -19,13 +19,18 @@ class PlateController extends BaseController{
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
 
-
+      
 
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 
-      $data['plates'] = $plateModel->findAll();
+      $perPage = $this->request->getGet('perPage') ?? 1;
+      $data['perPage'] = $perPage;
 
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
+
+      $data = array_merge($data, $plateModel->getPlates($perPage, $searchParams));
 
 
       return view('pages/list/plate_list', $data);

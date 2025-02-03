@@ -9,30 +9,36 @@ use Exception;
 
 
 
-class MenuController extends BaseController{
-
-  public function index(){
+class MenuController extends BaseController {
+  public function index() {
     $menuModel = new MenuModel();
 
     try {
-
-      $userRole = session()->get('userRole');
-        
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
-
+      $userRole = session()->get('userRole');
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 
-      $data['menus'] = $menuModel->findAll();
+      $perPage = $this->request->getGet('perPage') ?? 1;
+      $data['perPage'] = $perPage;
 
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
+
+
+      $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams));
+     
 
       return view('pages/list/menu_list', $data);
+
     } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
+      return "Error: " . $e->getMessage();
     }
   }
+
+
 
 
   public function saveMenu($id = null){
@@ -95,12 +101,12 @@ class MenuController extends BaseController{
 
 
     try {
-      
+
       $userRole = session()->get('userRole');
-        
+
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
-      
+
+
       $data['dataUser'] = [
         'userId' => session()->get('userId'),
         'userName' => session()->get('userName'),
@@ -116,15 +122,12 @@ class MenuController extends BaseController{
 
       $data['menu'] = $menuModel->select('id, name')->find($menuId);
       $platesOfMenu = $menuPlateModel->getPlatesByMenu($menuId);
-  
+
       $data['plates'] = !empty($platesOfMenu) ? $platesOfMenu : [];
 
-      return view('pages/list/menu_plates_list',$data );
-
-
+      return view('pages/list/menu_plates_list', $data);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
-
   }
 }

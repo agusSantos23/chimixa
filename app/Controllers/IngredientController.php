@@ -23,7 +23,15 @@ class IngredientController extends BaseController{
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 
-      $data['ingredients'] = $ingredientModel->findAll();
+      $perPage = $this->request->getGet('perPage') ?? 1;
+      $data['perPage'] = $perPage;
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
+
+
+
+      $data = array_merge($data, $ingredientModel->getIngredients($perPage, $searchParams));
 
 
       return view('pages/list/ingredient_list', $data);

@@ -22,8 +22,13 @@ class RolController extends BaseController{
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
 
-      $data['roles'] = $rolModel->getCountByRoles();
+      $perPage = $this->request->getGet('perPage') ?? 1;
+      $data['perPage'] = $perPage;
 
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
+
+      $data = array_merge($data, $rolModel->getCountByRoles($perPage, $searchParams));
 
 
       return view('pages/list/rol_list', $data);
