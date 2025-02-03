@@ -204,12 +204,6 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-
-
-
-
-
-
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
 														<button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
@@ -302,31 +296,31 @@ License: For each use you must have a valid license purchased only from above li
 
 														<!--begin::Rol=-->
 														<td>
-															<?= $user['role_name'] ?>
+															<?= esc($user['role_name']) ?>
 														</td>
 														<!--end::Rol=-->
 
 														<!--begin::FullName=-->
 														<td>
-															<?= $user['name'], " ", $user['lastname'] ?>
+															<?= esc($user['name']), " ", esc($user['lastname']) ?>
 														</td>
 														<!--end::FullName=-->
 
 														<!--begin::Email=-->
 														<td>
-															<?= $user['email'] ?>
+															<?= esc($user['email']) ?>
 														</td>
 														<!--end::Email=-->
 
 														<!--begin::Phone=-->
 														<td>
-															<?= $user['prefix']?> <?= $user['phone'] ?>
+															<?= esc($user['prefix']), " ", esc($user['phone']) ?>
 														</td>
 														<!--end::Phone=-->
 
 														<!--begin::Country=-->
 														<td>
-															<?= $user['country'] ?>
+															<?= esc($user['country']) ?>
 														</td>
 														<!--end::Country=-->
 
@@ -360,7 +354,6 @@ License: For each use you must have a valid license purchased only from above li
 
 												<?php endforeach; ?>
 											</tbody>
-
 											<!--end::Table body-->
 
 
@@ -372,7 +365,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Card body-->
 
 									<!--begin::Card footer-->
-									<div class="d-flex align-items-center justify-content-between">
+									<div class="d-flex align-items-center justify-content-between mt-5">
 										<form action="<?= base_url('users') ?>" method="get" class="d-inline-block">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
@@ -386,7 +379,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 										<span class="ms-3">
-											<?= $pager->links('default','bootstrap_pager') ?>
+											<?= $pager->links('default', 'bootstrap_pager') ?>
 										</span>
 									</div>
 									<!--end::Card footer-->

@@ -39,7 +39,7 @@ class UserModel extends Model
   }
 
 
-  public function getAllUsersWithRoles($perPage = 10,  $searchParams = []){
+  public function getAllUsersWithRoles($perPage = 1,  $searchParams = []){
     $builder = $this->builder();
     $builder->select('users.id, users.name, users.lastname, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');

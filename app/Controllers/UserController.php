@@ -18,11 +18,10 @@ class UserController extends BaseController{
       
 
 
-
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
       
-      $perPage = $this->request->getGet('perPage') ?? 10;
+      $perPage = $this->request->getGet('perPage') ?? 1;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
@@ -37,8 +36,6 @@ class UserController extends BaseController{
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
-
-
   }
 
 
