@@ -3,24 +3,28 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\RolModel;
 use Exception;
 
-class UserController extends BaseController{
+class UserController extends BaseController
+{
 
-  public function index() {
+  
+  public function index(){
     $userModel = new UserModel();
 
     try {
 
       $userRole = session()->get('userRole');
-        
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
 
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+
+      $rolModel = new RolModel();
+      $data['roles'] = $rolModel->whereNotIn('name', ['Administrador'])->findAll();
 
       $data['aside'] = view('templates/aside');
       $data['footer'] = view('templates/footer');
-      
+
       $perPage = $this->request->getGet('perPage') ?? 1;
       $data['perPage'] = $perPage;
 
@@ -32,11 +36,11 @@ class UserController extends BaseController{
 
 
       return view('pages/list/user_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
+
 
 
 
@@ -45,70 +49,73 @@ class UserController extends BaseController{
 
     $validation = \Config\Services::validation();
     $validation->setRules([
-      'role' => 'required|in_list[client,chef,admin]',
-      'name' => 'required|min_length[3]|max_length[255]',
-      'lastname' => 'required|min_length[3]|max_length[255]',
+      'name' => 'required|alpha_space|min_length[3]|max_length[255]',
+      'lastName' => 'required|alpha_space|min_length[3]|max_length[255]',
       'email' => 'required|valid_email',
-      'password' => 'required|min_length[8]|max_length[255]',
-      'confirm_password' => 'required|matches[password]',
-      'phone' => 'required|numeric|max_length[20]',
+      'password' => 'required|min_length[8]|max_length[255]|regex_match[/^(?=.*[a-z])(?=.*[A-Z]).+$/]',
+      'confirmPassword' => 'required|matches[password]',
+      'prefix' => 'required|numeric|max_length[3]',
+      'phone' => 'required|numeric|min_length[7]|max_length[11]',
       'country' => 'required|alpha_space|max_length[100]'
     ]);
+
+
+
 
     try {
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        $data['validation'] = $validation;
-        return view('user_form', $data);
+        return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
 
-      }else{
+      } else {
 
         $userData = [
-          'role' => $this->request->getPost('role'),
+          'role_id' => $this->request->getPost('role'),
           'name' => $this->request->getPost('name'),
-          'lastname' => $this->request->getPost('lastname'),
+          'last_name' => $this->request->getPost('lastName'),
+          'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
           'email' => $this->request->getPost('email'),
+          'prefix' => $this->request->getPost('prefix'),
           'phone' => $this->request->getPost('phone'),
-          'country' => $this->request->getPost('country')
-          
-
+          'country' => $this->request->getPost('country'),
+          'img' => $this->request->getPost('profileImg')
         ];
-        
-        $password = $this->request->getPost('password');
-        $userData['password'] = password_hash($password, PASSWORD_DEFAULT);
+
 
 
         if ($id) {
+          /*
           $userModel->update($id, $userData);
           $message = 'User successfully updated';
-
+          */
         } else {
-          $userModel->save($userData);
-          $message = 'User created successfully';
+          
+          if ($userModel->save($userData)) {
+            return $this->response->setStatusCode(200)->setJSON(['message' => 'User added successfully']);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
+          }
+            
         }
-        
-        return redirect()->to(uri: '/users')->with('success', $message);
-      }
 
-      
+
+      }
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
     }
   }
 
-  public function deleteUser($id){
+  public function deleteUser($id)
+  {
     $userModel = new UserModel();
 
     try {
       $userModel->delete($id);
       return redirect()->to('/users')->with('success', 'User successfully deleted');
-
-    }  catch (Exception $e) {
+    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
-
   }
-
 }

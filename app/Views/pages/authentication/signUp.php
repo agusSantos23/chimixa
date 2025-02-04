@@ -296,7 +296,6 @@ License: For each use you must have a valid license purchased only from above li
 										<input class="form-control form-control-lg form-control-solid" type="tel" name="phone" id="phone" placeholder="" autocomplete="off" />
 									</div>
 								</div>
-
 								<!--end::Col-->
 							</div>
 							<!--end::Input group-->
@@ -305,7 +304,7 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="fv-row mb-7">
 								<label class="form-label fw-bolder text-dark fs-6" for="country">País</label>
 								<select class="form-select form-control form-control-lg form-control-solid" name="country" id="country">
-									<option value="">Seleccionar pais</option>
+									<option value="">Selecciona pais</option>
 									<option value="USA">USA</option>
 									<option value="Canada">Canada</option>
 									<option value="Egypt">Egypt</option>

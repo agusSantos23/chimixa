@@ -73,14 +73,14 @@
 				</div>
 				<!--end::Section nav-->
 				<?php $userRole = session()->get('userRole') ?>
-				<?php if ($userRole === 'Administrador'): ?>
+				<?php if ($userRole === 'Administrator'): ?>
 
 					<!--begin::Section nav-->
 					<div>
 						<!--begin::Section nav title-->
 						<div class="menu-item">
 							<div class="menu-content pt-8 pb-2">
-								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Cliente</span>
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Customer</span>
 							</div>
 						</div>
 						<!--end::Section nav title-->
@@ -100,7 +100,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Pedidos</span>
+								<span class="menu-title">Orders</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -120,7 +120,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Calendario</span>
+								<span class="menu-title">Calendar</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -134,7 +134,7 @@
 						<!--begin::Section nav title-->
 						<div class="menu-item">
 							<div class="menu-content pt-8 pb-2">
-								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Cocinero</span>
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Chef</span>
 							</div>
 						</div>
 						<!--end::Section nav title-->
@@ -153,7 +153,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Ingredientes</span>
+								<span class="menu-title">Ingredients</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -170,7 +170,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Platos</span>
+								<span class="menu-title">Plates</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -183,7 +183,7 @@
 						<!--begin::Section nav title-->
 						<div class="menu-item">
 							<div class="menu-content pt-8 pb-2">
-								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Administrador</span>
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Administrator</span>
 							</div>
 						</div>
 						<!--end::Section nav title-->
@@ -221,7 +221,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Usuarios</span>
+								<span class="menu-title">Customers</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -248,13 +248,13 @@
 					<!--end::Section nav-->
 
 
-				<?php  elseif ($userRole === 'Cliente'): ?>
+				<?php  elseif ($userRole === 'Customer'): ?>
 					<!--begin::Section nav-->
 					<div>
 						<!--begin::Section nav title-->
 						<div class="menu-item">
 							<div class="menu-content pt-8 pb-2">
-								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Cliente</span>
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Customer</span>
 							</div>
 						</div>
 						<!--end::Section nav title-->
@@ -274,7 +274,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Pedidos</span>
+								<span class="menu-title">Orders</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -294,7 +294,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Calendario</span>
+								<span class="menu-title">Calendar</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -302,14 +302,14 @@
 
 					</div>
 					<!--end::Section nav-->
-				<?php elseif ($userRole === 'Cocinero'): ?>
+				<?php elseif ($userRole === 'Chef'): ?>
 
 					<!--begin::Section nav-->
 					<div>
 						<!--begin::Section nav title-->
 						<div class="menu-item">
 							<div class="menu-content pt-8 pb-2">
-								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Cocinero</span>
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Chef</span>
 							</div>
 						</div>
 						<!--end::Section nav title-->
@@ -328,7 +328,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Ingredientes</span>
+								<span class="menu-title">Ingredients</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -345,7 +345,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Platos</span>
+								<span class="menu-title">Plates</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->
@@ -367,7 +367,8 @@
 				</div>
 
 				<a href="<?= base_url('/profile') ?>" class="d-flex justify-content-start align-items-center gap-2 p-3 text-decoration-none">
-					<img src="<?= base_url('assets/media/avatars/150-12.jpg') ?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px ms-3">
+
+					<img src="<?= base_url('assets/media/avatars/' . session()->get('userImg')) ?>" alt="Foto de usuario" class="img-fluid rounded-circle w-50px h-50px ms-3">
 
 					<div class="d-flex flex-column justify-content-center">
 						<span class="d-block w-bold fs-3" style="white-space: nowrap; text-overflow: ellipsis;"><?= session()->get('userName') ?></span>

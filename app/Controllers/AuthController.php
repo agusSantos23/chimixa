@@ -49,11 +49,13 @@ class AuthController extends BaseController
             session()->set([
               'userId' => $user->id,
               'userName' => $user->name,
-              'userLastname' => $user->lastname,
+              'userLastname' => $user->last_name,
               'userEmail' => $user->email,
               'userRole' => $user->role_name,
+              'userPhonePrefix' => $user->prefix,
               'userPhone' => $user->phone,
               'userCountry' => $user->country,
+              'userImg' => $user->img,
               'is_logged_in' => true,
             ]);
           
@@ -76,7 +78,7 @@ class AuthController extends BaseController
 
   public function registerForm(){
     $rolModel = new RolModel();
-    $data['roles'] = $rolModel->findAll();
+    $data['roles'] = $rolModel->whereNotIn('name', ['Administrador'])->findAll();
     $data['validation'] = session('validation');
     return view('pages/authentication/signUp', $data);
   }
@@ -132,8 +134,10 @@ class AuthController extends BaseController
           'userLastname' => $user->lastname,
           'userEmail' => $user->email,
           'userRole' => $user->role_name,
+          'userPhonePrefix' => $user->prefix,
           'userPhone' => $user->phone,
           'userCountry' => $user->country,
+          'userImg' => $user->img,
           'is_logged_in' => true,
         ]);
 

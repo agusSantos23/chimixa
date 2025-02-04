@@ -10,7 +10,7 @@ class UserModel extends Model
 
   protected $primaryKey = 'id';
 
-  protected $allowedFields = ['name', 'lastname', 'email', 'password',  'phone', 'country', 'created_at', 'updated_at', 'disabled', 'role_id', 'prefix'];
+  protected $allowedFields = ['name', 'last_name', 'email', 'password',  'phone', 'country', 'created_at', 'updated_at', 'disabled', 'role_id', 'prefix', 'img'];
 
   protected $useTimestamps = true;
   protected $createdField = 'created_at';
@@ -20,7 +20,7 @@ class UserModel extends Model
   public function getUserWithRoleById($userId)
   {
     $builder = $this->builder();
-    $builder->select('users.id, users.name, users.lastname, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
+    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
     $builder->where('users.id', $userId);
     $builder->where('users.disabled', null);
@@ -30,7 +30,7 @@ class UserModel extends Model
 
   public function getUserWithRoleByEmail($email){
     $builder = $this->builder();
-    $builder->select('users.id, users.name, users.lastname, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
+    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
     $builder->where('users.email', $email);
     $builder->where('users.disabled', null);
@@ -41,7 +41,7 @@ class UserModel extends Model
 
   public function getAllUsersWithRoles($perPage = 1,  $searchParams = []){
     $builder = $this->builder();
-    $builder->select('users.id, users.name, users.lastname, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
+    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
   
 
