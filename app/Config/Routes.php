@@ -26,8 +26,6 @@ $routes->post('auth/register','AuthController::register');
 
 
 
-
-
 // users
 $routes->get('users', to: 'UserController::index');
 $routes->post('users/save', 'UserController::saveUser');
@@ -42,6 +40,10 @@ $routes->get('orders', 'OrderController::index');
 
 // roles
 $routes->get('roles', 'RolController::index');
+$routes->post('roles/save', 'RolController::saveRol');
+$routes->post('roles/save/(:any)', 'RolController::saveRol/$1');
+
+
 
 
 

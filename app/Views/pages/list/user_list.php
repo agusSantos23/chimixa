@@ -426,6 +426,7 @@ License: For each use you must have a valid license purchased only from above li
 
 											<!--begin::Modal body-->
 											<div class="modal-body py-10 px-lg-17">
+
 												<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
 
 
@@ -473,7 +474,7 @@ License: For each use you must have a valid license purchased only from above li
 															<label class="required fs-6 fw-bold mb-2">Name</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input class="form-control form-control-solid" placeholder="" name="name" value="" />
+															<input type="text" class="form-control form-control-solid" name="name" value="" />
 															<!--end::Input-->
 														</div>
 														<!--end::Col-->
@@ -484,7 +485,7 @@ License: For each use you must have a valid license purchased only from above li
 															<label class="required fs-6 fw-bold mb-2">Last Name</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input class="form-control form-control-solid" placeholder="" name="lastName" value="" />
+															<input type="text" class="form-control form-control-solid" name="lastName" value="" />
 															<!--end::Input-->
 														</div>
 														<!--end::Col-->

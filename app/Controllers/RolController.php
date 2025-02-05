@@ -35,5 +35,51 @@ class RolController extends BaseController{
     }
   }
 
+  
+  public function saveRol($id = null){
+    $rolModel = new RolModel();
+
+    $validation = \Config\Services::validation();
+    $validation->setRules([
+      'name' => 'required|alpha_space|min_length[3]|max_length[255]',
+    ]);
+
+    try {
+
+      if (!$validation->withRequest($this->request)->run()) {
+
+        return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
+
+      } else {
+
+        $rolData = [
+          'name' => $this->request->getPost('name')
+        ];
+        
+
+        if ($id) {
+          /*
+          $rolModel->update($id, $rolName);
+          $message = 'Rol successfully updated';
+          */
+        } else {
+          
+          if ($rolModel->save($rolData)) {
+            return $this->response->setStatusCode(200)->setJSON(['message' => 'Rol added successfully']);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
+          }
+          
+            
+        }
+
+      }
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
 
 }
