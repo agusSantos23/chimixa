@@ -221,7 +221,7 @@
 									</span>
 									<!--end::Svg Icon-->
 								</span>
-								<span class="menu-title">Customers</span>
+								<span class="menu-title">Users</span>
 							</a>
 						</div>
 						<!--end::Section nav link-->

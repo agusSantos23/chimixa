@@ -40,7 +40,8 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-			<?= $aside ?>
+			<?php include APPPATH . 'Views/templates/aside.php' ?>
+
 
 
 
@@ -859,7 +860,8 @@ License: For each use you must have a valid license purchased only from above li
 				</div>
 				<!--end::Content-->
 
-				<?= $footer ?>
+				<?php include APPPATH . 'Views/templates/footer.php' ?>
+
 			</div>
 			<!--end::Wrapper-->
 		</div>

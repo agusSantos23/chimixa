@@ -19,9 +19,6 @@ class RolController extends BaseController{
       
 
       
-      $data['aside'] = view('templates/aside');
-      $data['footer'] = view('templates/footer');
-
       $perPage = $this->request->getGet('perPage') ?? 1;
       $data['perPage'] = $perPage;
 

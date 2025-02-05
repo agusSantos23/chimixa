@@ -9,9 +9,11 @@ use Exception;
 class UserController extends BaseController
 {
 
-  
+
   public function index(){
     $userModel = new UserModel();
+    $rolModel = new RolModel();
+
 
     try {
 
@@ -19,11 +21,10 @@ class UserController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      $rolModel = new RolModel();
+      
       $data['roles'] = $rolModel->whereNotIn('name', ['Administrador'])->findAll();
 
-      $data['aside'] = view('templates/aside');
-      $data['footer'] = view('templates/footer');
+
 
       $perPage = $this->request->getGet('perPage') ?? 1;
       $data['perPage'] = $perPage;
@@ -58,8 +59,6 @@ class UserController extends BaseController
       'phone' => 'required|numeric|min_length[7]|max_length[11]',
       'country' => 'required|alpha_space|max_length[100]'
     ]);
-
-
 
 
     try {

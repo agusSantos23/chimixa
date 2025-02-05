@@ -9,8 +9,13 @@ use CodeIgniter\Router\RouteCollection;
 // Basic
 $routes->get('/', to: 'Home::index');
 $routes->get('about', 'Home::about');
-$routes->get('profile', 'Home::profile');
 $routes->get('calendar', 'Home::calendar');
+
+
+// Profile
+$routes->get('profile', 'ProfileController::profile');
+$routes->get('profile/logout', 'ProfileController::logout');
+
 
 
 // authentication

@@ -59,10 +59,7 @@ class Home extends BaseController{
     return view('./pages/about');
   }
 
-  public function profile(): string{
-    return view('./pages/overview');
-  }
-
+  
 
 
 }

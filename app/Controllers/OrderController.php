@@ -23,8 +23,6 @@ class OrderController extends BaseController{
       
       $data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
 
-      $data['aside'] = view('templates/aside');
-      $data['footer'] = view('templates/footer');
 
     
 

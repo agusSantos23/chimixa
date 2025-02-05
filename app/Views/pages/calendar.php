@@ -33,7 +33,8 @@ License: For each use you must have a valid license purchased only from above li
 			<!--begin::Page-->
 			<div class="page d-flex flex-row flex-column-fluid">
 
-				<?= $aside ?>
+				<?php include APPPATH . 'Views/templates/aside.php' ?>
+
 
 				<!--begin::Wrapper-->
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
@@ -397,7 +398,8 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-					<?= $footer ?>
+					<?php include APPPATH . 'Views/templates/footer.php' ?>
+
 				</div>
 				<!--end::Wrapper-->
 			</div>

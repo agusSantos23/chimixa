@@ -40,7 +40,6 @@ class AuthController extends BaseController
 
         $user = $userModel->getUserWithRoleByEmail($email);
 
-        print_r($user);
         if ($user) {
 
           if (password_verify($password, $user->password)) {
@@ -49,7 +48,7 @@ class AuthController extends BaseController
             session()->set([
               'userId' => $user->id,
               'userName' => $user->name,
-              'userLastname' => $user->last_name,
+              'userLastName' => $user->last_name,
               'userEmail' => $user->email,
               'userRole' => $user->role_name,
               'userPhonePrefix' => $user->prefix,
@@ -66,7 +65,7 @@ class AuthController extends BaseController
         
 
         }
-        return redirect()->to(base_url('auth/login'))->with('validation', ['Credenciales incorrectos']);
+        return redirect()->to(base_url('auth/login'))->with('validation', ['Credenciales incorrectas']);
 
       }
     } catch (Exception $e) {
@@ -131,7 +130,7 @@ class AuthController extends BaseController
         session()->set([
           'userId' => $user->id,
           'userName' => $user->name,
-          'userLastname' => $user->lastname,
+          'userLastName' => $user->lastname,
           'userEmail' => $user->email,
           'userRole' => $user->role_name,
           'userPhonePrefix' => $user->prefix,

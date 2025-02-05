@@ -1,3 +1,6 @@
 public/assets/media
 writable/logs
 writable/session
+writable/debugbar
+
+.env
