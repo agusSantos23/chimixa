@@ -205,14 +205,14 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div>
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="roles/delete">
 											<!--begin::Table head-->
 											<thead>
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
 														<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
+															<input id="select_all" class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
 
@@ -220,7 +220,6 @@ License: For each use you must have a valid license purchased only from above li
 													<th class="min-w-150px">Associated accounts</th>
 													<th class="w-125px">Actions</th>
 													
-
 												</tr>
 												<!--end::Table row-->
 											</thead>
@@ -232,11 +231,13 @@ License: For each use you must have a valid license purchased only from above li
 
 													<tr>
 														
+														<!--begin::Checkbox-->
 														<td>
 															<div class="form-check form-check-sm form-check-custom form-check-solid">
 																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
 														</td>
+														<!--end::Checkbox-->
 
 														
 
@@ -263,7 +264,7 @@ License: For each use you must have a valid license purchased only from above li
 																	<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
 																</div>
 																<div class="menu-item px-3">
-																	<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+																	<a href="#" class="menu-link px-3" data-id="<?= $rol['id'] ?>" data-kt-customer-table-filter="delete_row">Delete</a>
 																</div>
 															</div>
 														</td>

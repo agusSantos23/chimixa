@@ -6,19 +6,21 @@ use App\Models\RolModel;
 use Exception;
 
 
-class RolController extends BaseController{
+class RolController extends BaseController
+{
 
-  public function index(){
+  public function index()
+  {
     $rolModel = new RolModel();
 
     try {
 
       $userRole = session()->get('userRole');
-        
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
 
-      
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+
+
+
       $perPage = $this->request->getGet('perPage') ?? 1;
       $data['perPage'] = $perPage;
 
@@ -29,14 +31,14 @@ class RolController extends BaseController{
 
 
       return view('pages/list/rol_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
 
-  
-  public function saveRol($id = null){
+
+  public function saveRol($id = null)
+  {
     $rolModel = new RolModel();
 
     $validation = \Config\Services::validation();
@@ -49,13 +51,12 @@ class RolController extends BaseController{
       if (!$validation->withRequest($this->request)->run()) {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
-
       } else {
 
         $rolData = [
-          'name' => $this->request->getPost('name')
+          'name' => ucfirst($this->request->getPost('name'))
         ];
-        
+
 
         if ($id) {
           /*
@@ -63,16 +64,13 @@ class RolController extends BaseController{
           $message = 'Rol successfully updated';
           */
         } else {
-          
+
           if ($rolModel->save($rolData)) {
             return $this->response->setStatusCode(200)->setJSON(['message' => 'Rol added successfully']);
           } else {
             return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
           }
-          
-            
         }
-
       }
     } catch (Exception $e) {
 
@@ -80,6 +78,28 @@ class RolController extends BaseController{
     }
   }
 
+  public function deleteRol(){
+    $rolModel = new RolModel();
+
+    try {
+      $ids = $this->request->getPost('ids');
+
+      if (count($ids) === 0) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+    }
+
+
+    if ($rolModel->deleteIds($ids)) {
+        return $this->response->setJSON(['success' => true]);
+    } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
+    }
+
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
 
 
 }

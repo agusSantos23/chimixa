@@ -42,6 +42,7 @@ $routes->get('orders', 'OrderController::index');
 $routes->get('roles', 'RolController::index');
 $routes->post('roles/save', 'RolController::saveRol');
 $routes->post('roles/save/(:any)', 'RolController::saveRol/$1');
+$routes->post('roles/delete', 'RolController::deleteRol');
 
 
 

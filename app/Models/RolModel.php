@@ -10,7 +10,8 @@ class RolModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['name', 'disabled'];
 
-  public function getCountByRoles($perPage = 1, $searchParams = []){
+  public function getCountByRoles($perPage = 1, $searchParams = [])
+  {
     $userModel = new \App\Models\UserModel();
 
     $builder = $this->builder();
@@ -29,4 +30,12 @@ class RolModel extends Model
       'pager' => $pager
     ];
   }
+
+
+  public function deleteIds($ids){
+
+    return $this->db->table($this->table)->whereIn('id', $ids)->delete();
+    
+  }
+
 }
