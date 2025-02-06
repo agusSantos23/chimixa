@@ -26,14 +26,13 @@ class UserController extends BaseController
 
 
 
-      $perPage = $this->request->getGet('perPage') ?? 1;
+      $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
       $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams));
-
 
 
       return view('pages/list/user_list', $data);
@@ -106,15 +105,28 @@ class UserController extends BaseController
     }
   }
 
-  public function deleteUser($id)
+  public function deleteUser()
   {
     $userModel = new UserModel();
 
     try {
-      $userModel->delete($id);
-      return redirect()->to('/users')->with('success', 'User successfully deleted');
+      $ids = $this->request->getPost('ids');
+
+      if (count($ids) === 0) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+      if ($userModel->deactivateIds($ids, date('Y-m-d H:i:s'))) {
+        return $this->response->setJSON(['success' => true]);
+      } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Users not found']);
+      }
+      
     } catch (Exception $e) {
+
       echo "Error: " . $e->getMessage();
     }
   }
+  
 }

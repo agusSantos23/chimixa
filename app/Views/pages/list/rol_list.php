@@ -95,7 +95,7 @@ License: For each use you must have a valid license purchased only from above li
 
 								<!--begin::Card header-->
 								<div class="d-flex justify-content-end card-header border-0 pt-6">
-									
+
 
 									<!--begin::Card toolbar-->
 									<div class="card-toolbar">
@@ -146,6 +146,26 @@ License: For each use you must have a valid license purchased only from above li
 														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Name" value="<?= esc($searchParams['name'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
+
+
+
+													<!--begin::DisabledFilter-->
+													<div class="d-flex align-items-center position-relative my-1">
+														<span class="svg-icon svg-icon-1 position-absolute ms-6">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+															</svg>
+														</span>
+
+														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+
+															<option value="">All</option>
+															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
+															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
+
+														</select>
+													</div>
+													<!--end::DisabledFilter-->
 
 
 													<!--begin::Actions-->
@@ -199,7 +219,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Card toolbar-->
 								</div>
 								<!--end::Card header-->
-								
+
 								<div class="card-body pt-0">
 
 									<!--begin::Card body-->
@@ -219,7 +239,7 @@ License: For each use you must have a valid license purchased only from above li
 													<th class="min-w-150px">Name</th>
 													<th class="min-w-150px">Associated accounts</th>
 													<th class="w-125px">Actions</th>
-													
+
 												</tr>
 												<!--end::Table row-->
 											</thead>
@@ -230,7 +250,7 @@ License: For each use you must have a valid license purchased only from above li
 												<?php foreach ($roles as $rol): ?>
 
 													<tr>
-														
+
 														<!--begin::Checkbox-->
 														<td>
 															<div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -239,7 +259,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 														<!--end::Checkbox-->
 
-														
+
 
 														<td>
 															<?= esc($rol['name']) ?>
@@ -249,7 +269,7 @@ License: For each use you must have a valid license purchased only from above li
 															<?= esc($rol['count']) ?>
 														</td>
 
-														
+
 
 														<td class="text-end">
 															<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
@@ -283,15 +303,24 @@ License: For each use you must have a valid license purchased only from above li
 
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
+
+										<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage']); 
+											$queryString = http_build_query($urlParams);
+										?>
+
 										<form action="<?= base_url('roles') ?>" method="get" class="d-inline-block">
+											<?php if (!empty($queryString)): ?>
+												<input type="hidden" name="<?= $queryString ?>">
+											<?php endif; ?>
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
-												<option value="1" <?= ($perPage == 1) ? 'selected' : '' ?>>1</option>
-												<option value="2" <?= ($perPage == 2) ? 'selected' : '' ?>>2</option>
-												<option value="3" <?= ($perPage == 3) ? 'selected' : '' ?>>3</option>
-												<option value="4" <?= ($perPage == 4) ? 'selected' : '' ?>>4</option>
+												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
+												<option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
+												<option value="25" <?= ($perPage == 25) ? 'selected' : '' ?>>25</option>
+												<option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
 											</select>
-											
 										</form>
 
 
@@ -302,7 +331,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Card footer-->
 
 								</div>
-								
+
 
 
 
@@ -321,7 +350,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 										<!--begin::Form-->
-										<form class="form" id="kt_modal_add_customer_form" >
+										<form class="form" id="kt_modal_add_customer_form">
 
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
@@ -351,7 +380,7 @@ License: For each use you must have a valid license purchased only from above li
 
 												<!--begin::Scroll-->
 												<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
-													
+
 													<!--begin::Input group-->
 													<div class="fv-row mb-7">
 
@@ -364,7 +393,7 @@ License: For each use you must have a valid license purchased only from above li
 														<!--end::Input-->
 
 													</div>
-													<!--end::Input group-->			
+													<!--end::Input group-->
 
 												</div>
 												<!--end::Scroll-->
@@ -512,7 +541,7 @@ License: For each use you must have a valid license purchased only from above li
 
 				<?php include APPPATH . 'Views/templates/footer.php' ?>
 
-				
+
 
 			</div>
 			<!--end::Wrapper-->

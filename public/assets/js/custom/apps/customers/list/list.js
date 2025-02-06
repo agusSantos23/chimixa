@@ -1,7 +1,10 @@
 "use strict";
 
+
+
 var KTCustomersList = function () {
 	var t, e, o, n;
+
 
 	const baseURL = window.location.origin + '/chimixa/public/';
 

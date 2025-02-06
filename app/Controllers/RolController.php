@@ -21,16 +21,18 @@ class RolController extends BaseController
 
 
 
-      $perPage = $this->request->getGet('perPage') ?? 1;
+      $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+
       $data = array_merge($data, $rolModel->getCountByRoles($perPage, $searchParams));
 
 
       return view('pages/list/rol_list', $data);
+
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
@@ -78,7 +80,8 @@ class RolController extends BaseController
     }
   }
 
-  public function deleteRol(){
+  public function deleteRol()
+  {
     $rolModel = new RolModel();
 
     try {
@@ -86,20 +89,18 @@ class RolController extends BaseController
 
       if (count($ids) === 0) {
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
-    }
+      }
 
 
-    if ($rolModel->deleteIds($ids)) {
+      if ($rolModel->deactivateIds($ids, date('Y-m-d H:i:s'))) {
         return $this->response->setJSON(['success' => true]);
-    } else {
+      } else {
         return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
-    }
+      }
 
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
     }
   }
-
-
 }

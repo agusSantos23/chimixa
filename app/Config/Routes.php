@@ -30,7 +30,7 @@ $routes->post('auth/register','AuthController::register');
 $routes->get('users', to: 'UserController::index');
 $routes->post('users/save', 'UserController::saveUser');
 $routes->post('users/save/(:any)', 'UserController::saveUser/$1');
-$routes->get('users/delete/(:any)', 'UserController::deleteUser/$1');
+$routes->post('users/delete', 'UserController::deleteUser');
 
 
 // orders

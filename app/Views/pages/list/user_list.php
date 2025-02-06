@@ -204,6 +204,23 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
+													<!--begin::DisabledFilter-->
+													<div class="d-flex align-items-center position-relative my-1">
+														<span class="svg-icon svg-icon-1 position-absolute ms-6">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+															</svg>
+														</span>
+
+														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+
+															<option value="">All</option>
+															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
+															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
+
+														</select>
+													</div>
+													<!--end::DisabledFilter-->
 
 
 													<!--begin::Actions-->
@@ -264,7 +281,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div>
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="users/delete">
 											<!--begin::Table head-->
 											<thead>
 												<!--begin::Table row-->
@@ -284,6 +301,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Table row-->
 											</thead>
 											<!--end::Table head-->
+
 											<!--begin::Table body-->
 											<tbody class="fw-bold text-gray-600">
 												<?php foreach ($users as $user): ?>
@@ -347,7 +365,7 @@ License: For each use you must have a valid license purchased only from above li
 																<!--end::Menu item-->
 																<!--begin::Menu item-->
 																<div class="menu-item px-3">
-																	<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+																	<a href="#" class="menu-link px-3" data-id="<?= $user['id'] ?>" data-kt-customer-table-filter="delete_row">Delete</a>
 																</div>
 																<!--end::Menu item-->
 															</div>
@@ -355,7 +373,6 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 														<!--end::Action=-->
 													</tr>
-
 												<?php endforeach; ?>
 											</tbody>
 											<!--end::Table body-->
@@ -367,18 +384,25 @@ License: For each use you must have a valid license purchased only from above li
 
 									</div>
 									<!--end::Card body-->
-
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
+										<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage']); 
+											$queryString = http_build_query($urlParams);
+										?>
+
 										<form action="<?= base_url('users') ?>" method="get" class="d-inline-block">
+											<?php if (!empty($queryString)): ?>
+												<input type="hidden" name="<?= $queryString ?>">
+											<?php endif; ?>
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
-												<option value="1" <?= ($perPage == 1) ? 'selected' : '' ?>>1</option>
-												<option value="2" <?= ($perPage == 2) ? 'selected' : '' ?>>2</option>
-												<option value="3" <?= ($perPage == 3) ? 'selected' : '' ?>>3</option>
-												<option value="4" <?= ($perPage == 4) ? 'selected' : '' ?>>4</option>
+												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
+												<option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
+												<option value="25" <?= ($perPage == 25) ? 'selected' : '' ?>>25</option>
+												<option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
 											</select>
-
 										</form>
 
 
