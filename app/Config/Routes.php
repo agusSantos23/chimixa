@@ -40,8 +40,9 @@ $routes->get('orders', 'OrderController::index');
 
 // roles
 $routes->get('roles', 'RolController::index');
+$routes->get('roles/get/(:any)', 'RolController::getRol/$1');
 $routes->post('roles/save', 'RolController::saveRol');
-$routes->post('roles/save/(:any)', 'RolController::saveRol/$1');
+$routes->post('roles/update/(:any)', 'RolController::saveRol/$1');
 $routes->post('roles/delete', 'RolController::deleteRol');
 
 

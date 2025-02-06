@@ -1,7 +1,7 @@
 "use strict";
 
 let KTModalCustomersAdd = function () {
-  let t, e, o, n, r, i;
+  let t, e, o, n, r, i, roleId = null;
 
   const baseURL = window.location.origin + '/chimixa/public/';
 
@@ -45,16 +45,19 @@ let KTModalCustomersAdd = function () {
 
             t.setAttribute("data-kt-indicator", "on");
             t.disabled = true;
+
             const formData = new FormData(r);
 
+            const url = roleId ? baseURL + 'roles/update/' + roleId : baseURL + 'roles/save'
+            
             $.ajax({
-              url: baseURL + 'roles/save',
+              url: url,
               type: 'POST',
               data: formData,
               contentType: false,
               processData: false,
               success: function (response) {
-
+                
                 t.removeAttribute("data-kt-indicator");
                 $('#validation-errors').hide().empty();
 
@@ -78,7 +81,7 @@ let KTModalCustomersAdd = function () {
 
                 let response = xhr.responseJSON;
                 let errorMessages = '';
-
+                
                 if (response && response.errors) {
 
                   for (const [field, messages] of Object.entries(response.errors)) {
@@ -86,6 +89,7 @@ let KTModalCustomersAdd = function () {
                   }
 
                 } else {
+                  
                   errorMessages = 'Sorry, there were some errors. Please try again.';
                 }
 
@@ -123,7 +127,9 @@ let KTModalCustomersAdd = function () {
           }
         }).then(function (t) {
           if (t.value) {
+
             location.reload();
+
           } else if ("cancel" === t.dismiss) {
             Swal.fire({
               text: "Your form has not been canceled!",
@@ -168,8 +174,54 @@ let KTModalCustomersAdd = function () {
         });
       });
 
+      this.editRoleEvent();
 
+    },
+
+    editRoleEvent: function () {
+      document.querySelectorAll('[data-kt-role-table-filter="edit_row"]').forEach((e) => {
+
+        e.addEventListener("click", function (e) {
+
+          e.preventDefault();
+
+          roleId = $(this).data('id'); 
+          
+          $.ajax({
+            url: baseURL + 'roles/get/' + roleId,
+            type: 'GET',
+            success: function (response) {
+              
+              if (response.success) {
+                
+                $('#kt_modal_add_customer_form input[name="name"]').val(response.success.name);
+                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Role");
+
+
+                i.show();
+              } else {
+
+                Swal.fire({
+                  text: 'Error loading role data',
+                  icon: 'error',
+                  confirmButtonText: 'OK',
+                  customClass: { confirmButton: 'btn btn-primary' }
+                });
+              }
+            },
+            error: function () {
+              Swal.fire({
+                text: 'There was a problem loading role data',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass: { confirmButton: 'btn btn-primary' }
+              });
+            }
+          });
+        });
+      });
     }
+
   };
 }();
 

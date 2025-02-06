@@ -281,7 +281,7 @@ License: For each use you must have a valid license purchased only from above li
 															</a>
 															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																<div class="menu-item px-3">
-																	<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
+																	<a href="#" class="menu-link px-3" data-id="<?= $rol['id'] ?>" data-kt-role-table-filter="edit_row">Edit</a>
 																</div>
 																<div class="menu-item px-3">
 																	<a href="#" class="menu-link px-3" data-id="<?= $rol['id'] ?>" data-kt-customer-table-filter="delete_row">Delete</a>

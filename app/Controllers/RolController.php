@@ -32,11 +32,33 @@ class RolController extends BaseController
 
 
       return view('pages/list/rol_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
+
+
+
+  public function getRol($id)
+  {
+    $rolModel = new RolModel();
+
+    try {
+
+      $role = $rolModel->find($id);
+
+      if ($role) {
+
+        return $this->response->setStatusCode(200)->setJSON(['success' => $role]);
+      } else {
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
+      }
+    } catch (Exception $e) {
+      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting role: ' . $e->getMessage()]);
+    }
+  }
+
+
 
 
   public function saveRol($id = null)
@@ -60,23 +82,40 @@ class RolController extends BaseController
         ];
 
 
+        if ($rolModel->where('name', $rolData['name'])->first()) {
+          return $this->response->setStatusCode(404)->setJSON(['errors' => ['name' => 'The role name is already in use']]);
+        }
+
+
+
+
         if ($id) {
-          /*
-          $rolModel->update($id, $rolName);
-          $message = 'Rol successfully updated';
-          */
+
+          if (!$rolModel->find($id)) {
+            return $this->response->setStatusCode(404)->setJSON(['errors' => ['name' => 'Role not found']]);
+          }
+
+
+
+          if ($rolModel->update($id, $rolData)) {
+            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['name' => 'Failed to updated rol']]);
+          }
+
+
         } else {
 
           if ($rolModel->save($rolData)) {
-            return $this->response->setStatusCode(200)->setJSON(['message' => 'Rol added successfully']);
+            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
           } else {
-            return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['name' => 'Failed to add rol']]);
           }
         }
       }
     } catch (Exception $e) {
 
-      echo "Error: " . $e->getMessage();
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
 
@@ -97,7 +136,6 @@ class RolController extends BaseController
       } else {
         return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
       }
-
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
