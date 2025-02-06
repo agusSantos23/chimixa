@@ -22,7 +22,7 @@ class UserController extends BaseController
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
       
-      $data['roles'] = $rolModel->whereNotIn('name', ['Administrador'])->findAll();
+      $data['roles'] = $rolModel->getActiveRolesExcludingAdmin();
 
 
 
@@ -88,6 +88,11 @@ class UserController extends BaseController
           $message = 'User successfully updated';
           */
         } else {
+
+          if ($userModel->where('email', $userData['email'])->first()) {
+            return $this->response->setStatusCode(400)->setJSON(['errors' => ['This email is already registered']]);
+          }
+
           
           if ($userModel->save($userData)) {
             return $this->response->setStatusCode(200)->setJSON(['message' => 'User added successfully']);

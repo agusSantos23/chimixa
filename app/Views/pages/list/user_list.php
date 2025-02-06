@@ -451,13 +451,13 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Modal body-->
 											<div class="modal-body py-10 px-lg-17">
 
-												<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
 
 
 
 												<!--begin::Scroll-->
 												<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
+													<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
 
 
 													<!--begin::Input group for image selection-->
@@ -567,7 +567,6 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<div class="d-flex gap-3">
-
 																<select class="form-select form-select-solid fw-bolder" name="prefix" aria-label="Select a Prefix" data-control="select2" data-placeholder="Select a Prefix..." data-dropdown-parent="#kt_modal_add_customer">
 																	<option value=""></option>
 																	<option value="1">+1 --- (USA / Canada)</option>
@@ -703,7 +702,6 @@ License: For each use you must have a valid license purchased only from above li
 																	<option value="388">+388 --- (Yugoslavia)</option>
 
 																</select>
-
 															</div>
 															<!--end::Input-->
 														</div>
