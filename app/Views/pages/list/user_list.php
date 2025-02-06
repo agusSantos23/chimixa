@@ -1081,7 +1081,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
-	<script src="./assets/js/custom/apps/customers/add.js"></script>
+	<script src="./assets/js/custom/apps/customers/add/addUser.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
