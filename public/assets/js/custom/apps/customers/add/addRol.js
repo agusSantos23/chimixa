@@ -159,7 +159,9 @@ let KTModalCustomersAdd = function () {
           }
         }).then(function (t) {
           if (t.value) {
+
             location.reload();
+
           } else if ("cancel" === t.dismiss) {
             Swal.fire({
               text: "Your form has not been canceled!",
@@ -174,11 +176,11 @@ let KTModalCustomersAdd = function () {
         });
       });
 
-      this.editRoleEvent();
+      this.editEvent();
 
     },
 
-    editRoleEvent: function () {
+    editEvent: function () {
       document.querySelectorAll('[data-kt-role-table-filter="edit_row"]').forEach((e) => {
 
         e.addEventListener("click", function (e) {
@@ -194,8 +196,9 @@ let KTModalCustomersAdd = function () {
               
               if (response.success) {
                 
-                $('#kt_modal_add_customer_form input[name="name"]').val(response.success.name);
                 $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Role");
+                
+                $('#kt_modal_add_customer_form input[name="name"]').val(response.success.name);
 
 
                 i.show();

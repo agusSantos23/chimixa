@@ -20,7 +20,7 @@ class UserModel extends Model
   public function getUserWithRoleById($userId)
   {
     $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
+    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
     $builder->where('users.id', $userId);
 
@@ -39,7 +39,7 @@ class UserModel extends Model
 
   public function getAllUsersWithRoles($perPage = 5,  $searchParams = []){
     $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
+    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
   
 

@@ -28,8 +28,9 @@ $routes->post('auth/register','AuthController::register');
 
 // users
 $routes->get('users', to: 'UserController::index');
+$routes->get('users/get/(:any)', 'UserController::getUser/$1');
 $routes->post('users/save', 'UserController::saveUser');
-$routes->post('users/save/(:any)', 'UserController::saveUser/$1');
+$routes->post('users/update/(:any)', 'UserController::saveUser/$1');
 $routes->post('users/delete', 'UserController::deleteUser');
 
 

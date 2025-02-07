@@ -53,6 +53,7 @@ class RolController extends BaseController
       } else {
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
       }
+
     } catch (Exception $e) {
       return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting role: ' . $e->getMessage()]);
     }
@@ -89,10 +90,10 @@ class RolController extends BaseController
 
 
 
-        if ($id) {
+        if ($id !== null) {
 
           if (!$rolModel->find($id)) {
-            return $this->response->setStatusCode(404)->setJSON(['errors' => ['name' => 'Role not found']]);
+            return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Role not found']]);
           }
 
 
