@@ -236,6 +236,8 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 
+													<th></th>
+
 													<th class="min-w-150px">Name</th>
 													<th class="min-w-150px">Associated accounts</th>
 													<th class="w-125px">Actions</th>
@@ -247,9 +249,11 @@ License: For each use you must have a valid license purchased only from above li
 
 											<!--begin::Table body-->
 											<tbody class="fw-bold text-gray-600">
+
 												<?php foreach ($roles as $rol): ?>
 
 													<tr>
+
 
 														<!--begin::Checkbox-->
 														<td>
@@ -259,6 +263,11 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 														<!--end::Checkbox-->
 
+														<td>
+															<?php if ($rol['disabled']): ?>
+																<div class="w-25px border-top border-5 rounded border-danger" data-bs-toggle="tooltip" title="This role is disabled"></div>
+															<?php endif; ?>
+														</td>
 
 
 														<td>
@@ -305,9 +314,9 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="d-flex align-items-center justify-content-between mt-5">
 
 										<?php
-											$urlParams = $_GET;
-											unset($urlParams['perPage']); 
-											$queryString = http_build_query($urlParams);
+										$urlParams = $_GET;
+										unset($urlParams['perPage']);
+										$queryString = http_build_query($urlParams);
 										?>
 
 										<form action="<?= base_url('roles') ?>" method="get" class="d-inline-block">
