@@ -169,7 +169,7 @@ class UserController extends BaseController
       }
 
 
-      if ($userModel->deactivateIds($ids, date('Y-m-d H:i:s'))) {
+      if ($userModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => true]);
       } else {
         return $this->response->setJSON(['success' => false, 'message' => 'Users not found']);

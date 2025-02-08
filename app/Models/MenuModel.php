@@ -9,14 +9,26 @@ class MenuModel extends Model{
   protected $primaryKey = 'id';
   protected $allowedFields = ['name', 'description', 'price', 'disabled'];
 
-  public function getMenus($perPage = 1, $searchParams = []){
+  public function getMenus($perPage = 5, $searchParams = []){
     $builder = $this->builder();
+
+    if (isset($searchParams['disabledFilter'])) {
+      $disabledFilter = $searchParams['disabledFilter'];
+      
+      if ($disabledFilter == 'true') {
+        $builder->where('disabled IS NOT NULL');
+
+      } elseif ($disabledFilter == 'false') {
+        $builder->where('disabled IS NULL'); 
+      } 
+    }
 
     $searchFields = [
       'name' => 'name',
       'description' => 'description',
       'price' => 'price'
     ];
+
 
     foreach ($searchFields as $key => $field) {
       if (!empty($searchParams[$key])) {
@@ -29,4 +41,6 @@ class MenuModel extends Model{
       'pager' => $this->pager
     ];
   }
+
+ 
 }

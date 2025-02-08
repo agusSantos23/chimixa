@@ -1,7 +1,7 @@
 "use strict";
 
 let KTModalCustomersAdd = function () {
-  let t, e, o, n, r, i, userId = null, imgSelectable, selectedImage = '';
+  let t, e, o, n, r, i, menuId = null, platesCheckboxes, selectedPlates = [];
 
   const baseURL = window.location.origin + '/chimixa/public/';
 
@@ -12,7 +12,7 @@ let KTModalCustomersAdd = function () {
       t = r.querySelector("#kt_modal_add_customer_submit");
       e = r.querySelector("#kt_modal_add_customer_cancel");
       o = r.querySelector("#kt_modal_add_customer_close");
-      imgSelectable = r.querySelectorAll('.select-image');
+      platesCheckboxes = r.querySelectorAll('.select-plate');
 
 
       n = FormValidation.formValidation(r, {
@@ -20,80 +20,24 @@ let KTModalCustomersAdd = function () {
           name: {
             validators: {
               notEmpty: {
-                message: "The user's name is required"
+                message: "Name is required"
               }
             }
           },
-          email: {
+          description: {
             validators: {
               notEmpty: {
-                message: "The customer's email is required"
+                message: "Description is required"
               }
             }
           },
-          lastName: {
+          price: {
             validators: {
               notEmpty: {
-                message: "The last name is required"
+                message: "Price is required"
               }
             }
-          },
-          password: {
-            validators: {
-              callback: {
-                message: 'The password is required',
-                callback: function (input) {
-                  if (userId === null) {
-                    return input.value.length > 0;
-                  } else {
-                    return true;
-                  }
-                }
-              }
-            }
-          },
-          confirmPassword: {
-            validators: {
-              callback: {
-                message: 'The password confirmation is required',
-                callback: function (input) {
-                  if (userId === null) {
-                    return input.value === $(r).find('[name="password"]').val() && input.value.length > 0;
-                  } else {
-                    return true;
-                  }
-                }
-              }
-            }
-          },
-          prefix: {
-            validators: {
-              notEmpty: {
-                message: "The phone prefix is required"
-              }
-            }
-          },
-          phone: {
-            validators: {
-              notEmpty: {
-                message: "The phone number is required"
-              }
-            }
-          },
-          country: {
-            validators: {
-              notEmpty: {
-                message: "The country is required"
-              }
-            }
-          },
-          role: {
-            validators: {
-              notEmpty: {
-                message: "The rol of user is required"
-              }
-            }
-          },
+          }
 
         },
         plugins: {
@@ -107,23 +51,24 @@ let KTModalCustomersAdd = function () {
       });
 
 
+
       t.addEventListener("click", function (e) {
         e.preventDefault();
 
         n && n.validate().then(function (e) {
-
 
           if ("Valid" === e) {
 
             t.setAttribute("data-kt-indicator", "on");
             t.disabled = true;
 
-            if (selectedImage) {
+            if (selectedPlates.length > 0) {
 
               const formData = new FormData(r);
-              formData.append("profileImg", selectedImage);
+              formData.append("selectedPlates", JSON.stringify(selectedPlates));
 
-              const url = userId ? baseURL + 'users/update/' + userId : baseURL + 'users/save'
+
+              const url = menuId ? baseURL + 'menus/update/' + menuId : baseURL + 'menus/save';
 
               $.ajax({
                 url: url,
@@ -144,9 +89,11 @@ let KTModalCustomersAdd = function () {
                     customClass: {
                       confirmButton: "btn btn-primary"
                     }
+
                   }).then(function (e) {
+
                     if (e.isConfirmed) location.reload();
-                    
+
                   });
                 },
                 error: function (xhr) {
@@ -157,11 +104,9 @@ let KTModalCustomersAdd = function () {
                   let errorMessages = '';
 
                   if (response && response.errors) {
-
                     for (const [field, messages] of Object.entries(response.errors)) {
                       errorMessages += `<p>${messages}</p>`;
                     }
-
                   } else {
                     errorMessages = 'Sorry, there were some errors. Please try again.';
                   }
@@ -174,7 +119,7 @@ let KTModalCustomersAdd = function () {
               t.disabled = false;
 
               Swal.fire({
-                text: "You need to select one picture!",
+                text: "You need to select at least one plate!",
                 icon: "error",
                 buttonsStyling: false,
                 confirmButtonText: "OK, understood!",
@@ -184,7 +129,10 @@ let KTModalCustomersAdd = function () {
               });
             }
 
+
           } else {
+
+
             Swal.fire({
               text: "Sorry, there were some errors. Please try again.",
               icon: "error",
@@ -196,6 +144,9 @@ let KTModalCustomersAdd = function () {
             });
           }
         });
+        
+       
+       
       });
 
       e.addEventListener("click", function (t) {
@@ -263,21 +214,11 @@ let KTModalCustomersAdd = function () {
       });
 
 
-      imgSelectable.forEach(image => {
-        image.addEventListener('click', function () {
-
-          imgSelectable.forEach(img => img.classList.remove('border-primary'));
-
-          this.classList.add('border-primary');
-
-          selectedImage = this.getAttribute('data-image');
-        });
-      });
 
       this.editEvent();
-
-
+      this.handlePlateCheckboxes();
     },
+
 
     editEvent: function () {
       document.querySelectorAll('[data-kt-role-table-filter="edit_row"]').forEach((e) => {
@@ -286,38 +227,34 @@ let KTModalCustomersAdd = function () {
 
           e.preventDefault();
 
-          userId = $(this).data('id');
 
+          menuId = $(this).data('id');
 
           $.ajax({
-            url: baseURL + 'users/get/' + userId,
+            url: baseURL + 'menus/get/' + menuId,
             type: 'GET',
             success: function (response) {
 
               if (response.success) {
-                const dataUser = response.success;                
 
-                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit User");
+                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Menu");
 
-                $('#kt_modal_add_customer_form input[name="name"]').val(dataUser.name);
-                $('#kt_modal_add_customer_form input[name="lastName"]').val(dataUser.last_name);
-                $('#kt_modal_add_customer_form input[name="email"]').val(dataUser.email);
+                $('#kt_modal_add_customer_form input[name="name"]').val(response.menu.name);
 
-                $('#kt_modal_add_customer_form select[name="prefix"]').val(dataUser.prefix);
-                $('#kt_modal_add_customer_form input[name="phone"]').val(dataUser.phone);
+                $('#kt_modal_add_customer_form input[name="price"]').val(response.menu.price);
 
-                $('#kt_modal_add_customer_form select[name="role"]').val(dataUser.role_id);
-                $('#kt_modal_add_customer_form select[name="country"]').val(dataUser.country);
-
-                imgSelectable.forEach(image => {
-                  const imageFilename = image.getAttribute('data-image');
-
-                  if (imageFilename === dataUser.img) {
-                    image.classList.add('border-primary');
-                    selectedImage = dataUser.img;
-                  } else {
-                    image.classList.remove('border-primary'); 
-                  }
+                $('#kt_modal_add_customer_form input[name="description"]').val(response.menu.description);
+                
+                response.plates.forEach((plate) => {
+                  
+                  let checkbox = $(`#kt_modal_add_customer_form [value='${plate.id}']`);
+                  let amountInput = $(`#kt_modal_add_customer_form [data-id-plate='${plate.id}'] span`);
+           
+                  if (checkbox) checkbox.prop("checked", true);                 
+                  if (amountInput) amountInput.text(plate.amount);
+                  
+                  selectedPlates.push({ id: plate.id, count: plate.amount})
+                  amountInput.removeClass('text-decoration-line-through')
                 });
 
 
@@ -343,7 +280,68 @@ let KTModalCustomersAdd = function () {
           });
         });
       });
-    }
+    },
+
+    handlePlateCheckboxes: function () {
+      platesCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+          const plateId = this.value;
+
+          const existingPlate = selectedPlates.find(plate => plate.id === plateId);
+
+          if ($(this).prop('checked') && !existingPlate) {
+
+            selectedPlates.push({ id: plateId, count: 1 });
+            updatePlateCount(plateId, 1)
+            toogleStrikethrough(false, plateId)
+          } else {
+
+            selectedPlates = selectedPlates.filter(plate => plate.id !== plateId);
+            updatePlateCount(plateId, 0)
+            toogleStrikethrough(true, plateId)
+          }
+
+        });
+      });
+
+      function updatePlateCount(plateId, count) {
+        $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').text(count)
+      }
+
+      function toogleStrikethrough(isStrike, plateId) {
+        if (isStrike) {
+          $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').addClass('text-decoration-line-through')
+        } else {
+          $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').removeClass('text-decoration-line-through')
+        }
+      }
+      
+
+      $(r).on('click', '.increment-btn', function () {
+
+        const plateId = $(this).data('id');
+
+        const plate = selectedPlates.find(plate => plate.id === plateId);
+
+        if (plate) {
+          plate.count++;
+          $(this).siblings('.count').text(plate.count);
+        }
+      });
+
+      $(r).on('click', '.decrement-btn', function () {
+        const plateId = $(this).data('id');
+        const plate = selectedPlates.find(plate => plate.id === plateId);
+        if (plate && plate.count > 1) {
+          plate.count--;
+          $(this).siblings('.count').text(plate.count);
+        }
+      });
+    },
+
+    
+
+
   };
 }();
 

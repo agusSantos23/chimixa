@@ -15,7 +15,7 @@ class MenuPlateModel extends Model
 
   public function getPlatesByMenu($menu_id): array{
     $builder = $this->db->table('plates');
-    $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time');
+    $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time, amount');
     $builder->join('menus_plates', 'menus_plates.id_plate = plates.id');
     $builder->where('menus_plates.id_menu', $menu_id);
     $query = $builder->get();

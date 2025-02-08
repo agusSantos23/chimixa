@@ -232,12 +232,13 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 												</th>
 
-												<th class="min-w-150px">Nombre</th>
-												<th class="min-w-150px">Descripcion</th>
-												<th class="min-w-150px">Precio</th>
-												<th class="min-w-150px">Categoria</th>
-												<th class="min-w-150px">Tiempo de Preparacion</th>
-												<th class="w-125px">Acciones</th>
+												<th class="min-w-150px">Name</th>
+												<th class="min-w-150px">Description</th>
+												<th class="min-w-150px">Price</th>
+												<th class="min-w-150px">Category</th>
+												<th class="min-w-150px">Amount</th>
+												<th class="min-w-150px">Preparation Time</th>
+												<th class="w-125px">Actions</th>
 
 											</tr>
 											<!--end::Table row-->
@@ -248,10 +249,11 @@ License: For each use you must have a valid license purchased only from above li
 											<?php if (empty($plates)): ?>
 												<tr>
 													<td colspan="6" class="text-center">
-														<p>No se han encontrado platos en este menu</p>
+														<p>No dishes found in this menu</p>
 													</td>
 												</tr>
 											<?php else: ?>
+												
 												<?php foreach ($plates as $plate):
 
 													switch ($plate['category']) {
@@ -283,7 +285,9 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 
 														<td>
-															<?= $plate['name'] ?>
+															<a href="<?= base_url(relativePath: "plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
+																<?= $plate['name'] ?>
+															</a>
 														</td>
 
 														<td>
@@ -295,6 +299,10 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 														<td>
 															<?= $plate['category'] ?> 
+														</td>
+
+														<td>
+															<?= $plate['amount'] ?> 
 														</td>
 
 														<td>

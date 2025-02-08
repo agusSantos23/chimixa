@@ -49,8 +49,6 @@ $routes->post('roles/delete', 'RolController::deleteRol');
 
 
 
-
-
 // plates
 $routes->get('plates', 'PlateController::index');
 $routes->post('plates/save', 'PlateController::savePlate');
@@ -68,9 +66,10 @@ $routes->get('ingredients/delete/(:any)', 'IngredientController::deleteIngredien
 
 // menus
 $routes->get('menus', 'MenuController::index');
+$routes->get('menus/get/(:any)', 'MenuController::getMenu/$1');
 $routes->post('menus/save', 'MenuController::saveMenu');
-$routes->post('menus/save/(:any)', 'MenuController::saveMenu/$1');
-$routes->get('menus/delete/(:any)', 'MenuController::deleteMenu/$1');
+$routes->post('menus/update/(:any)', 'MenuController::saveMenu/$1');
+$routes->post('menus/delete', 'MenuController::deleteMenu');
 
 $routes->get('menuplates/(:any)', 'MenuController::platesOfMenu/$1');
 

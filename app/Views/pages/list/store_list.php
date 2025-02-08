@@ -238,9 +238,9 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 												</th>
 
-												<th class="min-w-150px">Nombre</th>
-												<th class="min-w-150px">allergenos</th>
-												<th class="min-w-150px">Cantidad</th>
+												<th class="min-w-150px">Name</th>
+												<th class="min-w-150px">Allergens</th>
+												<th class="min-w-150px">Amount</th>
 												
 												<th class="w-125px">Acciones</th>
 
@@ -253,7 +253,7 @@ License: For each use you must have a valid license purchased only from above li
 											<?php if (empty($ingredients)): ?>
 												<tr>
 													<td colspan="6" class="text-center">
-														<p>No se han encontrado ingredientes en este plato</p>
+														<p>No ingredients were found in this dish</p>
 													</td>
 												</tr>
 											<?php else: ?>

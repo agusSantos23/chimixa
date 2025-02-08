@@ -311,7 +311,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 
 														<td>
-															<a href="<?= base_url("plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
+															<a href="<?= base_url(relativePath: "plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
 																<?= $plate['name'] ?>
 															</a>
 														</td>

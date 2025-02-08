@@ -4,23 +4,29 @@ namespace App\Controllers;
 
 use App\Models\MenuModel;
 use App\Models\MenuPlateModel;
+use App\Models\PlateModel;
+
 
 use Exception;
 
 
 
-class MenuController extends BaseController {
-  public function index() {
+class MenuController extends BaseController
+{
+  public function index()
+  {
     $menuModel = new MenuModel();
+    $plateModel = new PlateModel();
 
     try {
-      
-      $userRole = session()->get('userRole');
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      
+      $menuRole = session()->get('userRole');
+      if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
-      $perPage = $this->request->getGet('perPage') ?? 1;
+
+      $data['plates'] = $plateModel->where('disabled', null)->findAll();
+
+      $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
@@ -28,82 +34,210 @@ class MenuController extends BaseController {
 
 
       $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams));
-     
+
 
       return view('pages/list/menu_list', $data);
-
     } catch (Exception $e) {
       return "Error: " . $e->getMessage();
     }
   }
 
 
-
-
-  public function saveMenu($id = null){
+  public function getMenu($id)
+  {
     $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
+
+
+    try {
+      $menu = $menuModel->find($id);
+
+      $menuPlates = $menuPlateModel->where('id_menu', $id)->findAll();
+
+
+
+      $plates = array_map(function ($plate) {
+
+        return ['id' => $plate['id_plate'], 'amount' => $plate['amount']];
+      }, $menuPlates);
+
+
+
+      if ($menu) {
+        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'menu' => $menu, 'plates' => $plates]);
+      } else {
+
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'menu not found']);
+      }
+    } catch (Exception $e) {
+
+      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting menu: ' . $e->getMessage()]);
+    }
+  }
+
+
+
+  public function saveMenu($id = null)
+  {
+    $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
 
     $validation = \Config\Services::validation();
     $validation->setRules([
       'name' => 'required|min_length[3]|max_length[255]',
       'description' => 'min_length[10]|max_length[500]',
-      'price' => 'required|decimal|greater_than_equal_to[0]',
+      'price' => 'required|numeric|greater_than_equal_to[0]|less_than_equal_to[99999999.99]',
+      'selectedPlates' => 'required',
     ]);
 
     try {
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        $data['validation'] = $validation;
-        return view('menu_form', $data);
+        return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
       } else {
 
         $menuData = [
-          'name' => $this->request->getPost('name'),
-          'description' => $this->request->getPost('description'),
+          'name' => ucfirst($this->request->getPost('name')),
+          'description' => ucfirst($this->request->getPost('description')),
           'price' => $this->request->getPost('price'),
+          'selectedPlates' =>  json_decode($this->request->getPost('selectedPlates'), true)
         ];
 
 
-        if ($id) {
-          $menuModel->update($id, $menuData);
-          $message = 'Menu successfully updated';
-        } else {
-          $menuModel->save($menuData);
-          $message = 'Menu created successfully';
-        }
+        if ($id !== null) {
 
-        return redirect()->to(uri: '/menus')->with('success', $message);
+          if (!$menuModel->find($id)) {
+            return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Menu not found']]);
+          }
+
+          if ($menuModel->update($id, $menuData)) {
+
+            $currentPlates = $menuPlateModel->where('id_menu', $id)->findAll();
+
+            $currentPlateIds = array_map(function ($plate) {
+              return $plate['id_plate'];
+            }, $currentPlates);
+
+            $selectedPlateIds = array_map(function ($plate) {
+              return $plate['id'];
+            }, $menuData['selectedPlates']);
+
+
+
+            foreach ($menuData['selectedPlates'] as $plate) {
+
+              if (in_array($plate['id'], $currentPlateIds)) {
+
+                $menuPlateModel->set([
+                  'amount' => $plate['count']
+                ])
+                  ->where('id_menu', $id)
+                  ->where('id_plate', $plate['id'])
+                  ->update();
+              } else {
+
+                $menuPlateModel->save([
+                  'id_menu' => $id,
+                  'id_plate' => $plate['id'],
+                  'amount' => $plate['count']
+                ]);
+              }
+            };
+
+            foreach ($currentPlates as $currentPlate) {
+              if (!in_array($currentPlate['id_plate'], $selectedPlateIds)) {
+                $menuPlateModel->where('id_menu', $id)
+                  ->where('id_plate', $currentPlate['id_plate'])
+                  ->delete();
+              }
+            }
+
+            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['user' => 'Failed to updated User']]);
+          }
+        } else {
+
+          if ($menuModel->where('name', $menuData['name'])->first()) {
+            return $this->response->setStatusCode(400)->setJSON(['errors' => ['This name is already registered']]);
+          }
+
+
+          if ($menuModel->save($menuData)) {
+
+            $menuId = $menuModel->where('name', $menuData['name'])->first()['id'];
+
+            $correct = true;
+
+            foreach ($menuData['selectedPlates'] as $plate) {
+
+              if (!$menuPlateModel->save(['id_menu' => $menuId, 'id_plate' => $plate['id'], 'amount' => $plate['count']])) {
+                $correct = false;
+              }
+            };
+
+            if ($correct) {
+              return $this->response->setStatusCode(200)->setJSON(['message' => 'Menu added successfully']);
+            } else {
+              $menuModel->delete($menuId);
+              return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
+            }
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
+          }
+        }
       }
     } catch (Exception $e) {
 
-      echo "Error: " . $e->getMessage();
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON([$menuData, 'success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
 
 
-  public function deleteMenu($id){
+  public function deleteMenu()
+  {
     $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
 
     try {
-      $menuModel->delete($id);
-      return redirect()->to('/menus')->with('success', 'Menu successfully deleted');
+
+      $ids = $this->request->getPost('ids');
+
+      if (count($ids) === 0) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+
+      if (!$menuModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+      }
+
+      if (!$menuPlateModel->whereIn('id_menu', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive menu plates']);
+      }
+
+      return $this->response->setJSON(['success' => true]);
     } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
 
 
-  public function platesOfMenu($menuId){
+  public function platesOfMenu($menuId)
+  {
     $menuModel = new MenuModel();
     $menuPlateModel = new MenuPlateModel();
 
 
     try {
 
-      $userRole = session()->get('userRole');
+      $menuRole = session()->get('userRole');
 
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+      if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
 
 

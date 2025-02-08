@@ -132,7 +132,7 @@ class RolController extends BaseController
       }
 
 
-      if ($rolModel->deactivateIds($ids, date('Y-m-d H:i:s'))) {
+      if ($rolModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => true]);
       } else {
         return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);

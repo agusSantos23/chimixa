@@ -60,12 +60,4 @@ class RolModel extends Model
 
 
 
-
-  public function deactivateIds($ids, $currentDate)
-  {
-
-    return $this->db->table($this->table)
-      ->whereIn('id', $ids)
-      ->update(['disabled' => $currentDate]);
-  }
 }

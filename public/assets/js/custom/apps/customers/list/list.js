@@ -45,7 +45,7 @@ var KTCustomersList = function () {
 							success: function (response) {
 								if (response.success) {
 									Swal.fire({
-										text: "Customer deleted successfully!",
+										text: "Element deleted successfully!",
 										icon: "success",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",
@@ -58,7 +58,7 @@ var KTCustomersList = function () {
 
 								} else {
 									Swal.fire({
-										text: "Error deleting customer!",
+										text: "Error deleting element!",
 										icon: "error",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",
@@ -116,7 +116,7 @@ var KTCustomersList = function () {
 			if (selectedIds.length > 0) {
 				
 				Swal.fire({
-					text: "Are you sure you want to delete selected customers?",
+					text: "Are you sure you want to delete selected elements?",
 					icon: "warning",
 					showCancelButton: true,
 					buttonsStyling: false,
@@ -137,11 +137,11 @@ var KTCustomersList = function () {
 								ids: selectedIds 
 							}, 
 							success: function (response) {
-
+								
 								if (response.success) {
 
 									Swal.fire({
-										text: "Selected customers deleted successfully!",
+										text: "Selected elements deleted successfully!",
 										icon: "success",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",
@@ -152,8 +152,9 @@ var KTCustomersList = function () {
 										location.reload();
 									});
 								} else {
+
 									Swal.fire({
-										text: "Error deleting selected customers!",
+										text: "Error deleting selected elements!",
 										icon: "error",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",
@@ -179,7 +180,7 @@ var KTCustomersList = function () {
 				});
 			} else {
 				Swal.fire({
-					text: "No customers selected!",
+					text: "No elements selected!",
 					icon: "warning",
 					buttonsStyling: false,
 					confirmButtonText: "Ok, got it!",
