@@ -7,10 +7,21 @@ use CodeIgniter\Model;
 class IngredientModel extends Model{
   protected $table = 'ingredients';
   protected $primaryKey = 'id';
-  protected $allowedFields = [ 'name', 'quantity_available', 'unit', 'expiration_date', 'price', 'allergens', 'disabled' ];
+  protected $allowedFields = [ 'name', 'quantity_available', 'measure', 'expiration_date', 'price', 'allergens', 'disabled' ];
 
-  public function getIngredients($perPage = 1, $searchParams = []) {
+  public function getIngredients($perPage = 5, $searchParams = []) {
     $builder = $this->builder();
+
+    if (isset($searchParams['disabledFilter'])) {
+      $disabledFilter = $searchParams['disabledFilter'];
+      
+      if ($disabledFilter == 'true') {
+        $builder->where('disabled IS NOT NULL');
+
+      } elseif ($disabledFilter == 'false') {
+        $builder->where('disabled IS NULL'); 
+      } 
+    }
 
     $searchFields = [
       'name' => 'name',

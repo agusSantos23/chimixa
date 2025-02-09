@@ -60,9 +60,12 @@ $routes->get('plateingredients/(:any)', 'PlateController::ingredientsOfPlate/$1'
 
 // ingredients
 $routes->get('ingredients', 'IngredientController::index');
+$routes->get('ingredients/get/(:any)', 'IngredientController::getIngredient/$1');
 $routes->post('ingredients/save', 'IngredientController::saveIngredient');
-$routes->post('ingredients/save/(:any)', 'IngredientController::saveIngredient/$1');
-$routes->get('ingredients/delete/(:any)', 'IngredientController::deleteIngredient/$1');
+$routes->post('ingredients/update/(:any)', 'IngredientController::saveIngredient/$1');
+$routes->post('ingredients/delete', 'IngredientController::deleteIngredient');
+
+
 
 // menus
 $routes->get('menus', 'MenuController::index');

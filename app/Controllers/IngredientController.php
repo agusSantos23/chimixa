@@ -7,21 +7,23 @@ use Exception;
 
 
 
-class IngredientController extends BaseController{
+class IngredientController extends BaseController
+{
 
-  public function index() {
+  public function index()
+  {
     $ingredientModel = new IngredientModel();
 
     try {
-      
+
       $userRole = session()->get('userRole');
-        
+
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
 
-  
 
-      $perPage = $this->request->getGet('perPage') ?? 1;
+
+
+      $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
@@ -33,78 +35,131 @@ class IngredientController extends BaseController{
 
 
       return view('pages/list/ingredient_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
 
 
+  public function getIngredient($id)
+  {
+    $ingredientModel = new IngredientModel();
 
-  public function saveIngredient($id = null){
+    try {
+
+      $ingredient = $ingredientModel->find($id);
+
+      if ($ingredient) {
+        if (!empty($ingredient['expiration_date'])) {
+          $ingredient['expiration_date'] = date('d/m/Y', strtotime($ingredient['expiration_date']));
+        }
+
+        return $this->response->setStatusCode(200)->setJSON(['success' => $ingredient]);
+      } else {
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
+      }
+    } catch (Exception $e) {
+      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting ingredient: ' . $e->getMessage()]);
+    }
+  }
+
+
+
+  public function saveIngredient($id = null)
+  {
     $ingredientModel = new IngredientModel();
 
     $validation = \Config\Services::validation();
     $validation->setRules([
       'name' => 'required|min_length[3]|max_length[255]',
-      'category' => 'required|in_list[ vegetal, carne, pescado, especia, lacteos, frutas, granos, bebidas, condimentos, panaderia ]',
-      'quantity_available' => 'required|decimal|greater_than_equal_to[0]',
-      'unit' => 'required|in_list[ g, ml, kg, l, oz, lb, cda, unidad ]',
-      'expiration_date' => 'required|valid_date[Y-m-d]',
-      'price' => 'required|decimal|greater_than_equal_to[0]',
-      'allergens' => 'permit_empty|in_list[ gluten, crustáceos, huevos, pescado, cacahuetes, soja, leche, frutos secos, apio, mostaza, sesamo, sulfitos, altramuces, moluscos ]'
+      'quantityAvailabe' => 'required|decimal|greater_than_equal_to[1]',
+      'measure' => 'required|in_list[ g, kg, oz, lb, cda, u]',
+      'expirationDate' => 'permit_empty|valid_date[d/m/Y]',
+      'price' => 'required|decimal|greater_than_equal_to[1]|less_than_equal_to[99999999.99]',
     ]);
 
     try {
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        $data['validation'] = $validation;
-        return view('ingredient_form', $data);
-
-      }else{
+        return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
+      } else {
 
         $ingredientData = [
           'name' => $this->request->getPost('name'),
-          'category' => $this->request->getPost('category'),
-          'quantity_available' => $this->request->getPost('quantity_available'),
-          'unit' => $this->request->getPost('unit'),
-          'expiration_date' => $this->request->getPost('expiration_date'),
+          'quantity_available' => $this->request->getPost('quantityAvailabe'),
+          'measure' => $this->request->getPost('measure'),
           'price' => $this->request->getPost('price'),
-          'allergens' => $this->request->getPost('allergens')
         ];
 
-        
-        if ($id) {
-          $ingredientModel->update($id, $ingredientData);
-          $message = 'Ingredient successfully updated';
-
-        } else {
-          $ingredientModel->save($ingredientData);
-          $message = 'Ingredient created successfully';
+        $expirationDate = $this->request->getPost('expirationDate');
+        if (!empty($expirationDate)) {
+          $ingredientData['expiration_date'] = date('Y-m-d', strtotime(str_replace('/', '-', $expirationDate)));
         }
 
-        return redirect()->to(uri: 'ingredients')->with('success', $message);
+
+        $allergens = $this->request->getPost('allergens');
+        if (!empty($allergens)) {
+          $allergensDecode = json_decode($allergens, true);
+
+          $ingredientData['allergens'] = json_encode(array_map(function ($item) {
+            return $item['value'];
+          }, $allergensDecode));
+        }
+
+
+
+        if ($id !== null) {
+
+
+          if (!$ingredientModel->find($id)) {
+            return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Ingredient not found']]);
+          }
+
+
+
+          if ($ingredientModel->update($id, $ingredientData)) {
+            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['name' => 'Failed to updated ingredient']]);
+          }
+        } else {
+
+          if ($ingredientModel->where('name', $ingredientData['name'])->first()) {
+            return $this->response->setStatusCode(400)->setJSON(['errors' => ['This name is already registered']]);
+          }
+
+          if ($ingredientModel->save($ingredientData)) {
+            return $this->response->setStatusCode(200)->setJSON(['success' => true, $ingredientData]);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['Failed to add rol']]);
+          }
+        }
+      }
+    } catch (Exception $e) {
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
+
+
+  public function deleteIngredient()
+  {
+    $ingredientModel = new IngredientModel();
+
+    try {
+      $ids = $this->request->getPost('ids');
+
+      if (count($ids) === 0) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
 
-      
+      if ($ingredientModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+        return $this->response->setJSON(['success' => true]);
+      } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
+      }
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
-
-
-  public function deleteIngredient($id){
-    $ingredientModel = new IngredientModel();
-
-    try {
-      $ingredientModel->delete($id);
-      return redirect()->to('/ingredients')->with('success', 'Ingredient successfully deleted');
-
-    }  catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
-    }
-  }
-
-
 }
