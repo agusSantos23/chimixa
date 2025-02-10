@@ -13,13 +13,45 @@ class MenuPlateModel extends Model
 
   protected $allowedFields = ['id_menu', 'id_plate', 'amount', 'disabled'];
 
-  public function getPlatesByMenu($menu_id): array{
-    $builder = $this->db->table('plates');
-    $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time, amount');
-    $builder->join('menus_plates', 'menus_plates.id_plate = plates.id');
-    $builder->where('menus_plates.id_menu', $menu_id);
-    $query = $builder->get();
+  public function getPlatesByMenu($menuId, $perPage, $searchParams): array{
+    $builder = $this->builder();
 
-    return $query->getResultArray();
+    $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time, menus_plates.amount as amount');
+    $builder->join('plates', 'menus_plates.id_plate = plates.id');
+
+    $builder->where('menus_plates.id_menu', $menuId);
+
+
+    
+    if (isset($searchParams['disabledFilter'])) {
+      $disabledFilter = $searchParams['disabledFilter'];
+      
+      if ($disabledFilter == 'true') {
+        $builder->where('plates.disabled IS NOT NULL');
+
+      } elseif ($disabledFilter == 'false') {
+        $builder->where('plates.disabled IS NULL'); 
+      } 
+    }
+
+    $searchFields = [
+      'name' => 'plates.name',
+      'description' => 'plates.description',
+      'price' => 'plates.price',
+      'category' => 'plates.category',
+      'amount' => 'menus_plates.amount',
+      'preparation_time' => 'preparation_time'
+    ];
+
+    foreach ($searchFields as $key => $field) {
+      if (!empty($searchParams[$key])) {
+        $builder->like($field, $searchParams[$key]);
+      }
+    }
+
+    return [
+      'platesOfMenu' => $this->paginate($perPage),  
+      'pager' => $this->pager,               
+    ];
   }
 }

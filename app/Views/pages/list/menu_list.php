@@ -67,7 +67,7 @@ License: For each use you must have a valid license purchased only from above li
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
-								<li class="breadcrumb-item text-dark">list of menus</li>
+								<li class="breadcrumb-item text-dark">Menus</li>
 								<!--end::Item-->
 							</ul>
 							<!--end::Breadcrumb-->
@@ -288,7 +288,7 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 															<td>
-																<a href="<?= base_url("menuplates/" . $menu['id']) ?>" class="text-gray-800 text-hover-primary">
+																<a href="<?= base_url("menu_plates/" . $menu['id']) ?>" class="text-gray-800 text-hover-primary">
 																	<?= esc($menu['name']) ?>
 																</a>
 

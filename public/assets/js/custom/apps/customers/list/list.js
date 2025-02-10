@@ -3,7 +3,7 @@
 
 
 var KTCustomersList = function () {
-	var t, e, o, n;
+	var t, e, o, n, url, fatherId;
 
 
 	const baseURL = window.location.origin + '/chimixa/public/';
@@ -16,9 +16,17 @@ var KTCustomersList = function () {
 
 				e.preventDefault();
 
-				const url = $('#kt_customers_table').data('url')
-				const idToDelete = $(this).data('id');
+				fatherId = $('#kt_customers_table').data('id-father');
 
+				if (fatherId) {
+					url = $('#kt_customers_table').data('url') + '/' + fatherId
+
+				} else {
+
+					url = $('#kt_customers_table').data('url')
+				}
+
+				const idToDelete = $(this).data('id');
 				
 
 				Swal.fire({
@@ -40,7 +48,7 @@ var KTCustomersList = function () {
 							url: baseURL + url,
 							type: 'POST',
 							data: {
-								ids: [idToDelete] 
+								ids: [idToDelete]
 							},
 							success: function (response) {
 								if (response.success) {
@@ -102,16 +110,24 @@ var KTCustomersList = function () {
 
 		o.addEventListener("click", function () {
 			const selectedIds = [];
-			const url = $('#kt_customers_table').data('url')
-
 
 			$('tbody [type="checkbox"]:checked').each(function () {
 
 				const id = $(this).closest('tr').find('[data-id]').data('id');
 				if (id) selectedIds.push(id);
-				
+
 			});
-		
+
+			fatherId = $('#kt_customers_table').data('id-father');
+			
+			if (fatherId) {
+				url = $('#kt_customers_table').data('url') + '/' + fatherId
+
+			} else {
+
+				url = $('#kt_customers_table').data('url')
+			}
+
 
 			if (selectedIds.length > 0) {
 				
@@ -129,15 +145,15 @@ var KTCustomersList = function () {
 				}).then(function (o) {
 
 					if (o.value) {
-						
+
 						$.ajax({
 							url: baseURL + url,
 							type: 'POST',
-							data: { 
-								ids: selectedIds 
-							}, 
+							data: {
+								ids: selectedIds
+							},
 							success: function (response) {
-								
+
 								if (response.success) {
 
 									Swal.fire({
@@ -279,7 +295,7 @@ var KTCustomersList = function () {
 					const r = n + " " + c;
 					t.search(r).draw();
 				});
-				
+
 				c();
 
 				document.querySelector('[data-kt-customer-table-filter="reset"]')

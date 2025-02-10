@@ -227,28 +227,5 @@ class MenuController extends BaseController
   }
 
 
-  public function platesOfMenu($menuId)
-  {
-    $menuModel = new MenuModel();
-    $menuPlateModel = new MenuPlateModel();
-
-
-    try {
-
-      $menuRole = session()->get('userRole');
-
-      if (!$menuRole) return redirect()->to(base_url('/auth/login'));
-
-
-
-      $data['menu'] = $menuModel->select('id, name')->find($menuId);
-      $platesOfMenu = $menuPlateModel->getPlatesByMenu($menuId);
-
-      $data['plates'] = !empty($platesOfMenu) ? $platesOfMenu : [];
-
-      return view('pages/list/menu_plates_list', $data);
-    } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
-    }
-  }
+  
 }

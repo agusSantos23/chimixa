@@ -128,7 +128,6 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="separator border-gray-200"></div>
 												<!--end::Separator-->
 
-												<!--begin::Content-->
 												<form action="<?= base_url('plates') ?>" method="get" class="px-7 py-5">
 
 													<!--begin::Search-->
@@ -281,31 +280,10 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Table body-->
 											<tbody class="fw-bold text-gray-600">
 												<?php foreach ($plates as $plate): ?>
-													<?php
-													switch ($plate['category']) {
-														case 'Entrante':
-															$borderColor = '#b7f7b0';
-															break;
-														case 'Plato Principal':
-															$borderColor = 'green';
-															break;
-														case 'Postre':
-															$borderColor = '#ff4d94';
-															break;
-														case 'Desayuno':
-															$borderColor = '#ffeb3b';
-															break;
-														case 'Cena':
-															$borderColor = '#0d47a1';
-															break;
-														default:
-															$borderColor = 'white';
-													}
-													?>
-
+													
 													<tr>
 														<td>
-															<div class="form-check form-check-sm form-check-custom form-check-solid" style="border-left: 5px solid <?= $borderColor ?>;border-radius: 10px;">
+															<div class="form-check form-check-sm form-check-custom form-check-solid">
 																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
 														</td>
