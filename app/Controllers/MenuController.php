@@ -94,14 +94,14 @@ class MenuController extends BaseController
 
       if (!$validation->withRequest($this->request)->run()) {
 
-        return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
+        return $this->response->setStatusCode(code: 400)->setJSON(['errors' => $validation->getErrors()]);
       } else {
 
         $menuData = [
           'name' => ucfirst($this->request->getPost('name')),
           'description' => ucfirst($this->request->getPost('description')),
           'price' => $this->request->getPost('price'),
-          'selectedPlates' =>  json_decode($this->request->getPost('selectedPlates'), true)
+          'selectedPlates' => json_decode($this->request->getPost('selectedPlates'), true)
         ];
 
 
@@ -216,7 +216,7 @@ class MenuController extends BaseController
       }
 
       if (!$menuPlateModel->whereIn('id_menu', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive menu plates']);
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive plates of menu']);
       }
 
       return $this->response->setJSON(['success' => true]);

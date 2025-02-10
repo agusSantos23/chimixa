@@ -43,7 +43,8 @@ var KTCustomersList = function () {
 				}).then(function (result) {
 
 					if (result.value) {
-
+						console.log(url);
+						
 						$.ajax({
 							url: baseURL + url,
 							type: 'POST',
@@ -145,6 +146,7 @@ var KTCustomersList = function () {
 				}).then(function (o) {
 
 					if (o.value) {
+						console.log(url);
 
 						$.ajax({
 							url: baseURL + url,

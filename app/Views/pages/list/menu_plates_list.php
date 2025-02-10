@@ -452,7 +452,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
 												<!--begin::Modal title-->
-												<h2 class="fw-bolder">Add a Customer</h2>
+												<h2 class="fw-bolder">Edit Associated Plates</h2>
 												<!--end::Modal title-->
 												<!--begin::Close-->
 												<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -472,6 +472,7 @@ License: For each use you must have a valid license purchased only from above li
 											<div class="modal-body py-10 px-lg-17">
 												<!--begin::Scroll-->
 												<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+													<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
 
 
 													<div class="fv-row mb-7">

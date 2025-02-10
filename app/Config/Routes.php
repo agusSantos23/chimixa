@@ -48,22 +48,24 @@ $routes->post('roles/delete', 'RolController::deleteRol');
 
 
 
-
-// plates
-$routes->get('plates', 'PlateController::index');
-$routes->post('plates/save', 'PlateController::savePlate');
-$routes->post('plates/save/(:any)', 'PlateController::savePlate/$1');
-$routes->get('plates/delete/(:any)', 'PlateController::deletePlate/$1');
-
-$routes->get('plateingredients/(:any)', 'PlateController::ingredientsOfPlate/$1');
-
-
 // ingredients
 $routes->get('ingredients', 'IngredientController::index');
 $routes->get('ingredients/get/(:any)', 'IngredientController::getIngredient/$1');
 $routes->post('ingredients/save', 'IngredientController::saveIngredient');
 $routes->post('ingredients/update/(:any)', 'IngredientController::saveIngredient/$1');
 $routes->post('ingredients/delete', 'IngredientController::deleteIngredient');
+
+
+
+
+// plates
+$routes->get('plates', 'PlateController::index');
+$routes->post('plates/save', 'PlateController::savePlate');
+$routes->post('plates/save/(:any)', 'PlateController::savePlate/$1');
+$routes->post('plates/delete', 'PlateController::deletePlate');
+
+$routes->get('plateingredients/(:any)', 'PlateController::ingredientsOfPlate/$1');
+
 
 
 

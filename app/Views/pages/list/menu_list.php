@@ -467,7 +467,7 @@ License: For each use you must have a valid license purchased only from above li
 																<?php endforeach; ?>
 
 															<?php else: ?>
-																<p>There are no dishes available.</p>
+																<p>There are no plates available.</p>
 															<?php endif; ?>
 														</div>
 
@@ -487,6 +487,7 @@ License: For each use you must have a valid license purchased only from above li
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
+
 													<!--begin::Input group-->
 													<div class="fv-row mb-15">
 														<!--begin::Label-->

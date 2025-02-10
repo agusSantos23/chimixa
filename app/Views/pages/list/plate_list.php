@@ -54,7 +54,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Page title-->
 						<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 							<!--begin::Title-->
-							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista de Platos</h1>
+							<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Plates List</h1>
 							<!--end::Title-->
 							<!--begin::Separator-->
 							<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -72,7 +72,7 @@ License: For each use you must have a valid license purchased only from above li
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
-								<li class="breadcrumb-item text-dark">Lista de platos</li>
+								<li class="breadcrumb-item text-dark">Plates</li>
 								<!--end::Item-->
 							</ul>
 							<!--end::Breadcrumb-->
@@ -120,7 +120,7 @@ License: For each use you must have a valid license purchased only from above li
 											<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true" id="kt-toolbar-filter">
 												<!--begin::Header-->
 												<div class="px-7 py-5">
-													<div class="fs-4 text-dark fw-bolder">Opciones de Filtro</div>
+													<div class="fs-4 text-dark fw-bolder">Filter Options</div>
 												</div>
 												<!--end::Header-->
 
@@ -141,7 +141,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Nombre" value="<?= esc($searchParams['name'] ?? '') ?>" />
+														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Name" value="<?= esc($searchParams['name'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -157,7 +157,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[description]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Descripcion" value="<?= esc($searchParams['description'] ?? '') ?>" />
+														<input type="text" name="searchParams[description]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Description" value="<?= esc($searchParams['description'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -173,7 +173,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[price]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Precio" value="<?= esc($searchParams['price'] ?? '') ?>" />
+														<input type="text" name="searchParams[price]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Price" value="<?= esc($searchParams['price'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -189,7 +189,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[category]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Categoria" value="<?= esc($searchParams['category'] ?? '') ?>" />
+														<input type="text" name="searchParams[category]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Category" value="<?= esc($searchParams['category'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -204,10 +204,27 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[preparationTime]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Tiempo de Preparacion" value="<?= esc($searchParams['preparationTime'] ?? '') ?>" />
+														<input type="text" name="searchParams[preparationTime]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Preparation Time" value="<?= esc($searchParams['preparationTime'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
+													<!--begin::DisabledFilter-->
+													<div class="d-flex align-items-center position-relative my-1">
+														<span class="svg-icon svg-icon-1 position-absolute ms-6">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+															</svg>
+														</span>
+
+														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+
+															<option value="">All</option>
+															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
+															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
+
+														</select>
+													</div>
+													<!--end::DisabledFilter-->
 
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
@@ -235,7 +252,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Export-->
 
 											<!--begin::Add customer-->
-											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Customer</button>
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Plate</button>
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
@@ -256,7 +273,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div>
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="plates/delete">
 											<!--begin::Table head-->
 											<thead>
 												<!--begin::Table row-->
@@ -266,12 +283,13 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
-													<th class="min-w-150px">Nombre</th>
-													<th class="min-w-150px">Descripcion</th>
-													<th class="min-w-150px">Precio</th>
-													<th class="min-w-150px">Categoria</th>
-													<th class="min-w-150px">Tiempo de Preparacion</th>
-													<th class="min-w-100px">Acciones</th>
+													<th></th>
+													<th class="min-w-150px">Name</th>
+													<th class="min-w-150px">Description</th>
+													<th class="min-w-150px">Priece</th>
+													<th class="min-w-150px">Category</th>
+													<th class="min-w-150px">Preparation Time</th>
+													<th class="min-w-100px">Actions</th>
 
 												</tr>
 												<!--end::Table row-->
@@ -280,12 +298,17 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Table body-->
 											<tbody class="fw-bold text-gray-600">
 												<?php foreach ($plates as $plate): ?>
-													
 													<tr>
 														<td>
 															<div class="form-check form-check-sm form-check-custom form-check-solid">
 																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
+														</td>
+
+														<td>
+															<?php if ($plate['disabled']): ?>
+																<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Ingredient is disabled"></div>
+															<?php endif; ?>
 														</td>
 
 														<td>
@@ -307,7 +330,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 
 														<td>
-															<?= $plate['preparation_time'] ?>min
+															<?= $plate['preparation_time'] ?> min
 														</td>
 
 														<td class="text-end">
@@ -323,7 +346,17 @@ License: For each use you must have a valid license purchased only from above li
 																	<a href="../../demo1/dist/apps/customers/view.html" class="menu-link px-3">View</a>
 																</div>
 																<div class="menu-item px-3">
-																	<a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+																	<a href="#" class="menu-link px-3" data-id="<?= $plate['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
+																		<span class="svg-icon svg-icon-muted me-1">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path opacity="0.3" d="M6.7 19.4L5.3 18C4.9 17.6 4.9 17 5.3 16.6L16.6 5.3C17 4.9 17.6 4.9 18 5.3L19.4 6.7C19.8 7.1 19.8 7.7 19.4 8.1L8.1 19.4C7.8 19.8 7.1 19.8 6.7 19.4Z" fill="black" />
+																				<path d="M19.5 18L18.1 19.4C17.7 19.8 17.1 19.8 16.7 19.4L5.40001 8.1C5.00001 7.7 5.00001 7.1 5.40001 6.7L6.80001 5.3C7.20001 4.9 7.80001 4.9 8.20001 5.3L19.5 16.6C19.9 16.9 19.9 17.6 19.5 18Z" fill="black" />
+																			</svg>
+																		</span>
+																		<!--end::Svg Icon-->
+																		Delete
+																	</a>
 																</div>
 															</div>
 														</td>
@@ -337,9 +370,6 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-
-
-
 									</div>
 									<!--end::Card body-->
 
@@ -349,10 +379,10 @@ License: For each use you must have a valid license purchased only from above li
 										<form action="<?= base_url('plates') ?>" method="get" class="d-inline-block">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
-												<option value="1" <?= ($perPage == 1) ? 'selected' : '' ?>>1</option>
-												<option value="2" <?= ($perPage == 2) ? 'selected' : '' ?>>2</option>
-												<option value="3" <?= ($perPage == 3) ? 'selected' : '' ?>>3</option>
-												<option value="4" <?= ($perPage == 4) ? 'selected' : '' ?>>4</option>
+												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
+												<option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
+												<option value="25" <?= ($perPage == 25) ? 'selected' : '' ?>>25</option>
+												<option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
 											</select>
 
 										</form>
@@ -365,7 +395,7 @@ License: For each use you must have a valid license purchased only from above li
 
 								</div>
 
-								
+
 							</div>
 							<!--end::Card-->
 							<!--begin::Modals-->
@@ -375,12 +405,15 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="modal-dialog modal-dialog-centered mw-650px">
 									<!--begin::Modal content-->
 									<div class="modal-content">
+
+
+
 										<!--begin::Form-->
-										<form class="form" action="#" id="kt_modal_add_customer_form" data-kt-redirect="../../demo1/dist/apps/customers/list.html">
+										<form class="form" id="kt_modal_add_customer_form">
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
 												<!--begin::Modal title-->
-												<h2 class="fw-bolder">Add a Customer</h2>
+												<h2 class="fw-bolder">Add a Plate</h2>
 												<!--end::Modal title-->
 												<!--begin::Close-->
 												<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -396,381 +429,150 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Close-->
 											</div>
 											<!--end::Modal header-->
+
 											<!--begin::Modal body-->
 											<div class="modal-body py-10 px-lg-17">
 												<!--begin::Scroll-->
 												<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+													<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
+
 													<!--begin::Input group-->
 													<div class="fv-row mb-7">
 														<!--begin::Label-->
 														<label class="required fs-6 fw-bold mb-2">Name</label>
 														<!--end::Label-->
 														<!--begin::Input-->
-														<input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Sean Bean" />
+														<input type="text" class="form-control form-control-solid" placeholder="" name="name" value="" />
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
+
 													<!--begin::Input group-->
 													<div class="fv-row mb-7">
 														<!--begin::Label-->
-														<label class="fs-6 fw-bold mb-2">
-															<span class="required">Email</span>
-															<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Email address must be active"></i>
-														</label>
+														<label class="fs-6 fw-bold mb-2 required">Price</label>
 														<!--end::Label-->
 														<!--begin::Input-->
-														<input type="email" class="form-control form-control-solid" placeholder="" name="email" value="sean@dellito.com" />
+														<input type="text" class="form-control form-control-solid" placeholder="" name="price" value="" />
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
+
 													<!--begin::Input group-->
 													<div class="fv-row mb-15">
 														<!--begin::Label-->
-														<label class="fs-6 fw-bold mb-2">Description</label>
+														<label class="fs-6 fw-bold mb-2">
+															<span class="required">Description</span>
+															<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Maximum of 500 characters"></i>
+														</label>
 														<!--end::Label-->
 														<!--begin::Input-->
 														<input type="text" class="form-control form-control-solid" placeholder="" name="description" />
 														<!--end::Input-->
 													</div>
 													<!--end::Input group-->
-													<!--begin::Billing toggle-->
-													<div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#kt_modal_add_customer_billing_info" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Shipping Information
-														<span class="ms-2 rotate-180">
-															<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-															<span class="svg-icon svg-icon-3">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-														</span>
-													</div>
-													<!--end::Billing toggle-->
-													<!--begin::Billing form-->
-													<div id="kt_modal_add_customer_billing_info" class="collapse show">
-														<!--begin::Input group-->
-														<div class="d-flex flex-column mb-7 fv-row">
-															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Address Line 1</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input class="form-control form-control-solid" placeholder="" name="address1" value="101, Collins Street" />
-															<!--end::Input-->
-														</div>
-														<!--end::Input group-->
-														<!--begin::Input group-->
-														<div class="d-flex flex-column mb-7 fv-row">
-															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">Address Line 2</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input class="form-control form-control-solid" placeholder="" name="address2" value="" />
-															<!--end::Input-->
-														</div>
-														<!--end::Input group-->
-														<!--begin::Input group-->
-														<div class="d-flex flex-column mb-7 fv-row">
-															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Town</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input class="form-control form-control-solid" placeholder="" name="city" value="Melbourne" />
-															<!--end::Input-->
-														</div>
-														<!--end::Input group-->
-														<!--begin::Input group-->
-														<div class="row g-9 mb-7">
-															<!--begin::Col-->
-															<div class="col-md-6 fv-row">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-bold mb-2">State / Province</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input class="form-control form-control-solid" placeholder="" name="state" value="Victoria" />
-																<!--end::Input-->
-															</div>
-															<!--end::Col-->
-															<!--begin::Col-->
-															<div class="col-md-6 fv-row">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-bold mb-2">Post Code</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input class="form-control form-control-solid" placeholder="" name="postcode" value="3000" />
-																<!--end::Input-->
-															</div>
-															<!--end::Col-->
-														</div>
-														<!--end::Input group-->
-														<!--begin::Input group-->
-														<div class="d-flex flex-column mb-7 fv-row">
-															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">
-																<span class="required">Country</span>
-																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
+
+													<div class="row g-9 mb-7">
+
+														<!--begin::Col-->
+														<div class="col-md-7 fv-row">
+															<label class=" fs-6 fw-bold mb-2">
+																<span class="required">Preparation Time</span>
+																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Time in minutes"></i>
 															</label>
-															<!--end::Label-->
+
 															<!--begin::Input-->
-															<select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a Country..." data-dropdown-parent="#kt_modal_add_customer" class="form-select form-select-solid fw-bolder">
-																<option value="">Select a Country...</option>
-																<option value="AF">Afghanistan</option>
-																<option value="AX">Aland Islands</option>
-																<option value="AL">Albania</option>
-																<option value="DZ">Algeria</option>
-																<option value="AS">American Samoa</option>
-																<option value="AD">Andorra</option>
-																<option value="AO">Angola</option>
-																<option value="AI">Anguilla</option>
-																<option value="AG">Antigua and Barbuda</option>
-																<option value="AR">Argentina</option>
-																<option value="AM">Armenia</option>
-																<option value="AW">Aruba</option>
-																<option value="AU">Australia</option>
-																<option value="AT">Austria</option>
-																<option value="AZ">Azerbaijan</option>
-																<option value="BS">Bahamas</option>
-																<option value="BH">Bahrain</option>
-																<option value="BD">Bangladesh</option>
-																<option value="BB">Barbados</option>
-																<option value="BY">Belarus</option>
-																<option value="BE">Belgium</option>
-																<option value="BZ">Belize</option>
-																<option value="BJ">Benin</option>
-																<option value="BM">Bermuda</option>
-																<option value="BT">Bhutan</option>
-																<option value="BO">Bolivia, Plurinational State of</option>
-																<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-																<option value="BA">Bosnia and Herzegovina</option>
-																<option value="BW">Botswana</option>
-																<option value="BR">Brazil</option>
-																<option value="IO">British Indian Ocean Territory</option>
-																<option value="BN">Brunei Darussalam</option>
-																<option value="BG">Bulgaria</option>
-																<option value="BF">Burkina Faso</option>
-																<option value="BI">Burundi</option>
-																<option value="KH">Cambodia</option>
-																<option value="CM">Cameroon</option>
-																<option value="CA">Canada</option>
-																<option value="CV">Cape Verde</option>
-																<option value="KY">Cayman Islands</option>
-																<option value="CF">Central African Republic</option>
-																<option value="TD">Chad</option>
-																<option value="CL">Chile</option>
-																<option value="CN">China</option>
-																<option value="CX">Christmas Island</option>
-																<option value="CC">Cocos (Keeling) Islands</option>
-																<option value="CO">Colombia</option>
-																<option value="KM">Comoros</option>
-																<option value="CK">Cook Islands</option>
-																<option value="CR">Costa Rica</option>
-																<option value="CI">Côte d'Ivoire</option>
-																<option value="HR">Croatia</option>
-																<option value="CU">Cuba</option>
-																<option value="CW">Curaçao</option>
-																<option value="CZ">Czech Republic</option>
-																<option value="DK">Denmark</option>
-																<option value="DJ">Djibouti</option>
-																<option value="DM">Dominica</option>
-																<option value="DO">Dominican Republic</option>
-																<option value="EC">Ecuador</option>
-																<option value="EG">Egypt</option>
-																<option value="SV">El Salvador</option>
-																<option value="GQ">Equatorial Guinea</option>
-																<option value="ER">Eritrea</option>
-																<option value="EE">Estonia</option>
-																<option value="ET">Ethiopia</option>
-																<option value="FK">Falkland Islands (Malvinas)</option>
-																<option value="FJ">Fiji</option>
-																<option value="FI">Finland</option>
-																<option value="FR">France</option>
-																<option value="PF">French Polynesia</option>
-																<option value="GA">Gabon</option>
-																<option value="GM">Gambia</option>
-																<option value="GE">Georgia</option>
-																<option value="DE">Germany</option>
-																<option value="GH">Ghana</option>
-																<option value="GI">Gibraltar</option>
-																<option value="GR">Greece</option>
-																<option value="GL">Greenland</option>
-																<option value="GD">Grenada</option>
-																<option value="GU">Guam</option>
-																<option value="GT">Guatemala</option>
-																<option value="GG">Guernsey</option>
-																<option value="GN">Guinea</option>
-																<option value="GW">Guinea-Bissau</option>
-																<option value="HT">Haiti</option>
-																<option value="VA">Holy See (Vatican City State)</option>
-																<option value="HN">Honduras</option>
-																<option value="HK">Hong Kong</option>
-																<option value="HU">Hungary</option>
-																<option value="IS">Iceland</option>
-																<option value="IN">India</option>
-																<option value="ID">Indonesia</option>
-																<option value="IR">Iran, Islamic Republic of</option>
-																<option value="IQ">Iraq</option>
-																<option value="IE">Ireland</option>
-																<option value="IM">Isle of Man</option>
-																<option value="IL">Israel</option>
-																<option value="IT">Italy</option>
-																<option value="JM">Jamaica</option>
-																<option value="JP">Japan</option>
-																<option value="JE">Jersey</option>
-																<option value="JO">Jordan</option>
-																<option value="KZ">Kazakhstan</option>
-																<option value="KE">Kenya</option>
-																<option value="KI">Kiribati</option>
-																<option value="KP">Korea, Democratic People's Republic of</option>
-																<option value="KW">Kuwait</option>
-																<option value="KG">Kyrgyzstan</option>
-																<option value="LA">Lao People's Democratic Republic</option>
-																<option value="LV">Latvia</option>
-																<option value="LB">Lebanon</option>
-																<option value="LS">Lesotho</option>
-																<option value="LR">Liberia</option>
-																<option value="LY">Libya</option>
-																<option value="LI">Liechtenstein</option>
-																<option value="LT">Lithuania</option>
-																<option value="LU">Luxembourg</option>
-																<option value="MO">Macao</option>
-																<option value="MG">Madagascar</option>
-																<option value="MW">Malawi</option>
-																<option value="MY">Malaysia</option>
-																<option value="MV">Maldives</option>
-																<option value="ML">Mali</option>
-																<option value="MT">Malta</option>
-																<option value="MH">Marshall Islands</option>
-																<option value="MQ">Martinique</option>
-																<option value="MR">Mauritania</option>
-																<option value="MU">Mauritius</option>
-																<option value="MX">Mexico</option>
-																<option value="FM">Micronesia, Federated States of</option>
-																<option value="MD">Moldova, Republic of</option>
-																<option value="MC">Monaco</option>
-																<option value="MN">Mongolia</option>
-																<option value="ME">Montenegro</option>
-																<option value="MS">Montserrat</option>
-																<option value="MA">Morocco</option>
-																<option value="MZ">Mozambique</option>
-																<option value="MM">Myanmar</option>
-																<option value="NA">Namibia</option>
-																<option value="NR">Nauru</option>
-																<option value="NP">Nepal</option>
-																<option value="NL">Netherlands</option>
-																<option value="NZ">New Zealand</option>
-																<option value="NI">Nicaragua</option>
-																<option value="NE">Niger</option>
-																<option value="NG">Nigeria</option>
-																<option value="NU">Niue</option>
-																<option value="NF">Norfolk Island</option>
-																<option value="MP">Northern Mariana Islands</option>
-																<option value="NO">Norway</option>
-																<option value="OM">Oman</option>
-																<option value="PK">Pakistan</option>
-																<option value="PW">Palau</option>
-																<option value="PS">Palestinian Territory, Occupied</option>
-																<option value="PA">Panama</option>
-																<option value="PG">Papua New Guinea</option>
-																<option value="PY">Paraguay</option>
-																<option value="PE">Peru</option>
-																<option value="PH">Philippines</option>
-																<option value="PL">Poland</option>
-																<option value="PT">Portugal</option>
-																<option value="PR">Puerto Rico</option>
-																<option value="QA">Qatar</option>
-																<option value="RO">Romania</option>
-																<option value="RU">Russian Federation</option>
-																<option value="RW">Rwanda</option>
-																<option value="BL">Saint Barthélemy</option>
-																<option value="KN">Saint Kitts and Nevis</option>
-																<option value="LC">Saint Lucia</option>
-																<option value="MF">Saint Martin (French part)</option>
-																<option value="VC">Saint Vincent and the Grenadines</option>
-																<option value="WS">Samoa</option>
-																<option value="SM">San Marino</option>
-																<option value="ST">Sao Tome and Principe</option>
-																<option value="SA">Saudi Arabia</option>
-																<option value="SN">Senegal</option>
-																<option value="RS">Serbia</option>
-																<option value="SC">Seychelles</option>
-																<option value="SL">Sierra Leone</option>
-																<option value="SG">Singapore</option>
-																<option value="SX">Sint Maarten (Dutch part)</option>
-																<option value="SK">Slovakia</option>
-																<option value="SI">Slovenia</option>
-																<option value="SB">Solomon Islands</option>
-																<option value="SO">Somalia</option>
-																<option value="ZA">South Africa</option>
-																<option value="KR">South Korea</option>
-																<option value="SS">South Sudan</option>
-																<option value="ES">Spain</option>
-																<option value="LK">Sri Lanka</option>
-																<option value="SD">Sudan</option>
-																<option value="SR">Suriname</option>
-																<option value="SZ">Swaziland</option>
-																<option value="SE">Sweden</option>
-																<option value="CH">Switzerland</option>
-																<option value="SY">Syrian Arab Republic</option>
-																<option value="TW">Taiwan, Province of China</option>
-																<option value="TJ">Tajikistan</option>
-																<option value="TZ">Tanzania, United Republic of</option>
-																<option value="TH">Thailand</option>
-																<option value="TG">Togo</option>
-																<option value="TK">Tokelau</option>
-																<option value="TO">Tonga</option>
-																<option value="TT">Trinidad and Tobago</option>
-																<option value="TN">Tunisia</option>
-																<option value="TR">Turkey</option>
-																<option value="TM">Turkmenistan</option>
-																<option value="TC">Turks and Caicos Islands</option>
-																<option value="TV">Tuvalu</option>
-																<option value="UG">Uganda</option>
-																<option value="UA">Ukraine</option>
-																<option value="AE">United Arab Emirates</option>
-																<option value="GB">United Kingdom</option>
-																<option value="US" selected="selected">United States</option>
-																<option value="UY">Uruguay</option>
-																<option value="UZ">Uzbekistan</option>
-																<option value="VU">Vanuatu</option>
-																<option value="VE">Venezuela, Bolivarian Republic of</option>
-																<option value="VN">Vietnam</option>
-																<option value="VI">Virgin Islands</option>
-																<option value="YE">Yemen</option>
-																<option value="ZM">Zambia</option>
-																<option value="ZW">Zimbabwe</option>
-															</select>
+															<div class="d-flex gap-3">
+																<input class="form-control form-control-solid" name="preparationTime" type="number" min="1" />
+															</div>
 															<!--end::Input-->
 														</div>
-														<!--end::Input group-->
-														<!--begin::Input group-->
-														<div class="fv-row mb-7">
-															<!--begin::Wrapper-->
-															<div class="d-flex flex-stack">
-																<!--begin::Label-->
-																<div class="me-5">
-																	<!--begin::Label-->
-																	<label class="fs-6 fw-bold">Use as a billing adderess?</label>
-																	<!--end::Label-->
-																	<!--begin::Input-->
-																	<div class="fs-7 fw-bold text-muted">If you need more info, please check budget planning</div>
-																	<!--end::Input-->
-																</div>
-																<!--end::Label-->
-																<!--begin::Switch-->
-																<label class="form-check form-switch form-check-custom form-check-solid">
-																	<!--begin::Input-->
-																	<input class="form-check-input" name="billing" type="checkbox" value="1" id="kt_modal_add_customer_billing" checked="checked" />
-																	<!--end::Input-->
-																	<!--begin::Label-->
-																	<span class="form-check-label fw-bold text-muted" for="kt_modal_add_customer_billing">Yes</span>
-																	<!--end::Label-->
-																</label>
-																<!--end::Switch-->
+														<!--end::Col-->
+
+														<!--begin::Col-->
+														<div class="col-md-5 fv-row">
+															<!--begin::Label-->
+															<label class="required fs-6 fw-bold mb-2">Category</label>
+															<!--end::Label-->
+
+															<!--begin::Input-->
+															<div class="d-flex gap-3">
+																<select class="form-select form-select-solid fw-bolder" name="category" aria-label="Select a Category" data-control="select2" data-placeholder="Select a Unit..." data-dropdown-parent="#kt_modal_add_customer">
+																	<option value=""></option>
+																	<option value="Breakfast">Breakfast</option>
+																	<option value="Lunch">Lunch</option>
+																	<option value="Dinner">Dinner</option>
+																</select>
 															</div>
-															<!--begin::Wrapper-->
+															<!--end::Input-->
 														</div>
-														<!--end::Input group-->
+														<!--end::Col-->
+
 													</div>
-													<!--end::Billing form-->
+
+
+
+													<div class="fv-row mb-7">
+														<label class="required fs-6 fw-bold mb-2 pb-2">Ingredients</label>
+
+														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+
+															<?php if (isset($ingredients) && is_array($ingredients)): ?>
+
+																<?php foreach ($ingredients as $ingredient): ?>
+
+																	<div class="col">
+																		<div class="card border-primary h-100">
+																			<div class="card-body p-3">
+																				<div class="d-flex align-items-center gap-2">
+																					<input class="form-check-input select-ingredient" type="checkbox" value="<?= $ingredient['id'] ?>" data-id="<?= $ingredient['id'] ?>">
+																					<div class="overflow-hidden">
+																						<label class="form-check-label text-truncate d-block" for="ingredient_<?= $ingredient['id'] ?>" style="max-width: 180px;">
+																							<?= $ingredient['name'] ?>
+																						</label>
+																					</div>
+																				</div>
+
+																				<div class="mt-3 row align-items-center g-2">
+																					<!-- Cantidad -->
+																					<div class="col-md-7">
+																						<input class="form-control form-control-solid" disabled placeholder="Quantity Available" type="number" min="1" data-ingredient-id="<?= $ingredient['id'] ?>">
+																					</div>
+
+																					<!-- Unidad de medida -->
+																					<div class="col-md-5">
+																						<select class="form-select form-select-solid fw-bold" disabled aria-label="Select a Unit" data-ingredient-id="<?= $ingredient['id'] ?>">
+																							<option value="">Select a Unit...</option>
+																							<option value="g">g — Grams</option>
+																							<option value="kg">kg — Kilograms</option>
+																							<option value="oz">oz — Ounces</option>
+																							<option value="lb">lb — Pounds</option>
+																							<option value="cda">cda — Tablespoon</option>
+																							<option value="u">u — Unit</option>
+																						</select>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																<?php endforeach; ?>
+
+															<?php else: ?>
+																<p>There are no ingredients available.</p>
+															<?php endif; ?>
+														</div>
+
+
+
+
+
+														<div data-field="platos[]" class="fv-plugins-message-container"></div>
+													</div>
+
+
+
+
 												</div>
 												<!--end::Scroll-->
 											</div>
@@ -791,6 +593,9 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Modal footer-->
 										</form>
 										<!--end::Form-->
+
+
+
 									</div>
 								</div>
 							</div>
@@ -950,7 +755,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
-	<script src="./assets/js/custom/apps/customers/add.js"></script>
+	<script src="./assets/js/custom/apps/customers/add/addPlate.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
 	<script src="./assets/js/custom/apps/chat/chat.js"></script>
 	<script src="./assets/js/custom/modals/create-app.js"></script>
