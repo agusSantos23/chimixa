@@ -240,7 +240,6 @@ License: For each use you must have a valid license purchased only from above li
 
 												<th class="min-w-150px">Name</th>
 												<th class="min-w-150px">Allergens</th>
-												<th class="min-w-150px">Amount</th>
 												
 												<th class="w-125px">Acciones</th>
 
@@ -275,9 +274,6 @@ License: For each use you must have a valid license purchased only from above li
 															<?= $ingredient['allergens'] ?>
 														</td>
 
-														<td>
-															<?= $ingredient['store_amount'] ?>
-														</td>
 
 
 														<td class="text-end">

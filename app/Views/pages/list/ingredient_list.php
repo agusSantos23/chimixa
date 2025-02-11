@@ -559,7 +559,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 
 															<!--begin::Input-->
-															<input class="form-control form-control-solid" name="expirationDate" placeholder="Pick a date" id="kt_flatpickr" />
+															<input class="form-control form-control-solid" name="expirationDate" placeholder="Pick a date" id="kt_flatpickr" min="min="<?= date('Y-m-d'); ?>""/>
 															<!--end::Input-->
 														</div>
 

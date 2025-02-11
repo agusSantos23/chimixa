@@ -9,9 +9,11 @@ use App\Models\IngredientModel;
 use Exception;
 
 
-class PlateController extends BaseController{
+class PlateController extends BaseController
+{
 
-  public function index(){
+  public function index()
+  {
     $plateModel = new PlateModel();
     $ingredientModel = new IngredientModel();
 
@@ -19,9 +21,9 @@ class PlateController extends BaseController{
     try {
 
       $userRole = session()->get('userRole');
-        
+
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
+
       $data['ingredients'] = $ingredientModel->where('disabled', null)->findAll();
 
 
@@ -35,13 +37,44 @@ class PlateController extends BaseController{
 
 
       return view('pages/list/plate_list', $data);
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
-  
-  public function savePlate($id = null){
+
+
+
+  public function getPlate($id)
+  {
+    $plateModel = new PlateModel();
+    $storeModel = new StoreModel();
+
+
+    try {
+      $plate = $plateModel->find($id);
+
+      $stores = $storeModel->select('id_ingredient')->where('id_plate', $id)->findAll();
+
+
+
+
+      if ($plate) {
+
+        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'plate' => $plate, 'ingredientsSelect' => $stores]);
+      } else {
+
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'plate not found']);
+      }
+    } catch (Exception $e) {
+
+      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting plate: ' . $e->getMessage()]);
+    }
+  }
+
+
+
+  public function savePlate($id = null)
+  {
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
 
@@ -61,8 +94,7 @@ class PlateController extends BaseController{
       if (!$validation->withRequest($this->request)->run()) {
 
         return $this->response->setStatusCode(code: 400)->setJSON(['errors' => $validation->getErrors()]);
-
-      }else{
+      } else {
 
         $plateData = [
           'name' => ucfirst($this->request->getPost('name')),
@@ -72,12 +104,50 @@ class PlateController extends BaseController{
           'preparation_time' => $this->request->getPost('preparationTime'),
           'selectedIngredients' => json_decode($this->request->getPost('selectedIngredients'), true)
         ];
-        
+
+        log_message('info', print_r($plateData,true));
 
         if ($id) {
-          $plateModel->update($id, $plateData);
-          $message = 'Plate successfully updated';
 
+          if (!$plateModel->find($id)) {
+            return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Plate not found']]);
+          }
+
+
+          if ($plateModel->update($id, $plateData)) {
+
+            $currentIngredients = $storeModel->select('id_ingredient')->where('id_plate', $id)->findAll();
+
+
+
+            $currentIngredientIds = array_column($currentIngredients, 'id_ingredient');
+
+
+
+
+            foreach ($plateData['selectedIngredients'] as $ingredientId) {
+
+              log_message('info',  $ingredientId . "arrray bdddd:".print_r($currentIngredients, true));
+
+              if (!in_array($ingredientId, $currentIngredients)) {
+
+                $storeModel->save([
+                  'id_plate' => $id,
+                  'id_ingredient' => $ingredientId
+                ]);
+              }
+            };
+
+            foreach ($currentIngredients as $currentIngredient) {
+              if (!in_array($currentIngredient['id_ingredient'], $currentIngredientIds)) {
+                $storeModel->where('id_plate', $id)->where('id_plate', $currentIngredient['id_plate'])->delete();
+              }
+            }
+
+            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
+          } else {
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['user' => 'Failed to updated Plate']]);
+          }
         } else {
 
           if ($plateModel->where('name', $plateData['name'])->first()) {
@@ -90,36 +160,27 @@ class PlateController extends BaseController{
             $plateId = $plateModel->where('name', $plateData['name'])->first()['id'];
 
             $correct = true;
-
+            log_message('info',  print_r($plateData, true));
             foreach ($plateData['selectedIngredients'] as $ingredient) {
-
-              if (!$storeModel->save(['id_plate' => $plateId, 'id_ingredient' => $ingredient['id'], 'amount' => $ingredient['quantity']])) {
+              
+              if (!$storeModel->save(['id_plate' => $plateId, 'id_ingredient' => $ingredient])) {
                 $correct = false;
               }
-
             };
 
             if ($correct) {
 
               return $this->response->setStatusCode(200)->setJSON(['message' => 'Plate added successfully']);
-
             } else {
 
-              $plateModel->delete($plateId);
               return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add customer']);
             }
-
           } else {
             return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add plate']);
           }
-
-
         }
-        
-        return redirect()->to(uri: '/plates')->with('success', $message);
-      }
 
-      
+      }
     } catch (Exception $e) {
 
       echo "Error: " . $e->getMessage();
@@ -127,7 +188,8 @@ class PlateController extends BaseController{
   }
 
 
-  public function deletePlate(){
+  public function deletePlate()
+  {
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
 
@@ -152,35 +214,31 @@ class PlateController extends BaseController{
       }
 
       return $this->response->setJSON(['success' => true]);
-
-    }  catch (Exception $e) {
+    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
-
   }
 
 
-  public function ingredientsOfPlate($plateId){
+  public function ingredientsOfPlate($plateId)
+  {
 
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
 
     try {
       $userRole = session()->get('userRole');
-        
+
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
-      
+
 
 
       $data['plate'] = $plateModel->select('id, name')->find($plateId);
       $data['ingredients'] = $storeModel->getIngredientsByPlate($plateId);
 
-      return view('pages/list/store_list',$data );
-      
-
+      return view('pages/list/store_list', $data);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
-
 }

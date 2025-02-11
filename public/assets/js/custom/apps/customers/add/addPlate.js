@@ -1,7 +1,7 @@
 "use strict";
 
 let KTModalCustomersAdd = function () {
-  let t, e, o, n, r, i, menuId = null, ingredientCheckboxes, selectedIngredients = [];
+  let t, e, o, n, r, i, plateId = null, ingredientCheckboxes, selectedIngredients = [];
 
   const baseURL = window.location.origin + '/chimixa/public/';
 
@@ -14,7 +14,7 @@ let KTModalCustomersAdd = function () {
       o = r.querySelector("#kt_modal_add_customer_close");
       ingredientCheckboxes = r.querySelectorAll('.select-ingredient');
 
-
+      
       n = FormValidation.formValidation(r, {
         fields: {
           name: {
@@ -82,10 +82,10 @@ let KTModalCustomersAdd = function () {
               formData.append("selectedIngredients", JSON.stringify(selectedIngredients));
 
               formData.forEach((value, key) => {
-                console.log(value, key);
+                console.log(key, value);
               });
 
-              const url = menuId ? baseURL + 'plates/update/' + menuId : baseURL + 'plates/save';
+              const url = plateId ? baseURL + 'plates/update/' + plateId : baseURL + 'plates/save';
 
               $.ajax({
                 url: url,
@@ -244,35 +244,40 @@ let KTModalCustomersAdd = function () {
 
           e.preventDefault();
 
-
-          menuId = $(this).data('id');
+          plateId = $(this).data('id');
 
           $.ajax({
-            url: baseURL + 'menus/get/' + menuId,
+            url: baseURL + 'plates/get/' + plateId,
             type: 'GET',
             success: function (response) {
-
+              console.log(response);
+              
               if (response.success) {
 
-                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Menu");
+                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Plate");
 
-                $('#kt_modal_add_customer_form input[name="name"]').val(response.menu.name);
+                $('#kt_modal_add_customer_form input[name="name"]').val(response.plate.name);
 
-                $('#kt_modal_add_customer_form input[name="price"]').val(response.menu.price);
+                $('#kt_modal_add_customer_form input[name="price"]').val(response.plate.price);
 
-                $('#kt_modal_add_customer_form input[name="description"]').val(response.menu.description);
+                $('#kt_modal_add_customer_form input[name="description"]').val(response.plate.description);
 
-                response.plates.forEach((plate) => {
+                $('#kt_modal_add_customer_form input[name="preparationTime"]').val(response.plate.preparation_time);
 
-                  let checkbox = $(`#kt_modal_add_customer_form [value='${plate.id}']`);
-                  let amountInput = $(`#kt_modal_add_customer_form [data-id-plate='${plate.id}'] span`);
+                $('#kt_modal_add_customer_form select[name="category"]').val(response.plate.category);
 
-                  if (checkbox) checkbox.prop("checked", true);
-                  if (amountInput) amountInput.text(plate.amount);
-                  /*
-                  selectedIngredients.push({ id: plate.id, count: plate.amount })
-                  amountInput.removeClass('text-decoration-line-through')
-                  */
+                response.ingredientsSelect.forEach((ingredient) => {
+                  const ingredientId = ingredient.id_ingredient
+                  let checkbox = $(`#kt_modal_add_customer_form [value='${ingredientId}']`);
+
+                  if (checkbox.length){
+
+                    checkbox.prop("checked", true);
+                    if (!selectedIngredients.includes(ingredientId)) {
+                      selectedIngredients.push(ingredientId)
+                    }
+                  } 
+                  
                 });
 
 
@@ -302,79 +307,30 @@ let KTModalCustomersAdd = function () {
 
     handleIngredientCheckboxes: function () {
       ingredientCheckboxes.forEach(checkbox => {
+        
+        checkbox.addEventListener('change', function() {
 
-        checkbox.addEventListener('change', function () {
           const ingredientId = this.value;
-          const inputField = r.querySelector(`input[data-ingredient-id="${ingredientId}"]`);
-          const selectField = r.querySelector(`select[data-ingredient-id="${ingredientId}"]`);
-          const ingredientName = r.querySelector(`label[for="ingredient_${ingredientId}"]`).textContent.trim();
 
-
-          if ($(this).prop('checked')) {
-
-            inputField.removeAttribute('disabled');
-            selectField.removeAttribute('disabled');
-
+          const existingIngredient = selectedIngredients.find(selectedIngredientId => selectedIngredientId === ingredientId);
+  
+          if ($(this).prop('checked') && !existingIngredient) {
+  
+            selectedIngredients.push(ingredientId);
+  
           } else {
-
-            inputField.setAttribute('disabled', 'true');
-            selectField.setAttribute('disabled', 'true');
-            inputField.value = '';
-            selectField.selectedIndex = 0;
-
-            selectedIngredients = selectedIngredients.filter(ingredient => ingredient.id !== ingredientId);
+  
+            selectedIngredients = selectedIngredients.filter(selectedIngredientId => selectedIngredientId !== ingredientId);
+   
           }
-
-
-          inputField.addEventListener('input', function () {
-
-
-            if ($(checkbox).prop('checked')) {
-
-              const existingIngredient = selectedIngredients.find(ingredient => ingredient.id === ingredientId);
-
-              if (existingIngredient) {
-
-                existingIngredient.quantity = inputField.value;
-
-              } else {
-
-                selectedIngredients.push({
-                  id: ingredientId,
-                  name: ingredientName,
-                  quantity: inputField.value || 1,
-                  unit: selectField.value || 'kg'
-                });
-              }
-            }
-          });
-
-          selectField.addEventListener('change', function () {
-            if ($(checkbox).prop('checked')) {
-
-              const existingIngredient = selectedIngredients.find(ingredient => ingredient.id === ingredientId);
-
-              if (existingIngredient) {
-
-                existingIngredient.quantity = inputField.value;
-
-              } else {
-
-                selectedIngredients.push({
-                  id: ingredientId,
-                  name: ingredientName,
-                  quantity: inputField.value || 1,
-                  unit: selectField.value || 'kg'
-                });
-              }
-            }
-          });
+          console.log(selectedIngredients);
+          
         });
+        
+        
       });
+      
     }
-
-
-
 
 
   };

@@ -147,15 +147,13 @@ class MenuController extends BaseController
 
             foreach ($currentPlates as $currentPlate) {
               if (!in_array($currentPlate['id_plate'], $selectedPlateIds)) {
-                $menuPlateModel->where('id_menu', $id)
-                  ->where('id_plate', $currentPlate['id_plate'])
-                  ->delete();
+                $menuPlateModel->where('id_menu', $id)->where('id_plate', $currentPlate['id_plate'])->delete();
               }
             }
 
             return $this->response->setStatusCode(200)->setJSON(['success' => true]);
           } else {
-            return $this->response->setStatusCode(500)->setJSON(['errors' => ['user' => 'Failed to updated User']]);
+            return $this->response->setStatusCode(500)->setJSON(['errors' => ['error' => 'Failed to updated Menu']]);
           }
         } else {
 
