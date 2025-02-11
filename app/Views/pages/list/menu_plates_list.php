@@ -303,7 +303,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div class="card-body pt-0">
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates/delete" data-id-father="<?= $menu['id']?>">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates/delete" data-id-father="<?= $menu['id'] ?>">
 											<!--begin::Table head-->
 											<thead>
 												<!--begin::Table row-->
@@ -313,7 +313,7 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
-
+													<th></th>
 													<th class="min-w-150px">Name</th>
 													<th class="min-w-150px">Description</th>
 													<th class="min-w-150px">Price</th>
@@ -332,10 +332,11 @@ License: For each use you must have a valid license purchased only from above li
 												<?php if (empty($platesOfMenu)): ?>
 													<tr>
 														<td colspan="6" class="text-center">
-															<p>No dishes found in this menu</p>
+															<p>No plates found in this menu</p>
 														</td>
 													</tr>
 												<?php else: ?>
+
 													<?php foreach ($platesOfMenu as $plate): ?>
 														<tr>
 															<td>
@@ -345,7 +346,13 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 															<td>
-																<a href="<?= base_url(relativePath: "plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
+																<?php if ($plate['disabled']): ?>
+																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																<?php endif; ?>
+															</td>
+
+															<td>
+																<a href="<?= base_url(relativePath: "store/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
 																	<?= $plate['name'] ?>
 																</a>
 															</td>
@@ -408,13 +415,13 @@ License: For each use you must have a valid license purchased only from above li
 
 										<!--begin::Card footer-->
 										<div class="d-flex align-items-center justify-content-between mt-5">
-											<form action="<?= base_url('plates') ?>" method="get" class="d-inline-block">
+											<form action="<?= base_url('menu_plates/' . $menu['id']) ?>" method="get" class="d-inline-block">
 
 												<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
-													<option value="1" <?= ($perPage == 1) ? 'selected' : '' ?>>1</option>
-													<option value="2" <?= ($perPage == 2) ? 'selected' : '' ?>>2</option>
-													<option value="3" <?= ($perPage == 3) ? 'selected' : '' ?>>3</option>
-													<option value="4" <?= ($perPage == 4) ? 'selected' : '' ?>>4</option>
+													<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
+													<option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
+													<option value="25" <?= ($perPage == 25) ? 'selected' : '' ?>>25</option>
+													<option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
 												</select>
 
 											</form>
@@ -478,7 +485,7 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="fv-row mb-7">
 														<label class="required fs-6 fw-bold mb-2 pb-2">Plates</label>
 
-														<div class="card-body row row-cols-1 row-cols-md-2 g-4 bg-light form-control form-control-solid" style="border-radius: 10px;">
+														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
 
 															<?php if (isset($plates) && is_array($plates)): ?>
 

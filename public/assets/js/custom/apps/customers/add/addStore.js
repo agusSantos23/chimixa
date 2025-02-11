@@ -1,18 +1,19 @@
 "use strict";
 
 let KTModalCustomersAdd = function () {
-  let t, e, o, r, menuId, platesCheckboxes, selectedPlates = [];
+  let t, e, o, r, i, plateId, ingredientCheckboxes, selectedIngredients = [];
 
   const baseURL = window.location.origin + '/chimixa/public/';
 
   return {
     init: function () {
+      i = new bootstrap.Modal(document.querySelector("#kt_modal_add_customer"));
       r = document.querySelector("#kt_modal_add_customer_form");
       t = r.querySelector("#kt_modal_add_customer_submit");
       e = r.querySelector("#kt_modal_add_customer_cancel");
       o = r.querySelector("#kt_modal_add_customer_close");
-      platesCheckboxes = r.querySelectorAll('.select-plate');
-      menuId = $('#kt_modal_add_customer_form').data('id-menu')
+      ingredientCheckboxes = r.querySelectorAll('.select-ingredient');
+      plateId = $('#kt_modal_add_customer_form').data('id-plate')
 
 
 
@@ -24,19 +25,19 @@ let KTModalCustomersAdd = function () {
         t.disabled = true;
 
 
-        if (selectedPlates.length > 0) {
+        if (selectedIngredients.length > 0) {
 
           const formData = new FormData(r);
-          formData.append("selectedPlates", JSON.stringify(selectedPlates));
+          formData.append("selectedIngredients", JSON.stringify(selectedIngredients));
 
           $.ajax({
-            url: baseURL + 'menu_plates/update/' + menuId,
+            url: baseURL + 'store/update/' + plateId,
             type: 'POST',
             data: formData,
             contentType: false,
             processData: false,
             success: function (response) {
-
+              
               t.removeAttribute("data-kt-indicator");
               $('#validation-errors').hide().empty();
 
@@ -160,90 +161,58 @@ let KTModalCustomersAdd = function () {
 
       this.getPlates();
 
-      this.handlePlateCheckboxes();
+      this.handleIngredientCheckboxes();
 
     },
 
 
-    handlePlateCheckboxes: function () {
+    handleIngredientCheckboxes: function () {
+      ingredientCheckboxes.forEach(checkbox => {
+        
+        checkbox.addEventListener('change', function() {
 
-      platesCheckboxes.forEach(checkbox => {
+          const ingredientId = this.value;
 
-        checkbox.addEventListener('change', function () {
-          
-          const plateId = this.value;
-
-          const existingPlate = selectedPlates.find(plate => plate.id === plateId);
-
-          if ($(this).prop('checked') && !existingPlate) {
-
-            selectedPlates.push({ id: plateId, count: 1 });
-            updatePlateCount(plateId, 1)
-            toogleStrikethrough(false, plateId)
+          const existingIngredient = selectedIngredients.find(selectedIngredientId => selectedIngredientId === ingredientId);
+  
+          if ($(this).prop('checked') && !existingIngredient) {
+  
+            selectedIngredients.push(ingredientId);
+  
           } else {
-
-            selectedPlates = selectedPlates.filter(plate => plate.id !== plateId);
-            updatePlateCount(plateId, 0)
-            toogleStrikethrough(true, plateId)
+  
+            selectedIngredients = selectedIngredients.filter(selectedIngredientId => selectedIngredientId !== ingredientId);
+   
           }
-
+          
         });
+        
+        
       });
-
-      function updatePlateCount(plateId, count) {
-        $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').text(count)
-      }
-
-      function toogleStrikethrough(isStrike, plateId) {
-        if (isStrike) {
-          $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').addClass('text-decoration-line-through')
-        } else {
-          $(r).find(`[data-id="${plateId}"]`).closest('.card').find('.count').removeClass('text-decoration-line-through')
-        }
-      }
-
-
-      $(r).on('click', '.increment-btn', function () {
-
-        const plateId = $(this).data('id');
-
-        const plate = selectedPlates.find(plate => plate.id === plateId);
-
-        if (plate) {
-          plate.count++;
-          $(this).siblings('.count').text(plate.count);
-        }
-      });
-
-      $(r).on('click', '.decrement-btn', function () {
-        const plateId = $(this).data('id');
-        const plate = selectedPlates.find(plate => plate.id === plateId);
-        if (plate && plate.count > 1) {
-          plate.count--;
-          $(this).siblings('.count').text(plate.count);
-        }
-      });
+      
     },
+
 
     getPlates: function () {
 
       $.ajax({
-        url: baseURL + 'menu_platess/get/' + menuId,
+        url: baseURL + 'storer/get/' + plateId,
         type: 'GET',
         success: function (response) {
 
           if (response.success) {
+            
+            response.plates.forEach((ingredientId) => {
+              
+              let checkbox = $(`#kt_modal_add_customer_form [value='${ingredientId}']`);
 
-            response.plates.forEach((plate) => {
-
-              let checkbox = $(`#kt_modal_add_customer_form [value='${plate.id}']`);
-              let amountInput = $(`#kt_modal_add_customer_form [data-id-plate='${plate.id}'] span`);
-
-              if (checkbox) checkbox.prop("checked", true);
-              if (amountInput) amountInput.text(plate.amount);
-
-              selectedPlates.push({ id: plate.id, count: plate.amount })
-              amountInput.removeClass('text-decoration-line-through')
+              if (checkbox.length){
+                
+                checkbox.prop("checked", true);
+                if (!selectedIngredients.includes(ingredientId)) {
+                  selectedIngredients.push(ingredientId)
+                }
+              } 
             });
 
 

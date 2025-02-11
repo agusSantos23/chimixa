@@ -24,7 +24,7 @@ class MenuPlateController extends BaseController
 
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
-      $perPage = $this->request->getGet('perPage') ?? 1;
+      $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];

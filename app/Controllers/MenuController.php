@@ -129,12 +129,8 @@ class MenuController extends BaseController
 
               if (in_array($plate['id'], $currentPlateIds)) {
 
-                $menuPlateModel->set([
-                  'amount' => $plate['count']
-                ])
-                  ->where('id_menu', $id)
-                  ->where('id_plate', $plate['id'])
-                  ->update();
+                $menuPlateModel->set(['amount' => $plate['count']])->where('id_menu', $id)->where('id_plate', $plate['id'])->update();
+              
               } else {
 
                 $menuPlateModel->save([

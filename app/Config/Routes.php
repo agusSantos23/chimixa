@@ -39,6 +39,9 @@ $routes->get('orders', 'OrderController::index');
 
 
 
+
+
+
 // roles
 $routes->get('roles', 'RolController::index');
 $routes->get('roles/get/(:any)', 'RolController::getRol/$1');
@@ -58,6 +61,14 @@ $routes->post('ingredients/delete', 'IngredientController::deleteIngredient');
 
 
 
+// store
+$routes->get('store/(:any)', 'StoreController::index/$1');
+$routes->get('storer/get/(:any)', 'StoreController::getPlatesInMenu/$1');
+$routes->post('store/update/(:any)', 'StoreController::saveIngredientInPlate/$1');
+$routes->post('store/delete/(:any)', 'StoreController::deleteIngredientsInPlate/$1');
+
+
+
 // plates
 $routes->get('plates', 'PlateController::index');
 $routes->get('plates/get/(:any)', 'PlateController::getPlate/$1');
@@ -65,7 +76,13 @@ $routes->post('plates/save', 'PlateController::savePlate');
 $routes->post('plates/update/(:any)', 'PlateController::savePlate/$1');
 $routes->post('plates/delete', 'PlateController::deletePlate');
 
-$routes->get('plateingredients/(:any)', 'PlateController::ingredientsOfPlate/$1');
+
+
+// menus_plates
+$routes->get('menu_plates/(:any)', 'MenuPlateController::index/$1');
+$routes->get('menu_platess/get/(:any)', 'MenuPlateController::getPlatesInMenu/$1');
+$routes->post('menu_plates/update/(:any)', 'MenuPlateController::savePlateInMenu/$1');
+$routes->post('menu_plates/delete/(:any)', 'MenuPlateController::deletePlatesInMenu/$1');
 
 
 
@@ -77,12 +94,6 @@ $routes->post('menus/save', 'MenuController::saveMenu');
 $routes->post('menus/update/(:any)', 'MenuController::saveMenu/$1');
 $routes->post('menus/delete', 'MenuController::deleteMenu');
 
-
-// menus_plates
-$routes->get('menu_plates/(:any)', 'MenuPlateController::index/$1');
-$routes->get('menu_platess/get/(:any)', 'MenuPlateController::getPlatesInMenu/$1');
-$routes->post('menu_plates/update/(:any)', 'MenuPlateController::savePlateInMenu/$1');
-$routes->post('menu_plates/delete/(:any)', 'MenuPlateController::deletePlatesInMenu/$1');
 
 
 

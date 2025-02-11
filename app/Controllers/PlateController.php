@@ -105,7 +105,6 @@ class PlateController extends BaseController
           'selectedIngredients' => json_decode($this->request->getPost('selectedIngredients'), true)
         ];
 
-        log_message('info', print_r($plateData,true));
 
         if ($id) {
 
@@ -119,17 +118,13 @@ class PlateController extends BaseController
             $currentIngredients = $storeModel->select('id_ingredient')->where('id_plate', $id)->findAll();
 
 
-
             $currentIngredientIds = array_column($currentIngredients, 'id_ingredient');
-
-
 
 
             foreach ($plateData['selectedIngredients'] as $ingredientId) {
 
-              log_message('info',  $ingredientId . "arrray bdddd:".print_r($currentIngredients, true));
 
-              if (!in_array($ingredientId, $currentIngredients)) {
+              if (!in_array($ingredientId, $currentIngredientIds)) {
 
                 $storeModel->save([
                   'id_plate' => $id,
@@ -138,9 +133,11 @@ class PlateController extends BaseController
               }
             };
 
-            foreach ($currentIngredients as $currentIngredient) {
-              if (!in_array($currentIngredient['id_ingredient'], $currentIngredientIds)) {
-                $storeModel->where('id_plate', $id)->where('id_plate', $currentIngredient['id_plate'])->delete();
+            foreach ($currentIngredientIds as $ingredientId) {
+
+              if (!in_array($ingredientId, $plateData['selectedIngredients'])) {
+
+                $storeModel->where('id_plate', $id)->where('id_ingredient', $ingredientId)->delete();
               }
             }
 
@@ -160,7 +157,7 @@ class PlateController extends BaseController
             $plateId = $plateModel->where('name', $plateData['name'])->first()['id'];
 
             $correct = true;
-            log_message('info',  print_r($plateData, true));
+            
             foreach ($plateData['selectedIngredients'] as $ingredient) {
               
               if (!$storeModel->save(['id_plate' => $plateId, 'id_ingredient' => $ingredient])) {
@@ -201,8 +198,6 @@ class PlateController extends BaseController
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
 
-      log_message('info', 'Updating plates with IDs: ' . implode(', ', $ids));
-
 
 
       if (!$plateModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
@@ -219,26 +214,4 @@ class PlateController extends BaseController
     }
   }
 
-
-  public function ingredientsOfPlate($plateId)
-  {
-
-    $plateModel = new PlateModel();
-    $storeModel = new StoreModel();
-
-    try {
-      $userRole = session()->get('userRole');
-
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
-
-
-
-      $data['plate'] = $plateModel->select('id, name')->find($plateId);
-      $data['ingredients'] = $storeModel->getIngredientsByPlate($plateId);
-
-      return view('pages/list/store_list', $data);
-    } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
-    }
-  }
 }

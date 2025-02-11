@@ -307,12 +307,12 @@ License: For each use you must have a valid license purchased only from above li
 
 														<td>
 															<?php if ($plate['disabled']): ?>
-																<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Ingredient is disabled"></div>
+																<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
 															<?php endif; ?>
 														</td>
 
 														<td>
-															<a href="<?= base_url(relativePath: "plateingredients/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
+															<a href="<?= base_url(relativePath: "store/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
 																<?= $plate['name'] ?>
 															</a>
 														</td>
