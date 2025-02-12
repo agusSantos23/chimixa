@@ -434,7 +434,7 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="fv-row mb-7">
 														<label class="required fs-6 fw-bold mb-2 pb-2">Plates</label>
 
-														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
 															<?php if (isset($plates) && is_array($plates)): ?>
 
 																<?php foreach ($plates as $plate): ?>

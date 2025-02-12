@@ -19,7 +19,6 @@ class MenuPlateController extends BaseController
     $plateModel = new PlateModel();
 
     try {
-
       $menuRole = session()->get('userRole');
 
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
@@ -32,7 +31,7 @@ class MenuPlateController extends BaseController
 
 
       $data['menu'] = $menuModel->select('id, name')->find($menuId);
-      $data['plates'] = $plateModel->select('id, name, price, category')->findAll();
+      $data['plates'] = $plateModel->select('id, name, price, category,disabled')->where('disabled', null)->findAll();
 
       $data = array_merge($data, $menuPlateModel->getPlatesByMenu($menuId, $perPage, $searchParams));
 

@@ -13,7 +13,8 @@ class MenuPlateModel extends Model
 
   protected $allowedFields = ['id_menu', 'id_plate', 'amount', 'disabled'];
 
-  public function getPlatesByMenu($menuId, $perPage, $searchParams): array{
+  public function getPlatesByMenu($menuId, $perPage, $searchParams): array
+  {
     $builder = $this->builder();
 
     $builder->select('plates.id, plates.name, plates.description, plates.price, plates.category, plates.preparation_time, menus_plates.amount as amount, menus_plates.disabled as disabled');
@@ -22,16 +23,15 @@ class MenuPlateModel extends Model
     $builder->where('menus_plates.id_menu', $menuId);
 
 
-    
+
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
-      
+
       if ($disabledFilter == 'true') {
         $builder->where('plates.disabled IS NOT NULL');
-
       } elseif ($disabledFilter == 'false') {
-        $builder->where('plates.disabled IS NULL'); 
-      } 
+        $builder->where('plates.disabled IS NULL');
+      }
     }
 
     $searchFields = [
@@ -50,8 +50,11 @@ class MenuPlateModel extends Model
     }
 
     return [
-      'platesOfMenu' => $this->paginate($perPage),  
-      'pager' => $this->pager,               
+      'platesOfMenu' => $this->paginate($perPage),
+      'pager' => $this->pager,
     ];
   }
+
+  
+
 }
