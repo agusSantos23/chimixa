@@ -76,12 +76,17 @@ class MenuModel extends Model
           'plates' => []
         ];
       }
+      $allergens = explode(',', $menu['allergens']);
+      $allergens = array_map(function ($allergen) {
+        return trim($allergen, '[]"');
+      }, $allergens);
+      $allergens = array_filter($allergens);
 
       $formattedMenus[$menu['menu_id']]['plates'][] = [
         'idPlate' => $menu['plate_id'],
         'namePlate' => $menu['plate_name'],
         'amountPlate' => $menu['plate_amount'],
-        'ingredients' => json_decode($menu['allergens'], true)
+        'ingredientsAllergens' => $allergens
       ];
     }
 

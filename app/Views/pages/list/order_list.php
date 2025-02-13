@@ -342,23 +342,48 @@ License: For each use you must have a valid license purchased only from above li
 												<!--begin::Scroll-->
 												<div class="scroll-y me-n7 pe-4" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
-													<div class="mb-7 card-body bg-light form-control form-control-solid">
+													<div class="mb-7 card-body bg-light form-control form-control-solid " >
 
 														<header class="d-flex justify-content-between align-items-center mb-5">
-															<span class="fs-2">List of Menus</span>
+															<span id="title-list" class="fs-2">List of Menus</span>
 
 															<button class="btn btn-primary me-3 active btn-items">Plates</button>
 
 														</header>
 
-														<main class=" bg-light form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+														<main id="content-list-menus" class=" bg-light form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+
 															<?php foreach ($menus as $menu): ?>
+
 
 																<div class="card form-control">
 																	<header class="mb-5">
-																		<div class="d-flex align-items-center">
-																			<input class="form-check-input me-2 select-element" type="checkbox" value="<?= $menu['idMenu'] ?>" data-id="<?= $menu['idMenu'] ?>">
+																		<div class="mb-1 d-flex align-items-center">
+																			<input class="form-check-input me-2 select-element cursor-pointer" type="checkbox" value="<?= $menu['idMenu'] ?>" data-id="<?= $menu['idMenu'] ?>" data-name-menu="<?= $menu['nameMenu'] ?>" data-price="<?= $menu['priceMenu'] ?>">
 																			<label style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" class="form-check-label fs-4" for=""><?= $menu['nameMenu'] ?></label>
+																		</div>
+																		<div>
+																			<?php
+																			$uniqueAllergensOfMenu = [];
+																			foreach ($menu['plates'] as $plate) {
+																				if (!empty($plate['ingredientsAllergens'])) {
+																					foreach ($plate['ingredientsAllergens'] as $allergens) {
+																						if (!in_array($allergens, $uniqueAllergensOfMenu)) {
+																							$uniqueAllergensOfMenu[] = $allergens;
+																						}
+																					}
+																				}
+																			}
+
+																			if (!empty($uniqueAllergensOfMenu)) {
+																				foreach ($uniqueAllergensOfMenu as $allergen):
+																			?>
+																					<span class="badge badge-pill badge-primary m-1"><?= htmlspecialchars($allergen) ?></span>
+																			<?php
+																				endforeach;
+																			}
+																			?>
+
 																		</div>
 																	</header>
 
@@ -393,10 +418,62 @@ License: For each use you must have a valid license purchased only from above li
 
 														</main>
 
+														<main id="content-list-plates" class="bg-light form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+															<?php foreach ($plates as $plate): ?>
+
+																<div class="card form-control">
+																	<header class="mb-5">
+																		<div class="mb-1 d-flex align-items-center">
+																			<input class="form-check-input me-2 select-element" type="checkbox" value="<?= $plate['idPlate'] ?>" data-id="<?= $plate['idPlate'] ?>" data-name-plate="<?= $plate['namePlate'] ?>" data-price="<?= $plate['pricePlate'] ?>">
+																			<label style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" class="form-check-label fs-4" for=""><?= $plate['namePlate'] ?></label>
+																		</div>
+																		<div>
+																			<?php
+																			$uniqueAllergensOfMenu = [];
+																			if (!empty($plate['ingredientsAllergens'])) {
+																				foreach ($plate['ingredientsAllergens'] as $allergens) {
+
+																					if (!in_array($allergens, $uniqueAllergensOfMenu)) {
+																						$uniqueAllergensOfMenu[] = $allergens;
+																					}
+																				}
+																			}
+
+
+																			if (!empty($uniqueAllergensOfMenu)) {
+																				foreach ($uniqueAllergensOfMenu as $allergen):
+																			?>
+																					<span class="badge badge-pill badge-primary m-1"><?= htmlspecialchars($allergen) ?></span>
+																			<?php
+																				endforeach;
+																			}
+																			?>
+
+																		</div>
+																	</header>
+
+
+																	<footer class="d-flex justify-content-between align-items-center">
+																		<span><?= $plate['pricePlate'] ?></span>
+
+																		<div class="d-flex align-items-center ms-3" data-id-plate="">
+																			<button type="button" class="decrement-btn btn btn-sm btn-outline-secondary p-1" data-id="<?= $plate['idPlate'] ?>">-</button>
+																			<span class="count mx-2 text-decoration-line-through">0</span>
+																			<button type="button" class="increment-btn btn btn-sm btn-outline-secondary p-1" data-id="<?= $plate['idPlate'] ?>">+</button>
+																		</div>
+																	</footer>
+
+																</div>
+
+															<?php endforeach; ?>
+
+
+														</main>
+
 													</div>
 
-													<div class="p-5 rounded" style="background-color:#FFF9C4;">
-														<header class="d-flex justify-content-between align-items-center mb-5 cursor-pointer">
+													<div class="m-5 p-5 rounded" style="background-color:#FAF9DF;">
+														<header id="dropdown" class="d-flex justify-content-between align-items-center  cursor-pointer">
 															<h3 class="m-0">
 																<!--begin::Svg Icon | path: assets/media/icons/duotune/arrows/arr072.svg-->
 																<span class="svg-icon svg-icon-dark svg-icon-2hx">
@@ -410,39 +487,17 @@ License: For each use you must have a valid license purchased only from above li
 
 															<span>Id for edit</span>
 														</header>
-														<main class="body-receipt">
-															<section class="mb-5 ms-5">
-																<h4>Plates</h4>
-																<table class="col-12">
-																	<tr>
-																		<td class="col-1">
-																			<div class="w-8px h-8px rounded-circle bg-dark mx-auto"></div>
-																		</td>
+														<main id="body-receipt" class="mt-5">
 
-																		<td class="col-6">Name</td>
-																		<td class="col-3 text-center">Price x amount</td>
-																		<td class="col-2 text-center">Total Price</td>
-																	</tr>
-																</table>
+															<section class="mb-5 ms-5" id="menu-receipt-container">
 
 															</section>
 
-															<section class="mb-5 ms-5">
-																<h4>Menus</h4>
-																<table class="col-12">
-																	<tr>
-																		<td class="col-1">
-																			<div class="w-8px h-8px rounded-circle bg-dark mx-auto"></div>
-																		</td>
-																		<td class="col-6">Name</td>
-																		<td class="col-3 text-center">Price x amount</td>
-																		<td class="col-2 text-center">Total Price</td>
-																	</tr>
-																</table>
+															<section class="mb-5 ms-5" id="plate-receipt-container">
 
 															</section>
 
-															<h4 class="text-end">Precio Total</h4>
+															<h4 class="text-end" id="totalPrice">Precio Total</h4>
 
 														</main>
 
@@ -450,12 +505,17 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 
 
+
+
 												</div>
 												<!--end::Scroll-->
 											</div>
 											<!--end::Modal body-->
+
 											<!--begin::Modal footer-->
-											<div class="modal-footer flex-center">
+											<div class="modal-footer flex-center ">
+
+
 												<!--begin::Button-->
 												<button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
 												<!--end::Button-->
@@ -466,6 +526,8 @@ License: For each use you must have a valid license purchased only from above li
 														<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 												</button>
 												<!--end::Button-->
+
+
 											</div>
 											<!--end::Modal footer-->
 										</form>

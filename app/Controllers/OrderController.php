@@ -29,7 +29,7 @@ class OrderController extends BaseController{
       
       $data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
       $data['menus'] = $menuModel->getMenusWithDetails();
-      $data['plates'] = $plateModel->where('disabled', null)->findAll();
+      $data['plates'] = $plateModel->getPlatesWithDetails();
 
 
     
