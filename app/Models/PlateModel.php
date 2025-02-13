@@ -44,7 +44,7 @@ class PlateModel extends Model
     ];
   }
 
-  public function getPlatesWithDetails(){
+  public function getPlatesWithDetails(): array{
     $plates = $this->db->table('plates')
       ->select('
         plates.id AS plate_id,

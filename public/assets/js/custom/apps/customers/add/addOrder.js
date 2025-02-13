@@ -26,16 +26,21 @@ let KTModalCustomersAdd = function () {
         t.disabled = true;
 
         if (selectedElements.length > 0) {
-          console.log(selectedElements);
+
+          const formattedOrderData = selectedElements.map(({ id, type, price, count }) => ({
+            id,
+            type,
+            price: parseFloat(price),
+            count
+          }));
+
+          console.log(formattedOrderData);
 
           const formData = new FormData(r);
-          formData.append("selectedElements", JSON.stringify(selectedElements));
+          formData.append("selectedElements", JSON.stringify(formattedOrderData));
 
-          formData.forEach((value, key) => {
-            console.log(key, value);
-          });
 
-          const url = idElement ? baseURL + 'plates/update/' + idElement : baseURL + 'plates/save';
+          const url = orderId ? baseURL + 'order/update/' + orderId : baseURL + 'order/save';
 
           $.ajax({
             url: url,
@@ -45,6 +50,8 @@ let KTModalCustomersAdd = function () {
             processData: false,
             success: function (response) {
 
+              console.log(response);
+              
               t.removeAttribute("data-kt-indicator");
               $('#validation-errors').hide().empty();
 
@@ -86,7 +93,7 @@ let KTModalCustomersAdd = function () {
           t.disabled = false;
 
           Swal.fire({
-            text: "You need to select at least one Ingredient!",
+            text: "You need to select at least one Element!",
             icon: "error",
             buttonsStyling: false,
             confirmButtonText: "OK, understood!",

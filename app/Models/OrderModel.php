@@ -9,7 +9,7 @@ class OrderModel extends Model{
   protected $table = 'orders';
   protected $primaryKey = 'id';
 
-  protected $allowedFields = ['id_user', 'id_element', 'type_element', 'disabled'];
+  protected $allowedFields = ['id_user', 'id_element', 'code', 'type_element', 'amount','price', 'disabled'];
 
   protected $useTimestamps = true;
   protected $createdField = 'created_at';

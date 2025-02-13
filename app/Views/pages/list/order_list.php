@@ -242,6 +242,7 @@ License: For each use you must have a valid license purchased only from above li
 													</td>
 												</tr>
 											<?php else: ?>
+
 												<?php foreach ($orders as $order): ?>
 
 													<tr>
@@ -501,12 +502,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														</main>
 
-
 													</div>
-
-
-
-
 												</div>
 												<!--end::Scroll-->
 											</div>
