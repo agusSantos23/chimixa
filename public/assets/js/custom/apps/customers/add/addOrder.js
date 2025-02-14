@@ -1,7 +1,7 @@
 "use strict";
 
 let KTModalCustomersAdd = function () {
-  let t, e, o, r, orderId = null, isListMenu = true, elementCheckboxes, selectedElements = [];
+  let t, e, o, r, isListMenu = true, elementCheckboxes, selectedElements = [];
 
   const baseURL = window.location.origin + '/chimixa/public/';
 
@@ -40,10 +40,9 @@ let KTModalCustomersAdd = function () {
           formData.append("selectedElements", JSON.stringify(formattedOrderData));
 
 
-          const url = orderId ? baseURL + 'order/update/' + orderId : baseURL + 'order/save';
 
           $.ajax({
-            url: url,
+            url: baseURL + 'orders/save',
             type: 'POST',
             data: formData,
             contentType: false,

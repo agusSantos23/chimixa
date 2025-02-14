@@ -29,7 +29,7 @@ class OrderController extends BaseController
 
 
 
-      //$data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
+      $data['orders'] = $orderModel->getUserOrder(session()->get('userId'));
       $data['menus'] = $menuModel->getMenusWithDetails();
       $data['plates'] = $plateModel->getPlatesWithDetails();
 
@@ -133,6 +133,36 @@ class OrderController extends BaseController
       echo "Error: " . $e->getMessage();
     }
   }
+
+
+  public function deleteOrder()
+  {
+    $orderModel = new OrderModel();
+
+
+    try {
+      $ids = $this->request->getPost('ids');
+
+      if (count($ids) === 0) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+
+      if (!$orderModel->whereIn('code', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Code not found']);
+      }else{
+        return $this->response->setJSON(['success' => true]);
+      }
+
+ 
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
+
 
   private function generateOrderCode(){
     $letters = strtoupper(substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 2)); 
