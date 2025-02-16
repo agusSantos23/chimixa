@@ -127,7 +127,7 @@ let KTModalCustomersAdd = function () {
 
               $.ajax({
                 url: url,
-                type: 'POSTs',
+                type: 'POST',
                 data: formData,
                 contentType: false,
                 processData: false,
