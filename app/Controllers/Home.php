@@ -20,7 +20,7 @@ class Home extends BaseController{
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
 
-      $data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
+      //$data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
 
       
       $data['aside'] = view('templates/aside');

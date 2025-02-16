@@ -36,10 +36,6 @@ License: For each use you must have a valid license purchased only from above li
 		<div class="page d-flex flex-row flex-column-fluid">
 
 
-
-			
-
-
 			<?= $aside ?>
 
 
@@ -259,7 +255,7 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="card-header align-items-center border-0 mt-4">
 										<h3 class="card-title align-items-start flex-column">
 											<span class="fw-bolder mb-2 text-dark">Ultimos Pedidos</span>
-											<span class="text-muted fw-bold fs-7"><?= count($orders) ?> Pedidos</span>
+											<span class="text-muted fw-bold fs-7"><?php /* count($orders)*/ ?> Pedidos</span>
 										</h3>
 										<div class="card-toolbar">
 											<!--begin::Menu-->
@@ -363,7 +359,7 @@ License: For each use you must have a valid license purchased only from above li
 
 										<!--begin::Timeline-->
 										<div class="timeline-label">
-											<?php foreach ($orders as $order):  ?>
+											<?php /* foreach ($orders as $order):  ?>
 												<!--begin::Item-->
 												<div class="timeline-item">
 													<!--begin::Label-->
@@ -382,7 +378,7 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end::Text-->
 												</div>
 												<!--end::Item-->
-											<?php endforeach; ?>
+											<?php endforeach; */ ?>
 
 										</div>
 										<!--end::Timeline-->

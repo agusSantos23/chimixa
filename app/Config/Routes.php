@@ -36,6 +36,7 @@ $routes->post('users/delete', 'UserController::deleteUser');
 
 // orders
 $routes->get('orders', 'OrderController::index');
+$routes->get('orders/get/(:any)', 'OrderController::getOrder/$1');
 $routes->post('orders/save', 'OrderController::saveOrder');
 $routes->post('orders/delete', 'OrderController::deleteOrder');
 

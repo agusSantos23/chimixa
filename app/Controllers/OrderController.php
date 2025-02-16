@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\OrderModel;
+use App\Models\OrderElementModel;
 use App\Models\MenuModel;
 use App\Models\PlateModel;
 
@@ -16,7 +17,7 @@ class OrderController extends BaseController
 
   public function index()
   {
-    $orderModel = new OrderModel();
+    $orderElementModel = new OrderElementModel();
     $menuModel = new MenuModel();
     $plateModel = new PlateModel();
 
@@ -27,12 +28,17 @@ class OrderController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      $perPage = $this->request->getGet('perPage') ?? 5;
+      $data['perPage'] = $perPage;
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $data['searchParams'] = $searchParams;
 
 
-      $data['orders'] = $orderModel->getUserOrder(session()->get('userId'));
       $data['menus'] = $menuModel->getMenusWithDetails();
       $data['plates'] = $plateModel->getPlatesWithDetails();
 
+      $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams));
 
 
 
@@ -45,9 +51,37 @@ class OrderController extends BaseController
 
 
 
-  public function saveOrder($id = null)
+  public function getOrder($id)
+  {
+    $orderElementModel = new OrderElementModel();
+
+
+
+    try {
+
+      $order = $orderElementModel->where('id_order', $id)->findAll();
+
+
+      if ($order) {
+
+        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'data' => $order]);
+      } else {
+
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'order not found']);
+      }
+    } catch (Exception $e) {
+
+      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting order: ' . $e->getMessage()]);
+    }
+  }
+
+
+
+
+  public function saveOrder()
   {
     $orderModel = new OrderModel();
+    $orderElementModel = new OrderElementModel();
 
     $validation = \Config\Services::validation();
     $validation->setRules([
@@ -60,73 +94,44 @@ class OrderController extends BaseController
 
         return $this->response->setStatusCode(code: 400)->setJSON(['errors' => $validation->getErrors()]);
       } else {
+
         $selectedElements = json_decode($this->request->getPost('selectedElements'), true);
 
-        $userId = session()->get('userId');
-        $codeGenerated = $this->generateOrderCode();
-
-        if ($id) {
-          /*
-          if (!$plateModel->find($id)) {
-            return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Plate not found']]);
-          }
+        $orderData = [
+          'price' => array_sum(array_map(function ($element) {
+            return $element['price'] * $element['count'];
+          }, $selectedElements))
+        ];
 
 
-          if ($plateModel->update($id, $plateData)) {
 
-            $currentIngredients = $storeModel->select('id_ingredient')->where('id_plate', $id)->findAll();
+        if (!$orderModel->save($orderData)) {
 
-
-            $currentIngredientIds = array_column($currentIngredients, 'id_ingredient');
-
-
-            foreach ($plateData['selectedIngredients'] as $ingredientId) {
-
-
-              if (!in_array($ingredientId, $currentIngredientIds)) {
-
-                $storeModel->save([
-                  'id_plate' => $id,
-                  'id_ingredient' => $ingredientId
-                ]);
-              }
-            };
-
-            foreach ($currentIngredientIds as $ingredientId) {
-
-              if (!in_array($ingredientId, $plateData['selectedIngredients'])) {
-
-                $storeModel->where('id_plate', $id)->where('id_ingredient', $ingredientId)->delete();
-              }
-            }
-
-            return $this->response->setStatusCode(200)->setJSON(['success' => true]);
-          } else {
-            return $this->response->setStatusCode(500)->setJSON(['errors' => ['user' => 'Failed to updated Plate']]);
-          }
-
-          */
-        } else {
-
-
-          foreach ($selectedElements as $element) {
-
-            $orderData = [
-              'id_user' => $userId,
-              'id_element' => $element['id'],
-              'code' => $codeGenerated,
-              'type_element' => $element['type'],
-              'amount' =>  $element['count'],
-              'price' => $element['price']
-            ];
-
-            if (!$orderModel->save($orderData)) {
-              return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add order']);
-            }
-          }
-
-          return $this->response->setStatusCode(200)->setJSON(['message' => 'Order added successfully']);
+          return $this->response->setStatusCode(500)->setJSON(['messageorder' => $orderModel->errors()]);
         }
+
+        $userId = session()->get('userId');
+        $orderId = $orderModel->select('id')->orderBy('created_at', 'DESC')->first();
+
+
+        foreach ($selectedElements as $element) {
+          $orderElementData = [
+            'id_order' => $orderId,
+            'id_user' => $userId,
+            'id_element' => $element['id'],
+            'type_element' => $element['type'],
+            'amount' =>  $element['count'],
+            'price' => $element['price']
+          ];
+
+          if (!$orderElementModel->save($orderElementData)) {
+            return $this->response->setStatusCode(code: 500)->setJSON(body: ['messageorderelements' => $orderElementModel->errors()]);
+          }
+        }
+
+        return $this->response->setStatusCode(200)->setJSON([
+          'message' => 'Order added successfully',
+        ]);
       }
     } catch (Exception $e) {
 
@@ -149,24 +154,13 @@ class OrderController extends BaseController
 
 
 
-      if (!$orderModel->whereIn('code', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+      if (!$orderModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => false, 'message' => 'Code not found']);
-      }else{
+      } else {
         return $this->response->setJSON(['success' => true]);
       }
-
- 
     } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
+      return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
-  }
-
-
-
-
-  private function generateOrderCode(){
-    $letters = strtoupper(substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 2)); 
-    $numbers = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-    return $letters . '-' . $numbers;
   }
 }

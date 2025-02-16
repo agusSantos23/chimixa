@@ -178,7 +178,6 @@ let KTModalCustomersAdd = function () {
       })
 
       this.receiptData();
-      this.editEvent();
       this.viewElements();
       this.handlePlateCheckboxes();
     },
@@ -244,72 +243,7 @@ let KTModalCustomersAdd = function () {
       totalPriceText.text(`${totalPrice} $`);
     },
 
-    editEvent: function () {
-      document.querySelectorAll('[data-kt-role-table-filter="edit_row"]').forEach((e) => {
-
-        e.addEventListener("click", function (e) {
-
-          e.preventDefault();
-
-          idElement = $(this).data('id');
-
-          $.ajax({
-            url: baseURL + 'plates/get/' + idElement,
-            type: 'GET',
-            success: function (response) {
-
-              if (response.success) {
-
-                $('#kt_modal_add_customer_form #kt_modal_add_customer_header h2').text("Edit Plate");
-
-                $('#kt_modal_add_customer_form input[name="name"]').val(response.plate.name);
-
-                $('#kt_modal_add_customer_form input[name="price"]').val(response.plate.price);
-
-                $('#kt_modal_add_customer_form input[name="description"]').val(response.plate.description);
-
-                $('#kt_modal_add_customer_form input[name="preparationTime"]').val(response.plate.preparation_time);
-
-                $('#kt_modal_add_customer_form select[name="category"]').val(response.plate.category);
-
-                response.ingredientsSelect.forEach((ingredient) => {
-                  const ingredientId = ingredient.id_ingredient
-                  let checkbox = $(`#kt_modal_add_customer_form [value='${ingredientId}']`);
-
-                  if (checkbox.length) {
-
-                    checkbox.prop("checked", true);
-                    if (!selectedIngredients.includes(ingredientId)) {
-                      selectedIngredients.push(ingredientId)
-                    }
-                  }
-
-                });
-
-
-                i.show();
-              } else {
-
-                Swal.fire({
-                  text: 'Error loading role data',
-                  icon: 'error',
-                  confirmButtonText: 'OK',
-                  customClass: { confirmButton: 'btn btn-primary' }
-                });
-              }
-            },
-            error: function () {
-              Swal.fire({
-                text: 'There was a problem loading role data',
-                icon: 'error',
-                confirmButtonText: 'OK',
-                customClass: { confirmButton: 'btn btn-primary' }
-              });
-            }
-          });
-        });
-      });
-    },
+   
 
     viewElements: function () {
       $('#kt_modal_add_customer_form #content-list-plates').hide();
