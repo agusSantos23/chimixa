@@ -76,11 +76,12 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Heading-->
 								<div class="text-center mb-10">
 									<!--begin::Title-->
-									<h1 class="text-dark mb-3">Inicia Sesion en CHIMIXA</h1>
+									<h1 class="text-dark mb-3">Log in to CHIMIXA</h1>
 									<!--end::Title-->
 									<!--begin::Link-->
-									<div class="text-gray-400 fw-bold fs-4">Nuevo aqui?
-									<a href="<?= base_url('auth/register') ?>" class="link-primary fw-bolder">Crear una Cuenta</a></div>
+									<div class="text-gray-400 fw-bold fs-4">New here?
+									<a href="<?= base_url('auth/register') ?>" class="link-primary fw-bolder">Create an Account</a>
+									</div>
 									<!--end::Link-->
 								</div>
 								<!--end::Heading-->
@@ -97,7 +98,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Input group-->
 								<div class="fv-row mb-10">
 									<!--begin::Label-->
-									<label class="form-label fs-6 fw-bolder text-dark">Correo Electronico</label>
+									<label class="form-label fs-6 fw-bolder text-dark">Email</label>
 									<!--end::Label-->
 									<!--begin::Input-->
 									<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
@@ -109,7 +110,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Wrapper-->
 									<div class="d-flex flex-stack mb-2">
 										<!--begin::Label-->
-										<label class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
+										<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 										<!--end::Label-->
 									</div>
 									<!--end::Wrapper-->

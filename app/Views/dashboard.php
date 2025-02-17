@@ -36,7 +36,8 @@ License: For each use you must have a valid license purchased only from above li
 		<div class="page d-flex flex-row flex-column-fluid">
 
 
-			<?= $aside ?>
+			<?php include APPPATH . 'Views/templates/aside.php' ?>
+
 
 
 			<!--begin::Wrapper-->
@@ -254,8 +255,8 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Header-->
 									<div class="card-header align-items-center border-0 mt-4">
 										<h3 class="card-title align-items-start flex-column">
-											<span class="fw-bolder mb-2 text-dark">Ultimos Pedidos</span>
-											<span class="text-muted fw-bold fs-7"><?php /* count($orders)*/ ?> Pedidos</span>
+											<span class="fw-bolder mb-2 text-dark">Latest Orders</span>
+											<span class="text-muted fw-bold fs-7"><?php !empty($orders) && count($orders) ?> Orders</span>
 										</h3>
 										<div class="card-toolbar">
 											<!--begin::Menu-->
@@ -355,34 +356,51 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Header-->
 
 									<!--begin::Body-->
-									<div class="card-body pt-5 overflow-auto">
+									<!--begin::Timeline-->
 
-										<!--begin::Timeline-->
-										<div class="timeline-label">
-											<?php /* foreach ($orders as $order):  ?>
-												<!--begin::Item-->
-												<div class="timeline-item">
-													<!--begin::Label-->
-													<div class="timeline-label fw-bolder text-gray-800 fs-6"><?= date("d/m", strtotime($order['orderDate'])) ?></div>
-													<!--end::Label-->
-													<!--begin::Badge-->
-													<div class="timeline-badge" data-bs-toggle="tooltip" title="<?= $order['type'] ?>" style="cursor:pointer;">
-														<i class="fa fa-genderless <?= $order['type'] === 'menu' ? 'text-primary' : 'text-success' ?> fs-1"></i>
-													</div>
-													<!--end::Badge-->
-													<!--begin::Text-->
-													<div class="fw-mormal timeline-content text-muted ps-3">
-														<span class="fw-bolder text-gray-800"><?= $order['name'] ?>:</span>
-														<?= $order['description']?>
-													</div>
-													<!--end::Text-->
+									<?php if (empty($orders)): ?>
+										<div class="card-body pt-5 overflow-auto d-flex flex-column justify-content-center align-items-center" style="min-height: 200px;">
+
+											<div class=" w-100">
+												<div class=" alert alert-warning text-center w-100">
+													You have not placed any order
 												</div>
-												<!--end::Item-->
-											<?php endforeach; */ ?>
-
+											</div>
 										</div>
-										<!--end::Timeline-->
-									</div>
+									<?php else: ?>
+										<div class="card-body pt-5 ">
+											<div class="timeline-label w-100">
+												<?php foreach ($orders as $order): ?>
+													<!--begin::Item-->
+													<div class="timeline-item">
+														<!--begin::Label-->
+														<div class="timeline-label fw-bolder text-gray-800 fs-6">
+															<?= date("d/m", strtotime($order['created_at'])) ?>
+														</div>
+														<!--end::Label-->
+														<!--begin::Badge-->
+														<div class="timeline-badge" data-bs-toggle="tooltip" style="cursor:pointer;">
+															<i class="fa fa-genderless text-primary fs-1"></i>
+														</div>
+														<!--end::Badge-->
+														<!--begin::Text-->
+														<div class="fw-mormal timeline-content text-muted ps-3">
+															<span class="fw-bolder text-gray-800"><?= $order['id'] ?>:</span> Total Price <?= $order['price'] ?> $
+
+														</div>
+														<!--end::Text-->
+													</div>
+
+													<!--end::Item-->
+												<?php endforeach; ?>
+											</div>
+										</div>
+									<?php endif; ?>
+									<!--end::Timeline-->
+
+
+									<!--end: Card Body-->
+
 									<!--end: Card Body-->
 								</div>
 								<!--end: List Widget 5-->
@@ -422,10 +440,10 @@ License: For each use you must have a valid license purchased only from above li
 											<div class="me-2">
 												<span class="fw-bolder text-gray-800 d-block fs-3">Compras</span>
 												<?php
-													$dateNow = new DateTime();
-													$dateEightMonth = new DateTime();
-													$dateEightMonth->modify('-8 months');
-													
+												$dateNow = new DateTime();
+												$dateEightMonth = new DateTime();
+												$dateEightMonth->modify('-8 months');
+
 												?>
 												<span class="text-gray-400 fw-bold">Ultimos 8 meses <?= $dateEightMonth->format('M y'), ' - ', $dateNow->format('M y') ?></span>
 											</div>
@@ -2341,8 +2359,8 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-				<?= $footer ?>
-				
+				<?php include APPPATH . 'Views/templates/footer.php' ?>
+
 
 			</div>
 			<!--end::Wrapper-->
@@ -5131,9 +5149,7 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 	<!--end::Scrolltop-->
 	<!--end::Main-->
-	<script>
-		var hostUrl = "assets/";
-	</script>
+
 	<!--begin::Javascript-->
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="assets/plugins/global/plugins.bundle.js"></script>

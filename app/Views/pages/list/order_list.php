@@ -274,7 +274,7 @@ License: For each use you must have a valid license purchased only from above li
 
 															<td>
 																<?php if ($order['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Order is disabled"></div>
 																<?php endif; ?>
 															</td>
 

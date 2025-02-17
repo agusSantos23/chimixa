@@ -22,7 +22,6 @@ class OrderElementModel extends Model
       'id' => 'orders.id',
       'date' => 'orders.created_at',
       'price' => 'orders.price',
-      'created_at' => 'orders.created_at' 
     ];
 
     foreach ($searchFields as $key => $field) {

@@ -17,6 +17,7 @@ class OrderController extends BaseController
 
   public function index()
   {
+    $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
     $menuModel = new MenuModel();
     $plateModel = new PlateModel();
@@ -38,8 +39,13 @@ class OrderController extends BaseController
       $data['menus'] = $menuModel->getMenusWithDetails();
       $data['plates'] = $plateModel->getPlatesWithDetails();
 
-      $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams));
 
+      if ($userRole === 'Customer') {
+        $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams));
+      }elseif ($userRole === 'Administrator'){
+        $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams));
+
+      }
 
 
 

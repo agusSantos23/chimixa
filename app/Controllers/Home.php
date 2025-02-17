@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\OrderModel;
+use App\Models\OrderElementModel;
 use Exception;
 
 
@@ -11,6 +12,7 @@ class Home extends BaseController{
 
   public function index() {
     $orderModel = new OrderModel();
+    $orderElementModel = new OrderElementModel();
 
 
     try {
@@ -19,12 +21,17 @@ class Home extends BaseController{
         
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
       
+      $perPage = 8;
 
-      //$data['orders'] = $orderModel->getUserOrderDetails(session()->get('userId'));
+      if ($userRole === 'Customer') {
+        $data = $orderElementModel->getUserOrders(session()->get('userId'), $perPage);
 
-      
-      $data['aside'] = view('templates/aside');
-      $data['footer'] = view('templates/footer');
+      }else if ($userRole === 'Administrator') {
+
+        $data['orders'] = null;
+      }
+
+
 
 
       return view('dashboard', $data);
@@ -34,6 +41,8 @@ class Home extends BaseController{
     }
     
   }
+
+
 
   public function calendar() {
     try {
