@@ -494,24 +494,24 @@ License: For each use you must have a valid license purchased only from above li
 															<span class="required">Select Image</span>
 														</label>
 
-														<div class="d-flex flex-wrap">
+														<div class="d-flex justify-content-center align-items-center flex-wrap">
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-1') ?>" alt="Image 1" data-image="150-1" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/catus') ?>" alt="Image catus" width="150" data-image="catus" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-2') ?>" alt="Image 2" data-image="150-2" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/chilliPepper') ?>" alt="Image chilli pepper" width="150" data-image="chilliPepper" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-3') ?>" alt="Image 3" data-image="150-3" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/fire') ?>" alt="Image fire"  width="150"data-image="fire" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-4') ?>" alt="Image 4" data-image="150-4" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/guitar') ?>" alt="Image guitar" width="150" data-image="guitar" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-5') ?>" alt="Image 5" data-image="150-5" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/hat') ?>" alt="Image hat" width="150" data-image="hat" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/150-6') ?>" alt="Image 5" data-image="150-6" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/wad') ?>" alt="Image wad" width="150" data-image="wad" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 														</div>
 													</div>
