@@ -26,9 +26,15 @@ class RolController extends BaseController
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
+      
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
 
 
-      $data = array_merge($data, $rolModel->getCountByRoles($perPage, $searchParams));
+      $data = array_merge($data, $rolModel->getRoles($perPage, $searchParams, $sortBy, $sortDirection));
 
 
       return view('pages/list/rol_list', $data);
@@ -53,7 +59,6 @@ class RolController extends BaseController
       } else {
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
       }
-
     } catch (Exception $e) {
       return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting role: ' . $e->getMessage()]);
     }
@@ -103,8 +108,6 @@ class RolController extends BaseController
           } else {
             return $this->response->setStatusCode(500)->setJSON(['errors' => ['name' => 'Failed to updated rol']]);
           }
-
-
         } else {
 
           if ($rolModel->save($rolData)) {

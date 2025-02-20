@@ -147,6 +147,9 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+
 
 
 													<!--begin::DisabledFilter-->
@@ -228,6 +231,19 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="roles/delete">
 											<!--begin::Table head-->
 											<thead>
+
+												<?php
+													$request = \Config\Services::request();
+													$searchParams = $request->getGet('searchParams') ?? [];
+													$sortBy = $request->getGet('sortBy') ?? 'name';
+													$sortDirection = $request->getGet('sortDirection') === 'asc' ? 'desc' : 'asc';
+
+													$queryParams = http_build_query([
+														'searchParams' => $searchParams,
+														'sortBy' => $sortBy, 
+														'sortDirection' => $sortDirection
+													]);
+												?>
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -236,12 +252,10 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 
-													<th></th>
+													<th class="w-50px"></th>
 
-													<th class="min-w-150px">Name</th>
-													<th class="min-w-150px">Associated accounts</th>
+													<th class="min-w-150px"><a href="<?= base_url('/roles?' . $queryParams) ?>">Name</a></th>
 													<th class="w-125px">Actions</th>
-
 												</tr>
 												<!--end::Table row-->
 											</thead>
@@ -253,7 +267,6 @@ License: For each use you must have a valid license purchased only from above li
 												<?php foreach ($roles as $rol): ?>
 
 													<tr>
-
 
 														<!--begin::Checkbox-->
 														<td>
@@ -273,11 +286,6 @@ License: For each use you must have a valid license purchased only from above li
 														<td>
 															<?= esc($rol['name']) ?>
 														</td>
-
-														<td>
-															<?= esc($rol['count']) ?>
-														</td>
-
 
 
 														<td class="text-end">
@@ -316,7 +324,7 @@ License: For each use you must have a valid license purchased only from above li
 																			</svg>
 																		</span>
 																		<!--end::Svg Icon-->
-																		
+
 																		Delete
 																	</a>
 																</div>

@@ -10,10 +10,8 @@ class RolModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['name', 'disabled'];
 
-  public function getCountByRoles($perPage = 5, $searchParams = [])
+  public function getRoles($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc')
   {
-    $userModel = new \App\Models\UserModel();
-
     $builder = $this->builder();
 
     if (isset($searchParams['disabledFilter'])) {
@@ -26,38 +24,34 @@ class RolModel extends Model
       }
     }
 
-    if (!empty($searchParams['name'])) $builder->like('name', $searchParams['name']);
-
-
-    $roles = $this->paginate($perPage);
-    $pager = $this->pager;
-
-    foreach ($roles as &$role) {
-      $role['count'] = $userModel->where('role_id', $role['id'])->countAllResults();
+    if (!empty($searchParams['name'])) {
+      $builder->like('name', $searchParams['name']);
     }
 
+    $allowedSortFields = [
+      'id' => 'roles.id',
+      'name' => 'roles.name',
+      'disabled' => 'roles.disabled'
+    ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
     return [
-      'roles' => $roles,
-      'pager' => $pager
+      'roles' => $this->paginate($perPage),
+      'pager' => $this->pager
     ];
   }
 
-
-
   public function getIdByName($roleName)
   {
-    return $this->where('name', $roleName)
-      ->where('disabled IS NULL')
-      ->first()['id'] ?? null;
+    return $this->where('name', $roleName)->where('disabled IS NULL')->first()['id'] ?? null;
   }
-
-  public function getActiveRolesExcludingAdmin()
-  {
-    return $this->whereNotIn('name', ['Administrator'])
-      ->where('disabled', null)
-      ->findAll();
-  }
-
 
 
 }

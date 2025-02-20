@@ -23,7 +23,7 @@ class UserController extends BaseController
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
 
-      $data['roles'] = $rolModel->getActiveRolesExcludingAdmin();
+      $data['roles'] = $rolModel->whereNotIn('name', ['Administrator'])->where('disabled', null)->findAll();
 
 
 
