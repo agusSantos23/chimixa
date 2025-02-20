@@ -13,6 +13,7 @@ class Home extends BaseController
 
   public function index()
   {
+    $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
 
     try {
@@ -30,11 +31,12 @@ class Home extends BaseController
         $data['orderUser'] = $orderUser['orders'];
 
 
-      } else if ($userRole === 'Administrator') {
+      } else if ($userRole === 'Administrator' || $userRole === 'Chef') {
 
+        $allOrders = $orderModel->findAll($perPage);
         $orderElements = $orderElementModel->select('id, type_element, price, amount, created_at')->findAll();
 
-        $data['orders'] = null;
+        $data['orderUser'] = $allOrders;
 
       }
 

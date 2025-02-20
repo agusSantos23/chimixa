@@ -102,3 +102,7 @@ $routes->post('menus/delete', 'MenuController::deleteMenu');
 
 
 
+// calendar
+$routes->get('calendar/fetch', 'EventController::fetchEvents');
+$routes->post('calendar/add', 'EventController::addEvent');
+$routes->delete('calendar/delete/(:any)', 'EventController::deleteEvent/$1');
