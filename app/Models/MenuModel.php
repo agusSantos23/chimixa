@@ -10,7 +10,7 @@ class MenuModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['name', 'description', 'price', 'disabled'];
 
-  public function getMenus($perPage = 5, $searchParams = [])
+  public function getMenus($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc')
   {
     $builder = $this->builder();
 
@@ -36,6 +36,20 @@ class MenuModel extends Model
         $builder->like($field, $searchParams[$key]);
       }
     }
+
+    $allowedSortFields = [
+      'name' => 'name',
+      'description' => 'description',
+      'price' => 'price'
+    ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
 
     return [
       'menus' => $this->paginate($perPage),

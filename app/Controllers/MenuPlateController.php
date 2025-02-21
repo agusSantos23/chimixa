@@ -23,17 +23,25 @@ class MenuPlateController extends BaseController
 
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
+
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
+
 
       $data['menu'] = $menuModel->select('id, name')->find($menuId);
       $data['plates'] = $plateModel->select('id, name, price, category,disabled')->where('disabled', null)->findAll();
 
-      $data = array_merge($data, $menuPlateModel->getPlatesByMenu($menuId, $perPage, $searchParams));
+      $data = array_merge($data, $menuPlateModel->getPlatesByMenu($menuId, $perPage, $searchParams, $sortBy, $sortDirection));
 
       return view('pages/list/menu_plates_list', $data);
     } catch (Exception $e) {

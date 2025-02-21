@@ -23,6 +23,8 @@ class MenuController extends BaseController
       $menuRole = session()->get('userRole');
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
+
 
       $data['plates'] = $plateModel->where('disabled', null)->findAll();
 
@@ -32,11 +34,17 @@ class MenuController extends BaseController
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
 
-      $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams));
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
+
+      $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams, $sortBy, $sortDirection));
 
 
       return view('pages/list/menu_list', $data);
+
     } catch (Exception $e) {
       return "Error: " . $e->getMessage();
     }

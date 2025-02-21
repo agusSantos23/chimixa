@@ -191,6 +191,10 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::DisabledFilter-->
 
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
 														<button type="button" onclick="window.location='<?= base_url('menus') ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
@@ -245,6 +249,8 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menus/delete">
 											<!--begin::Table head-->
 											<thead>
+												<?php $route = 'menus' ?>
+
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -253,9 +259,21 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 													<th></th>
-													<th class="min-w-150px">Name</th>
-													<th class="min-w-150px">Description</th>
-													<th class="min-w-150px">Price</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('description', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Description <?= getSortIcon('description', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('price', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Price <?= getSortIcon('price', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
 													<th class="w-125px">Actions</th>
 
 												</tr>
@@ -358,6 +376,14 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
 										<form action="<?= base_url('menus') ?>" method="get" class="d-inline-block">
+											<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+											$queryString = http_build_query($urlParams);
+											?>
+											<input type="hidden" name="searchParams" value="<?= $queryString ?>">
+											<input type="hidden" name="sortBy" value="<?= $sortBy ?>">
+											<input type="hidden" name="sortDirection" value="<?= $sortDirection ?>">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>

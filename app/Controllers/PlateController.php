@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\PlateModel;
 use App\Models\StoreModel;
 use App\Models\IngredientModel;
+use App\Models\MenuPlateModel;
+
 
 use Exception;
 
@@ -77,6 +79,7 @@ class PlateController extends BaseController
   {
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
+
 
     $validation = \Config\Services::validation();
     $validation->setRules([
@@ -157,9 +160,9 @@ class PlateController extends BaseController
             $plateId = $plateModel->where('name', $plateData['name'])->first()['id'];
 
             $correct = true;
-            
+
             foreach ($plateData['selectedIngredients'] as $ingredient) {
-              
+
               if (!$storeModel->save(['id_plate' => $plateId, 'id_ingredient' => $ingredient])) {
                 $correct = false;
               }
@@ -176,7 +179,6 @@ class PlateController extends BaseController
             return $this->response->setStatusCode(500)->setJSON(['message' => 'Failed to add plate']);
           }
         }
-
       }
     } catch (Exception $e) {
 
@@ -189,6 +191,7 @@ class PlateController extends BaseController
   {
     $plateModel = new PlateModel();
     $storeModel = new StoreModel();
+    $menuPlateModel = new MenuPlateModel();
 
 
     try {
@@ -198,20 +201,27 @@ class PlateController extends BaseController
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
 
+      if ($menuPlateModel->whereIn('id_plate', $ids)->countAllResults() > 0) {
 
+        return $this->response->setJSON(['success' => false,'message' => 'Some plates are associated with a menu and cannot be deleted']);
 
-      if (!$plateModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Plates not found']);
+      } else {
+
+        if (!$plateModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+          return $this->response->setJSON(['success' => false, 'message' => 'Plates not found']);
+        }
+
+        if (!$storeModel->whereIn('id_plate', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+          return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive ingredients of menu']);
+        }
       }
 
-      if (!$storeModel->whereIn('id_plate', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive ingredients of menu']);
-      }
+
+
 
       return $this->response->setJSON(['success' => true]);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
-
 }

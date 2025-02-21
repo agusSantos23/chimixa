@@ -112,7 +112,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-header border-0 pt-6">
 									<!--begin::Card title-->
 									<div class="card-title">
-										<h2>Menu Name: <?= $menu['name'] ?></h2>
+										<h2>Menu Name: <?= esc($menu['name']) ?></h2>
 									</div>
 									<!--end::Card title-->
 									<!--begin::Card toolbar-->
@@ -141,7 +141,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="separator border-gray-200"></div>
 												<!--end::Separator-->
 												<!--begin::Content-->
-												<form action="<?= base_url('menu_plates/' . $menu['id']) ?>" method="get" class="px-7 py-5">
+												<form action="<?= base_url('menu_plates/' . esc($menu['id'])) ?>" method="get" class="px-7 py-5">
 
 													<!--begin::Search-->
 													<div class="d-flex align-items-center position-relative my-1">
@@ -236,23 +236,13 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
-													<!--begin::DisabledFilter-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-															</svg>
-														</span>
+												
 
-														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
 
-															<option value="">All</option>
-															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
-															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
 
-														</select>
-													</div>
-													<!--end::DisabledFilter-->
 
 
 													<!--begin::Actions-->
@@ -306,6 +296,8 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates/delete" data-id-father="<?= $menu['id'] ?>">
 											<!--begin::Table head-->
 											<thead>
+												<?php $route = 'menu_plates' ?>
+
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -313,13 +305,36 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
-													<th></th>
-													<th class="min-w-150px">Name</th>
-													<th class="min-w-150px">Description</th>
-													<th class="min-w-150px">Price</th>
-													<th class="min-w-150px">Category</th>
-													<th class="min-w-150px">Amount</th>
-													<th class="min-w-150px">Preparation Time</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('description', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Description <?= getSortIcon('description', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('price', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Price <?= getSortIcon('price', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('category', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Category <?= getSortIcon('category', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-100px">
+														<a href="<?= generateSortLink('amount', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Amount <?= getSortIcon('amount', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-175px">
+														<a href="<?= generateSortLink('preparationTime', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Preparation Time <?= getSortIcon('preparationTime', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
 													<th class="w-125px">Actions</th>
 
 												</tr>
@@ -331,7 +346,7 @@ License: For each use you must have a valid license purchased only from above li
 
 												<?php if (empty($platesOfMenu)): ?>
 													<tr>
-														<td colspan="6" class="text-center">
+														<td colspan="8" class="text-center">
 															<p>No plates found in this menu</p>
 														</td>
 													</tr>
@@ -345,35 +360,30 @@ License: For each use you must have a valid license purchased only from above li
 																</div>
 															</td>
 
-															<td>
-																<?php if ($plate['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
-																<?php endif; ?>
-															</td>
 
 															<td>
 																<a href="<?= base_url(relativePath: "store/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
-																	<?= $plate['name'] ?>
+																	<?= esc($plate['name']) ?>
 																</a>
 															</td>
 
 															<td>
-																<?= $plate['description'] ?>
+																<?= esc($plate['description']) ?>
 															</td>
 
 															<td>
-																<?= $plate['price'] ?> $
+																<?= esc($plate['price']) ?> $
 															</td>
 															<td>
-																<?= $plate['category'] ?>
-															</td>
-
-															<td>
-																<?= $plate['amount'] ?>
+																<?= esc($plate['category']) ?>
 															</td>
 
 															<td>
-																<?= $plate['preparation_time'] ?> min
+																<?= esc($plate['amount']) ?>
+															</td>
+
+															<td>
+																<?= esc($plate['preparation_time']) ?> min
 															</td>
 
 															<td class="text-end">
@@ -387,7 +397,7 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $plate['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($plate['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -415,7 +425,7 @@ License: For each use you must have a valid license purchased only from above li
 
 										<!--begin::Card footer-->
 										<div class="d-flex align-items-center justify-content-between mt-5">
-											<form action="<?= base_url('menu_plates/' . $menu['id']) ?>" method="get" class="d-inline-block">
+											<form action="<?= base_url('menu_plates/' . esc($menu['id'])) ?>" method="get" class="d-inline-block">
 
 												<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 													<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
@@ -484,7 +494,6 @@ License: For each use you must have a valid license purchased only from above li
 
 													<div class="fv-row mb-7">
 														<label class="required fs-6 fw-bold mb-2 pb-2">Plates</label>
-														<?= print_r($plates)?>
 
 														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
 															<?php if (isset($plates) && is_array($plates)): ?>
