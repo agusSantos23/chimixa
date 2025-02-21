@@ -19,7 +19,7 @@ class RolController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-
+      helper('sort_helper'); 
 
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;

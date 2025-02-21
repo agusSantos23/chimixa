@@ -15,25 +15,31 @@ class UserController extends BaseController
     $userModel = new UserModel();
     $rolModel = new RolModel();
 
-
     try {
-
       $userRole = session()->get('userRole');
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
 
       $data['roles'] = $rolModel->whereNotIn('name', ['Administrator'])->where('disabled', null)->findAll();
 
-
-
       $perPage = $this->request->getGet('perPage') ?? 5;
+      
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
-      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams));
+      $sortBy = $this->request->getGet('sortBy') ?? 'role';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
+
+      
+
+      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection));
 
 
       return view('pages/list/user_list', $data);
@@ -41,6 +47,7 @@ class UserController extends BaseController
       echo "Error: " . $e->getMessage();
     }
   }
+
 
   public function getUser($id)
   {
@@ -82,7 +89,7 @@ class UserController extends BaseController
     if ($id === null) {
       $rules['password'] = 'required|min_length[8]|max_length[255]|regex_match[/^(?=.*[a-z])(?=.*[A-Z]).+$/]';
       $rules['confirmPassword'] = 'required|matches[password]';
-    }else{
+    } else {
       $rules['password'] = 'permit_empty|min_length[8]|max_length[255]|regex_match[/^(?=.*[a-z])(?=.*[A-Z]).+$/]';
       $rules['confirmPassword'] = 'permit_empty|matches[password]';
     }
@@ -95,7 +102,6 @@ class UserController extends BaseController
       if (!$validation->withRequest($this->request)->run()) {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => $validation->getErrors()]);
-
       } else {
 
         $userData = [
@@ -119,7 +125,7 @@ class UserController extends BaseController
           }
 
           $newPassword = $this->request->getPost('password');
-          
+
           if (!empty($newPassword)) {
             $userData['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
           }
@@ -130,7 +136,6 @@ class UserController extends BaseController
           } else {
             return $this->response->setStatusCode(500)->setJSON(['errors' => ['user' => 'Failed to updated User']]);
           }
-
         } else {
 
 
@@ -138,7 +143,7 @@ class UserController extends BaseController
             return $this->response->setStatusCode(400)->setJSON(['errors' => ['This email is already registered']]);
           }
 
-          $userData['password'] = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT); 
+          $userData['password'] = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
 
 
