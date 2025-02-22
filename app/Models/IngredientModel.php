@@ -9,7 +9,7 @@ class IngredientModel extends Model{
   protected $primaryKey = 'id';
   protected $allowedFields = [ 'name', 'quantity_available', 'measure', 'expiration_date', 'price', 'allergens', 'disabled' ];
 
-  public function getIngredients($perPage = 5, $searchParams = []) {
+  public function getIngredients($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc') {
     $builder = $this->builder();
 
     if (isset($searchParams['disabledFilter'])) {
@@ -25,8 +25,8 @@ class IngredientModel extends Model{
 
     $searchFields = [
       'name' => 'name',
-      'quantity_available' => 'quantity_available',
-      'expiration_date' => 'expiration_date',
+      'quantityAvailable' => 'quantity_available',
+      'expirationDate' => 'expiration_date',
       'price' => 'price',
       'allergens' => 'allergens'
     ];
@@ -36,6 +36,22 @@ class IngredientModel extends Model{
         $builder->like($field, $searchParams[$key]);
       }
     }
+
+    $allowedSortFields = [
+      'name' => 'name',
+      'quantityAvailable' => 'quantity_available',
+      'expirationDate' => 'expiration_date',
+      'price' => 'price',
+      'allergens' => "JSON_UNQUOTE(JSON_EXTRACT(allergens, '$[0]'))"
+    ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy]. ' ' . $sortDirection);
+
 
     return [
       'ingredients' => $this->paginate($perPage),

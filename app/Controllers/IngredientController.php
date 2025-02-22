@@ -22,7 +22,7 @@ class IngredientController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-
+      helper('sort_helper'); 
 
 
       $perPage = $this->request->getGet('perPage') ?? 5;
@@ -31,9 +31,13 @@ class IngredientController extends BaseController
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
 
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
 
-      $data = array_merge($data, $ingredientModel->getIngredients($perPage, $searchParams));
+      $data = array_merge($data, $ingredientModel->getIngredients($perPage, $searchParams, $sortBy, $sortDirection));
 
 
       return view('pages/list/ingredient_list', $data);

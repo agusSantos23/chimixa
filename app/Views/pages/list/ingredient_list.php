@@ -157,7 +157,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[quantity_available]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Available Quantity" value="<?= esc($searchParams['quantity_available'] ?? '') ?>" />
+														<input type="text" name="searchParams[quantityAvailable]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Available Quantity" value="<?= esc($searchParams['quantityAvailable'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -172,7 +172,7 @@ License: For each use you must have a valid license purchased only from above li
 														</span>
 														<!--end::Svg Icon-->
 
-														<input type="text" name="searchParams[expiration_date]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Expiration date" value="<?= esc($searchParams['expiration_date'] ?? '') ?>" />
+														<input type="text" name="searchParams[expirationDate]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Expiration date" value="<?= esc($searchParams['expirationDate'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
 
@@ -227,6 +227,10 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::DisabledFilter-->
 
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
 														<button type="button" onclick="window.location='<?= base_url('ingredients') ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
@@ -280,6 +284,8 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="ingredients/delete">
 											<!--begin::Table head-->
 											<thead>
+												<?php $route = 'ingredients' ?>
+
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -288,11 +294,32 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 													<th></th>
-													<th class="min-w-150px">Name</th>
-													<th class="min-w-200px">Available Quantity</th>
-													<th class="min-w-150px">Expiration Date</th>
-													<th class="min-w-150px">Price</th>
-													<th class="min-w-150px">Allergens</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-200px">
+														<a href="<?= generateSortLink('quantityAvailable', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Available Quantity <?= getSortIcon('quantityAvailable', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('expirationDate', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Expiration Date <?= getSortIcon('expirationDate', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('price', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Price <?= getSortIcon('price', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('allergens', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Allergens <?= getSortIcon('allergens', $sortBy, $sortDirection) ?>
+														</a>
+
+													</th>
 													<th class="w-125px">Actions</th>
 
 												</tr>
@@ -304,7 +331,7 @@ License: For each use you must have a valid license purchased only from above li
 											<tbody class="fw-bold text-gray-600">
 												<?php if (empty($ingredients)): ?>
 													<tr>
-														<td colspan="6" class="text-center">
+														<td colspan="8" class="text-center">
 															<p>No ingredients found</p>
 														</td>
 													</tr>
@@ -324,11 +351,11 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 															<td>
-																<?= $ingredient['name'] ?>
+																<?= esc($ingredient['name']) ?>
 															</td>
 
 															<td>
-																<?= $ingredient['quantity_available'], ' ', $ingredient['measure'] ?>
+																<?= esc($ingredient['quantity_available']), ' ', esc($ingredient['measure']) ?>
 															</td>
 
 															<td>
@@ -340,7 +367,7 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 															<td>
-																<?= $ingredient['price'] ?>$
+																<?= $ingredient['price'] ?> $
 															</td>
 
 															<td>
@@ -352,7 +379,7 @@ License: For each use you must have a valid license purchased only from above li
 																	$allergens = json_decode($ingredient['allergens'], true);
 																	foreach ($allergens as $allergen):
 																?>
-																		<span class="badge badge-pill badge-primary m-1"><?= htmlspecialchars($allergen) ?></span>
+																		<span class="badge badge-pill badge-primary m-1"><?= esc($allergen) ?></span>
 																<?php
 																	endforeach;
 																}
@@ -370,7 +397,7 @@ License: For each use you must have a valid license purchased only from above li
 																</a>
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3 me-2" data-id="<?= $ingredient['id'] ?>" data-kt-role-table-filter="edit_row">
+																		<a href="#" class="menu-link px-3 me-2" data-id="<?= esc($ingredient['id']) ?>" data-kt-role-table-filter="edit_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -383,7 +410,7 @@ License: For each use you must have a valid license purchased only from above li
 																		</a>
 																	</div>
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $ingredient['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($ingredient['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -420,6 +447,15 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
 										<form action="<?= base_url('ingredients') ?>" method="get" class="d-inline-block">
+
+											<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+											$queryString = http_build_query($urlParams);
+											?>
+											<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+											<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+											<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
@@ -559,7 +595,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 
 															<!--begin::Input-->
-															<input class="form-control form-control-solid" name="expirationDate" placeholder="Pick a date" id="kt_flatpickr" min="min="<?= date('Y-m-d'); ?>""/>
+															<input class="form-control form-control-solid" name="expirationDate" placeholder="Pick a date" id="kt_flatpickr" min="min=" <?= date('Y-m-d'); ?>"" />
 															<!--end::Input-->
 														</div>
 
