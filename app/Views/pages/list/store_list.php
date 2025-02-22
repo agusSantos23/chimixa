@@ -275,7 +275,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 														<td>
-															<?= $ingredient['name'] ?>
+															<?= esc($ingredient['name']) ?>
 														</td>
 
 														<td>
@@ -287,7 +287,7 @@ License: For each use you must have a valid license purchased only from above li
 																$allergens = json_decode($ingredient['allergens'], true);
 																foreach ($allergens as $allergen):
 															?>
-																	<span class="badge badge-pill badge-primary m-1"><?= htmlspecialchars($allergen) ?></span>
+																	<span class="badge badge-pill badge-primary m-1"><?= esc($allergen) ?></span>
 															<?php
 																endforeach;
 															}
@@ -307,7 +307,7 @@ License: For each use you must have a valid license purchased only from above li
 															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 
 																<div class="menu-item px-3">
-																	<a href="#" class="menu-link px-3" data-id="<?= $ingredient['id'] ?>" data-kt-customer-table-filter="delete_row">
+																	<a href="#" class="menu-link px-3" data-id="<?= esc($ingredient['id']) ?>" data-kt-customer-table-filter="delete_row">
 																		<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																		<span class="svg-icon svg-icon-muted me-1">
 																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -334,7 +334,15 @@ License: For each use you must have a valid license purchased only from above li
 
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
-										<form action="<?= base_url('store/' . $plate['id']) ?>" method="get" class="d-inline-block">
+										<form action="<?= base_url('store/' . esc($plate['id'])) ?>" method="get" class="d-inline-block">
+											<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+											$queryString = http_build_query($urlParams);
+											?>
+											<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+											<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+											<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
