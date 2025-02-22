@@ -29,12 +29,19 @@ class OrderController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
+
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'id';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
 
       $data['menus'] = $menuModel->getMenusWithDetails();
       $data['plates'] = $plateModel->getPlatesWithDetails();
@@ -43,8 +50,7 @@ class OrderController extends BaseController
       if ($userRole === 'Customer') {
         $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams));
       }elseif ($userRole === 'Administrator'){
-        $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams));
-
+        $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams, $sortBy, $sortDirection));
       }
 
 

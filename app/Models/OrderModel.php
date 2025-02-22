@@ -10,7 +10,7 @@ class OrderModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['price', 'disabled'];
 
-  public function getAllOrders($perPage = 5, $searchParams = [])
+  public function getAllOrders($perPage = 5, $searchParams = [], $sortBy = 'id', $sortDirection = 'asc')
   {
     $builder = $this->builder();
 
@@ -37,6 +37,21 @@ class OrderModel extends Model
         $builder->where('disabled IS NULL');
       }
     }
+
+
+    $allowedSortFields = [
+      'id' => 'orders.id',
+      'date' => 'orders.created_at',
+      'price' => 'orders.price',
+    ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'id';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
 
     return [
       'orders' => $this->paginate($perPage),
