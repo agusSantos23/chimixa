@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\IngredientModel;
+use App\Models\StoreModel;
+
 use Exception;
 
 
@@ -145,6 +147,8 @@ class IngredientController extends BaseController
   public function deleteIngredient()
   {
     $ingredientModel = new IngredientModel();
+    $storeModelModel = new StoreModel();
+
 
     try {
       $ids = $this->request->getPost('ids');
@@ -153,11 +157,20 @@ class IngredientController extends BaseController
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
 
-      if ($ingredientModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
-        return $this->response->setJSON(['success' => true]);
-      } else {
-        return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
+      if ($storeModelModel->whereIn('id_ingredient', $ids)->countAllResults() > 0) {
+        return $this->response->setJSON(['success' => false,'message' => 'Some ingredients are associated with a plate and cannot be deleted']);
+
+      }else {
+        
+        if ($ingredientModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+          return $this->response->setJSON(['success' => true]);
+        } else {
+          return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
+        }
+        
       }
+      
+
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }

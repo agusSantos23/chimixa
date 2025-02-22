@@ -110,7 +110,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-header border-0 pt-6">
 									<!--begin::Card title-->
 									<div class="card-title">
-										<h2>Name of the Plate: <?= $plate['name'] ?></h2>
+										<h2>Name of the Plate: <?= esc($plate['name']) ?></h2>
 									</div>
 									<!--end::Card title-->
 
@@ -138,7 +138,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="separator border-gray-200"></div>
 												<!--end::Separator-->
 												<!--begin::Content-->
-												<form action="<?= base_url('plateingredients') ?>" method="get" class="px-7 py-5">
+												<form action="<?= base_url('store/' . esc($plate['id'])) ?>" method="get" class="px-7 py-5">
 
 													<!--begin::Search-->
 													<div class="d-flex align-items-center position-relative my-1">
@@ -156,50 +156,6 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end::Search-->
 
 
-													<!--begin::Search-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[quantity_available]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Available Quantity" value="<?= esc($searchParams['quantity_available'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::Search-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[expiration_date]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Expiration date" value="<?= esc($searchParams['expiration_date'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::Search-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[price]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Price" value="<?= esc($searchParams['price'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
 
 
 													<!--begin::Search-->
@@ -219,27 +175,16 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-													<!--begin::DisabledFilter-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-															</svg>
-														</span>
 
-														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
 
-															<option value="">All</option>
-															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
-															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
 
-														</select>
-													</div>
-													<!--end::DisabledFilter-->
 
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
-														<button type="button" onclick="window.location='<?= base_url('plateingredients/' . $plate['id']) ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
+														<button type="button" onclick="window.location='<?= base_url('plateingredients/' . esc($plate['id'])) ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
 														<button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
 													</div>
 													<!--end::Actions-->
@@ -284,6 +229,8 @@ License: For each use you must have a valid license purchased only from above li
 									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="store/delete" data-id-father="<?= $plate['id'] ?>">
 										<!--begin::Table head-->
 										<thead>
+											<?php $route = 'store' ?>
+
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 												<th class="w-10px pe-2">
@@ -291,9 +238,16 @@ License: For each use you must have a valid license purchased only from above li
 														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 													</div>
 												</th>
-												<th></th>
-												<th class="min-w-150px">Name</th>
-												<th class="min-w-150px">Allergens</th>
+												<th class="min-w-150px">
+													<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route, $plate['id']) ?>">
+														Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
+													</a>
+												</th>
+												<th class="min-w-150px">
+													<a href="<?= generateSortLink('allergens', $sortBy, $sortDirection, $searchParams, $perPage, $route, $plate['id']) ?>">
+														Allergens <?= getSortIcon('allergens', $sortBy, $sortDirection) ?>
+													</a>
+												</th>
 												<th class="w-125px">Acciones</th>
 
 											</tr>
@@ -319,11 +273,6 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 														</td>
 
-														<td>
-															<?php if ($ingredient['disabled']): ?>
-																<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Ingredient is disabled"></div>
-															<?php endif; ?>
-														</td>
 
 														<td>
 															<?= $ingredient['name'] ?>

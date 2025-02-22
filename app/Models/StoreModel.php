@@ -13,7 +13,7 @@ class StoreModel extends Model{
   protected $allowedFields = ['id_plate', 'id_ingredient', 'disabled'];
 
   
-  public function getIngredientsByPlate($plateId , $perPage, $searchParams){
+  public function getIngredientsByPlate($plateId , $perPage, $searchParams, $sortBy = 'name', $sortDirection = 'asc'){
     $builder = $this->builder();
 
     $builder->select('ingredients.id, ingredients.name, ingredients.allergens, store.disabled');
@@ -42,6 +42,18 @@ class StoreModel extends Model{
         $builder->like($field, $searchParams[$key]);
       }
     }
+
+    $allowedSortFields = [
+      'name' => 'ingredients.name',
+      'allergens' => "JSON_UNQUOTE(JSON_EXTRACT(ingredients.allergens, '$[0]'))",
+    ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy] . ' ' . $sortDirection);
 
       
     return [

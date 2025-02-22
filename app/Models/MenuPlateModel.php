@@ -13,7 +13,7 @@ class MenuPlateModel extends Model
 
   protected $allowedFields = ['id_menu', 'id_plate', 'amount', 'disabled'];
 
-  public function getPlatesByMenu($menuId, $perPage, $searchParams, $sortBy = 'name', $sortDirection = 'asc'): array
+  public function getPlatesByMenu($menuId, $perPage, $searchParams, $sortBy = 'name', $sortDirection = 'asc')
   {
     $builder = $this->builder();
 

@@ -12,8 +12,6 @@ use Exception;
 class StoreController extends BaseController
 {
 
-
-
   public function index($plateId)
   {
 
@@ -26,18 +24,27 @@ class StoreController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
+
+
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
+
 
       $data['plate'] = $plateModel->select('id, name')->find($plateId);
       $data['ingredients'] = $ingredientModel->select('id, name')->where('disabled', null)->findAll();
 
 
-      $data = array_merge($data, $storeModel->getIngredientsByPlate($plateId, $perPage, $searchParams));
+      $data = array_merge($data, $storeModel->getIngredientsByPlate($plateId, $perPage, $searchParams, $sortBy, $sortDirection));
 
       return view('pages/list/store_list', $data);
 
