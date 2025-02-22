@@ -323,7 +323,6 @@ let KTModalCustomersAdd = function () {
             selectedIngredients = selectedIngredients.filter(selectedIngredientId => selectedIngredientId !== ingredientId);
    
           }
-          console.log(selectedIngredients);
           
         });
         

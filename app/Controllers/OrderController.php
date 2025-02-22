@@ -165,7 +165,6 @@ class OrderController extends BaseController
       }
 
 
-
       if (!$orderModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => false, 'message' => 'Code not found']);
       } else {

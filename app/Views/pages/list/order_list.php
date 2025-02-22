@@ -166,7 +166,23 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
+													<!--begin::DisabledFilter-->
+													<div class="d-flex align-items-center position-relative my-1">
+														<span class="svg-icon svg-icon-1 position-absolute ms-6">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+															</svg>
+														</span>
 
+														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
+
+															<option value="">All</option>
+															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
+															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
+
+														</select>
+													</div>
+													<!--end::DisabledFilter-->
 
 
 													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
@@ -231,6 +247,7 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
+													<th></th>
 													<th class="min-w-125px">
 														<a href="<?= generateSortLink('id', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
 															Code <?= getSortIcon('id', $sortBy, $sortDirection) ?>
@@ -274,6 +291,12 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Checkbox-->
 
 															<td>
+																<?php if ($order['disabled']): ?>
+																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This order is disabled"></div>
+																<?php endif; ?>
+															</td>
+
+															<td>
 																<?= esc($order['id']) ?>
 															</td>
 
@@ -300,12 +323,12 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a class="menu-link px-3" data-id="<?= $order['id'] ?>" data-bs-toggle="modal" data-kt-customer-table-filter="view_row">View</a>
+																		<a class="menu-link px-3" data-id="<?= esc($order['id']) ?>" data-bs-toggle="modal" data-kt-customer-table-filter="view_row">View</a>
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $order['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($order['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
