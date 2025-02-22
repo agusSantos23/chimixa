@@ -26,8 +26,10 @@ class PlateController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      $data['ingredients'] = $ingredientModel->where('disabled', null)->findAll();
+      helper('sort_helper'); 
 
+
+      $data['ingredients'] = $ingredientModel->where('disabled', null)->findAll();
 
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
@@ -35,8 +37,13 @@ class PlateController extends BaseController
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
-      $data = array_merge($data, $plateModel->getPlates($perPage, $searchParams));
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
 
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
+
+      $data = array_merge($data, $plateModel->getPlates($perPage, $searchParams, $sortBy, $sortDirection));
 
       return view('pages/list/plate_list', $data);
     } catch (Exception $e) {

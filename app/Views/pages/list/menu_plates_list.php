@@ -236,7 +236,7 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
-												
+
 
 													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
 													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
@@ -426,6 +426,14 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Card footer-->
 										<div class="d-flex align-items-center justify-content-between mt-5">
 											<form action="<?= base_url('menu_plates/' . esc($menu['id'])) ?>" method="get" class="d-inline-block">
+												<?php
+												$urlParams = $_GET;
+												unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+												$queryString = http_build_query($urlParams);
+												?>
+												<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+												<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+												<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 												<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 													<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>

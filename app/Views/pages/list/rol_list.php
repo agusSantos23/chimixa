@@ -350,9 +350,9 @@ License: For each use you must have a valid license purchased only from above li
 											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
 											$queryString = http_build_query($urlParams);
 											?>
-												<input type="hidden" name="searchParams" value="<?= $queryString ?>">
-												<input type="hidden" name="sortBy" value="<?= $sortBy ?>">
-												<input type="hidden" name="sortDirection" value="<?= $sortDirection ?>">
+											<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+											<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+											<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
