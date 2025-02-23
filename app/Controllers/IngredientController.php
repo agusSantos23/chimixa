@@ -22,7 +22,7 @@ class IngredientController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
 
       $perPage = $this->request->getGet('perPage') ?? 5;
@@ -162,21 +162,44 @@ class IngredientController extends BaseController
       }
 
       if ($storeModelModel->whereIn('id_ingredient', $ids)->countAllResults() > 0) {
-        return $this->response->setJSON(['success' => false,'message' => 'Some ingredients are associated with a plate and cannot be deleted']);
+        return $this->response->setJSON(['success' => false, 'message' => 'Some ingredients are associated with a plate and cannot be deleted']);
+      } else {
 
-      }else {
-        
         if ($ingredientModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
           return $this->response->setJSON(['success' => true]);
         } else {
           return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
         }
-        
       }
-      
-
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
+    }
+  }
+
+
+
+  public function restoreIngredient()
+  {
+    $ingredientModel = new IngredientModel();
+
+    try {
+
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+
+      if ($ingredientModel->update($id, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => true]);
+      } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+      }
+    } catch (Exception $e) {
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
 }

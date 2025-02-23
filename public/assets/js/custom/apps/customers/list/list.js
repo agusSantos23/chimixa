@@ -66,7 +66,7 @@ var KTCustomersList = function () {
 									});
 								} else {
 									Swal.fire({
-										text: "Error deleting element!",
+										text: response.message || "Error deleting element!",
 										icon: "error",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",
@@ -160,7 +160,7 @@ var KTCustomersList = function () {
 									});
 								} else {
 									Swal.fire({
-										text: "Error deleting elements!",
+										text: response.message || "Error deleting element!",
 										icon: "error",
 										buttonsStyling: false,
 										confirmButtonText: "Ok, got it!",

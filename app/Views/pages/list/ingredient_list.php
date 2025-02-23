@@ -281,7 +281,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div>
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="ingredients/delete">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="ingredients">
 											<!--begin::Table head-->
 											<thead>
 												<?php $route = 'ingredients' ?>

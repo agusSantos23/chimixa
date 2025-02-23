@@ -44,8 +44,6 @@ $routes->post('orders/delete', 'OrderController::deleteOrder');
 
 
 
-
-
 // roles
 $routes->get('roles', 'RolController::index');
 $routes->get('roles/get/(:any)', 'RolController::getRol/$1');
@@ -63,6 +61,7 @@ $routes->get('ingredients/get/(:any)', 'IngredientController::getIngredient/$1')
 $routes->post('ingredients/save', 'IngredientController::saveIngredient');
 $routes->post('ingredients/update/(:any)', 'IngredientController::saveIngredient/$1');
 $routes->post('ingredients/delete', 'IngredientController::deleteIngredient');
+$routes->post('ingredients/restore', 'IngredientController::restoreIngredient');
 
 
 
