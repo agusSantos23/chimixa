@@ -81,6 +81,7 @@ $routes->get('plates/get/(:any)', 'PlateController::getPlate/$1');
 $routes->post('plates/save', 'PlateController::savePlate');
 $routes->post('plates/update/(:any)', 'PlateController::savePlate/$1');
 $routes->post('plates/delete', 'PlateController::deletePlate');
+$routes->post('plates/restore', 'PlateController::restorePlate');
 
 
 

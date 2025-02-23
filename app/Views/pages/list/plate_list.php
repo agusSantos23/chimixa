@@ -277,7 +277,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div>
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="plates/delete">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="plates">
 											<!--begin::Table head-->
 											<thead>
 												<?php $route = 'plates' ?>
@@ -340,7 +340,7 @@ License: For each use you must have a valid license purchased only from above li
 
 															<td>
 																<?php if ($plate['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
 																<?php endif; ?>
 															</td>
 

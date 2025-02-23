@@ -226,7 +226,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Card body-->
 								<div class="card-body pt-0">
 									<!--begin::Table-->
-									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="store/delete" data-id-father="<?= $plate['id'] ?>">
+									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="store" data-id-father="<?= $plate['id'] ?>">
 										<!--begin::Table head-->
 										<thead>
 											<?php $route = 'store' ?>
@@ -238,6 +238,7 @@ License: For each use you must have a valid license purchased only from above li
 														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 													</div>
 												</th>
+												<th></th>
 												<th class="min-w-150px">
 													<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route, $plate['id']) ?>">
 														Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
@@ -272,6 +273,12 @@ License: For each use you must have a valid license purchased only from above li
 																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
 														</td>
+
+														<td>
+																<?php if ($ingredient['disabled']): ?>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																<?php endif; ?>
+															</td>
 
 
 														<td>

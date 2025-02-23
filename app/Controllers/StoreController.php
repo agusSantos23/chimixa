@@ -152,6 +152,7 @@ class StoreController extends BaseController
     $storeModel = new StoreModel();
 
     try {
+      log_message("info", $id);
 
       if (!$plateModel->find($id)) {
         return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Plate not found']]);

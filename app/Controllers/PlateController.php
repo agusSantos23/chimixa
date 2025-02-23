@@ -231,4 +231,36 @@ class PlateController extends BaseController
       echo "Error: " . $e->getMessage();
     }
   }
+
+
+  
+  public function restorePlate()
+  {
+    $plateModel = new PlateModel();
+    $storeModel = new StoreModel();
+
+    try {
+
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+
+      if (!$plateModel->update($id, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+      }
+
+      if (!$storeModel->where('id_plate', $id)->update(null, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive plates of menu']);
+      }
+
+      return $this->response->setJSON(['success' => true]);
+    } catch (Exception $e) {
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
 }
