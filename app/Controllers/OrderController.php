@@ -174,4 +174,34 @@ class OrderController extends BaseController
       return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
+
+  
+  public function restoreOrder()
+  {
+    $orderModel = new OrderModel();
+
+
+    try {
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+      if ($orderModel->update($id, ['disabled' => null])) {
+
+        return $this->response->setJSON(['success' => true]);
+
+      } else {
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+      }
+      
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
 }

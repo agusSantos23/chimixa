@@ -17,6 +17,8 @@ class OrderElementModel extends Model
     $builder->join('orders', 'orders.id = orders_elements.id_order', 'left');
 
     $builder->where('orders_elements.id_user', $userId);
+    $builder->where('orders.disabled', null);
+
 
     $searchFields = [
       'id' => 'orders.id',

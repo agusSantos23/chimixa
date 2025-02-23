@@ -195,7 +195,7 @@ class IngredientController extends BaseController
       if ($ingredientModel->update($id, ['disabled' => null])) {
         return $this->response->setJSON(['success' => true]);
       } else {
-        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+        return $this->response->setJSON(['success' => false, 'message' => 'Ingredient not found']);
       }
     } catch (Exception $e) {
       log_message('error', $e->getMessage());
