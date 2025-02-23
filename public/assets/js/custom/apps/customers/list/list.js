@@ -31,8 +31,8 @@ var KTCustomersList = function () {
 				e.preventDefault();
 				fatherId = $("#kt_customers_table").data("id-father");
 				url = fatherId
-					? $("#kt_customers_table").data("url") + "/" + fatherId
-					: $("#kt_customers_table").data("url");
+					? $("#kt_customers_table").data("url") + "/delete" + "/" + fatherId
+					: $("#kt_customers_table").data("url") + "/delete";
 
 				const idToDelete = $(this).data("id");
 
@@ -140,8 +140,8 @@ var KTCustomersList = function () {
 					if (result.value) {
 						fatherId = $("#kt_customers_table").data("id-father");
 						url = fatherId
-							? $("#kt_customers_table").data("url") + "/" + fatherId
-							: $("#kt_customers_table").data("url");
+							? $("#kt_customers_table").data("url") + "/delete" + "/" + fatherId
+							: $("#kt_customers_table").data("url") + "/delete";
 
 						$.ajax({
 							url: baseURL + url,
@@ -181,6 +181,74 @@ var KTCustomersList = function () {
 					}
 				});
 			}
+		});
+	};
+
+	var r = function () {
+		$("#kt_customers_table tbody tr .border-danger").on("click", function () {
+			
+			const idToRestore = $(this).closest("tr").find('[data-kt-customer-table-filter="delete_row"]').data("id");
+
+			
+			if (!idToRestore) return;
+
+			Swal.fire({
+				text: "Are you sure you want to restore this item?",
+				icon: "warning",
+				showCancelButton: true,
+				buttonsStyling: false,
+				confirmButtonText: "Yes, restore!",
+				cancelButtonText: "No, cancel",
+				customClass: {
+					confirmButton: "btn fw-bold btn-success",
+					cancelButton: "btn fw-bold btn-active-light-primary",
+				},
+			}).then(function (result) {
+				if (result.value) {
+
+					url = baseURL + "restore/" + idToRestore;
+
+					url = $("#kt_customers_table").data("url") + "/restore";
+
+					console.log(url);
+					
+					$.ajax({
+						url: baseURL + url,
+						type: "POST",
+						data: { id: idToRestore },
+						success: function (response) {
+							if (response.success) {
+								Swal.fire({
+									text: "Item restored successfully!",
+									icon: "success",
+									buttonsStyling: false,
+									confirmButtonText: "Ok, got it!",
+									customClass: { confirmButton: "btn fw-bold btn-primary" },
+								}).then(function () {
+									location.reload();
+								});
+							} else {
+								Swal.fire({
+									text: "Error restoring item!",
+									icon: "error",
+									buttonsStyling: false,
+									confirmButtonText: "Ok, got it!",
+									customClass: { confirmButton: "btn fw-bold btn-primary" },
+								});
+							}
+						},
+						error: function () {
+							Swal.fire({
+								text: "There was an error processing the request.",
+								icon: "error",
+								buttonsStyling: false,
+								confirmButtonText: "Ok, got it!",
+								customClass: { confirmButton: "btn fw-bold btn-primary" },
+							});
+						},
+					});
+				}
+			});
 		});
 	};
 
@@ -269,6 +337,7 @@ var KTCustomersList = function () {
 				c();
 				v();
 				d();
+				r()
 			}
 		},
 	};

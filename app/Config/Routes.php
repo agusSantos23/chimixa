@@ -45,14 +45,14 @@ $routes->post('orders/delete', 'OrderController::deleteOrder');
 
 
 
-
-
 // roles
 $routes->get('roles', 'RolController::index');
 $routes->get('roles/get/(:any)', 'RolController::getRol/$1');
 $routes->post('roles/save', 'RolController::saveRol');
 $routes->post('roles/update/(:any)', 'RolController::saveRol/$1');
 $routes->post('roles/delete', 'RolController::deleteRol');
+$routes->post('roles/restore', 'RolController::restoreRol');
+
 
 
 

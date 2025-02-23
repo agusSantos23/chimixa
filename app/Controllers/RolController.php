@@ -145,4 +145,30 @@ class RolController extends BaseController
       echo "Error: " . $e->getMessage();
     }
   }
+
+
+  public function restoreRol()
+  {
+    $rolModel = new RolModel();
+
+    try {
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+      if ($rolModel->update($id, ['disabled' => null])) {
+
+        return $this->response->setJSON(['success' => true]);
+
+      } else {
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);
+      }
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
 }

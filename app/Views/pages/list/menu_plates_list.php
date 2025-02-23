@@ -293,7 +293,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div class="card-body pt-0">
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates/delete" data-id-father="<?= $menu['id'] ?>">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates" data-id-father="<?= $menu['id'] ?>">
 											<!--begin::Table head-->
 											<thead>
 												<?php $route = 'menu_plates' ?>
