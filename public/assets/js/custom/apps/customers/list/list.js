@@ -186,67 +186,82 @@ var KTCustomersList = function () {
 
 	var r = function () {
 		$("#kt_customers_table tbody tr .border-danger").on("click", function () {
-			
+
+			fatherId = $("#kt_customers_table").data("id-father");
 			const idToRestore = $(this).closest("tr").find('[data-kt-customer-table-filter="delete_row"]').data("id");
 
-			
-			if (!idToRestore) return;
+			if (!fatherId) {
 
-			Swal.fire({
-				text: "Are you sure you want to restore this item?",
-				icon: "warning",
-				showCancelButton: true,
-				buttonsStyling: false,
-				confirmButtonText: "Yes, restore!",
-				cancelButtonText: "No, cancel",
-				customClass: {
-					confirmButton: "btn fw-bold btn-success",
-					cancelButton: "btn fw-bold btn-active-light-primary",
-				},
-			}).then(function (result) {
-				if (result.value) {
 
-					url = baseURL + "restore/" + idToRestore;
+				if (!idToRestore) return;
 
-					url = $("#kt_customers_table").data("url") + "/restore";
-					
-					$.ajax({
-						url: baseURL + url,
-						type: "POST",
-						data: { id: idToRestore },
-						success: function (response) {
-							if (response.success) {
+				Swal.fire({
+					text: "Are you sure you want to restore this item?",
+					icon: "warning",
+					showCancelButton: true,
+					buttonsStyling: false,
+					confirmButtonText: "Yes, restore!",
+					cancelButtonText: "No, cancel",
+					customClass: {
+						confirmButton: "btn fw-bold btn-success",
+						cancelButton: "btn fw-bold btn-active-light-primary",
+					},
+				}).then(function (result) {
+					if (result.value) {
+
+						url = baseURL + "restore/" + idToRestore;
+
+						url = $("#kt_customers_table").data("url") + "/restore";
+
+						$.ajax({
+							url: baseURL + url,
+							type: "POST",
+							data: { id: idToRestore },
+							success: function (response) {
+								if (response.success) {
+									Swal.fire({
+										text: "Item restored successfully!",
+										icon: "success",
+										buttonsStyling: false,
+										confirmButtonText: "Ok, got it!",
+										customClass: { confirmButton: "btn fw-bold btn-primary" },
+									}).then(function () {
+										location.reload();
+									});
+								} else {
+									Swal.fire({
+										text: "Error restoring item!",
+										icon: "error",
+										buttonsStyling: false,
+										confirmButtonText: "Ok, got it!",
+										customClass: { confirmButton: "btn fw-bold btn-primary" },
+									});
+								}
+							},
+							error: function () {
 								Swal.fire({
-									text: "Item restored successfully!",
-									icon: "success",
-									buttonsStyling: false,
-									confirmButtonText: "Ok, got it!",
-									customClass: { confirmButton: "btn fw-bold btn-primary" },
-								}).then(function () {
-									location.reload();
-								});
-							} else {
-								Swal.fire({
-									text: "Error restoring item!",
+									text: "There was an error processing the request.",
 									icon: "error",
 									buttonsStyling: false,
 									confirmButtonText: "Ok, got it!",
 									customClass: { confirmButton: "btn fw-bold btn-primary" },
 								});
-							}
-						},
-						error: function () {
-							Swal.fire({
-								text: "There was an error processing the request.",
-								icon: "error",
-								buttonsStyling: false,
-								confirmButtonText: "Ok, got it!",
-								customClass: { confirmButton: "btn fw-bold btn-primary" },
-							});
-						},
-					});
-				}
-			});
+							},
+						});
+					}
+				});
+
+			} else {
+
+				Swal.fire({
+					text: "You must restore the item!",
+					icon: "error",
+					buttonsStyling: false,
+					confirmButtonText: "Ok, got it!",
+					customClass: { confirmButton: "btn fw-bold btn-primary" },
+				});
+			}
+
 		});
 	};
 

@@ -23,7 +23,7 @@ class MenuPlateController extends BaseController
 
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
@@ -102,9 +102,13 @@ class MenuPlateController extends BaseController
 
         $selectedPlates =  json_decode($this->request->getPost('selectedPlates'), true);
 
+        $menu = $menuModel->find($id);
 
-        if (!$menuModel->find($id)) {
+
+        if (!$menu) {
           return $this->response->setStatusCode(404)->setJSON(['errors' => ['id' => 'Menu not found']]);
+        }else if ($menu['disabled'] !== null) {
+          return $this->response->setStatusCode(403)->setJSON(['errors' => ['id' => 'Menu is disabled']]);
         }
 
 
@@ -128,7 +132,6 @@ class MenuPlateController extends BaseController
               ->where('id_menu', $id)
               ->where('id_plate', $plate['id'])
               ->update();
-
           } else {
 
             $menuPlateModel->save([
@@ -170,25 +173,23 @@ class MenuPlateController extends BaseController
 
       $ids = $this->request->getPost('ids');
 
-      
+
 
       if (count($ids) === 0) {
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
-      
+
 
       if (!$menuPlateModel->where('id_menu', $id)->whereIn('id_plate', $ids)->delete()) {
 
         return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete relation']);
       }
 
-      
+
       return $this->response->setJSON(['success' => true]);
     } catch (Exception $e) {
       log_message('error', $e->getMessage());
       return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
-
-
 }

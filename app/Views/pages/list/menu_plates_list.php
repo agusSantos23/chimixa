@@ -305,6 +305,7 @@ License: For each use you must have a valid license purchased only from above li
 															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
 														</div>
 													</th>
+													<th></th>
 													<th class="min-w-150px">
 														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
 															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
@@ -351,7 +352,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 													</tr>
 												<?php else: ?>
-
+													
 													<?php foreach ($platesOfMenu as $plate): ?>
 														<tr>
 															<td>
@@ -360,6 +361,11 @@ License: For each use you must have a valid license purchased only from above li
 																</div>
 															</td>
 
+															<td>
+																<?php if ($plate['disabled']): ?>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This user is disabled"></div>
+																<?php endif; ?>
+															</td>
 
 															<td>
 																<a href="<?= base_url(relativePath: "store/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">

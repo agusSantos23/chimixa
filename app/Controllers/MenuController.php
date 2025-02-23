@@ -23,7 +23,7 @@ class MenuController extends BaseController
       $menuRole = session()->get('userRole');
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
 
       $data['plates'] = $plateModel->where('disabled', null)->findAll();
@@ -44,7 +44,6 @@ class MenuController extends BaseController
 
 
       return view('pages/list/menu_list', $data);
-
     } catch (Exception $e) {
       return "Error: " . $e->getMessage();
     }
@@ -138,7 +137,6 @@ class MenuController extends BaseController
               if (in_array($plate['id'], $currentPlateIds)) {
 
                 $menuPlateModel->set(['amount' => $plate['count']])->where('id_menu', $id)->where('id_plate', $plate['id'])->update();
-              
               } else {
 
                 $menuPlateModel->save([
@@ -229,5 +227,33 @@ class MenuController extends BaseController
   }
 
 
-  
+  public function restoreMenu()
+  {
+    $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
+
+    try {
+
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+
+      if (!$menuModel->update($id, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+      }
+
+      if (!$menuPlateModel->where('id_menu', $id)->update(null, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive plates of menu']);
+      }
+
+      return $this->response->setJSON(['success' => true]);
+    } catch (Exception $e) {
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
 }

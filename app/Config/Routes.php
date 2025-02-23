@@ -99,6 +99,7 @@ $routes->get('menus/get/(:any)', 'MenuController::getMenu/$1');
 $routes->post('menus/save', 'MenuController::saveMenu');
 $routes->post('menus/update/(:any)', 'MenuController::saveMenu/$1');
 $routes->post('menus/delete', 'MenuController::deleteMenu');
+$routes->post('menus/restore', 'MenuController::restoreMenu');
 
 
 
