@@ -184,4 +184,31 @@ class UserController extends BaseController
       echo "Error: " . $e->getMessage();
     }
   }
+
+
+  
+  public function restoreUser()
+  {
+    $userModel = new UserModel();
+
+    try {
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+      if ($userModel->update($id, ['disabled' => null])) {
+
+        return $this->response->setJSON(['success' => true]);
+
+      } else {
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Users not found']);
+      }
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
 }

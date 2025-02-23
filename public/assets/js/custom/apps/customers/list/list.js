@@ -209,8 +209,6 @@ var KTCustomersList = function () {
 					url = baseURL + "restore/" + idToRestore;
 
 					url = $("#kt_customers_table").data("url") + "/restore";
-
-					console.log(url);
 					
 					$.ajax({
 						url: baseURL + url,
