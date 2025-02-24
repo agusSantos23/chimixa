@@ -69,7 +69,13 @@ class PlateController extends BaseController
 
       if ($plate) {
 
-        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'plate' => $plate, 'ingredientsSelect' => $stores]);
+        if ($plate['disabled'] !== null) {
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This plate is not editable because it is disabled.']);
+        } else {
+          return $this->response->setStatusCode(200)->setJSON(['success' => true, 'plate' => $plate, 'ingredientsSelect' => $stores]);
+
+        }
+
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'plate not found']);

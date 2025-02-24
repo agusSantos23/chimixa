@@ -20,12 +20,12 @@ class UserController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
       $data['roles'] = $rolModel->whereNotIn('name', ['Administrator'])->where('disabled', null)->findAll();
 
       $perPage = $this->request->getGet('perPage') ?? 5;
-      
+
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
@@ -37,7 +37,7 @@ class UserController extends BaseController
       $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
       $data['sortDirection'] = $sortDirection;
 
-      
+
 
       $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection));
 
@@ -57,8 +57,18 @@ class UserController extends BaseController
     try {
       $user = $userModel->getUserWithRoleById($id);
 
+
+
       if ($user) {
-        return $this->response->setStatusCode(200)->setJSON(['success' => $user]);
+
+        if ($user->disabled !== null) {
+
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This user is not editable because it is disabled.']);
+        } else {
+          return $this->response->setStatusCode(200)->setJSON(['success' => $user]);
+
+        }
+
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'User not found']);
@@ -186,7 +196,7 @@ class UserController extends BaseController
   }
 
 
-  
+
   public function restoreUser()
   {
     $userModel = new UserModel();
@@ -201,7 +211,6 @@ class UserController extends BaseController
       if ($userModel->update($id, ['disabled' => null])) {
 
         return $this->response->setJSON(['success' => true]);
-
       } else {
 
         return $this->response->setJSON(['success' => false, 'message' => 'Users not found']);

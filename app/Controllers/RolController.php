@@ -19,14 +19,14 @@ class RolController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
-      
+
       $sortBy = $this->request->getGet('sortBy') ?? 'name';
       $data['sortBy'] = $sortBy;
 
@@ -53,11 +53,20 @@ class RolController extends BaseController
 
       $role = $rolModel->find($id);
 
+
+      
+
+
       if ($role) {
 
-        return $this->response->setStatusCode(200)->setJSON(['success' => $role]);
+        if ($role['disabled'] !== null) {
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This role is not editable because it is disabled.']);
+        }else{
+          return $this->response->setStatusCode(200)->setJSON(['success' => $role]);
+        }
+
       } else {
-        return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
+        return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found.']);
       }
     } catch (Exception $e) {
       return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting role: ' . $e->getMessage()]);
@@ -161,7 +170,6 @@ class RolController extends BaseController
       if ($rolModel->update($id, ['disabled' => null])) {
 
         return $this->response->setJSON(['success' => true]);
-
       } else {
 
         return $this->response->setJSON(['success' => false, 'message' => 'Roles not found']);

@@ -56,11 +56,19 @@ class IngredientController extends BaseController
       $ingredient = $ingredientModel->find($id);
 
       if ($ingredient) {
-        if (!empty($ingredient['expiration_date'])) {
-          $ingredient['expiration_date'] = date('d/m/Y', strtotime($ingredient['expiration_date']));
-        }
 
-        return $this->response->setStatusCode(200)->setJSON(['success' => $ingredient]);
+        if ($ingredient['disabled'] !== null) {
+
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This ingredient is not editable because it is disabled.']);
+
+        } else {
+          
+          if (!empty($ingredient['expiration_date'])) {
+            $ingredient['expiration_date'] = date('d/m/Y', strtotime($ingredient['expiration_date']));
+          }
+
+          return $this->response->setStatusCode(200)->setJSON(['success' => $ingredient]);
+        }
       } else {
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found']);
       }

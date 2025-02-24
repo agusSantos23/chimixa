@@ -57,21 +57,26 @@ class MenuController extends BaseController
 
 
     try {
-      $menu = $menuModel->find($id);
+      $menuData = $menuModel->find($id);
+
+
+
 
       $menuPlates = $menuPlateModel->where('id_menu', $id)->findAll();
 
-
-
       $plates = array_map(function ($plate) {
-
         return ['id' => $plate['id_plate'], 'amount' => $plate['amount']];
       }, $menuPlates);
 
 
 
-      if ($menu) {
-        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'menu' => $menu, 'plates' => $plates]);
+      if ($menuData) {
+
+        if ($menuData['disabled'] !== null) {
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This menu is not editable because it is disabled.']);
+        } else {
+          return $this->response->setStatusCode(200)->setJSON(['success' => true, 'menu' => $menuData, 'plates' => $plates]);
+        }
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'menu not found']);
