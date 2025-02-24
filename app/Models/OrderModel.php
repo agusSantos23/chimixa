@@ -8,7 +8,7 @@ class OrderModel extends Model
 {
   protected $table = 'orders';
   protected $primaryKey = 'id';
-  protected $allowedFields = ['price', 'disabled'];
+  protected $allowedFields = ['price', 'date','disabled'];
 
   public function getAllOrders($perPage = 5, $searchParams = [], $sortBy = 'id', $sortDirection = 'asc')
   {
@@ -16,7 +16,7 @@ class OrderModel extends Model
 
     $searchFields = [
       'id' => 'orders.id',
-      'date' => 'orders.created_at',
+      'date' => 'orders.date',
       'price' => 'orders.price',
     ];
 
@@ -26,7 +26,7 @@ class OrderModel extends Model
       }
     }
 
-    $builder->select('orders.id, orders.price, orders.created_at, orders.disabled');
+    $builder->select('orders.id, orders.price, orders.date, orders.disabled');
 
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
@@ -41,7 +41,7 @@ class OrderModel extends Model
 
     $allowedSortFields = [
       'id' => 'orders.id',
-      'date' => 'orders.created_at',
+      'date' => 'orders.date',
       'price' => 'orders.price',
     ];
 

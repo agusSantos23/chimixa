@@ -374,7 +374,7 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="timeline-item">
 														<!--begin::Label-->
 														<div class="timeline-label fw-bolder text-gray-800 fs-6">
-															<?= date("d/m", strtotime($order['created_at'])) ?>
+															<?= date("d/m", strtotime($order['date'])) ?>
 														</div>
 														<!--end::Label-->
 														<!--begin::Badge-->

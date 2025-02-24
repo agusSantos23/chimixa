@@ -6,21 +6,34 @@ use App\Models\OrderModel;
 use App\Models\OrderElementModel;
 use App\Models\MenuModel;
 use App\Models\PlateModel;
-
-
 use Exception;
 
-
-
-class OrderController extends BaseController
+class EventOrderController extends BaseController
 {
-
   public function index()
+  {
+    $menuModel = new MenuModel();
+    $plateModel = new PlateModel();
+    try {
+
+      $userRole = session()->get('userRole');
+
+      if (!$userRole) return redirect()->to(base_url('/auth/login'));
+
+      $data['menus'] = $menuModel->getMenusWithDetails();
+      $data['plates'] = $plateModel->getPlatesWithDetails();
+
+
+      return view('./pages/calendar', $data);
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+  public function ajaxEvents()
   {
     $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
-    $menuModel = new MenuModel();
-    $plateModel = new PlateModel();
 
 
     try {
@@ -29,69 +42,28 @@ class OrderController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
-
-      $perPage = $this->request->getGet('perPage') ?? 5;
-      $data['perPage'] = $perPage;
-
-      $searchParams = $this->request->getGet('searchParams') ?? [];
-      $data['searchParams'] = $searchParams;
-
-      $sortBy = $this->request->getGet('sortBy') ?? 'id';
-      $data['sortBy'] = $sortBy;
-
-      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
-      $data['sortDirection'] = $sortDirection;
-
-      $data['menus'] = $menuModel->getMenusWithDetails();
-      $data['plates'] = $plateModel->getPlatesWithDetails();
+      helper('sort_helper');
 
 
       if ($userRole === 'Customer') {
-        $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams, $sortBy, $sortDirection));
-      }elseif ($userRole === 'Administrator'){
-        $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams, $sortBy, $sortDirection));
+        $data = $orderElementModel->getUserOrders(session()->get('userId'), 5, ['all' => 'true']);
+      } elseif ($userRole === 'Administrator') {
+
+        $data = ['orders' => $orderModel->select('id, price, date')->findAll()];
       }
 
 
 
-      return view('pages/list/order_list', $data);
+      return $this->response->setStatusCode(200)->setJSON(['data' => $data]);
     } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
+
+      return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
 
-
-
-  public function getOrder($id)
+  public function saveEvent($date)
   {
-    $orderElementModel = new OrderElementModel();
 
-
-
-    try {
-
-      $order = $orderElementModel->where('id_order', $id)->findAll();
-
-
-      if ($order) {
-
-        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'data' => $order]);
-      } else {
-
-        return $this->response->setStatusCode(400)->setJSON(['errors' => 'order not found']);
-      }
-    } catch (Exception $e) {
-
-      return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting order: ' . $e->getMessage()]);
-    }
-  }
-
-
-
-
-  public function saveOrder()
-  {
     $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
 
@@ -110,10 +82,14 @@ class OrderController extends BaseController
 
         $selectedElements = json_decode($this->request->getPost('selectedElements'), true);
 
+        log_message("info", $date);
+
+
         $orderData = [
           'price' => array_sum(array_map(function ($element) {
             return $element['price'] * $element['count'];
-          }, $selectedElements))
+          }, $selectedElements)),
+          'date' => $date
         ];
 
 
@@ -152,57 +128,26 @@ class OrderController extends BaseController
     }
   }
 
+  public function deleteEvent($id) {
 
-  public function deleteOrder()
-  {
     $orderModel = new OrderModel();
 
 
     try {
-      $ids = $this->request->getPost('ids');
 
-      if (count($ids) === 0) {
-        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No Code provided']);
       }
 
 
-      if (!$orderModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
+      if (!$orderModel->where('id', $id)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => false, 'message' => 'Code not found']);
       } else {
         return $this->response->setJSON(['success' => true]);
       }
+      
     } catch (Exception $e) {
       return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
     }
   }
-
-  
-  public function restoreOrder()
-  {
-    $orderModel = new OrderModel();
-
-
-    try {
-      $id = $this->request->getPost('id');
-
-      if (empty($id)) {
-        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
-      }
-
-      if ($orderModel->update($id, ['disabled' => null])) {
-
-        return $this->response->setJSON(['success' => true]);
-
-      } else {
-
-        return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
-      }
-      
-    } catch (Exception $e) {
-
-      echo "Error: " . $e->getMessage();
-    }
-  }
-
-
 }

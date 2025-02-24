@@ -165,7 +165,7 @@ License: For each use you must have a valid license purchased only from above li
 														<input type="text" name="searchParams[price]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Price" value="<?= esc($searchParams['price'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
-
+													<?php if (session()->get('userRole') === 'Administrator'): ?>
 													<!--begin::DisabledFilter-->
 													<div class="d-flex align-items-center position-relative my-1">
 														<span class="svg-icon svg-icon-1 position-absolute ms-6">
@@ -183,7 +183,7 @@ License: For each use you must have a valid license purchased only from above li
 														</select>
 													</div>
 													<!--end::DisabledFilter-->
-
+													<?php endif; ?>
 
 													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
 													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
@@ -301,7 +301,7 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 															<td>
-																<?= date("d/m/Y H:i", strtotime(esc($order['created_at']))) ?>
+																<?= date("d/m/Y H:i", strtotime(esc($order['date'] ?? ''))) ?>
 															</td>
 
 															<td>
@@ -463,7 +463,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
 												<!--begin::Modal title-->
-												<h2 class="fw-bolder">Add a Order</h2>
+												<h2 class="fw-bolder">Add a Order for Today</h2>
 												<!--end::Modal title-->
 												<!--begin::Close-->
 												<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">

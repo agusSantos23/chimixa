@@ -10,19 +10,21 @@ class OrderElementModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['id_order', 'id_user', 'id_element', 'type_element', 'price', 'amount'];
 
-  public function getUserOrders($userId, $perPage = 5, $searchParams = [])
+  public function getUserOrders($userId, $perPage = 5, $searchParams = [], $sortBy = 'id', $sortDirection = 'asc')
   {
     $builder = $this->builder();
 
     $builder->join('orders', 'orders.id = orders_elements.id_order', 'left');
 
     $builder->where('orders_elements.id_user', $userId);
-    $builder->where('orders.disabled', null);
+    $builder->where('orders.disabled IS NULL'); 
+    $builder->where('orders.created_at IS NOT NULL'); 
+
 
 
     $searchFields = [
       'id' => 'orders.id',
-      'date' => 'orders.created_at',
+      'date' => 'orders.date',
       'price' => 'orders.price',
     ];
 
@@ -32,7 +34,7 @@ class OrderElementModel extends Model
       }
     }
 
-    $builder->distinct()->select('orders.id, orders.price, orders.created_at, orders.disabled'); 
+    $builder->distinct()->select('orders.id, orders.price, orders.date, orders.disabled, orders.created_at');
 
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
@@ -44,9 +46,36 @@ class OrderElementModel extends Model
       }
     }
 
-    return [
-      'orders' => $this->paginate($perPage),
-      'pager' => $this->pager 
+
+
+
+    $allowedSortFields = [
+      'id' => 'orders.id',
+      'date' => 'orders.date',
+      'price' => 'orders.price',
     ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'id';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
+    
+
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
+
+      return ['orders' => $builder->get()->getResultArray()];
+
+    } else {
+
+      return [
+        'orders' => $this->paginate($perPage),
+        'pager' => $this->pager
+      ];
+    }
+    
+    
   }
 }

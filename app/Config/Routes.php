@@ -9,7 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 // Basic
 $routes->get('/', to: 'Home::index');
 $routes->get('about', 'Home::about');
-$routes->get('calendar', 'Home::calendar');
 
 
 // Profile
@@ -104,8 +103,8 @@ $routes->post('menus/restore', 'MenuController::restoreMenu');
 
 
 
-
 // calendar
-$routes->get('calendar/fetch', 'EventController::fetchEvents');
-$routes->post('calendar/add', 'EventController::addEvent');
-$routes->delete('calendar/delete/(:any)', 'EventController::deleteEvent/$1');
+$routes->get('calendar', 'EventOrderController::index');
+$routes->get('calendar/ajax', 'EventOrderController::ajaxEvents');
+$routes->post('calendar/save/(:any)', 'EventOrderController::saveEvent/$1');
+$routes->get('calendar/delete/(:any)', 'EventOrderController::deleteEvent/$1');

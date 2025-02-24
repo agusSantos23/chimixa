@@ -52,25 +52,6 @@ class Home extends BaseController
 
 
 
-  public function calendar()
-  {
-    try {
-
-      $userRole = session()->get('userRole');
-
-      if (!$userRole) return redirect()->to(base_url('/auth/login'));
-
-
-
-      $data['aside'] = view('templates/aside');
-      $data['footer'] = view('templates/footer');
-
-
-      return view('./pages/calendar', $data);
-    } catch (Exception $e) {
-      echo "Error: " . $e->getMessage();
-    }
-  }
 
   public function about(): string
   {

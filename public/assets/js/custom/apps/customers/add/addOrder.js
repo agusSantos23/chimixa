@@ -34,22 +34,22 @@ let KTModalCustomersAdd = function () {
             count
           }));
 
-          console.log(formattedOrderData);
-
+          const dateText = $('#orderDate').text()
           const formData = new FormData(r);
           formData.append("selectedElements", JSON.stringify(formattedOrderData));
 
-
+          
+          const dateParts = dateText.split('/');
+         
 
           $.ajax({
-            url: baseURL + 'orders/save',
+            url: baseURL + (dateText ? 'calendar/save/' + `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}` : 'orders/save'),
             type: 'POST',
             data: formData,
             contentType: false,
             processData: false,
             success: function (response) {
 
-              console.log(response);
               
               t.removeAttribute("data-kt-indicator");
               $('#validation-errors').hide().empty();
