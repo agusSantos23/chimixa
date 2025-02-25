@@ -8,7 +8,7 @@ class OrderModel extends Model
 {
   protected $table = 'orders';
   protected $primaryKey = 'id';
-  protected $allowedFields = ['price', 'date','disabled'];
+  protected $allowedFields = ['price', 'date', 'disabled'];
 
   public function getAllOrders($perPage = 5, $searchParams = [], $sortBy = 'id', $sortDirection = 'asc')
   {
@@ -52,10 +52,14 @@ class OrderModel extends Model
     $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
     $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
 
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
 
-    return [
-      'orders' => $this->paginate($perPage),
-      'pager' => $this->pager
-    ];
+      return $builder->get()->getResultArray();
+    } else {
+      return [
+        'orders' => $this->paginate($perPage),
+        'pager' => $this->pager
+      ];
+    }
   }
 }
