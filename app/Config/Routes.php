@@ -39,7 +39,7 @@ $routes->get('orders', 'OrderController::index');
 $routes->get('orders/get/(:any)', 'OrderController::getOrder/$1');
 $routes->post('orders/save', 'OrderController::saveOrder');
 $routes->post('orders/delete', 'OrderController::deleteOrder');
-$routes->post('orders/restore', 'OrderController::restoreOrder');
+$routes->post('orders/restore', 'OrderController::exportRol');
 
 
 
@@ -51,6 +51,8 @@ $routes->post('roles/save', 'RolController::saveRol');
 $routes->post('roles/update/(:any)', 'RolController::saveRol/$1');
 $routes->post('roles/delete', 'RolController::deleteRol');
 $routes->post('roles/restore', 'RolController::restoreRol');
+$routes->get('roles/export', 'RolController::exportRol');
+
 
 
 

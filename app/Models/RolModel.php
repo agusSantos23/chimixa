@@ -42,16 +42,22 @@ class RolModel extends Model
 
     $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
 
-    return [
-      'roles' => $this->paginate($perPage),
-      'pager' => $this->pager
-    ];
+
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
+
+      return $builder->get()->getResultArray();
+
+    } else {
+      
+      return [
+        'roles' => $this->paginate($perPage),
+        'pager' => $this->pager
+      ];
+    }
   }
 
   public function getIdByName($roleName)
   {
     return $this->where('name', $roleName)->where('disabled IS NULL')->first()['id'] ?? null;
   }
-
-
 }

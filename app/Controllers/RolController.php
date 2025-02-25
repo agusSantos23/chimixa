@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\RolModel;
 use Exception;
 
@@ -37,12 +39,20 @@ class RolController extends BaseController
       $data = array_merge($data, $rolModel->getRoles($perPage, $searchParams, $sortBy, $sortDirection));
 
 
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
+
+      $data['exportUrl'] = base_url('./roles/export') . '?' . $queryString;
+
       return view('pages/list/rol_list', $data);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }
-
 
 
   public function getRol($id)
@@ -54,17 +64,16 @@ class RolController extends BaseController
       $role = $rolModel->find($id);
 
 
-      
+
 
 
       if ($role) {
 
         if ($role['disabled'] !== null) {
           return $this->response->setStatusCode(400)->setJSON(['errors' => 'This role is not editable because it is disabled.']);
-        }else{
+        } else {
           return $this->response->setStatusCode(200)->setJSON(['success' => $role]);
         }
-
       } else {
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'Role not found.']);
       }
@@ -72,8 +81,6 @@ class RolController extends BaseController
       return $this->response->setStatusCode(500)->setJSON(['error' => 'Error getting role: ' . $e->getMessage()]);
     }
   }
-
-
 
 
   public function saveRol($id = null)
@@ -176,6 +183,62 @@ class RolController extends BaseController
       }
     } catch (Exception $e) {
 
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
+  public function exportRol()
+  {
+    $rolModel = new RolModel();
+    $spreadsheet = new Spreadsheet();
+
+    try {
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'Name');
+
+
+      $perPage = $this->request->getGet('perPage') ?? 5;
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+
+      $data = $rolModel->getRoles($perPage, $searchParams, $sortBy, $sortDirection);
+
+      $rowNumber = 2;
+
+      foreach ($data as $row) {
+
+        $sheet->setCellValue('A' . $rowNumber, $row['name']);
+
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':A' . $rowNumber)->getFill()
+              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+              ->getStartColor()->setARGB('FFFF6666'); 
+
+          $sheet->getStyle('A' . $rowNumber . ':A' . $rowNumber)->getFont()
+              ->getColor()->setARGB('FFFFFFFF'); 
+      }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportRol.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }

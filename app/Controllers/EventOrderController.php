@@ -83,8 +83,6 @@ class EventOrderController extends BaseController
 
         $selectedElements = json_decode($this->request->getPost('selectedElements'), true);
 
-        log_message("info", $date);
-
 
         $orderData = [
           'price' => array_sum(array_map(function ($element) {
