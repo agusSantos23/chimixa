@@ -74,6 +74,7 @@ $routes->get('store/(:any)', 'StoreController::index/$1');
 $routes->get('storer/get/(:any)', 'StoreController::getPlatesInMenu/$1');
 $routes->post('store/update/(:any)', 'StoreController::saveIngredientInPlate/$1');
 $routes->post('store/delete/(:any)', 'StoreController::deleteIngredientsInPlate/$1');
+$routes->get('storer/export/(:any)', 'StoreController::exportIngredientsInPlate/$1');
 
 
 

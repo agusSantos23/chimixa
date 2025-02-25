@@ -40,7 +40,7 @@ class MenuPlateController extends BaseController
       $data['sortDirection'] = $sortDirection;
 
 
-      $data['menu'] = $menuModel->select('id, name')->find($id);
+      $data['menu'] = $menuModel->select('id, name, disabled')->find($id);
       $data['plates'] = $plateModel->select('id, name, price, category,disabled')->where('disabled', null)->findAll();
 
       $data = array_merge($data, $menuPlateModel->getPlatesByMenu($id, $perPage, $searchParams, $sortBy, $sortDirection));

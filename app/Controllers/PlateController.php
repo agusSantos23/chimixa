@@ -300,7 +300,6 @@ class PlateController extends BaseController
       $data = $plateModel->getPlates(null, $searchParams, $sortBy, $sortDirection);
 
       $rowNumber = 2;
-      log_message('info', print_r($data, true));
 
       foreach ($data as $row) {
 

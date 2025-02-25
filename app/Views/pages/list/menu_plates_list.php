@@ -275,7 +275,10 @@ License: For each use you must have a valid license purchased only from above li
 											</a>
 											<!--end::Export-->
 											<!--begin::Add customer-->
-											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Edit Associated Plates</button>
+											<?php if (is_null($menu['disabled'])): ?>
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Edit Associated Plates</button>
+											<?php endif; ?>
+
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
@@ -354,7 +357,7 @@ License: For each use you must have a valid license purchased only from above li
 														</td>
 													</tr>
 												<?php else: ?>
-													
+
 													<?php foreach ($platesOfMenu as $plate): ?>
 														<tr>
 															<td>
@@ -580,7 +583,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 							</div>
 							<!--end::Modal - Customers - Add-->
-					
+
 							<!--end::Modals-->
 						</div>
 						<!--end::Container-->

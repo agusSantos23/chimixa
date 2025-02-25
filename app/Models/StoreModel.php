@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class StoreModel extends Model{
+class StoreModel extends Model
+{
 
   protected $table = 'store';
 
@@ -12,8 +13,9 @@ class StoreModel extends Model{
 
   protected $allowedFields = ['id_plate', 'id_ingredient', 'disabled'];
 
-  
-  public function getIngredientsByPlate($plateId , $perPage, $searchParams, $sortBy = 'name', $sortDirection = 'asc'){
+
+  public function getIngredientsByPlate($plateId, $perPage, $searchParams, $sortBy = 'name', $sortDirection = 'asc')
+  {
     $builder = $this->builder();
 
     $builder->select('ingredients.id, ingredients.name, ingredients.allergens, store.disabled');
@@ -23,13 +25,12 @@ class StoreModel extends Model{
 
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
-      
+
       if ($disabledFilter == 'true') {
         $builder->where('store.disabled IS NOT NULL');
-
       } elseif ($disabledFilter == 'false') {
-        $builder->where('store.disabled IS NULL'); 
-      } 
+        $builder->where('store.disabled IS NULL');
+      }
     }
 
     $searchFields = [
@@ -55,11 +56,15 @@ class StoreModel extends Model{
     $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
     $builder->orderBy($allowedSortFields[$sortBy] . ' ' . $sortDirection);
 
-      
-    return [
-      'ingredientsOfPlate' => $this->paginate($perPage),  
-      'pager' => $this->pager,               
-    ];
-  }
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
 
+      return $builder->get()->getResultArray();
+      
+    } else {
+      return [
+        'ingredientsOfPlate' => $this->paginate($perPage),
+        'pager' => $this->pager,
+      ];
+    }
+  }
 }
