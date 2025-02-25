@@ -47,9 +47,10 @@ class EventOrderController extends BaseController
 
       if ($userRole === 'Customer') {
         $data = $orderElementModel->getUserOrders(session()->get('userId'), 5, ['all' => 'true']);
+
       } elseif ($userRole === 'Administrator') {
 
-        $data = ['orders' => $orderModel->select('id, price, date')->findAll()];
+        $data = ['orders' => $orderModel->select('id, price, date')->where('disabled', null)->findAll()];
       }
 
 
