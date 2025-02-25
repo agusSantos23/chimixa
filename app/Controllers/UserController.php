@@ -77,9 +77,7 @@ class UserController extends BaseController
           return $this->response->setStatusCode(400)->setJSON(['errors' => 'This user is not editable because it is disabled.']);
         } else {
           return $this->response->setStatusCode(200)->setJSON(['success' => $user]);
-
         }
-
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'User not found']);
@@ -262,7 +260,7 @@ class UserController extends BaseController
       $data = $userModel->getAllUsersWithRoles(null, $searchParams, $sortBy, $sortDirection);
 
       $rowNumber = 2;
-      
+
       foreach ($data as $row) {
 
         $sheet->setCellValue('A' . $rowNumber, $row['role_name']);
@@ -274,12 +272,12 @@ class UserController extends BaseController
 
         if (!is_null($row['disabled'])) {
           $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFill()
-              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-              ->getStartColor()->setARGB('FFFF6666'); 
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFF6666');
 
           $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFont()
-              ->getColor()->setARGB('FFFFFFFF'); 
-      }
+            ->getColor()->setARGB('FFFFFFFF');
+        }
 
         $rowNumber++;
       }

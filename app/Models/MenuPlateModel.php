@@ -65,13 +65,15 @@ class MenuPlateModel extends Model
     $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
     $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
 
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
 
-    return [
-      'platesOfMenu' => $this->paginate($perPage),
-      'pager' => $this->pager,
-    ];
+      return $builder->get()->getResultArray();
+      
+    } else {
+      return [
+        'platesOfMenu' => $this->paginate($perPage),
+        'pager' => $this->pager,
+      ];
+    }
   }
-
-  
-
 }

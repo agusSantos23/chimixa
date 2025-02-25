@@ -92,6 +92,7 @@ $routes->get('menu_plates/(:any)', 'MenuPlateController::index/$1');
 $routes->get('menu_platess/get/(:any)', 'MenuPlateController::getPlatesInMenu/$1');
 $routes->post('menu_plates/update/(:any)', 'MenuPlateController::savePlateInMenu/$1');
 $routes->post('menu_plates/delete/(:any)', 'MenuPlateController::deletePlatesInMenu/$1');
+$routes->get('menu_platess/export/(:any)', 'MenuPlateController::exportPlatesInMenu/$1');
 
 
 
