@@ -53,13 +53,20 @@ class PlateModel extends Model
     $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
     $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
 
-    return [
-      'plates' => $this->paginate($perPage),
-      'pager' => $this->pager
-    ];
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
+
+      return $builder->get()->getResultArray();
+      
+    } else {
+      return [
+        'plates' => $this->paginate($perPage),
+        'pager' => $this->pager
+      ];
+    }
   }
 
-  public function getPlatesWithDetails(): array{
+  public function getPlatesWithDetails(): array
+  {
     $plates = $this->db->table('plates')
       ->select('
         plates.id AS plate_id,

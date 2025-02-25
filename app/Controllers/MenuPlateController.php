@@ -238,7 +238,6 @@ class MenuPlateController extends BaseController
       $data = $menuPlateModel->getPlatesByMenu($id, null, $searchParams, $sortBy, $sortDirection);
 
       $sheet->setCellValue('B1', $menu['name']);
-      //log_message('info', print_r($data, true));
 
       $rowNumber = 3;
 

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\PlateModel;
 use App\Models\StoreModel;
 use App\Models\IngredientModel;
@@ -19,14 +21,13 @@ class PlateController extends BaseController
     $plateModel = new PlateModel();
     $ingredientModel = new IngredientModel();
 
-
     try {
 
       $userRole = session()->get('userRole');
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      helper('sort_helper'); 
+      helper('sort_helper');
 
 
       $data['ingredients'] = $ingredientModel->where('disabled', null)->findAll();
@@ -44,6 +45,16 @@ class PlateController extends BaseController
       $data['sortDirection'] = $sortDirection;
 
       $data = array_merge($data, $plateModel->getPlates($perPage, $searchParams, $sortBy, $sortDirection));
+
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
+
+      $data['exportUrl'] = base_url('./plates/export') . '?' . $queryString;
+
 
       return view('pages/list/plate_list', $data);
     } catch (Exception $e) {
@@ -65,17 +76,13 @@ class PlateController extends BaseController
       $stores = $storeModel->select('id_ingredient')->where('id_plate', $id)->findAll();
 
 
-
-
       if ($plate) {
 
         if ($plate['disabled'] !== null) {
           return $this->response->setStatusCode(400)->setJSON(['errors' => 'This plate is not editable because it is disabled.']);
         } else {
           return $this->response->setStatusCode(200)->setJSON(['success' => true, 'plate' => $plate, 'ingredientsSelect' => $stores]);
-
         }
-
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'plate not found']);
@@ -199,7 +206,6 @@ class PlateController extends BaseController
     }
   }
 
-
   public function deletePlate()
   {
     $plateModel = new PlateModel();
@@ -216,8 +222,7 @@ class PlateController extends BaseController
 
       if ($menuPlateModel->whereIn('id_plate', $ids)->countAllResults() > 0) {
 
-        return $this->response->setJSON(['success' => false,'message' => 'Some plates are associated with a menu and cannot be deleted']);
-
+        return $this->response->setJSON(['success' => false, 'message' => 'Some plates are associated with a menu and cannot be deleted']);
       } else {
 
         if (!$plateModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
@@ -239,7 +244,6 @@ class PlateController extends BaseController
   }
 
 
-  
   public function restorePlate()
   {
     $plateModel = new PlateModel();
@@ -267,6 +271,70 @@ class PlateController extends BaseController
     } catch (Exception $e) {
       log_message('error', $e->getMessage());
       return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
+
+  public function exportPlate()
+  {
+    $plateModel = new PlateModel();
+    $spreadsheet = new Spreadsheet();
+
+    try {
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'NAME');
+      $sheet->setCellValue('B1', 'DESCRIPTION');
+      $sheet->setCellValue('C1', 'PRICE');
+      $sheet->setCellValue('D1', 'CATEGORY');
+      $sheet->setCellValue('E1', 'PREPARATION TIME');
+
+
+      
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+      $data = $plateModel->getPlates(null, $searchParams, $sortBy, $sortDirection);
+
+      $rowNumber = 2;
+      log_message('info', print_r($data, true));
+
+      foreach ($data as $row) {
+
+        $sheet->setCellValue('A' . $rowNumber, $row['name']);
+        $sheet->setCellValue('B' . $rowNumber, $row['description']);
+        $sheet->setCellValue('C' . $rowNumber, $row['price'] . " $");
+        $sheet->setCellValue('D' . $rowNumber, $row['category']);
+        $sheet->setCellValue('E' . $rowNumber, $row['preparation_time'] . " min");
+
+
+
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFill()
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFF6666');
+
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFont()
+            ->getColor()->setARGB('FFFFFFFF');
+        }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportPlate.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
     }
   }
 }
