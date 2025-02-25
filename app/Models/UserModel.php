@@ -17,27 +17,6 @@ class UserModel extends Model
   protected $updatedField = 'updated_at';
 
 
-  public function getUserWithRoleById($userId)
-  {
-    $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
-    $builder->join('roles', 'roles.id = users.role_id');
-    $builder->where('users.id', $userId);
-
-    return $builder->get()->getRow();
-  }
-
-  public function getUserWithRoleByEmail($email)
-  {
-    $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
-    $builder->join('roles', 'roles.id = users.role_id');
-    $builder->where('users.email', $email);
-
-    return $builder->get()->getRow();
-  }
-
-
   public function getAllUsersWithRoles($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc')
   {
     $builder = $this->builder();
@@ -91,10 +70,42 @@ class UserModel extends Model
     $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
     $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
 
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
 
-    return [
-      'users' => $this->paginate($perPage),
-      'pager' => $this->pager,
-    ];
+      return $builder->get()->getResultArray();
+
+    } else {
+
+      return [
+        'users' => $this->paginate($perPage),
+        'pager' => $this->pager,
+      ];
+    }
+    
   }
+
+
+  
+  public function getUserWithRoleById($userId)
+  {
+    $builder = $this->builder();
+    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
+    $builder->join('roles', 'roles.id = users.role_id');
+    $builder->where('users.id', $userId);
+
+    return $builder->get()->getRow();
+  }
+
+  public function getUserWithRoleByEmail($email)
+  {
+    $builder = $this->builder();
+    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
+    $builder->join('roles', 'roles.id = users.role_id');
+    $builder->where('users.email', $email);
+
+    return $builder->get()->getRow();
+  }
+
+
+  
 }

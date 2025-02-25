@@ -32,6 +32,7 @@ $routes->post('users/save', 'UserController::saveUser');
 $routes->post('users/update/(:any)', 'UserController::saveUser/$1');
 $routes->post('users/delete', 'UserController::deleteUser');
 $routes->post('users/restore', 'UserController::restoreUser');
+$routes->get('users/export', 'UserController::exportUser');
 
 
 // orders

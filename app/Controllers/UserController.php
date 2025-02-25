@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\UserModel;
 use App\Models\RolModel;
 use Exception;
@@ -38,8 +41,16 @@ class UserController extends BaseController
       $data['sortDirection'] = $sortDirection;
 
 
-
       $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection));
+
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
+
+      $data['exportUrl'] = base_url('./users/export') . '?' . $queryString;
 
 
       return view('pages/list/user_list', $data);
@@ -217,6 +228,73 @@ class UserController extends BaseController
       }
     } catch (Exception $e) {
 
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
+
+  public function exportUser()
+  {
+    $userModel = new UserModel();
+    $spreadsheet = new Spreadsheet();
+
+    try {
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'ROL');
+      $sheet->setCellValue('B1', 'NAME');
+      $sheet->setCellValue('C1', 'EMAIL');
+      $sheet->setCellValue('D1', 'PHONE');
+      $sheet->setCellValue('E1', 'COUNTRY');
+
+
+
+      $perPage = $this->request->getGet('perPage') ?? 5;
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+
+      $data = $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection);
+
+      $rowNumber = 2;
+      
+      foreach ($data as $row) {
+
+        $sheet->setCellValue('A' . $rowNumber, $row['role_name']);
+        $sheet->setCellValue('B' . $rowNumber, $row['name'] . " " . $row['last_name']);
+        $sheet->setCellValue('C' . $rowNumber, $row['email']);
+        $sheet->setCellValue('D' . $rowNumber, $row['prefix'] . " " . $row['phone']);
+        $sheet->setCellValue('E' . $rowNumber, $row['country']);
+
+
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFill()
+              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+              ->getStartColor()->setARGB('FFFF6666'); 
+
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFont()
+              ->getColor()->setARGB('FFFFFFFF'); 
+      }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportUser.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
     }
   }

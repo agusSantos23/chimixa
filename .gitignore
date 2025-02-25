@@ -5,4 +5,3 @@ writable/debugbar
 
 .env
 /vendor/
-composer.lock

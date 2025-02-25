@@ -195,7 +195,7 @@ class RolController extends BaseController
 
     try {
       $sheet = $spreadsheet->getActiveSheet();
-      $sheet->setCellValue('A1', 'Name');
+      $sheet->setCellValue('A1', 'NAME');
 
 
       $perPage = $this->request->getGet('perPage') ?? 5;
@@ -206,7 +206,6 @@ class RolController extends BaseController
       $sortBy = $this->request->getGet('sortBy') ?? 'name';
 
       $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
-
 
 
       $data = $rolModel->getRoles($perPage, $searchParams, $sortBy, $sortDirection);
