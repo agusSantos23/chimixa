@@ -198,7 +198,6 @@ class RolController extends BaseController
       $sheet->setCellValue('A1', 'NAME');
 
 
-      $perPage = $this->request->getGet('perPage') ?? 5;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $searchParams['all'] = 'true';
@@ -208,7 +207,7 @@ class RolController extends BaseController
       $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
 
 
-      $data = $rolModel->getRoles($perPage, $searchParams, $sortBy, $sortDirection);
+      $data = $rolModel->getRoles( null, $searchParams, $sortBy, $sortDirection);
 
       $rowNumber = 2;
 

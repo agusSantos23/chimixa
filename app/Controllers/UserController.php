@@ -249,7 +249,6 @@ class UserController extends BaseController
 
 
 
-      $perPage = $this->request->getGet('perPage') ?? 5;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $searchParams['all'] = 'true';
@@ -260,7 +259,7 @@ class UserController extends BaseController
 
 
 
-      $data = $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection);
+      $data = $userModel->getAllUsersWithRoles(null, $searchParams, $sortBy, $sortDirection);
 
       $rowNumber = 2;
       

@@ -103,6 +103,7 @@ $routes->post('menus/save', 'MenuController::saveMenu');
 $routes->post('menus/update/(:any)', 'MenuController::saveMenu/$1');
 $routes->post('menus/delete', 'MenuController::deleteMenu');
 $routes->post('menus/restore', 'MenuController::restoreMenu');
+$routes->get('menus/export', 'MenuController::exportMenu');
 
 
 
