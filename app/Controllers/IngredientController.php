@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\IngredientModel;
 use App\Models\StoreModel;
 
@@ -39,6 +42,15 @@ class IngredientController extends BaseController
 
       $data = array_merge($data, $ingredientModel->getIngredients($perPage, $searchParams, $sortBy, $sortDirection));
 
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
+
+      $data['exportUrl'] = base_url('./ingredients/export') . '?' . $queryString;
+
 
       return view('pages/list/ingredient_list', $data);
     } catch (Exception $e) {
@@ -60,9 +72,8 @@ class IngredientController extends BaseController
         if ($ingredient['disabled'] !== null) {
 
           return $this->response->setStatusCode(400)->setJSON(['errors' => 'This ingredient is not editable because it is disabled.']);
-
         } else {
-          
+
           if (!empty($ingredient['expiration_date'])) {
             $ingredient['expiration_date'] = date('d/m/Y', strtotime($ingredient['expiration_date']));
           }
@@ -185,7 +196,6 @@ class IngredientController extends BaseController
   }
 
 
-
   public function restoreIngredient()
   {
     $ingredientModel = new IngredientModel();
@@ -208,6 +218,76 @@ class IngredientController extends BaseController
     } catch (Exception $e) {
       log_message('error', $e->getMessage());
       return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
+
+
+
+  public function exportIngredient()
+  {
+    $ingredientModel = new IngredientModel();
+    $spreadsheet = new Spreadsheet();
+
+
+    try {
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'NAME');
+      $sheet->setCellValue('B1', 'AVAILABLE QUANTITY');
+      $sheet->setCellValue('C1', 'EXPIRATION DATE');
+      $sheet->setCellValue('D1', 'PRICE');
+      $sheet->setCellValue('E1', 'ALLERGENS');
+
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+      $data =  $ingredientModel->getIngredients(null, $searchParams, $sortBy, $sortDirection);
+
+
+      $rowNumber = 2;
+
+      foreach ($data as $row) {
+
+        $allergens = json_decode($row['allergens'], true); 
+        if (!is_array($allergens)) { 
+          $allergens = ['none'];
+        }
+
+        $sheet->setCellValue('A' . $rowNumber, $row['name']);
+        $sheet->setCellValue('B' . $rowNumber, $row['quantity_available'] . ' ' . $row['measure']);
+        $sheet->setCellValue('C' . $rowNumber, date('d/m/Y', strtotime($row['expiration_date'])));
+        $sheet->setCellValue('D' . $rowNumber, $row['price'] . ' $');
+        $sheet->setCellValue('E' . $rowNumber, implode(', ', $allergens));
+
+        
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFill()
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFF6666');
+
+          $sheet->getStyle('A' . $rowNumber . ':E' . $rowNumber)->getFont()
+            ->getColor()->setARGB('FFFFFFFF');
+        }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportIngredient.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
     }
   }
 }

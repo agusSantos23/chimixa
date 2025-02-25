@@ -65,6 +65,7 @@ $routes->post('ingredients/save', 'IngredientController::saveIngredient');
 $routes->post('ingredients/update/(:any)', 'IngredientController::saveIngredient/$1');
 $routes->post('ingredients/delete', 'IngredientController::deleteIngredient');
 $routes->post('ingredients/restore', 'IngredientController::restoreIngredient');
+$routes->get('ingredients/export', 'IngredientController::exportIngredient');
 
 
 

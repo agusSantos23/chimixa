@@ -72,8 +72,6 @@ class MenuController extends BaseController
       $menuData = $menuModel->find($id);
 
 
-
-
       $menuPlates = $menuPlateModel->where('id_menu', $id)->findAll();
 
       $plates = array_map(function ($plate) {
@@ -256,7 +254,6 @@ class MenuController extends BaseController
       if (empty($id)) {
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
-
 
 
       if (!$menuModel->update($id, ['disabled' => null])) {

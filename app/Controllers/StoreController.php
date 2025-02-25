@@ -230,7 +230,7 @@ class StoreController extends BaseController
         
         $allergens = json_decode($row['allergens'], true); 
         if (!is_array($allergens)) { 
-          $allergens = [];
+          $allergens = ['none'];
         }
 
 
