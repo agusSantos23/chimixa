@@ -4,6 +4,8 @@ const baseURL = window.location.origin + '/chimixa/public/';
 const calendar = new FullCalendar.Calendar(calendarEl, {
   initialView: 'dayGridMonth',
   selectable: true,
+  locale: 'en',
+  firstDay: 1,
 
   events: function (fetchInfo, successCallback, failureCallback) {
 

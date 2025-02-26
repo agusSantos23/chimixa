@@ -348,7 +348,7 @@ License: For each use you must have a valid license purchased only from above li
 
 															<td>
 																<?php if ($ingredient['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Ingredient is disabled"></div>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This Ingredient is disabled"></div>
 																<?php endif; ?>
 															</td>
 

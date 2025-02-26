@@ -535,7 +535,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="d-flex justify-content-center align-items-center flex-wrap">
 															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/catus') ?>" alt="Image catus" width="150" data-image="catus" class="cursor-pointer img-thumbnail select-image" />
+																<img src="<?= base_url('assets/media/avatars/cactus') ?>" alt="Image catus" width="150" data-image="catus" class="cursor-pointer img-thumbnail select-image" />
 															</div>
 															<div class="image-option p-2">
 																<img src="<?= base_url('assets/media/avatars/chilliPepper') ?>" alt="Image chilli pepper" width="150" data-image="chilliPepper" class="cursor-pointer img-thumbnail select-image" />
@@ -1031,7 +1031,6 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="./assets/js/custom/apps/customers/add/addUser.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>

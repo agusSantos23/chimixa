@@ -34,7 +34,7 @@ class OrderElementModel extends Model
       }
     }
 
-    $builder->distinct()->select('orders.id, orders.price, orders.date, orders.disabled, orders.created_at');
+    $builder->distinct()->select('orders.id, orders.price, orders.date, orders_elements.amount, orders.disabled, orders.created_at');
 
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
@@ -45,8 +45,6 @@ class OrderElementModel extends Model
         $builder->where('disabled IS NULL');
       }
     }
-
-
 
 
     $allowedSortFields = [

@@ -12,7 +12,8 @@ $routes->get('about', 'Home::about');
 
 
 // Profile
-$routes->get('profile', 'ProfileController::profile');
+$routes->get('profile', 'ProfileController::index');
+$routes->post('profile/update/(:any)', 'ProfileController::saveProfile/$1');
 $routes->get('profile/logout', 'ProfileController::logout');
 
 

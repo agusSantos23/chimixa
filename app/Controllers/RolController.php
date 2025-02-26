@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use App\Models\UserModel;
 use App\Models\RolModel;
 use Exception;
 
@@ -65,8 +66,6 @@ class RolController extends BaseController
 
 
 
-
-
       if ($role) {
 
         if ($role['disabled'] !== null) {
@@ -110,7 +109,6 @@ class RolController extends BaseController
 
 
 
-
         if ($id !== null) {
 
           if (!$rolModel->find($id)) {
@@ -139,8 +137,10 @@ class RolController extends BaseController
     }
   }
 
+
   public function deleteRol()
   {
+    $userModel = new UserModel();
     $rolModel = new RolModel();
 
     try {
@@ -150,6 +150,10 @@ class RolController extends BaseController
         return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
       }
 
+
+      if (!empty($userModel->whereIn('role_id', $ids)->findAll())) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Cannot delete role because there are users with this role']);
+      }
 
       if ($rolModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => true]);
@@ -207,7 +211,7 @@ class RolController extends BaseController
       $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
 
 
-      $data = $rolModel->getRoles( null, $searchParams, $sortBy, $sortDirection);
+      $data = $rolModel->getRoles(null, $searchParams, $sortBy, $sortDirection);
 
       $rowNumber = 2;
 
@@ -217,12 +221,12 @@ class RolController extends BaseController
 
         if (!is_null($row['disabled'])) {
           $sheet->getStyle('A' . $rowNumber . ':A' . $rowNumber)->getFill()
-              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-              ->getStartColor()->setARGB('FFFF6666'); 
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFF6666');
 
           $sheet->getStyle('A' . $rowNumber . ':A' . $rowNumber)->getFont()
-              ->getColor()->setARGB('FFFFFFFF'); 
-      }
+            ->getColor()->setARGB('FFFFFFFF');
+        }
 
         $rowNumber++;
       }
