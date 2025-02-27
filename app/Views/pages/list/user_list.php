@@ -389,7 +389,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Country=-->
 
 															<!--begin::Action=-->
-															<td class="text-end">
+															<td class="text-end actions"  data-id="<?= esc($user['id']) ?>">
 																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																	<span class="svg-icon svg-icon-5 m-0">
@@ -402,7 +402,7 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3 me-2" data-id="<?= $user['id'] ?>" data-kt-role-table-filter="edit_row">
+																		<a href="#" class="menu-link px-3 me-2" data-id="<?= esc($user['id']) ?>" data-kt-role-table-filter="edit_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/art/art005.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -416,8 +416,10 @@ License: For each use you must have a valid license purchased only from above li
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
+																	<?php if (empty($user['disabled'])): ?>
+
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $user['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($user['id']) ?>" data-kt-customer-table-filter="delete_row">
 
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
@@ -431,6 +433,8 @@ License: For each use you must have a valid license purchased only from above li
 																			Delete
 																		</a>
 																	</div>
+																	<?php endif; ?>
+
 																	<!--end::Menu item-->
 																</div>
 																<!--end::Menu-->

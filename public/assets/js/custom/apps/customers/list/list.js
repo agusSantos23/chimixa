@@ -186,9 +186,10 @@ var KTCustomersList = function () {
 
 	var r = function () {
 		$("#kt_customers_table tbody tr .border-danger").on("click", function () {
-
+			
+			
 			fatherId = $("#kt_customers_table").data("id-father");
-			const idToRestore = $(this).closest("tr").find('[data-kt-customer-table-filter="delete_row"]').data("id");
+			const idToRestore = $(this).closest("tr").find('.actions').data("id");
 
 			if (!fatherId) {
 

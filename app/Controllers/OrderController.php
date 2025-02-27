@@ -56,6 +56,7 @@ class OrderController extends BaseController
         $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams, $sortBy, $sortDirection));
       }
 
+
       $queryString = http_build_query([
         'searchParams' => $searchParams,
         'sortBy' => $sortBy,

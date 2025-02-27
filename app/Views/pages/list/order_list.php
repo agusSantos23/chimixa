@@ -312,7 +312,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 															<!--begin::Action=-->
-															<td class="text-end">
+															<td class="text-end actions" data-id="<?= esc($order['id']) ?>">
 																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																	<span class="svg-icon svg-icon-5 m-0">
@@ -340,6 +340,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
+																	<?php if (empty($order['disabled'])): ?>
 																	<div class="menu-item px-3">
 																		<a href="#" class="menu-link px-3" data-id="<?= esc($order['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
@@ -353,6 +354,7 @@ License: For each use you must have a valid license purchased only from above li
 																			Delete
 																		</a>
 																	</div>
+																	<?php endif; ?>
 																	<!--end::Menu item-->
 																</div>
 																<!--end::Menu-->
@@ -717,13 +719,9 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="./assets/js/custom/apps/customers/add/addOrder.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
-	<script src="./assets/js/custom/apps/chat/chat.js"></script>
-	<script src="./assets/js/custom/modals/create-app.js"></script>
-	<script src="./assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

@@ -389,7 +389,7 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 
 
-															<td class="text-end">
+															<td class="text-end actions" data-id="<?= esc($ingredient['id']) ?>">
 																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																	<span class="svg-icon svg-icon-5 m-0">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -411,20 +411,24 @@ License: For each use you must have a valid license purchased only from above li
 																			Edit
 																		</a>
 																	</div>
-																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= esc($ingredient['id']) ?>" data-kt-customer-table-filter="delete_row">
-																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
-																			<span class="svg-icon svg-icon-muted me-1">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path opacity="0.3" d="M6.7 19.4L5.3 18C4.9 17.6 4.9 17 5.3 16.6L16.6 5.3C17 4.9 17.6 4.9 18 5.3L19.4 6.7C19.8 7.1 19.8 7.7 19.4 8.1L8.1 19.4C7.8 19.8 7.1 19.8 6.7 19.4Z" fill="black" />
-																					<path d="M19.5 18L18.1 19.4C17.7 19.8 17.1 19.8 16.7 19.4L5.40001 8.1C5.00001 7.7 5.00001 7.1 5.40001 6.7L6.80001 5.3C7.20001 4.9 7.80001 4.9 8.20001 5.3L19.5 16.6C19.9 16.9 19.9 17.6 19.5 18Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
+																	<?php if (empty($ingredient['disabled'])): ?>
 
-																			Delete
-																		</a>
-																	</div>
+																		<div class="menu-item px-3">
+																			<a href="#" class="menu-link px-3" data-id="<?= esc($ingredient['id']) ?>" data-kt-customer-table-filter="delete_row">
+																				<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
+																				<span class="svg-icon svg-icon-muted me-1">
+																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																						<path opacity="0.3" d="M6.7 19.4L5.3 18C4.9 17.6 4.9 17 5.3 16.6L16.6 5.3C17 4.9 17.6 4.9 18 5.3L19.4 6.7C19.8 7.1 19.8 7.7 19.4 8.1L8.1 19.4C7.8 19.8 7.1 19.8 6.7 19.4Z" fill="black" />
+																						<path d="M19.5 18L18.1 19.4C17.7 19.8 17.1 19.8 16.7 19.4L5.40001 8.1C5.00001 7.7 5.00001 7.1 5.40001 6.7L6.80001 5.3C7.20001 4.9 7.80001 4.9 8.20001 5.3L19.5 16.6C19.9 16.9 19.9 17.6 19.5 18Z" fill="black" />
+																					</svg>
+																				</span>
+																				<!--end::Svg Icon-->
+
+																				Delete
+																			</a>
+																		</div>
+																	<?php endif; ?>
+
 																</div>
 															</td>
 														</tr>
@@ -684,13 +688,10 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="./assets/js/custom/apps/customers/add/addIngredients.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
-	<script src="./assets/js/custom/apps/chat/chat.js"></script>
-	<script src="./assets/js/custom/modals/create-app.js"></script>
-	<script src="./assets/js/custom/modals/upgrade-plan.js"></script>
+
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

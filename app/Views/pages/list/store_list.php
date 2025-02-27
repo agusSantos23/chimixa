@@ -522,13 +522,10 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="../assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="../assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="../assets/js/custom/apps/customers/add/addStore.js"></script>
 	<script src="../assets/js/custom/widgets.js"></script>
-	<script src="../assets/js/custom/apps/chat/chat.js"></script>
-	<script src="../assets/js/custom/modals/create-app.js"></script>
-	<script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

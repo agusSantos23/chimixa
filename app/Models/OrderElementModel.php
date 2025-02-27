@@ -35,7 +35,8 @@ class OrderElementModel extends Model
     }
 
     $builder->distinct()->select('orders.id, orders.price, orders.date, orders_elements.amount, orders.disabled, orders.created_at');
-
+    $builder->groupBy('orders.id, orders.price, orders.date, orders.disabled, orders.created_at');
+    
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
 
@@ -73,7 +74,6 @@ class OrderElementModel extends Model
         'pager' => $this->pager
       ];
     }
-    
     
   }
 }
