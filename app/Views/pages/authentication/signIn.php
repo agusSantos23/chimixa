@@ -37,22 +37,21 @@ License: For each use you must have a valid license purchased only from above li
 
 
 				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px position-xl-relative" style="background-color:rgb(94, 67, 28)">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px position-xl-relative" style="background-color:rgb(51, 39, 21)">
 					<!--begin::Wrapper-->
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Content-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
 							<!--begin::Logo-->
-							<a href="../../demo1/dist/index.html" class="py-9 mb-5">
+							<a href="" class="py-9 mb-5">
 								<img alt="Logo" src="../assets/media/logos/logo-letras.png" class="h-60px" />
 							</a>
 							<!--end::Logo-->
 							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Metronic</h1>
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Chimixa</h1>
 							<!--end::Title-->
 							<!--begin::Description-->
-							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing Metronic
-							<br />with great build tools</p>
+							<p class="fw-bold fs-2" style="color: #986923;">Discover the incredible restaurant </br> we have prepared for you</p>
 							<!--end::Description-->
 						</div>
 						<!--end::Content-->

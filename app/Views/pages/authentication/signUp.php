@@ -51,18 +51,13 @@ License: For each use you must have a valid license purchased only from above li
 						</a>
 						<!--end::Logo-->
 						<!--begin::Title-->
-						<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Metronic</h1>
+						<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Chimixa</h1>
 						<!--end::Title-->
 						<!--begin::Description-->
-						<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing Metronic
-							<br />with great build tools
-						</p>
+						<p class="fw-bold fs-2" style="color: #986923;">Discover the incredible restaurant </br> we have prepared for you</p>
 						<!--end::Description-->
 					</div>
 					<!--end::Content-->
-					<!--begin::Illustration-->
-					<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(assets/media/illustrations/sketchy-1/13.png)"></div>
-					<!--end::Illustration-->
 				</div>
 				<!--end::Wrapper-->
 			</div>

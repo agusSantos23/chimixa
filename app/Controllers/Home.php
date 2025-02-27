@@ -21,11 +21,10 @@ class Home extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
-      $perPage = 6;
 
       if ($userRole === 'Customer') {
 
-        $orderUser = $orderElementModel->getUserOrders(session()->get('userId'), $perPage);
+        $orderUser = $orderElementModel->getUserOrders(session()->get('userId'), null);
         $orderElements = $orderElementModel->select('id, type_element, price, amount, created_at')->where('id_user', session()->get('userId'))->findAll();
 
         $data['orderUser'] = $orderUser['orders'];
@@ -33,7 +32,7 @@ class Home extends BaseController
 
       } else if ($userRole === 'Administrator' || $userRole === 'Chef') {
 
-        $allOrders = $orderModel->findAll($perPage);
+        $allOrders = $orderModel->findAll();
         $orderElements = $orderElementModel->select('id, type_element, price, amount, created_at')->findAll();
 
         $data['orderUser'] = $allOrders;
