@@ -9,7 +9,7 @@ let KTModalCustomersAdd = function () {
   return {
     init: function () {
       r = document.querySelector("#kt_account_profile_details_form");
-      t = r.querySelector("#btnSubmit")
+      t = r.querySelector("#btnSubmit");
       imgSelectable = r.querySelectorAll('.select-image');
       selectedImage = document.querySelector("img[data-profile-img]").getAttribute('data-profile-img');
       userId = document.querySelector("a[data-user-id]").getAttribute('data-user-id');
