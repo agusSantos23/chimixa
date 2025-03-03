@@ -81,9 +81,7 @@ let KTModalCustomersAdd = function () {
               const formData = new FormData(r);
               formData.append("selectedIngredients", JSON.stringify(selectedIngredients));
 
-              formData.forEach((value, key) => {
-                console.log(key, value);
-              });
+            
 
               const url = plateId ? baseURL + 'plates/update/' + plateId : baseURL + 'plates/save';
 
@@ -250,7 +248,6 @@ let KTModalCustomersAdd = function () {
             url: baseURL + 'plates/get/' + plateId,
             type: 'GET',
             success: function (response) {
-              console.log(response);
               
               if (response.success) {
 
@@ -292,9 +289,9 @@ let KTModalCustomersAdd = function () {
                 });
               }
             },
-            error: function () {
+            error: function (response) {
               Swal.fire({
-                text: 'There was a problem loading role data',
+                text: response.responseJSON.errors || 'There was a problem loading plate data',
                 icon: 'error',
                 confirmButtonText: 'OK',
                 customClass: { confirmButton: 'btn btn-primary' }
@@ -323,7 +320,6 @@ let KTModalCustomersAdd = function () {
             selectedIngredients = selectedIngredients.filter(selectedIngredientId => selectedIngredientId !== ingredientId);
    
           }
-          console.log(selectedIngredients);
           
         });
         

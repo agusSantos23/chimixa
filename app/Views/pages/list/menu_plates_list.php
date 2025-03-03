@@ -9,11 +9,11 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
 	<title>CHIMIXA</title>
-	<meta name="description" content="Herramienta digital personalizada para gestionar de manera eficiente todas las operaciones del restaurante Chimixa. Optimiza la administración de menus, inventarios y reportes, todo diseñado exclusivamente para destacar la esencia y calidad de la auténtica comida mexicana que ofrece este restaurante." />
+	<meta name="description" content="At Chimicha, we blend tradition and flavor to offer you a unique dining experience. Since our beginnings, we have worked with fresh ingredients and authentic recipes that make every dish an unforgettable delight." />
 	<meta name="keywords" content="Chimixa, Metronic, php, codeigniter, gestion de restaurantes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="../assets/media/logos/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('/assets/favicon.ico') ?>" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -112,7 +112,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card-header border-0 pt-6">
 									<!--begin::Card title-->
 									<div class="card-title">
-										<h2>Menu Name: <?= $menu['name'] ?></h2>
+										<h2>Menu Name: <?= esc($menu['name']) ?></h2>
 									</div>
 									<!--end::Card title-->
 									<!--begin::Card toolbar-->
@@ -141,7 +141,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="separator border-gray-200"></div>
 												<!--end::Separator-->
 												<!--begin::Content-->
-												<form action="<?= base_url('menu_plates/' . $menu['id']) ?>" method="get" class="px-7 py-5">
+												<form action="<?= base_url('menu_plates/' . esc($menu['id'])) ?>" method="get" class="px-7 py-5">
 
 													<!--begin::Search-->
 													<div class="d-flex align-items-center position-relative my-1">
@@ -236,23 +236,13 @@ License: For each use you must have a valid license purchased only from above li
 													</div>
 													<!--end::Search-->
 
-													<!--begin::DisabledFilter-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-															</svg>
-														</span>
 
-														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
 
-															<option value="">All</option>
-															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
-															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
 
-														</select>
-													</div>
-													<!--end::DisabledFilter-->
+
 
 
 													<!--begin::Actions-->
@@ -271,7 +261,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 											<!--begin::Export-->
-											<button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
+											<a href="<?= $exportUrl ?>" class="btn btn-light-primary me-3">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 												<span class="svg-icon svg-icon-2">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -280,10 +270,15 @@ License: For each use you must have a valid license purchased only from above li
 														<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
 													</svg>
 												</span>
-												<!--end::Svg Icon-->Export</button>
+												<!--end::Svg Icon-->
+												Export
+											</a>
 											<!--end::Export-->
 											<!--begin::Add customer-->
-											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Edit Associated Plates</button>
+											<?php if (is_null($menu['disabled'])): ?>
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Edit Associated Plates</button>
+											<?php endif; ?>
+
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
@@ -303,9 +298,11 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div class="card-body pt-0">
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates/delete" data-id-father="<?= $menu['id'] ?>">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="menu_plates" data-id-father="<?= $menu['id'] ?>">
 											<!--begin::Table head-->
 											<thead>
+												<?php $route = 'menu_plates' ?>
+
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -314,12 +311,36 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 													<th></th>
-													<th class="min-w-150px">Name</th>
-													<th class="min-w-150px">Description</th>
-													<th class="min-w-150px">Price</th>
-													<th class="min-w-150px">Category</th>
-													<th class="min-w-150px">Amount</th>
-													<th class="min-w-150px">Preparation Time</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('description', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Description <?= getSortIcon('description', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('price', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Price <?= getSortIcon('price', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-150px">
+														<a href="<?= generateSortLink('category', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Category <?= getSortIcon('category', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-100px">
+														<a href="<?= generateSortLink('amount', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Amount <?= getSortIcon('amount', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-175px">
+														<a href="<?= generateSortLink('preparationTime', $sortBy, $sortDirection, $searchParams, $perPage, $route, $menu['id']) ?>">
+															Preparation Time <?= getSortIcon('preparationTime', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
 													<th class="w-125px">Actions</th>
 
 												</tr>
@@ -331,7 +352,7 @@ License: For each use you must have a valid license purchased only from above li
 
 												<?php if (empty($platesOfMenu)): ?>
 													<tr>
-														<td colspan="6" class="text-center">
+														<td colspan="8" class="text-center">
 															<p>No plates found in this menu</p>
 														</td>
 													</tr>
@@ -347,33 +368,33 @@ License: For each use you must have a valid license purchased only from above li
 
 															<td>
 																<?php if ($plate['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This user is disabled"></div>
 																<?php endif; ?>
 															</td>
 
 															<td>
 																<a href="<?= base_url(relativePath: "store/" . $plate['id']) ?>" class="text-gray-800 text-hover-primary">
-																	<?= $plate['name'] ?>
+																	<?= esc($plate['name']) ?>
 																</a>
 															</td>
 
 															<td>
-																<?= $plate['description'] ?>
+																<?= esc($plate['description']) ?>
 															</td>
 
 															<td>
-																<?= $plate['price'] ?> $
+																<?= esc($plate['price']) ?> $
 															</td>
 															<td>
-																<?= $plate['category'] ?>
-															</td>
-
-															<td>
-																<?= $plate['amount'] ?>
+																<?= esc($plate['category']) ?>
 															</td>
 
 															<td>
-																<?= $plate['preparation_time'] ?> min
+																<?= esc($plate['amount']) ?>
+															</td>
+
+															<td>
+																<?= esc($plate['preparation_time']) ?> min
 															</td>
 
 															<td class="text-end">
@@ -387,7 +408,7 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $plate['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($plate['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -415,7 +436,15 @@ License: For each use you must have a valid license purchased only from above li
 
 										<!--begin::Card footer-->
 										<div class="d-flex align-items-center justify-content-between mt-5">
-											<form action="<?= base_url('menu_plates/' . $menu['id']) ?>" method="get" class="d-inline-block">
+											<form action="<?= base_url('menu_plates/' . esc($menu['id'])) ?>" method="get" class="d-inline-block">
+												<?php
+												$urlParams = $_GET;
+												unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+												$queryString = http_build_query($urlParams);
+												?>
+												<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+												<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+												<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 												<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 													<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
@@ -484,7 +513,6 @@ License: For each use you must have a valid license purchased only from above li
 
 													<div class="fv-row mb-7">
 														<label class="required fs-6 fw-bold mb-2 pb-2">Plates</label>
-														<?= print_r($plates)?>
 
 														<div class="card-body bg-light form-control form-control-solid" style="border-radius: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
 															<?php if (isset($plates) && is_array($plates)): ?>
@@ -555,115 +583,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 							</div>
 							<!--end::Modal - Customers - Add-->
-							<!--begin::Modal - Adjust Balance-->
-							<div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
-								<!--begin::Modal dialog-->
-								<div class="modal-dialog modal-dialog-centered mw-650px">
-									<!--begin::Modal content-->
-									<div class="modal-content">
-										<!--begin::Modal header-->
-										<div class="modal-header">
-											<!--begin::Modal title-->
-											<h2 class="fw-bolder">Export Customers</h2>
-											<!--end::Modal title-->
-											<!--begin::Close-->
-											<div id="kt_customers_export_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-												<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-												<span class="svg-icon svg-icon-1">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-														<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-											</div>
-											<!--end::Close-->
-										</div>
-										<!--end::Modal header-->
-										<!--begin::Modal body-->
-										<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-											<!--begin::Form-->
-											<form id="kt_customers_export_form" class="form" action="#">
-												<!--begin::Input group-->
-												<div class="fv-row mb-10">
-													<!--begin::Label-->
-													<label class="fs-5 fw-bold form-label mb-5">Select Date Range:</label>
-													<!--end::Label-->
-													<!--begin::Input-->
-													<input class="form-control form-control-solid" placeholder="Pick a date" name="date" />
-													<!--end::Input-->
-												</div>
-												<!--end::Input group-->
-												<!--begin::Input group-->
-												<div class="fv-row mb-10">
-													<!--begin::Label-->
-													<label class="fs-5 fw-bold form-label mb-5">Select Export Format:</label>
-													<!--end::Label-->
-													<!--begin::Input-->
-													<select data-control="select2" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid">
-														<option value="excell">Excel</option>
-														<option value="pdf">PDF</option>
-														<option value="cvs">CVS</option>
-														<option value="zip">ZIP</option>
-													</select>
-													<!--end::Input-->
-												</div>
-												<!--end::Input group-->
-												<!--begin::Row-->
-												<div class="row fv-row mb-15">
-													<!--begin::Label-->
-													<label class="fs-5 fw-bold form-label mb-5">Payment Type:</label>
-													<!--end::Label-->
-													<!--begin::Radio group-->
-													<div class="d-flex flex-column">
-														<!--begin::Radio button-->
-														<label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-															<input class="form-check-input" type="checkbox" value="1" checked="checked" name="payment_type" />
-															<span class="form-check-label text-gray-600 fw-bold">All</span>
-														</label>
-														<!--end::Radio button-->
-														<!--begin::Radio button-->
-														<label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-															<input class="form-check-input" type="checkbox" value="2" checked="checked" name="payment_type" />
-															<span class="form-check-label text-gray-600 fw-bold">Visa</span>
-														</label>
-														<!--end::Radio button-->
-														<!--begin::Radio button-->
-														<label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-															<input class="form-check-input" type="checkbox" value="3" name="payment_type" />
-															<span class="form-check-label text-gray-600 fw-bold">Mastercard</span>
-														</label>
-														<!--end::Radio button-->
-														<!--begin::Radio button-->
-														<label class="form-check form-check-custom form-check-sm form-check-solid">
-															<input class="form-check-input" type="checkbox" value="4" name="payment_type" />
-															<span class="form-check-label text-gray-600 fw-bold">American Express</span>
-														</label>
-														<!--end::Radio button-->
-													</div>
-													<!--end::Input group-->
-												</div>
-												<!--end::Row-->
-												<!--begin::Actions-->
-												<div class="text-center">
-													<button type="reset" id="kt_customers_export_cancel" class="btn btn-light me-3">Discard</button>
-													<button type="submit" id="kt_customers_export_submit" class="btn btn-primary">
-														<span class="indicator-label">Submit</span>
-														<span class="indicator-progress">Please wait...
-															<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-													</button>
-												</div>
-												<!--end::Actions-->
-											</form>
-											<!--end::Form-->
-										</div>
-										<!--end::Modal body-->
-									</div>
-									<!--end::Modal content-->
-								</div>
-								<!--end::Modal dialog-->
-							</div>
-							<!--end::Modal - New Card-->
+
 							<!--end::Modals-->
 						</div>
 						<!--end::Container-->
@@ -706,13 +626,10 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="../assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="../assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="../assets/js/custom/apps/customers/add/addPlatesToMenu.js"></script>
 	<script src="../assets/js/custom/widgets.js"></script>
-	<script src="../assets/js/custom/apps/chat/chat.js"></script>
-	<script src="../assets/js/custom/modals/create-app.js"></script>
-	<script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

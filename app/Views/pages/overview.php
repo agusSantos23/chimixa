@@ -9,11 +9,11 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
 	<title>CHIMIXA</title>
-	<meta name="description" content="Herramienta digital personalizada para gestionar de manera eficiente todas las operaciones del restaurante Chimixa. Optimiza la administración de menus, inventarios y reportes, todo diseñado exclusivamente para destacar la esencia y calidad de la auténtica comida mexicana que ofrece este restaurante." />
+	<meta name="description" content="At Chimicha, we blend tradition and flavor to offer you a unique dining experience. Since our beginnings, we have worked with fresh ingredients and authentic recipes that make every dish an unforgettable delight." />
 	<meta name="keywords" content="Chimixa, Metronic, php, codeigniter, gestion de restaurantes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="./assets/media/logos/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('/assets/favicon.ico') ?>" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -36,11 +36,7 @@ License: For each use you must have a valid license purchased only from above li
 		<div class="page d-flex flex-row flex-column-fluid">
 
 
-
-
 			<?php include APPPATH . 'Views/templates/aside.php' ?>
-
-
 
 
 			<!--begin::Wrapper-->
@@ -87,10 +83,6 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-
-
-
-
 				<!--begin::Content-->
 				<div class="content d-flex flex-column flex-column-fluid p-0" id="kt_content">
 
@@ -106,7 +98,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin: Pic-->
 										<div class="me-7 mb-4">
 											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-												<img src="<?= base_url('assets/media/avatars/' . session()->get('userImg')) ?>" alt="image" />
+												<img src="<?= base_url('assets/media/avatars/' . session()->get('userImg')) ?>" data-profile-img="<?= session()->get('userImg') ?>" alt="image" />
 												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
 											</div>
 										</div>
@@ -121,7 +113,7 @@ License: For each use you must have a valid license purchased only from above li
 
 													<!--begin::Name-->
 													<div class="d-flex align-items-center mb-2">
-														<a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1"><?= session()->get('userName') ?></a>
+														<a class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1" data-user-id="<?= session()->get('userId') ?>"><?= session()->get('userName') ?></a>
 
 														<!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
 														<span class="svg-icon svg-icon-1 svg-icon-primary">
@@ -213,6 +205,8 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="d-flex flex-column flex-grow-1 pe-8">
 													<!--begin::Stats-->
 													<div class="d-flex flex-wrap">
+														<?php $userRole = session()->get('userRole') ?>
+
 														<!--begin::Stat-->
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
@@ -225,39 +219,20 @@ License: For each use you must have a valid license purchased only from above li
 																	</svg>
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="$">0</div>
+																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="<?= $totalPrice?>" data-kt-countup-prefix="$">0</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Earnings</div>
+															<div class="fw-bold fs-6 text-gray-400"><?= $userRole === 'Customer' ? 'Bills' : 'Benefits' ?></div>
 															<!--end::Label-->
 														</div>
 														<!--end::Stat-->
 														<!--begin::Stat-->
+														<?php if($userRole !== 'Chef'): ?>
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
-																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																		<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black" />
-																		<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black" />
-																	</svg>
-																</span>
-																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="75">0</div>
-															</div>
-															<!--end::Number-->
-															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Projects</div>
-															<!--end::Label-->
-														</div>
-														<!--end::Stat-->
-														<!--begin::Stat-->
-														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-															<!--begin::Number-->
-															<div class="d-flex align-items-center">
-																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
 																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																		<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
@@ -265,14 +240,16 @@ License: For each use you must have a valid license purchased only from above li
 																	</svg>
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="60" data-kt-countup-prefix="%">0</div>
+																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="<?= $totalAmount ?>">0</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Success Rate</div>
+															<div class="fw-bold fs-6 text-gray-400"><?= $userRole === 'Orders' ? 'Bills' : 'All Orders' ?></div>
 															<!--end::Label-->
 														</div>
+														<?php endif; ?>
 														<!--end::Stat-->
+
 													</div>
 													<!--end::Stats-->
 												</div>
@@ -308,18 +285,17 @@ License: For each use you must have a valid license purchased only from above li
 
 							<?php
 
-								if (isset($_GET['isEditing']) && $_GET['isEditing'] == 'true') {
-									include(APPPATH . 'Views/templates/profile/editData.php');
-								} else {
-									include(APPPATH . 'Views/templates/profile/data.php');
-								}
+							if (isset($_GET['isEditing']) && $_GET['isEditing'] == 'true') {
+								include(APPPATH . 'Views/templates/profile/editData.php');
+							} else {
+								include(APPPATH . 'Views/templates/profile/data.php');
+							}
 
 							?>
 
 
 						</div>
 						<!--end::Container-->
-
 
 					</div>
 					<!--end::Post-->
@@ -342,7 +318,7 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 	<!--end::Root-->
 
-	
+
 	<!--begin::Scrolltop-->
 	<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
 		<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
@@ -355,17 +331,19 @@ License: For each use you must have a valid license purchased only from above li
 		<!--end::Svg Icon-->
 	</div>
 	<!--end::Scrolltop-->
-	
+
 	<!--begin::Javascript-->
 	<!--begin::Global Javascript Bundle(used by all pages)-->
-	<script src="assets/plugins/global/plugins.bundle.js"></script>
-	<script src="assets/js/scripts.bundle.js"></script>
+	<script src="./assets/plugins/global/plugins.bundle.js"></script>
+	<script src="./assets/js/scripts.bundle.js"></script>
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="assets/js/custom/widgets.js"></script>
-	<script src="assets/js/custom/apps/chat/chat.js"></script>
-	<script src="assets/js/custom/modals/create-app.js"></script>
-	<script src="assets/js/custom/modals/upgrade-plan.js"></script>
+	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
+	<script src="./assets/js/custom/apps/customers/add/editProfile.js" defer></script>
+
+	<script src="./assets/js/custom/widgets.js"></script>
+
+
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

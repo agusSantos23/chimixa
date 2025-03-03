@@ -17,41 +17,21 @@ class UserModel extends Model
   protected $updatedField = 'updated_at';
 
 
-  public function getUserWithRoleById($userId)
+  public function getAllUsersWithRoles($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc')
   {
-    $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
-    $builder->join('roles', 'roles.id = users.role_id');
-    $builder->where('users.id', $userId);
-
-    return $builder->get()->getRow();
-  }
-
-  public function getUserWithRoleByEmail($email){
-    $builder = $this->builder();
-    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
-    $builder->join('roles', 'roles.id = users.role_id');
-    $builder->where('users.email', $email);
-    
-    return $builder->get()->getRow();
-  }
-
-
-  public function getAllUsersWithRoles($perPage = 5,  $searchParams = []){
     $builder = $this->builder();
     $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
-  
+
 
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
-      
+
       if ($disabledFilter == 'true') {
         $builder->where('users.disabled IS NOT NULL');
-
       } elseif ($disabledFilter == 'false') {
-        $builder->where('users.disabled IS NULL'); 
-      } 
+        $builder->where('users.disabled IS NULL');
+      }
     }
 
     $searchFields = [
@@ -68,20 +48,64 @@ class UserModel extends Model
     }
 
 
-
     if (!empty($searchParams['phone'])) {
       $builder->groupStart()
-              ->like('users.prefix', $searchParams['phone'])
-              ->orLike('users.phone', $searchParams['phone'])
-              ->groupEnd();
+        ->like('users.prefix', $searchParams['phone'])
+        ->orLike('users.phone', $searchParams['phone'])
+        ->groupEnd();
     }
 
-
-    return [
-      'users' => $this->paginate($perPage),  
-      'pager' => $this->pager,               
+    $allowedSortFields = [
+      'name' => 'users.name',
+      'email' => 'users.email',
+      'phone' => 'users.prefix',
+      'country' => 'users.country',
+      'role' => 'roles.name'
     ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
+
+      return $builder->get()->getResultArray();
+
+    } else {
+
+      return [
+        'users' => $this->paginate($perPage),
+        'pager' => $this->pager,
+      ];
+    }
+    
   }
 
 
+  
+  public function getUserWithRoleById($userId)
+  {
+    $builder = $this->builder();
+    $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
+    $builder->join('roles', 'roles.id = users.role_id');
+    $builder->where('users.id', $userId);
+
+    return $builder->get()->getRow();
+  }
+
+  public function getUserWithRoleByEmail($email)
+  {
+    $builder = $this->builder();
+    $builder->select('users.id, users.name, users.last_name, users.email, users.password, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, users.img, roles.name as role_name');
+    $builder->join('roles', 'roles.id = users.role_id');
+    $builder->where('users.email', $email);
+
+    return $builder->get()->getRow();
+  }
+
+
+  
 }

@@ -10,7 +10,7 @@ class PlateModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = ['name', 'description', 'price', 'category', 'preparation_time', 'disabled'];
 
-  public function getPlates($perPage = 5, $searchParams = [])
+  public function getPlates($perPage = 5, $searchParams = [], $sortBy = 'name', $sortDirection = 'asc')
   {
     $builder = $this->builder();
 
@@ -29,7 +29,7 @@ class PlateModel extends Model
       'description' => 'description',
       'price' => 'price',
       'category' => 'category',
-      'preparation_time' => 'preparation_time'
+      'preparationTime' => 'preparation_time'
     ];
 
     foreach ($searchFields as $key => $field) {
@@ -38,13 +38,35 @@ class PlateModel extends Model
       }
     }
 
-    return [
-      'plates' => $this->paginate($perPage),
-      'pager' => $this->pager
+    $allowedSortFields = [
+      'name' => 'name',
+      'description' => 'description',
+      'price' => 'price',
+      'category' => 'category',
+      'preparationTime' => 'preparation_time'
     ];
+
+    if (!array_key_exists($sortBy, $allowedSortFields)) {
+      $sortBy = 'name';
+    }
+
+    $sortDirection = strtolower($sortDirection) === 'desc' ? 'desc' : 'asc';
+    $builder->orderBy($allowedSortFields[$sortBy], $sortDirection);
+
+    if (isset($searchParams['all']) && $searchParams['all'] == 'true') {
+
+      return $builder->get()->getResultArray();
+      
+    } else {
+      return [
+        'plates' => $this->paginate($perPage),
+        'pager' => $this->pager
+      ];
+    }
   }
 
-  public function getPlatesWithDetails(): array{
+  public function getPlatesWithDetails(): array
+  {
     $plates = $this->db->table('plates')
       ->select('
         plates.id AS plate_id,

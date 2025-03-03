@@ -293,9 +293,9 @@ let KTModalCustomersAdd = function () {
                 });
               }
             },
-            error: function () {
+            error: function (response) {
               Swal.fire({
-                text: 'There was a problem loading role data',
+                text: response.responseJSON.errors || 'There was a problem loading ingredient data',
                 icon: 'error',
                 confirmButtonText: 'OK',
                 customClass: { confirmButton: 'btn btn-primary' }

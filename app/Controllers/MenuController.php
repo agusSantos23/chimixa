@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\MenuModel;
 use App\Models\MenuPlateModel;
 use App\Models\PlateModel;
@@ -23,6 +26,8 @@ class MenuController extends BaseController
       $menuRole = session()->get('userRole');
       if (!$menuRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper');
+
 
       $data['plates'] = $plateModel->where('disabled', null)->findAll();
 
@@ -32,9 +37,23 @@ class MenuController extends BaseController
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+      $data['sortBy'] = $sortBy;
 
-      $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams));
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
 
+      $data = array_merge($data, $menuModel->getMenus($perPage, $searchParams, $sortBy, $sortDirection));
+
+      
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
+
+      $data['exportUrl'] = base_url('./menus/export') . '?' . $queryString;
 
       return view('pages/list/menu_list', $data);
     } catch (Exception $e) {
@@ -50,21 +69,24 @@ class MenuController extends BaseController
 
 
     try {
-      $menu = $menuModel->find($id);
+      $menuData = $menuModel->find($id);
+
 
       $menuPlates = $menuPlateModel->where('id_menu', $id)->findAll();
 
-
-
       $plates = array_map(function ($plate) {
-
         return ['id' => $plate['id_plate'], 'amount' => $plate['amount']];
       }, $menuPlates);
 
 
 
-      if ($menu) {
-        return $this->response->setStatusCode(200)->setJSON(['success' => true, 'menu' => $menu, 'plates' => $plates]);
+      if ($menuData) {
+
+        if ($menuData['disabled'] !== null) {
+          return $this->response->setStatusCode(400)->setJSON(['errors' => 'This menu is not editable because it is disabled.']);
+        } else {
+          return $this->response->setStatusCode(200)->setJSON(['success' => true, 'menu' => $menuData, 'plates' => $plates]);
+        }
       } else {
 
         return $this->response->setStatusCode(400)->setJSON(['errors' => 'menu not found']);
@@ -130,7 +152,6 @@ class MenuController extends BaseController
               if (in_array($plate['id'], $currentPlateIds)) {
 
                 $menuPlateModel->set(['amount' => $plate['count']])->where('id_menu', $id)->where('id_plate', $plate['id'])->update();
-              
               } else {
 
                 $menuPlateModel->save([
@@ -221,5 +242,92 @@ class MenuController extends BaseController
   }
 
 
+  public function restoreMenu()
+  {
+    $menuModel = new MenuModel();
+    $menuPlateModel = new MenuPlateModel();
+
+    try {
+
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+
+      if (!$menuModel->update($id, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Menus not found']);
+      }
+
+      if (!$menuPlateModel->where('id_menu', $id)->update(null, ['disabled' => null])) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to archive plates of menu']);
+      }
+
+      return $this->response->setJSON(['success' => true]);
+    } catch (Exception $e) {
+      log_message('error', $e->getMessage());
+      return $this->response->setStatusCode(500)->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
+
+
   
+  public function exportMenu()
+  {
+    $menuModel = new MenuModel();
+    $spreadsheet = new Spreadsheet();
+
+
+    try {
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'NAME');
+      $sheet->setCellValue('B1', 'DESCRIPTION');
+      $sheet->setCellValue('C1', 'PRICE');
+     
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'name';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+      $data = $menuModel->getMenus(null, $searchParams, $sortBy, $sortDirection);
+
+      $rowNumber = 2;
+      
+      foreach ($data as $row) {
+
+        $sheet->setCellValue('A' . $rowNumber, $row['name']);
+        $sheet->setCellValue('B' . $rowNumber, $row['description']);
+        $sheet->setCellValue('C' . $rowNumber, $row['price'] . ' $');
+
+
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':C' . $rowNumber)->getFill()
+              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+              ->getStartColor()->setARGB('FFFF6666'); 
+
+          $sheet->getStyle('A' . $rowNumber . ':C' . $rowNumber)->getFont()
+              ->getColor()->setARGB('FFFFFFFF'); 
+      }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportMenu.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
 }

@@ -9,11 +9,11 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
 	<title>CHIMIXA</title>
-	<meta name="description" content="Herramienta digital personalizada para gestionar de manera eficiente todas las operaciones del restaurante Chimixa. Optimiza la administración de menus, inventarios y reportes, todo diseñado exclusivamente para destacar la esencia y calidad de la auténtica comida mexicana que ofrece este restaurante." />
+	<meta name="description" content="At Chimicha, we blend tradition and flavor to offer you a unique dining experience. Since our beginnings, we have worked with fresh ingredients and authentic recipes that make every dish an unforgettable delight." />
 	<meta name="keywords" content="Chimixa, Metronic, php, codeigniter, gestion de restaurantes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="./assets/media/logos/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('/assets/favicon.ico') ?>" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -165,9 +165,7 @@ License: For each use you must have a valid license purchased only from above li
 														<input type="text" name="searchParams[price]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Price" value="<?= esc($searchParams['price'] ?? '') ?>" />
 													</div>
 													<!--end::Search-->
-
-
-
+													<?php if (session()->get('userRole') === 'Administrator'): ?>
 													<!--begin::DisabledFilter-->
 													<div class="d-flex align-items-center position-relative my-1">
 														<span class="svg-icon svg-icon-1 position-absolute ms-6">
@@ -185,6 +183,12 @@ License: For each use you must have a valid license purchased only from above li
 														</select>
 													</div>
 													<!--end::DisabledFilter-->
+													<?php endif; ?>
+
+													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
+													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+
 
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end">
@@ -198,7 +202,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Menu 1-->
 											<!--end::Filter-->
 											<!--begin::Export-->
-											<button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
+											<a href="<?= $exportUrl ?>" class="btn btn-light-primary me-3">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 												<span class="svg-icon svg-icon-2">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -207,7 +211,9 @@ License: For each use you must have a valid license purchased only from above li
 														<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
 													</svg>
 												</span>
-												<!--end::Svg Icon-->Export</button>
+												<!--end::Svg Icon-->
+												Export
+											</a>
 											<!--end::Export-->
 											<!--begin::Add customer-->
 											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Order</button>
@@ -231,9 +237,11 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card body-->
 									<div class=" pt-0">
 										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="orders/delete">
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table" data-url="orders">
 											<!--begin::Table head-->
 											<thead>
+												<?php $route = 'orders' ?>
+
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 													<th class="w-10px pe-2">
@@ -242,9 +250,21 @@ License: For each use you must have a valid license purchased only from above li
 														</div>
 													</th>
 													<th></th>
-													<th class="min-w-125px">Code</th>
-													<th class="min-w-125px">Order Date</th>
-													<th class="min-w-125px">Price</th>
+													<th class="min-w-125px">
+														<a href="<?= generateSortLink('id', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Code <?= getSortIcon('id', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= generateSortLink('date', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Order Date <?= getSortIcon('date', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= generateSortLink('price', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
+															Price <?= getSortIcon('price', $sortBy, $sortDirection) ?>
+														</a>
+													</th>
 													<th class="text-end min-w-70px">Actions</th>
 												</tr>
 												<!--end::Table row-->
@@ -274,25 +294,25 @@ License: For each use you must have a valid license purchased only from above li
 
 															<td>
 																<?php if ($order['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger" style="width: 0;" data-bs-toggle="tooltip" title="This Plate is disabled"></div>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This order is disabled"></div>
 																<?php endif; ?>
 															</td>
 
 															<td>
-																<?= $order['id'] ?>
+																<?= esc($order['id']) ?>
 															</td>
 
 															<td>
-																<?= date("d/m/Y H:i", strtotime($order['created_at'])) ?>
+																<?= date("d/m/Y H:i", strtotime(esc($order['date'] ?? ''))) ?>
 															</td>
 
 															<td>
-																<?= $order['price'] ?> $
+																<?= esc($order['price']) ?> $
 															</td>
 
 
 															<!--begin::Action=-->
-															<td class="text-end">
+															<td class="text-end actions" data-id="<?= esc($order['id']) ?>">
 																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																	<span class="svg-icon svg-icon-5 m-0">
@@ -305,12 +325,24 @@ License: For each use you must have a valid license purchased only from above li
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a class="menu-link px-3" data-id="<?= $order['id'] ?>" data-bs-toggle="modal" data-kt-customer-table-filter="view_row">View</a>
+																		<a class="menu-link px-3" data-id="<?= esc($order['id']) ?>" data-bs-toggle="modal" data-kt-customer-table-filter="view_row">
+																			<!--begin::Svg Icon | path: assets/media/icons/duotune/coding/cod002.svg-->
+																			<span class="svg-icon svg-icon-muted me-1">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																					<path opacity="0.3" d="M18 22C19.7 22 21 20.7 21 19C21 18.5 20.9 18.1 20.7 17.7L15.3 6.30005C15.1 5.90005 15 5.5 15 5C15 3.3 16.3 2 18 2H6C4.3 2 3 3.3 3 5C3 5.5 3.1 5.90005 3.3 6.30005L8.7 17.7C8.9 18.1 9 18.5 9 19C9 20.7 7.7 22 6 22H18Z" fill="black" />
+																					<path d="M18 2C19.7 2 21 3.3 21 5H9C9 3.3 7.7 2 6 2H18Z" fill="black" />
+																					<path d="M9 19C9 20.7 7.7 22 6 22C4.3 22 3 20.7 3 19H9Z" fill="black" />
+																				</svg>
+																			</span>
+																			<!--end::Svg Icon-->
+																			View
+																		</a>
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
+																	<?php if (empty($order['disabled'])): ?>
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= $order['id'] ?>" data-kt-customer-table-filter="delete_row">
+																		<a href="#" class="menu-link px-3" data-id="<?= esc($order['id']) ?>" data-kt-customer-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
 																			<span class="svg-icon svg-icon-muted me-1">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -322,6 +354,7 @@ License: For each use you must have a valid license purchased only from above li
 																			Delete
 																		</a>
 																	</div>
+																	<?php endif; ?>
 																	<!--end::Menu item-->
 																</div>
 																<!--end::Menu-->
@@ -342,6 +375,14 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Card footer-->
 									<div class="d-flex align-items-center justify-content-between mt-5">
 										<form action="<?= base_url('orders') ?>" method="get" class="d-inline-block">
+											<?php
+											$urlParams = $_GET;
+											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
+											$queryString = http_build_query($urlParams);
+											?>
+											<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
+											<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
+											<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
 
 											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
 												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
@@ -426,7 +467,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
 												<!--begin::Modal title-->
-												<h2 class="fw-bolder">Add a Order</h2>
+												<h2 class="fw-bolder">Add a Order for Today</h2>
 												<!--end::Modal title-->
 												<!--begin::Close-->
 												<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -678,13 +719,9 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/export.js"></script>
 	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
 	<script src="./assets/js/custom/apps/customers/add/addOrder.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
-	<script src="./assets/js/custom/apps/chat/chat.js"></script>
-	<script src="./assets/js/custom/modals/create-app.js"></script>
-	<script src="./assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

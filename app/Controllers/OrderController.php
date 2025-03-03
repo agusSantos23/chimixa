@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Models\OrderModel;
 use App\Models\OrderElementModel;
 use App\Models\MenuModel;
@@ -17,6 +20,7 @@ class OrderController extends BaseController
 
   public function index()
   {
+    $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
     $menuModel = new MenuModel();
     $plateModel = new PlateModel();
@@ -28,20 +32,39 @@ class OrderController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      helper('sort_helper'); 
+
       $perPage = $this->request->getGet('perPage') ?? 5;
       $data['perPage'] = $perPage;
 
       $searchParams = $this->request->getGet('searchParams') ?? [];
       $data['searchParams'] = $searchParams;
 
+      $sortBy = $this->request->getGet('sortBy') ?? 'id';
+      $data['sortBy'] = $sortBy;
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+      $data['sortDirection'] = $sortDirection;
 
       $data['menus'] = $menuModel->getMenusWithDetails();
       $data['plates'] = $plateModel->getPlatesWithDetails();
 
-      $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams));
+
+      if ($userRole === 'Customer') {
+        $data = array_merge($data, $orderElementModel->getUserOrders(session()->get('userId'), $perPage, $searchParams, $sortBy, $sortDirection));
+      }elseif ($userRole === 'Administrator'){
+        $data = array_merge($data, $orderModel->getAllOrders($perPage, $searchParams, $sortBy, $sortDirection));
+      }
 
 
+      $queryString = http_build_query([
+        'searchParams' => $searchParams,
+        'sortBy' => $sortBy,
+        'sortDirection' => $sortDirection,
+        'perPage' => $perPage,
+      ]);
 
+      $data['exportUrl'] = base_url('./orders/export') . '?' . $queryString;
 
       return view('pages/list/order_list', $data);
     } catch (Exception $e) {
@@ -77,11 +100,11 @@ class OrderController extends BaseController
 
 
 
-
   public function saveOrder()
   {
     $orderModel = new OrderModel();
     $orderElementModel = new OrderElementModel();
+
 
     $validation = \Config\Services::validation();
     $validation->setRules([
@@ -153,7 +176,6 @@ class OrderController extends BaseController
       }
 
 
-
       if (!$orderModel->whereIn('id', $ids)->set(['disabled' => date('Y-m-d H:i:s')])->update()) {
         return $this->response->setJSON(['success' => false, 'message' => 'Code not found']);
       } else {
@@ -161,6 +183,102 @@ class OrderController extends BaseController
       }
     } catch (Exception $e) {
       return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
+  }
+
+  
+  public function restoreOrder()
+  {
+    $orderModel = new OrderModel();
+
+
+    try {
+      $id = $this->request->getPost('id');
+
+      if (empty($id)) {
+        return $this->response->setJSON(['success' => false, 'message' => 'No IDs provided']);
+      }
+
+      if ($orderModel->update($id, ['disabled' => null])) {
+
+        return $this->response->setJSON(['success' => true]);
+
+      } else {
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+      }
+      
+    } catch (Exception $e) {
+
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+
+  
+  public function exportOrder()
+  {
+    $orderModel = new OrderModel();
+    $orderElementModel = new OrderElementModel();
+    $spreadsheet = new Spreadsheet();
+
+
+    try {
+
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'CODE');
+      $sheet->setCellValue('B1', 'ORDER DATE');
+      $sheet->setCellValue('C1', 'PRICE');
+     
+
+      $searchParams = $this->request->getGet('searchParams') ?? [];
+      $searchParams['all'] = 'true';
+
+      $sortBy = $this->request->getGet('sortBy') ?? 'id';
+
+      $sortDirection = $this->request->getGet('sortDirection') ?? 'asc';
+
+
+      $userRole = session()->get('userRole');
+
+      if ($userRole === 'Customer') {
+        $data =  $orderElementModel->getUserOrders(session()->get('userId'), null, $searchParams, $sortBy, $sortDirection);
+      }elseif ($userRole === 'Administrator'){
+        $data = $orderModel->getAllOrders(null, $searchParams, $sortBy, $sortDirection);
+      }
+
+      $rowNumber = 2;
+      
+      foreach ($data as $row) {
+
+        $sheet->setCellValue('A' . $rowNumber, $row['id']);
+        $sheet->setCellValue('B' . $rowNumber, date('d/m/Y', strtotime($row['date'])));
+        $sheet->setCellValue('C' . $rowNumber, $row['price'] . ' $');
+
+
+        if (!is_null($row['disabled'])) {
+          $sheet->getStyle('A' . $rowNumber . ':C' . $rowNumber)->getFill()
+              ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+              ->getStartColor()->setARGB('FFFF6666'); 
+
+          $sheet->getStyle('A' . $rowNumber . ':C' . $rowNumber)->getFont()
+              ->getColor()->setARGB('FFFFFFFF'); 
+      }
+
+        $rowNumber++;
+      }
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'exportOrder.xlsx';
+
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment;filename="' . $filename . '"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
+      exit;
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
     }
   }
 }

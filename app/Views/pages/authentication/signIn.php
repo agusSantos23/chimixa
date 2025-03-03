@@ -8,11 +8,11 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Head-->
 	<head>
 		<title>CHIMIXA</title>
-		<meta name="description" content="Herramienta digital personalizada para gestionar de manera eficiente todas las operaciones del restaurante Chimixa. Optimiza la administración de menus, inventarios y reportes, todo diseñado exclusivamente para destacar la esencia y calidad de la auténtica comida mexicana que ofrece este restaurante." />
+		<meta name="description" content="At Chimicha, we blend tradition and flavor to offer you a unique dining experience. Since our beginnings, we have worked with fresh ingredients and authentic recipes that make every dish an unforgettable delight." />
 		<meta name="keywords" content="Chimixa, Metronic, php, codeigniter, gestion de restaurantes" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/x-icon" href="./assets/media/logos/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="<?= base_url('/assets/favicon.ico') ?>" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -37,27 +37,25 @@ License: For each use you must have a valid license purchased only from above li
 
 
 				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px position-xl-relative" style="background-color:rgb(94, 67, 28)">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px position-xl-relative" style="background-color:rgb(51, 39, 21)">
 					<!--begin::Wrapper-->
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Content-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
 							<!--begin::Logo-->
-							<a href="../../demo1/dist/index.html" class="py-9 mb-5">
+							<a href="" class="py-9 mb-5">
 								<img alt="Logo" src="../assets/media/logos/logo-letras.png" class="h-60px" />
 							</a>
 							<!--end::Logo-->
 							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Metronic</h1>
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Chimixa</h1>
 							<!--end::Title-->
 							<!--begin::Description-->
-							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing Metronic
-							<br />with great build tools</p>
+							<p class="fw-bold fs-2" style="color: #986923;">Discover the incredible restaurant </br> we have prepared for you</p>
 							<!--end::Description-->
 						</div>
 						<!--end::Content-->
 						<!--begin::Illustration-->
-						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(assets/media/illustrations/sketchy-1/13.png)"></div>
 						<!--end::Illustration-->
 					</div>
 					<!--end::Wrapper-->
@@ -76,11 +74,12 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Heading-->
 								<div class="text-center mb-10">
 									<!--begin::Title-->
-									<h1 class="text-dark mb-3">Inicia Sesion en CHIMIXA</h1>
+									<h1 class="text-dark mb-3">Log in to CHIMIXA</h1>
 									<!--end::Title-->
 									<!--begin::Link-->
-									<div class="text-gray-400 fw-bold fs-4">Nuevo aqui?
-									<a href="<?= base_url('auth/register') ?>" class="link-primary fw-bolder">Crear una Cuenta</a></div>
+									<div class="text-gray-400 fw-bold fs-4">New here?
+									<a href="<?= base_url('auth/register') ?>" class="link-primary fw-bolder">Create an Account</a>
+									</div>
 									<!--end::Link-->
 								</div>
 								<!--end::Heading-->
@@ -97,7 +96,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Input group-->
 								<div class="fv-row mb-10">
 									<!--begin::Label-->
-									<label class="form-label fs-6 fw-bolder text-dark">Correo Electronico</label>
+									<label class="form-label fs-6 fw-bolder text-dark">Email</label>
 									<!--end::Label-->
 									<!--begin::Input-->
 									<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
@@ -109,7 +108,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Wrapper-->
 									<div class="d-flex flex-stack mb-2">
 										<!--begin::Label-->
-										<label class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
+										<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 										<!--end::Label-->
 									</div>
 									<!--end::Wrapper-->

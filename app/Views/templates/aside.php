@@ -262,7 +262,7 @@
 
 						<!--begin::Section nav link-->
 						<div class="menu-item">
-							<a class="menu-link" href="<?= base_url('orders') ?>">
+							<a class="menu-link <?= (current_url() == base_url('orders')) ? 'active' : '' ?> " href="<?= base_url('orders') ?>">
 								<span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 									<span class="svg-icon svg-icon-2">
@@ -282,7 +282,7 @@
 
 						<!--begin::Section nav link-->
 						<div class="menu-item">
-							<a class="menu-link" href="<?= base_url('calendar') ?>">
+							<a class="menu-link <?= (current_url() == base_url('calendar')) ? 'active' : '' ?> " href="<?= base_url('calendar') ?>">
 								<span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 									<span class="svg-icon svg-icon-2">
@@ -317,7 +317,7 @@
 
 						<!--begin::Section nav link-->
 						<div class="menu-item">
-							<a class="menu-link" href="<?= base_url('ingredients') ?>">
+							<a class="menu-link <?= (current_url() == base_url('ingredients')) ? 'active' : '' ?>" href="<?= base_url('ingredients') ?>">
 								<span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 									<span class="svg-icon svg-icon-2">
@@ -335,7 +335,7 @@
 
 						<!--begin::Section nav link-->
 						<div class="menu-item">
-							<a class="menu-link" href="<?= base_url('plates') ?>">
+							<a class="menu-link <?= (current_url() == base_url('plates')) ? 'active' : '' ?>" href="<?= base_url('plates') ?>">
 								<span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 									<span class="svg-icon svg-icon-2">
