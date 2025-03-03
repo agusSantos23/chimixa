@@ -62,270 +62,280 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Container-->
 					<div id="kt_content_container" class="container-xxl">
 						<!--begin::Row-->
-						<div class="row gy-5 g-xl-8">
+						<div class="row gy-5 g-xl-8" id="container">
 
 							<!--begin::Col-->
 							<div class="col-xxl-4">
-								<!--begin::Mixed Widget 2-->
-								<div class="card card-xxl-stretch">
-									<!--begin::Header-->
-									<div class="card-header border-0 bg-danger py-5">
-										<h3 class="card-title fw-bolder text-white">Latest Orders</h3>
-									</div>
-									<!--end::Header-->
-									<!--begin::Body-->
-									<div class="card-body p-0">
-										<!--begin::Chart-->
-										<div class="mixed-widget-2-chart card-rounded-bottom bg-danger" data-kt-color="danger" style="height: 200px"></div>
-										<!--end::Chart-->
-										<!--begin::Stats-->
+								<div class="section-1" data-swapy-slot="foo">
+									<!--begin::Mixed Widget 2-->
+									<div class="card card-xxl-stretch"  data-swapy-item="a">
+										<!--begin::Header-->
+										<div class="card-header border-0 bg-danger py-5">
+											<h3 class="card-title fw-bolder text-white">Latest Orders</h3>
+										</div>
+										<!--end::Header-->
+										<!--begin::Body-->
+										<div class="card-body p-0">
+											<!--begin::Chart-->
+											<div class="mixed-widget-2-chart card-rounded-bottom bg-danger" data-kt-color="danger" style="height: 200px"></div>
+											<!--end::Chart-->
+											<!--begin::Stats-->
 
-										<div class="card-p mt-n20 position-relative">
+											<div class="card-p mt-n20 position-relative">
 
-											<?php
-											$today = new DateTime();
-											$today->setTime(0, 0);
+												<?php
+												$today = new DateTime();
+												$today->setTime(0, 0);
 
-											$countToday = 0;
-											$countWeek = 0;
-											$countMonth = 0;
-											$countYear = 0;
+												$countToday = 0;
+												$countWeek = 0;
+												$countMonth = 0;
+												$countYear = 0;
 
-											foreach ($orderUser as $order) {
-												$date = new DateTime($order["date"]);
+												foreach ($orderUser as $order) {
+													$date = new DateTime($order["date"]);
 
-												if (is_null($order['disabled'])) {
-													if ($date->format('Y-m-d') == $today->format('Y-m-d')) {
-														$countToday++;
-													}
+													if (is_null($order['disabled'])) {
+														if ($date->format('Y-m-d') == $today->format('Y-m-d')) {
+															$countToday++;
+														}
 
-													if ($date > (clone $today)->modify('-7 days')) {
-														$countWeek++;
-													}
+														if ($date > (clone $today)->modify('-7 days')) {
+															$countWeek++;
+														}
 
-													if ($date > (clone $today)->modify('-1 month')) {
-														$countMonth++;
-													}
+														if ($date > (clone $today)->modify('-1 month')) {
+															$countMonth++;
+														}
 
-													if ($date > (clone $today)->modify('-1 year')) {
-														$countYear++;
+														if ($date > (clone $today)->modify('-1 year')) {
+															$countYear++;
+														}
 													}
 												}
-											}
-											?>
-											<!--begin::Row-->
-											<div class="row g-0">
-												<!--begin::Col-->
-												<div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
-													<div class="d-flex align-items-center">
-														<!--begin::Svg Icon-->
-														<span class="svg-icon svg-icon-3x svg-icon-warning my-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-																<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-																<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-																<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-														<span class="fs-3 fw-bold text-warning ms-3"><?= $countToday ?></span>
-													</div>
-													<a href="#" class="text-warning fw-bold fs-6">Today</a>
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
-													<div class="d-flex align-items-center">
-														<span class="svg-icon svg-icon-3x svg-icon-primary my-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-																<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-																<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-																<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-															</svg>
-														</span>
-														<span class="fs-3 fw-bold text-primary ms-3"><?= $countWeek ?></span>
-													</div>
-													<a href="#" class="text-primary fw-bold fs-6">Last Week</a>
-												</div>
-												<!--end::Col-->
-											</div>
-											<!--end::Row-->
-											<!--begin::Row-->
-											<div class="row g-0">
-												<!--begin::Col-->
-												<div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
-													<div class="d-flex align-items-center">
-														<span class="svg-icon svg-icon-3x svg-icon-danger my-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-																<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-																<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-																<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-															</svg>
-														</span>
-														<span class="fs-3 fw-bold text-danger ms-3"><?= $countMonth ?></span>
-													</div>
-													<a href="#" class="text-danger fw-bold fs-6 mt-2">Last Month</a>
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col bg-light-success px-6 py-8 rounded-2">
-													<div class="d-flex align-items-center">
-														<span class="svg-icon svg-icon-3x svg-icon-success my-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
-																<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
-																<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
-																<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
-															</svg>
-														</span>
-														<span class="fs-3 fw-bold text-success ms-3"><?= $countYear ?></span>
-													</div>
-													<a href="#" class="text-success fw-bold fs-6 mt-2">Last Year</a>
-												</div>
-												<!--end::Col-->
-											</div>
-											<!--end::Row-->
-										</div>
-
-										<!--end::Stats-->
-									</div>
-									<!--end::Body-->
-								</div>
-								<!--end::Mixed Widget 2-->
-							</div>
-							<!--end::Col-->
-
-							<!--begin::Col-->
-							<div class="col-xxl-4">
-								<!--begin::List Widget 5-->
-								<div class="card card-xxl-stretch">
-									<!--begin::Header-->
-									<div class="card-header align-items-center border-0 mt-4">
-										<h3 class="card-title align-items-start flex-column">
-											<span class="fw-bolder mb-2 text-dark">Latest Orders</span>
-											<span class="text-muted fw-bold fs-7"><?php !empty($orderUser) && count($orderUser) ?> Orders</span>
-										</h3>
-									</div>
-									<!--end::Header-->
-
-									<!--begin::Body-->
-									<!--begin::Timeline-->
-									<?php if (empty($orderUser)): ?>
-										<div class="card-body pt-5 overflow-auto d-flex flex-column justify-content-center align-items-center" style="min-height: 200px;">
-											<div class=" w-100">
-												<div class=" alert alert-warning text-center w-100">
-													You have not placed any order
-												</div>
-											</div>
-										</div>
-									<?php else: ?>
-										<div class="card-body pt-5 ">
-											<div class="timeline-label w-100">
-												<?php foreach (array_slice($orderUser, 0, 7) as $order): ?>
-													<!--begin::Item-->
-													<div class="timeline-item">
-														<!--begin::Label-->
-														<div class="timeline-label fw-bolder text-gray-800 fs-6">
-															<?= date("d/m", strtotime($order['date'])) ?>
-														</div>
-														<!--end::Label-->
-														<!--begin::Badge-->
-														<div class="timeline-badge" data-bs-toggle="tooltip" style="cursor:pointer;">
-															<i class="fa fa-genderless text-primary fs-1"></i>
-														</div>
-														<!--end::Badge-->
-														<!--begin::Text-->
-														<div class="fw-mormal timeline-content text-muted ps-3">
-															<span class="fw-bolder text-gray-800"><?= $order['id'] ?>:</span> Total Price <?= $order['price'] ?> $
-
-														</div>
-														<!--end::Text-->
-													</div>
-
-													<!--end::Item-->
-												<?php endforeach; ?>
-											</div>
-										</div>
-									<?php endif; ?>
-									<!--end::Timeline-->
-
-
-									<!--end: Card Body-->
-
-									<!--end: Card Body-->
-								</div>
-								<!--end: List Widget 5-->
-							</div>
-							<!--end::Col-->
-
-							<!--begin::Col-->
-							<div class="col-xxl-4">
-								<!--begin::Mixed Widget 7-->
-								<div class="card card-xxl-stretch-50 mb-10 mb-xl-8">
-									<!--begin::Body-->
-									<div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
-										<!--begin::Stats-->
-										<div class="flex-grow-1 card-p pb-0 w-100">
-											<div class="d-flex flex-stack flex-wrap">
-												<div class="me-2">
-													<a class="text-dark text-hover-primary fw-bolder fs-3">Top seller</a>
-												</div>
-											</div>
-										</div>
-										<!--end::Stats-->
-										<!--begin::Chart-->
-										<div id="chartCircle" class="pb-10"></div>
-										<!--end::Chart-->
-									</div>
-									<!--end::Body-->
-								</div>
-								<!--end::Mixed Widget 7-->
-								<!--begin::Mixed Widget 10-->
-								<div class="card card-xxl-stretch-50 mb-5 mb-xl-8">
-									<!--begin::Body-->
-									<div class="card-body p-0 d-flex justify-content-between flex-column overflow-hidden">
-										<!--begin::Hidden-->
-										<div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 ">
-											<div class="me-2">
-												<span class="fw-bolder text-gray-800 d-block fs-3">
-													<?php
-													switch (session()->get('userRole')) {
-														case 'Customer':
-															echo 'Shopping';
-															break;
-														case 'Chef':
-															echo 'Orders';
-															break;
-														case 'Administrator':
-															echo 'Earnings';
-															break;
-														default:
-															echo 'Not Found';
-															break;
-													}
-													?>
-
-												</span>
-												<?php
-												$dateNow = new DateTime();
-												$dateEightMonth = new DateTime();
-												$dateEightMonth->modify('-8 months');
-
 												?>
-												<span class="text-gray-400 fw-bold">Last 8 months <?= $dateEightMonth->format('M y'), ' - ', $dateNow->format('M y') ?></span>
+												<!--begin::Row-->
+												<div class="row g-0">
+													<!--begin::Col-->
+													<div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
+														<div class="d-flex align-items-center">
+															<!--begin::Svg Icon-->
+															<span class="svg-icon svg-icon-3x svg-icon-warning my-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
+																	<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
+																	<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
+																	<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
+																</svg>
+															</span>
+															<!--end::Svg Icon-->
+															<span class="fs-3 fw-bold text-warning ms-3"><?= $countToday ?></span>
+														</div>
+														<a href="#" class="text-warning fw-bold fs-6">Today</a>
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
+														<div class="d-flex align-items-center">
+															<span class="svg-icon svg-icon-3x svg-icon-primary my-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
+																	<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
+																	<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
+																	<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
+																</svg>
+															</span>
+															<span class="fs-3 fw-bold text-primary ms-3"><?= $countWeek ?></span>
+														</div>
+														<a href="#" class="text-primary fw-bold fs-6">Last Week</a>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Row-->
+												<!--begin::Row-->
+												<div class="row g-0">
+													<!--begin::Col-->
+													<div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
+														<div class="d-flex align-items-center">
+															<span class="svg-icon svg-icon-3x svg-icon-danger my-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
+																	<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
+																	<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
+																	<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
+																</svg>
+															</span>
+															<span class="fs-3 fw-bold text-danger ms-3"><?= $countMonth ?></span>
+														</div>
+														<a href="#" class="text-danger fw-bold fs-6 mt-2">Last Month</a>
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col bg-light-success px-6 py-8 rounded-2">
+														<div class="d-flex align-items-center">
+															<span class="svg-icon svg-icon-3x svg-icon-success my-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
+																	<rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
+																	<rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
+																	<rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
+																</svg>
+															</span>
+															<span class="fs-3 fw-bold text-success ms-3"><?= $countYear ?></span>
+														</div>
+														<a href="#" class="text-success fw-bold fs-6 mt-2">Last Year</a>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Row-->
 											</div>
 
-											<div id="totalMoneyLastMonths" class="fw-bolder fs-3 text-primary"></div>
+											<!--end::Stats-->
 										</div>
-										<!--end::Hidden-->
-										<!--begin::Chart-->
-										<div id="chartDuoColumns" class="px-10"></div>
-										<!--end::Chart-->
+										<!--end::Body-->
+									</div>
+									<!--end::Mixed Widget 2-->
+								</div>
+							</div>
+							<!--end::Col-->
+
+							<!--begin::Col-->
+							<div class="col-xxl-4">
+								<div class="section-2" data-swapy-slot="bar">
+
+									<!--begin::List Widget 5-->
+									<div class="card card-xxl-stretch"  data-swapy-item="b">
+										<!--begin::Header-->
+										<div class="card-header align-items-center border-0 mt-4">
+											<h3 class="card-title align-items-start flex-column">
+												<span class="fw-bolder mb-2 text-dark">Latest Orders</span>
+												<span class="text-muted fw-bold fs-7"><?php !empty($orderUser) && count($orderUser) ?> Orders</span>
+											</h3>
+										</div>
+										<!--end::Header-->
+
+										<!--begin::Body-->
+										<!--begin::Timeline-->
+										<?php if (empty($orderUser)): ?>
+											<div class="card-body pt-5 overflow-auto d-flex flex-column justify-content-center align-items-center" style="min-height: 200px;">
+												<div class=" w-100">
+													<div class=" alert alert-warning text-center w-100">
+														You have not placed any order
+													</div>
+												</div>
+											</div>
+										<?php else: ?>
+											<div class="card-body pt-5 ">
+												<div class="timeline-label w-100">
+													<?php foreach (array_slice($orderUser, 0, 7) as $order): ?>
+														<!--begin::Item-->
+														<div class="timeline-item">
+															<!--begin::Label-->
+															<div class="timeline-label fw-bolder text-gray-800 fs-6">
+																<?= date("d/m", strtotime($order['date'])) ?>
+															</div>
+															<!--end::Label-->
+															<!--begin::Badge-->
+															<div class="timeline-badge" data-bs-toggle="tooltip" style="cursor:pointer;">
+																<i class="fa fa-genderless text-primary fs-1"></i>
+															</div>
+															<!--end::Badge-->
+															<!--begin::Text-->
+															<div class="fw-mormal timeline-content text-muted ps-3">
+																<span class="fw-bolder text-gray-800"><?= $order['id'] ?>:</span> Total Price <?= $order['price'] ?> $
+
+															</div>
+															<!--end::Text-->
+														</div>
+
+														<!--end::Item-->
+													<?php endforeach; ?>
+												</div>
+											</div>
+										<?php endif; ?>
+										<!--end::Timeline-->
+
+
+										<!--end: Card Body-->
+
+										<!--end: Card Body-->
+									</div>
+									<!--end: List Widget 5-->
+								</div>
+							</div>
+							<!--end::Col-->
+
+							<!--begin::Col-->
+							<div class="col-xxl-4">
+								<div class="section-3" data-swapy-slot="baz">
+									<div class="content-c" data-swapy-item="c">
+
+										<!--begin::Mixed Widget 7-->
+										<div class="card card-xxl-stretch-50 mb-10 mb-xl-8">
+											<!--begin::Body-->
+											<div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
+												<!--begin::Stats-->
+												<div class="flex-grow-1 card-p pb-0 w-100">
+													<div class="d-flex flex-stack flex-wrap">
+														<div class="me-2">
+															<a class="text-dark text-hover-primary fw-bolder fs-3">Top seller</a>
+														</div>
+													</div>
+												</div>
+												<!--end::Stats-->
+												<!--begin::Chart-->
+												<div id="chartCircle" class="pb-5"></div>
+												<!--end::Chart-->
+											</div>
+											<!--end::Body-->
+										</div>
+										<!--end::Mixed Widget 7-->
+										<!--begin::Mixed Widget 10-->
+										<div class="card card-xxl-stretch-50 mb-5 mb-xl-8">
+											<!--begin::Body-->
+											<div class="card-body p-0 d-flex justify-content-between flex-column overflow-hidden">
+												<!--begin::Hidden-->
+												<div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 ">
+													<div class="me-2">
+														<span class="fw-bolder text-gray-800 d-block fs-3">
+															<?php
+															switch (session()->get('userRole')) {
+																case 'Customer':
+																	echo 'Shopping';
+																	break;
+																case 'Chef':
+																	echo 'Orders';
+																	break;
+																case 'Administrator':
+																	echo 'Earnings';
+																	break;
+																default:
+																	echo 'Not Found';
+																	break;
+															}
+															?>
+
+														</span>
+														<?php
+														$dateNow = new DateTime();
+														$dateEightMonth = new DateTime();
+														$dateEightMonth->modify('-8 months');
+
+														?>
+														<span class="text-gray-400 fw-bold">Last 8 months <?= $dateEightMonth->format('M y'), ' - ', $dateNow->format('M y') ?></span>
+													</div>
+
+													<div id="totalMoneyLastMonths" class="fw-bolder fs-3 text-primary"></div>
+												</div>
+												<!--end::Hidden-->
+												<!--begin::Chart-->
+												<div id="chartDuoColumns" class="px-10"></div>
+												<!--end::Chart-->
+											</div>
+										</div>
+										<!--end::Mixed Widget 10-->
 									</div>
 								</div>
-								<!--end::Mixed Widget 10-->
 							</div>
 							<!--end::Col-->
 
@@ -365,7 +375,6 @@ License: For each use you must have a valid license purchased only from above li
 				<!--end::Content-->
 
 
-
 				<?php include APPPATH . 'Views/templates/footer.php' ?>
 
 
@@ -403,7 +412,10 @@ License: For each use you must have a valid license purchased only from above li
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="assets/js/custom/widgets.js"></script>
+	<script src="https://unpkg.com/swapy/dist/swapy.min.js"></script>
 	<script src="assets/js/custom/apps/chat/chatConfig.js"></script>
+
+	<script src="assets/js/custom/apps/chat/swapy.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>
