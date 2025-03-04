@@ -23,6 +23,7 @@ class UserController extends BaseController
 
       if (!$userRole) return redirect()->to(base_url('/auth/login'));
 
+      /*
       helper('sort_helper');
 
       $data['roles'] = $rolModel->whereNotIn('name', ['Administrator'])->where('disabled', null)->findAll();
@@ -41,7 +42,6 @@ class UserController extends BaseController
       $data['sortDirection'] = $sortDirection;
 
 
-      $data = array_merge($data, $userModel->getAllUsersWithRoles($perPage, $searchParams, $sortBy, $sortDirection));
 
       $queryString = http_build_query([
         'searchParams' => $searchParams,
@@ -52,6 +52,9 @@ class UserController extends BaseController
 
       $data['exportUrl'] = base_url('./users/export') . '?' . $queryString;
 
+      */
+
+      $data['users'] = $userModel->getAllUsersWithRoles();
 
       return view('pages/list/user_list', $data);
     } catch (Exception $e) {

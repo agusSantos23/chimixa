@@ -23,7 +23,7 @@ class UserModel extends Model
     $builder->select('users.id, users.name, users.last_name, users.email, users.disabled, users.phone, users.country, users.created_at, users.updated_at, users.role_id, users.prefix, roles.name as role_name');
     $builder->join('roles', 'roles.id = users.role_id');
 
-
+    /*
     if (isset($searchParams['disabledFilter'])) {
       $disabledFilter = $searchParams['disabledFilter'];
 
@@ -81,6 +81,9 @@ class UserModel extends Model
         'pager' => $this->pager,
       ];
     }
+    */
+
+    return $builder->get()->getResultArray();
     
   }
 

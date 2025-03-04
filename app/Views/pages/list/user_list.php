@@ -129,103 +129,6 @@ License: For each use you must have a valid license purchased only from above li
 												<form action="<?= base_url('users') ?>" method="get" class="px-7 py-5">
 
 
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[role]" id="searchRole" class="form-control form-control-solid w-250px ps-15" placeholder="Rol" value="<?= esc($searchParams['role'] ?? '') ?>" />
-													</div>
-
-
-													<!--begin::SearchName-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[name]" id="searchName" class="form-control form-control-solid w-250px ps-15" placeholder="Name" value="<?= esc($searchParams['name'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::SearchEmail-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[email]" id="searchEmail" class="form-control form-control-solid w-250px ps-15" placeholder="Email" value="<?= esc($searchParams['email'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::SearchPhone-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[phone]" id="searchPhone" class="form-control form-control-solid w-250px ps-15" placeholder="Phone" value="<?= esc($searchParams['phone'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::SearchCountry-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-																<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-
-														<input type="text" name="searchParams[country]" id="searchCountry" class="form-control form-control-solid w-250px ps-15" placeholder="Country" value="<?= esc($searchParams['country'] ?? '') ?>" />
-													</div>
-													<!--end::Search-->
-
-													<!--begin::DisabledFilter-->
-													<div class="d-flex align-items-center position-relative my-1">
-														<span class="svg-icon svg-icon-1 position-absolute ms-6">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-															</svg>
-														</span>
-
-														<select name="searchParams[disabledFilter]" id="disabledFilter" class="form-control form-control-solid w-250px ps-15 cursor-pointer">
-
-															<option value="">All</option>
-															<option value="false" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'false') ? 'selected' : '' ?>>Active</option>
-															<option value="true" <?= (isset($searchParams['disabledFilter']) && $searchParams['disabledFilter'] === 'true') ? 'selected' : '' ?>>Disabled</option>
-
-														</select>
-													</div>
-													<!--end::DisabledFilter-->
-
-													<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
-													<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
-													<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
-
-
 													<!--begin::Actions-->
 													<div class="d-flex justify-content-end mt-5">
 														<button type="button" onclick="window.location='<?= base_url('users') ?>'" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
@@ -243,19 +146,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-											<!--begin::Export-->
-											<a href="<?= $exportUrl ?>" class="btn btn-light-primary me-3">
-												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-												<span class="svg-icon svg-icon-2">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
-														<path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
-														<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->
-												Export
-											</a>
+										
 											<!--end::Export-->
 											<!--begin::Add customer-->
 											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Users</button>
@@ -277,7 +168,6 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<!--end::Card header-->
 
-
 								<div class="card-body pt-0">
 
 									<!--begin::Card body-->
@@ -289,47 +179,33 @@ License: For each use you must have a valid license purchased only from above li
 												<?php $route = 'users' ?>
 												<!--begin::Table row-->
 												<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-													<th class="w-10px pe-2">
-														<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
-														</div>
-													</th>
-													<th></th>
-													<th class="min-w-100px">
-														<a href="<?= generateSortLink('role', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
-															Rol <?= getSortIcon('role', $sortBy, $sortDirection) ?>
-														</a>
+													
+													<th class="min-w-150px">
+														Rol
 													</th>
 
 													<th class="min-w-150px">
-														<a href="<?= generateSortLink('name', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
-															Name <?= getSortIcon('name', $sortBy, $sortDirection) ?>
-														</a>
+														Name
 													</th>
 
 													<th class="min-w-100px">
-														<a href="<?= generateSortLink('email', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
-															Email <?= getSortIcon('email', $sortBy, $sortDirection) ?>
-														</a>
+														Email
 													</th>
 
 													<th class="min-w-125px">
-														<a href="<?= generateSortLink('phone', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
-															Phone <?= getSortIcon('phone', $sortBy, $sortDirection) ?>
-														</a>
+														Phone
 													</th>
 
-													<th class="min-w-50px">
-														<a href="<?= generateSortLink('country', $sortBy, $sortDirection, $searchParams, $perPage, $route) ?>">
-															Country <?= getSortIcon('country', $sortBy, $sortDirection) ?>
-														</a>
+													<th class="min-w-75px">
+														Country
 													</th>
-													<th class="text-end min-w-100px">Actions</th>
+
+													<th></th>
+
 												</tr>
 												<!--end::Table row-->
 											</thead>
 											<!--end::Table head-->
-
 											<!--begin::Table body-->
 											<tbody class="fw-bold text-gray-600">
 
@@ -343,32 +219,15 @@ License: For each use you must have a valid license purchased only from above li
 													<?php foreach ($users as $user): ?>
 
 														<tr>
-															<!--begin::Checkbox-->
+															
 															<td>
-																<div class="form-check form-check-sm form-check-custom form-check-solid">
-																	<input class="form-check-input" type="checkbox" value="1" />
-																</div>
+																<?= esc($user['role_name'])?>
 															</td>
-															<!--end::Checkbox-->
+													
 
-															<td>
-																<?php if ($user['disabled']): ?>
-																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This user is disabled"></div>
-																<?php endif; ?>
-															</td>
-
-
-															<!--begin::Rol=-->
-															<td>
-																<?= esc($user['role_name']) ?>
-															</td>
-															<!--end::Rol=-->
-
-															<!--begin::FullName=-->
 															<td>
 																<?= esc($user['name']), " ", esc($user['last_name']) ?>
 															</td>
-															<!--end::FullName=-->
 
 															<!--begin::Email=-->
 															<td>
@@ -388,58 +247,14 @@ License: For each use you must have a valid license purchased only from above li
 															</td>
 															<!--end::Country=-->
 
-															<!--begin::Action=-->
-															<td class="text-end actions"  data-id="<?= esc($user['id']) ?>">
-																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
-																	<!--end::Svg Icon--></a>
-																<!--begin::Menu-->
-																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3 me-2" data-id="<?= esc($user['id']) ?>" data-kt-role-table-filter="edit_row">
-																			<!--begin::Svg Icon | path: assets/media/icons/duotune/art/art005.svg-->
-																			<span class="svg-icon svg-icon-muted me-1">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
-																					<path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																			Edit
-																		</a>
-																	</div>
-																	<!--end::Menu item-->
-																	<!--begin::Menu item-->
-																	<?php if (empty($user['disabled'])): ?>
-
-																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-id="<?= esc($user['id']) ?>" data-kt-customer-table-filter="delete_row">
-
-																			<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
-																			<span class="svg-icon svg-icon-muted me-1">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path opacity="0.3" d="M6.7 19.4L5.3 18C4.9 17.6 4.9 17 5.3 16.6L16.6 5.3C17 4.9 17.6 4.9 18 5.3L19.4 6.7C19.8 7.1 19.8 7.7 19.4 8.1L8.1 19.4C7.8 19.8 7.1 19.8 6.7 19.4Z" fill="black" />
-																					<path d="M19.5 18L18.1 19.4C17.7 19.8 17.1 19.8 16.7 19.4L5.40001 8.1C5.00001 7.7 5.00001 7.1 5.40001 6.7L6.80001 5.3C7.20001 4.9 7.80001 4.9 8.20001 5.3L19.5 16.6C19.9 16.9 19.9 17.6 19.5 18Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-
-																			Delete
-																		</a>
-																	</div>
-																	<?php endif; ?>
-
-																	<!--end::Menu item-->
-																</div>
-																<!--end::Menu-->
+															<td>
+																<?php if ($user['disabled']): ?>
+																	<div class="h-25px border border-5 rounded border-danger cursor-pointer" style="width: 0;" data-bs-toggle="tooltip" title="This user is disabled"></div>
+																<?php endif; ?>
 															</td>
-															<!--end::Action=-->
+
+
+												
 														</tr>
 													<?php endforeach; ?>
 												<?php endif; ?>
@@ -455,541 +270,14 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 									<!--end::Card body-->
 									<!--begin::Card footer-->
-									<div class="d-flex align-items-center justify-content-between mt-5">
 
-
-										<form action="<?= base_url('users') ?>" method="get" class="d-inline-block">
-											<?php
-											$urlParams = $_GET;
-											unset($urlParams['perPage'], $urlParams['sortBy'], $urlParams['sortDirection']);
-											$queryString = http_build_query($urlParams);
-											?>
-											<input type="hidden" name="searchParams" value="<?= esc($queryString) ?>">
-											<input type="hidden" name="sortBy" value="<?= esc($sortBy) ?>">
-											<input type="hidden" name="sortDirection" value="<?= esc($sortDirection) ?>">
-
-
-											<select name="perPage" id="perPage" onchange="this.form.submit()" class="form-select form-select-sm">
-												<option value="5" <?= ($perPage == 5) ? 'selected' : '' ?>>5</option>
-												<option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
-												<option value="25" <?= ($perPage == 25) ? 'selected' : '' ?>>25</option>
-												<option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
-											</select>
-										</form>
-
-										<span class="ms-3">
-											<?= $pager->links('default', 'bootstrap_pager') ?>
-										</span>
-									</div>
 									<!--end::Card footer-->
 								</div>
 							</div>
 							<!--end::Card-->
 
 							<!--begin::Modals-->
-							<!--begin::Modal - Customers - Add-->
-							<div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-								<!--begin::Modal dialog-->
-								<div class="modal-dialog modal-dialog-centered mw-650px">
-									<!--begin::Modal content-->
-									<div class="modal-content">
-
-
-										<!--begin::Form-->
-										<form class="form" id="kt_modal_add_customer_form">
-											<!--begin::Modal header-->
-											<div class="modal-header" id="kt_modal_add_customer_header">
-												<!--begin::Modal title-->
-												<h2 class="fw-bolder">Add User</h2>
-												<!--end::Modal title-->
-
-												<!--begin::Close-->
-												<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-													<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-													<span class="svg-icon svg-icon-1">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-															<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-														</svg>
-													</span>
-													<!--end::Svg Icon-->
-												</div>
-												<!--end::Close-->
-											</div>
-											<!--end::Modal header-->
-
-
-											<!--begin::Modal body-->
-											<div class="modal-body py-10 px-lg-17">
-
-
-
-
-												<!--begin::Scroll-->
-												<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
-
-													<div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
-
-
-													<!--begin::Input group for image selection-->
-													<div class="fv-row mb-7">
-														<label class="fs-6 fw-bold mb-2">
-															<span class="required">Select Image</span>
-														</label>
-
-														<div class="d-flex justify-content-center align-items-center flex-wrap">
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/cactus') ?>" alt="Image catus" width="150" data-image="catus" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/chilliPepper') ?>" alt="Image chilli pepper" width="150" data-image="chilliPepper" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/fire') ?>" alt="Image fire" width="150" data-image="fire" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/guitar') ?>" alt="Image guitar" width="150" data-image="guitar" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/hat') ?>" alt="Image hat" width="150" data-image="hat" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-															<div class="image-option p-2">
-																<img src="<?= base_url('assets/media/avatars/wad') ?>" alt="Image wad" width="150" data-image="wad" class="cursor-pointer img-thumbnail select-image" />
-															</div>
-														</div>
-													</div>
-													<!--end::Input group-->
-
-
-													<!--begin::Input group-->
-													<div class="row g-9 mb-7">
-														<!--begin::Col-->
-														<div class="col-md-6 fv-row">
-															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Name</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" name="name" value="" />
-															<!--end::Input-->
-														</div>
-														<!--end::Col-->
-
-														<!--begin::Col-->
-														<div class="col-md-6 fv-row">
-															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Last Name</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" class="form-control form-control-solid" name="lastName" value="" />
-															<!--end::Input-->
-														</div>
-														<!--end::Col-->
-													</div>
-													<!--end::Input group-->
-
-													<!--begin::Input group-->
-													<div class="fv-row mb-7">
-														<!--begin::Label-->
-														<label class="fs-6 fw-bold mb-2">
-															<span class="required">Email</span>
-															<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="The email address must be active"></i>
-														</label>
-														<!--end::Label-->
-														<!--begin::Input-->
-														<input type="email" class="form-control form-control-solid" placeholder="" name="email" value="" />
-														<!--end::Input-->
-													</div>
-													<!--end::Input group-->
-
-													<!--begin::Input group-->
-													<div class="fv-row mb-7">
-														<!--begin::Label-->
-														<label class="fs-6 fw-bold mb-2">
-															<span class="required">Password</span>
-														</label>
-														<!--end::Label-->
-														<!--begin::Input-->
-														<input type="password" class="form-control form-control-solid" placeholder="" name="password" value="" />
-														<!--end::Input-->
-													</div>
-													<!--end::Input group-->
-
-													<!--begin::Input group-->
-													<div class="fv-row mb-7">
-														<!--begin::Label-->
-														<label class="fs-6 fw-bold mb-2">
-															<span class="required">Password Confirmation</span>
-														</label>
-														<!--end::Label-->
-														<!--begin::Input-->
-														<input type="password" class="form-control form-control-solid" name="confirmPassword" value="" />
-														<!--end::Input-->
-													</div>
-													<!--end::Input group-->
-
-
-													<!--begin::Input group-->
-													<div class="row g-9 mb-7">
-
-														<!--begin::Col-->
-														<div class="col-md-6 fv-row">
-															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Telephone Prefix</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<div class="d-flex gap-3">
-																<select class="form-select form-select-solid fw-bolder" name="prefix" aria-label="Select a Prefix" data-control="select2" data-placeholder="Select a Prefix..." data-dropdown-parent="#kt_modal_add_customer">
-																	<option value=""></option>
-																	<option value="1">+1 --- (USA / Canada)</option>
-																	<option value="30">+30 --- (Greece)</option>
-																	<option value="31">+31 --- (Netherlands)</option>
-																	<option value="32">+32 --- (Belgium)</option>
-																	<option value="33">+33 --- (France)</option>
-																	<option value="34">+34 --- (Spain)</option>
-																	<option value="20">+20 --- (Egypt)</option>
-																	<option value="36">+36 --- (Hungary)</option>
-																	<option value="39">+39 --- (Italy)</option>
-																	<option value="40">+40 --- (Romania)</option>
-																	<option value="41">+41 --- (Switzerland)</option>
-																	<option value="42">+42 --- (Czech Republic)</option>
-																	<option value="43">+43 --- (Austria)</option>
-																	<option value="44">+44 --- (United Kingdom)</option>
-																	<option value="45">+45 --- (Denmark)</option>
-																	<option value="46">+46 --- (Sweden)</option>
-																	<option value="47">+47 --- (Norway)</option>
-																	<option value="48">+48 --- (Poland)</option>
-																	<option value="49">+49 --- (Germany)</option>
-																	<option value="51">+51 --- (Peru)</option>
-																	<option value="52">+52 --- (Mexico)</option>
-																	<option value="53">+53 --- (Cuba)</option>
-																	<option value="54">+54 --- (Argentina)</option>
-																	<option value="55">+55 --- (Brazil)</option>
-																	<option value="56">+56 --- (Chile)</option>
-																	<option value="57">+57 --- (Colombia)</option>
-																	<option value="58">+58 --- (Venezuela)</option>
-																	<option value="60">+60 --- (Malaysia)</option>
-																	<option value="61">+61 --- (Australia)</option>
-																	<option value="62">+62 --- (Indonesia)</option>
-																	<option value="63">+63 --- (Philippines)</option>
-																	<option value="64">+64 --- (New Zealand)</option>
-																	<option value="65">+65 --- (Singapore)</option>
-																	<option value="66">+66 --- (Thailand)</option>
-																	<option value="81">+81 --- (Japan)</option>
-																	<option value="82">+82 --- (South Korea)</option>
-																	<option value="84">+84 --- (Vietnam)</option>
-																	<option value="86">+86 --- (China)</option>
-																	<option value="90">+90 --- (Turkey)</option>
-																	<option value="91">+91 --- (India)</option>
-																	<option value="92">+92 --- (Pakistan)</option>
-																	<option value="93">+93 --- (Afghanistan)</option>
-																	<option value="94">+94 --- (Sri Lanka)</option>
-																	<option value="95">+95 --- (Myanmar)</option>
-																	<option value="98">+98 --- (Iran)</option>
-																	<option value="212">+212 --- (Morocco)</option>
-																	<option value="213">+213 --- (Algeria)</option>
-																	<option value="216">+216 --- (Tunisia)</option>
-																	<option value="218">+218 --- (Libya)</option>
-																	<option value="220">+220 --- (Gambia)</option>
-																	<option value="221">+221 --- (Senegal)</option>
-																	<option value="222">+222 --- (Mauritania)</option>
-																	<option value="223">+223 --- (Mali)</option>
-																	<option value="224">+224 --- (Guinea)</option>
-																	<option value="225">+225 --- (Costa de Marfil)</option>
-																	<option value="226">+226 --- (Burkina Faso)</option>
-																	<option value="227">+227 --- (Níger)</option>
-																	<option value="228">+228 --- (Togo)</option>
-																	<option value="229">+229 --- (Benín)</option>
-																	<option value="230">+230 --- (Mauricio)</option>
-																	<option value="231">+231 --- (Liberia)</option>
-																	<option value="232">+232 --- (Sierra Leona)</option>
-																	<option value="233">+233 --- (Ghana)</option>
-																	<option value="234">+234 --- (Nigeria)</option>
-																	<option value="235">+235 --- (Chad)</option>
-																	<option value="236">+236 --- (República Centroafricana)</option>
-																	<option value="237">+237 --- (Camerún)</option>
-																	<option value="238">+238 --- (Cabo Verde)</option>
-																	<option value="239">+239 --- (Santo Tomé y Príncipe)</option>
-																	<option value="240">+240 --- (Guinea Ecuatorial)</option>
-																	<option value="241">+241 --- (Gabón)</option>
-																	<option value="242">+242 --- (República del Congo)</option>
-																	<option value="243">+243 --- (República Democrática del Congo)</option>
-																	<option value="244">+244 --- (Angola)</option>
-																	<option value="245">+245 --- (Guinea-Bisáu)</option>
-																	<option value="246">+246 --- (Territorio Británico del Océano Índico)</option>
-																	<option value="247">+247 --- (Isla de Ascensión)</option>
-																	<option value="248">+248 --- (Seychelles)</option>
-																	<option value="249">+249 --- (Sudán)</option>
-																	<option value="250">+250 --- (Ruanda)</option>
-																	<option value="251">+251 --- (Etiopía)</option>
-																	<option value="252">+252 --- (Somalia)</option>
-																	<option value="253">+253 --- (Yibuti)</option>
-																	<option value="254">+254 --- (Kenia)</option>
-																	<option value="255">+255 --- (Tanzania)</option>
-																	<option value="256">+256 --- (Uganda)</option>
-																	<option value="257">+257 --- (Burundi)</option>
-																	<option value="258">+258 --- (Mozambique)</option>
-																	<option value="260">+260 --- (Zambia)</option>
-																	<option value="261">+261 --- (Madagascar)</option>
-																	<option value="262">+262 --- (Reunión, Mayotte)</option>
-																	<option value="263">+263 --- (Zimbabue)</option>
-																	<option value="264">+264 --- (Namibia)</option>
-																	<option value="265">+265 --- (Malaui)</option>
-																	<option value="266">+266 --- (Lesoto)</option>
-																	<option value="267">+267 --- (Botsuana)</option>
-																	<option value="268">+268 --- (Esuatini)</option>
-																	<option value="269">+269 --- (Comoras)</option>
-																	<option value="291">+291 --- (Eritrea)</option>
-																	<option value="297">+297 --- (Aruba)</option>
-																	<option value="298">+298 --- (Islas Feroe)</option>
-																	<option value="299">+299 --- (Groenlandia)</option>
-																	<option value="350">+350 --- (Gibraltar)</option>
-																	<option value="351">+351 --- (Portugal)</option>
-																	<option value="352">+352 --- (Luxemburgo)</option>
-																	<option value="353">+353 --- (Irlanda)</option>
-																	<option value="354">+354 --- (Islandia)</option>
-																	<option value="355">+355 --- (Albania)</option>
-																	<option value="356">+356 --- (Malta)</option>
-																	<option value="357">+357 --- (Chipre)</option>
-																	<option value="358">+358 --- (Finlandia)</option>
-																	<option value="359">+359 --- (Bulgaria)</option>
-																	<option value="370">+370 --- (Lituania)</option>
-																	<option value="371">+371 --- (Letonia)</option>
-																	<option value="372">+372 --- (Estonia)</option>
-																	<option value="373">+373 --- (Moldavia)</option>
-																	<option value="374">+374 --- (Armenia)</option>
-																	<option value="375">+375 --- (Bielorrusia)</option>
-																	<option value="376">+376 --- (Andorra)</option>
-																	<option value="377">+377 --- (Mónaco)</option>
-																	<option value="378">+378 --- (San Marino)</option>
-																	<option value="379">+379 --- (Ciudad del Vaticano)</option>
-																	<option value="380">+380 --- (Ucrania)</option>
-																	<option value="381">+381 --- (Serbia)</option>
-																	<option value="382">+382 --- (Montenegro)</option>
-																	<option value="383">+383 --- (Kosovo)</option>
-																	<option value="384">+384 --- (Macedonia)</option>
-																	<option value="385">+385 --- (Croacia)</option>
-																	<option value="386">+386 --- (Eslovenia)</option>
-																	<option value="387">+387 --- (Bosnia y Herzegovina)</option>
-																	<option value="388">+388 --- (Yugoslavia)</option>
-
-																</select>
-															</div>
-															<!--end::Input-->
-														</div>
-														<!--end::Col-->
-
-														<!--begin::Col-->
-														<div class="col-md-6 fv-row">
-															<label class="required fs-6 fw-bold mb-2">Phone Number</label>
-
-															<!--begin::Input-->
-															<div class="d-flex gap-3">
-																<input class="form-control form-control-solid" name="phone" type="tel" />
-															</div>
-															<!--end::Input-->
-														</div>
-														<!--end::Col-->
-
-													</div>
-
-
-													<!--begin::Input group-->
-													<div class="row g-9 mb-7">
-
-														<!--begin::Col-->
-														<div class="col-xl-6 fv-row">
-															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">
-																<span>Rol</span>
-																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="By default it will be Client"></i>
-															</label>
-															<!--end::Label-->
-															<select name="role" aria-label="Select a Role" data-control="select2" data-placeholder="Select a Role..." data-dropdown-parent="#kt_modal_add_customer" class="form-select form-select-solid fw-bolder">
-																<option value=""></option>
-																<?php foreach ($roles as $rol): ?>
-																	<option value="<?= $rol['id'] ?>"><?= $rol['name'] ?></option>
-																<?php endforeach; ?>
-															</select>
-														</div>
-														<!--end::Col-->
-
-														<!--begin::Col-->
-														<div class="col-md-6 fv-row">
-															<!--begin::Label-->
-															<label class="fs-6 fw-bold mb-2">
-																<span class="required">Country</span>
-																<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of Origin"></i>
-															</label>
-															<!--end::Label-->
-
-															<!--begin::Input-->
-															<select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a Country..." data-dropdown-parent="#kt_modal_add_customer" class="form-select form-select-solid fw-bolder">
-																<option value=""></option>
-																<option value="USA">United States</option>
-																<option value="Canada">Canada</option>
-																<option value="Egypt">Egypt</option>
-																<option value="Greece">Greece</option>
-																<option value="Netherlands">Netherlands</option>
-																<option value="Belgium">Belgium</option>
-																<option value="France">France</option>
-																<option value="Spain">Spain</option>
-																<option value="Hungary">Hungary</option>
-																<option value="Italy">Italy</option>
-																<option value="Romania">Romania</option>
-																<option value="Switzerland">Switzerland</option>
-																<option value="Czech Republic">Czech Republic</option>
-																<option value="Austria">Austria</option>
-																<option value="UK">United Kingdom</option>
-																<option value="Denmark">Denmark</option>
-																<option value="Sweden">Sweden</option>
-																<option value="Norway">Norway</option>
-																<option value="Poland">Poland</option>
-																<option value="Germany">Germany</option>
-																<option value="Peru">Peru</option>
-																<option value="Mexico">Mexico</option>
-																<option value="Cuba">Cuba</option>
-																<option value="Argentina">Argentina</option>
-																<option value="Brazil">Brazil</option>
-																<option value="Chile">Chile</option>
-																<option value="Colombia">Colombia</option>
-																<option value="Venezuela">Venezuela</option>
-																<option value="Malaysia">Malaysia</option>
-																<option value="Australia">Australia</option>
-																<option value="Indonesia">Indonesia</option>
-																<option value="Philippines">Philippines</option>
-																<option value="New Zealand">New Zealand</option>
-																<option value="Singapore">Singapore</option>
-																<option value="Thailand">Thailand</option>
-																<option value="Japan">Japan</option>
-																<option value="South Korea">South Korea</option>
-																<option value="Vietnam">Vietnam</option>
-																<option value="China">China</option>
-																<option value="Turkey">Turkey</option>
-																<option value="India">India</option>
-																<option value="Pakistan">Pakistan</option>
-																<option value="Afghanistan">Afghanistan</option>
-																<option value="Sri Lanka">Sri Lanka</option>
-																<option value="Myanmar">Myanmar</option>
-																<option value="Iran">Iran</option>
-																<option value="Morocco">Morocco</option>
-																<option value="Algeria">Algeria</option>
-																<option value="Tunisia">Tunisia</option>
-																<option value="Libya">Libya</option>
-																<option value="Gambia">Gambia</option>
-																<option value="Senegal">Senegal</option>
-																<option value="Mauritania">Mauritania</option>
-																<option value="Mali">Mali</option>
-																<option value="Guinea">Guinea</option>
-																<option value="Ivory Coast">Ivory Coast</option>
-																<option value="Burkina Faso">Burkina Faso</option>
-																<option value="Niger">Niger</option>
-																<option value="Togo">Togo</option>
-																<option value="Benin">Benin</option>
-																<option value="Mauritius">Mauritius</option>
-																<option value="Liberia">Liberia</option>
-																<option value="Sierra Leone">Sierra Leone</option>
-																<option value="Ghana">Ghana</option>
-																<option value="Nigeria">Nigeria</option>
-																<option value="Chad">Chad</option>
-																<option value="Cameroon">Cameroon</option>
-																<option value="Cape Verde">Cape Verde</option>
-																<option value="Sao Tome and Principe">Sao Tome and Principe</option>
-																<option value="Equatorial Guinea">Equatorial Guinea</option>
-																<option value="Gabon">Gabon</option>
-																<option value="Republic of the Congo">Republic of the Congo</option>
-																<option value="Democratic Republic of Congo">Democratic Republic of the Congo</option>
-																<option value="Angola">Angola</option>
-																<option value="Guinea-Bissau">Guinea-Bissau</option>
-																<option value="Sudan">Sudan</option>
-																<option value="Rwanda">Rwanda</option>
-																<option value="Ethiopia">Ethiopia</option>
-																<option value="Somalia">Somalia</option>
-																<option value="Djibouti">Djibouti</option>
-																<option value="Kenya">Kenya</option>
-																<option value="Tanzania">Tanzania</option>
-																<option value="Uganda">Uganda</option>
-																<option value="Burundi">Burundi</option>
-																<option value="Mozambique">Mozambique</option>
-																<option value="Zambia">Zambia</option>
-																<option value="Madagascar">Madagascar</option>
-																<option value="Reunion">Reunion</option>
-																<option value="Mayotte">Mayotte</option>
-																<option value="Zimbabwe">Zimbabwe</option>
-																<option value="Namibia">Namibia</option>
-																<option value="Malawi">Malawi</option>
-																<option value="Lesotho">Lesotho</option>
-																<option value="Botswana">Botswana</option>
-																<option value="Eswatini">Eswatini</option>
-																<option value="Comoros">Comoros</option>
-																<option value="Saint Helena">Saint Helena</option>
-																<option value="Eritrea">Eritrea</option>
-																<option value="Aruba">Aruba</option>
-																<option value="Faroe Islands">Faroe Islands</option>
-																<option value="Greenland">Greenland</option>
-																<option value="Gibraltar">Gibraltar</option>
-																<option value="Portugal">Portugal</option>
-																<option value="Luxembourg">Luxembourg</option>
-																<option value="Ireland">Ireland</option>
-																<option value="Iceland">Iceland</option>
-																<option value="Albania">Albania</option>
-																<option value="Malta">Malta</option>
-																<option value="Cyprus">Cyprus</option>
-																<option value="Finland">Finland</option>
-																<option value="Bulgaria">Bulgaria</option>
-																<option value="Lithuania">Lithuania</option>
-																<option value="Latvia">Latvia</option>
-																<option value="Estonia">Estonia</option>
-																<option value="Moldova">Moldova</option>
-																<option value="Armenia">Armenia</option>
-																<option value="Belarus">Belarus</option>
-																<option value="Andorra">Andorra</option>
-																<option value="Monaco">Monaco</option>
-																<option value="San Marino">San Marino</option>
-																<option value="Vatican City">Vatican City</option>
-																<option value="Ukraine">Ukraine</option>
-																<option value="Serbia">Serbia</option>
-																<option value="Montenegro">Montenegro</option>
-																<option value="Kosovo">Kosovo</option>
-																<option value="Macedonia">North Macedonia</option>
-																<option value="Croatia">Croatia</option>
-																<option value="Slovenia">Slovenia</option>
-																<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-															</select>
-															<!--end::Input-->
-
-														</div>
-														<!--end::Col-->
-													</div>
-													<!--end::Input group-->
-
-												</div>
-												<!--end::Scroll-->
-											</div>
-											<!--end::Modal body-->
-
-											<!--begin::Modal footer-->
-											<div class="modal-footer flex-center">
-												<!--begin::Button-->
-												<button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discart</button>
-												<!--end::Button-->
-												<!--begin::Button-->
-												<button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-													<span class="indicator-label">Send</span>
-													<span class="indicator-progress">Please wait...
-														<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-												</button>
-												<!--end::Button-->
-											</div>
-											<!--end::Modal footer-->
-										</form>
-										<!--end::Form-->
-
-
-									</div>
-								</div>
-							</div>
-							<!--end::Modal - Customers - Add-->
-
+				
 
 							<!--end::Modals-->
 						</div>
@@ -1000,7 +288,6 @@ License: For each use you must have a valid license purchased only from above li
 				<!--end::Content-->
 
 				<?php include APPPATH . 'Views/templates/footer.php' ?>
-
 
 			</div>
 			<!--end::Wrapper-->
@@ -1035,8 +322,7 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="./assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="./assets/js/custom/apps/customers/list/list.js"></script>
-	<script src="./assets/js/custom/apps/customers/add/addUser.js"></script>
+	<script src="./assets/js/custom/apps/customers/list/listUser.js"></script>
 	<script src="./assets/js/custom/widgets.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
