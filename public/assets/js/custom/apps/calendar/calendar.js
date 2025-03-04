@@ -1,6 +1,8 @@
+// Obtener el elemento del calendario y la URL base
 const calendarEl = document.getElementById('calendar');
 const baseURL = window.location.origin + '/chimixa/public/';
 
+// Inicializar el calendario con configuraciones personalizadas
 const calendar = new FullCalendar.Calendar(calendarEl, {
   initialView: 'dayGridMonth',
   selectable: true,
@@ -8,12 +10,10 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
   firstDay: 1,
 
   events: function (fetchInfo, successCallback, failureCallback) {
-
     $.ajax({
       url: baseURL + 'calendar/ajax',
       dataType: 'json',
       success: function (response) {
-        
         const events = response.data.orders.map(order => {
           return {
             id: order.id,
@@ -21,7 +21,6 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
             start: order.date,
           };
         });
-
         successCallback(events);
       },
       error: function () {
@@ -32,9 +31,9 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
   },
 
   eventDidMount: function (info) {
-    var eventElement = info.el;
-
-    var tooltipContent = `<b>Code:</b> ${info.event.id} <br> <b>Price:</b> ${info.event.title.split('- Price: ')[1]} $`;
+    // Agregar tooltip con información del evento
+    const eventElement = info.el;
+    const tooltipContent = `<b>Code:</b> ${info.event.id} <br> <b>Price:</b> ${info.event.title.split('- Price: ')[1]} $`;
 
     $(eventElement).attr('data-toggle', 'tooltip');
     $(eventElement).attr('data-html', 'true');
@@ -46,16 +45,15 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     });
   },
 
-
   select: function (info) {
+    // Formatear la fecha seleccionada y mostrar el modal para agregar pedido
     const dateParts = info.startStr.split('-');
-
     $('#headerModal').html(`add a Order on the Day: <span id="orderDate">${`${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`}</span>`);
-
     $('#kt_modal_add_customer').modal('show');
   },
 
   eventClick: function (info) {
+    // Confirmar la eliminación del evento
     Swal.fire({
       text: "Are you sure you want to delete selected?",
       icon: "warning",
@@ -68,18 +66,14 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
         cancelButton: "btn fw-bold btn-active-light-primary",
       },
     }).then((result) => {
-
       if (result.value) {
-                
-   
         $.ajax({
           url: baseURL + "calendar/delete/" + info.event._def.publicId,
           type: "GET",
           success: function (response) {
-
             if (response.success) {
               Swal.fire({
-                text: "Selected item have been deleted successfully!",
+                text: "Selected item has been deleted successfully!",
                 icon: "success",
                 buttonsStyling: false,
                 confirmButtonText: "Ok, got it!",
@@ -87,9 +81,7 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
               }).then(() => {
                 location.reload();
               });
-
             } else {
-
               Swal.fire({
                 text: response.message || "Error deleting element!",
                 icon: "error",
@@ -114,11 +106,11 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
   }
 });
 
-
+// Botón para agregar una orden hoy
 $('#addOrderToday').click(function () {
   $('#headerModal').html("add a Order"); 
   $('#kt_modal_add_order').modal('show');
 });
 
-
+// Renderizar el calendario
 calendar.render();
